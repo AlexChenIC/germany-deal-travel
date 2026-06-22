@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T20:39:13.033Z",
+  "generatedAt": "2026-06-22T20:44:05.607Z",
   "timezone": "Europe/Berlin",
   "homeBase": "Berlin",
   "assumptions": [
@@ -36,49 +36,49 @@
       "name": "Travel-Dealz",
       "status": "ok",
       "itemCount": 20,
-      "fetchedAt": "2026-06-22T20:39:12.362Z"
+      "fetchedAt": "2026-06-22T20:44:02.244Z"
     },
     {
       "id": "urlaubspiraten",
       "name": "Urlaubspiraten",
       "status": "ok",
       "itemCount": 44,
-      "fetchedAt": "2026-06-22T20:39:12.371Z"
+      "fetchedAt": "2026-06-22T20:44:02.253Z"
     },
     {
       "id": "urlaubstracker",
       "name": "Urlaubstracker",
       "status": "ok",
       "itemCount": 16,
-      "fetchedAt": "2026-06-22T20:39:12.372Z"
+      "fetchedAt": "2026-06-22T20:44:02.253Z"
     },
     {
       "id": "mydealz-reisen",
       "name": "mydealz Reisen",
       "status": "ok",
       "itemCount": 30,
-      "fetchedAt": "2026-06-22T20:39:12.372Z"
+      "fetchedAt": "2026-06-22T20:44:02.254Z"
     },
     {
       "id": "berlin-de-events",
       "name": "Berlin.de Events",
       "status": "ok",
       "itemCount": 30,
-      "fetchedAt": "2026-06-22T20:39:12.373Z"
+      "fetchedAt": "2026-06-22T20:44:02.255Z"
     },
     {
       "id": "berlin-de-highlights",
       "name": "Berlin.de Highlights",
       "status": "ok",
       "itemCount": 15,
-      "fetchedAt": "2026-06-22T20:39:12.374Z"
+      "fetchedAt": "2026-06-22T20:44:02.256Z"
     },
     {
       "id": "visitberlin-events",
       "name": "visitBerlin Event Calendar",
       "status": "ok",
       "itemCount": 21,
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.256Z"
     },
     {
       "id": "urlaubsguru",
@@ -86,7 +86,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "内容质量高，但公开抓取受限；后续可改成邮件订阅、授权 API 或人工收藏入口。",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     },
     {
       "id": "travelzoo-de",
@@ -94,7 +94,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "Top 20 deal value is high; later consider newsletter parsing or browser adapter.",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     },
     {
       "id": "groupon-berlin",
@@ -102,7 +102,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "柏林本地打折活动很重要，但一期先作为候选，避免不稳定抓取影响主流程。",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     },
     {
       "id": "eventbrite-berlin",
@@ -110,7 +110,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "适合补充免费/低价活动；后续如需要可配置 API token。",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     },
     {
       "id": "fever-berlin",
@@ -118,7 +118,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "沉浸式展览和亲子体验多，后续适合做浏览器自动化或手动收藏。",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     },
     {
       "id": "center-parcs",
@@ -126,7 +126,7 @@
       "status": "skipped",
       "itemCount": 0,
       "message": "非常适合带小孩的短途度假村监控，建议二期单独做价格/日期抓取。",
-      "fetchedAt": "2026-06-22T20:39:12.375Z"
+      "fetchedAt": "2026-06-22T20:44:02.257Z"
     }
   ],
   "items": [
@@ -3734,7 +3734,7 @@
       "familyScore": 48,
       "familySignals": [],
       "fromBerlin": false,
-      "priorityScore": 69
+      "priorityScore": 64
     },
     {
       "id": "urlaubspiraten-220a16767c78",

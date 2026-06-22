@@ -337,6 +337,7 @@ async function scrapeVisitBerlin(source: SourceDefinition): Promise<TravelItem[]
 
 async function fetchSource(
   source: SourceDefinition,
+  cachedItems: TravelItem[],
 ): Promise<{ run: SourceRun; items: TravelItem[] }> {
   const fetchedAt = new Date().toISOString();
 
@@ -376,6 +377,22 @@ async function fetchSource(
       items,
     };
   } catch (error) {
+    if (cachedItems.length > 0) {
+      return {
+        run: {
+          id: source.id,
+          name: source.name,
+          status: "ok",
+          itemCount: cachedItems.length,
+          message: `Using cached items after fetch failed: ${
+            error instanceof Error ? error.message : String(error)
+          }`,
+          fetchedAt,
+        },
+        items: cachedItems,
+      };
+    }
+
     return {
       run: {
         id: source.id,
@@ -462,6 +479,21 @@ function extractPrice(
     label: match[0].replace(/\s+/g, " ").trim(),
     value,
   };
+}
+
+async function readPreviousItems(): Promise<Map<string, TravelItem[]>> {
+  try {
+    const previous = JSON.parse(await readFile(outputPath, "utf8")) as RadarData;
+    const itemsBySource = new Map<string, TravelItem[]>();
+    for (const item of previous.items ?? []) {
+      const bucket = itemsBySource.get(item.sourceId) ?? [];
+      bucket.push(item);
+      itemsBySource.set(item.sourceId, bucket);
+    }
+    return itemsBySource;
+  } catch {
+    return new Map();
+  }
 }
 
 function extractDurationDays(text: string): number | undefined {
@@ -677,7 +709,10 @@ function buildStats(items: TravelItem[], runs: SourceRun[]) {
 
 async function main() {
   const catalog = JSON.parse(await readFile(catalogPath, "utf8")) as SourceDefinition[];
-  const results = await Promise.all(catalog.map((source) => fetchSource(source)));
+  const previousItems = await readPreviousItems();
+  const results = await Promise.all(
+    catalog.map((source) => fetchSource(source, previousItems.get(source.id) ?? [])),
+  );
   const runs = results.map((result) => result.run);
   const items = dedupeItems(results.flatMap((result) => result.items)).slice(0, 220);
 
