@@ -65,9 +65,14 @@ function App() {
   const filteredItems = useMemo(() => {
     const queryTerms = expandQuery(query);
     const baseItems = radar.items.filter((item) => {
-      const haystack = `${item.title} ${item.summary} ${item.tags.join(" ")} ${
-        item.sourceName
-      } ${item.locationHint ?? ""}`;
+      const haystack = [
+        item.title,
+        item.titleZh ?? "",
+        item.summary,
+        item.tags.join(" "),
+        item.sourceName,
+        item.locationHint ?? "",
+      ].join(" ");
       const normalizedHaystack = normalizeSearchText(haystack);
       return (
         (queryTerms.length === 0 ||
@@ -317,7 +322,8 @@ function SpotlightCard({ item }: { item: TravelItem }) {
           <span>{item.sourceName}</span>
           <span>{scopeLabels[item.scope]}</span>
         </div>
-        <h2>{item.title}</h2>
+        <h2>{displayTitle(item)}</h2>
+        <p className="original-title">{item.title}</p>
         <p>{item.summary}</p>
         <CardFacts item={item} />
         <a className="primary-link" href={item.url} target="_blank" rel="noreferrer">
@@ -351,7 +357,8 @@ function TravelCard({ item }: { item: TravelItem }) {
           <span>{item.sourceName}</span>
           <span>{formatDate(item.publishedAt)}</span>
         </div>
-        <h3>{item.title}</h3>
+        <h3>{displayTitle(item)}</h3>
+        <p className="original-title">{item.title}</p>
         <p>{item.summary}</p>
         <div className="tag-row">
           {item.tags.slice(0, 5).map((tag) => (
@@ -378,6 +385,10 @@ function CardFacts({ item }: { item: TravelItem }) {
       <span>家庭分 {item.familyScore}</span>
     </div>
   );
+}
+
+function displayTitle(item: TravelItem) {
+  return item.titleZh || item.title;
 }
 
 function SourcesView({ runs }: { runs: RadarData["sources"] }) {

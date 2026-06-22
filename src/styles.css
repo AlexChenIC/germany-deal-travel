@@ -246,6 +246,14 @@ h1 {
   overflow-wrap: anywhere;
 }
 
+.original-title {
+  min-height: 0;
+  margin-bottom: 10px;
+  color: #7c837f;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .spotlight-body p,
 .travel-card p {
   display: -webkit-box;
@@ -254,6 +262,14 @@ h1 {
   margin-bottom: 12px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.spotlight-body .original-title,
+.travel-card .original-title {
+  display: block;
+  overflow: visible;
+  min-height: 0;
+  -webkit-line-clamp: unset;
 }
 
 .fact-row,

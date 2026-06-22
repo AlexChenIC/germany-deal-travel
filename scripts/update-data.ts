@@ -84,6 +84,7 @@ const sunResortTerms = [
   "kanaren",
   "teneriffa",
   "fuerteventura",
+  "lanzarote",
   "side",
   "antalya",
   "hurghada",
@@ -189,7 +190,8 @@ function normalizeRssItem(
   item: Record<string, unknown>,
   source: SourceDefinition,
 ): TravelItem | undefined {
-  const title = firstDefined(item.title);
+  const rawTitle = firstDefined(item.title);
+  const title = rawTitle ? htmlToText(rawTitle) : undefined;
   const url = firstDefined(item.link, item.guid);
   if (!title || !url) return undefined;
 
@@ -216,6 +218,14 @@ function normalizeRssItem(
     sourceId: source.id,
     sourceName: source.name,
     title,
+    titleZh: generateChineseTitle(title, {
+      category,
+      scope,
+      priceLabel: price.label,
+      durationDays,
+      departureHint: departureHint(text),
+      locationHint: locationHint(text, category, scope),
+    }),
     url,
     summary,
     publishedAt: normalizeDate(firstDefined(item.pubDate)),
@@ -310,6 +320,11 @@ async function scrapeVisitBerlin(source: SourceDefinition): Promise<TravelItem[]
       sourceId: source.id,
       sourceName: source.name,
       title,
+      titleZh: generateChineseTitle(title, {
+        category: "event",
+        scope: "berlin-city",
+        locationHint: location || "Berlin",
+      }),
       url: link,
       summary,
       publishedAt: normalizeDate(publishedAt),
@@ -389,7 +404,7 @@ async function fetchSource(
           }`,
           fetchedAt,
         },
-        items: cachedItems,
+        items: cachedItems.map(ensureChineseTitle),
       };
     }
 
@@ -409,6 +424,9 @@ async function fetchSource(
 
 function classifyCategory(text: string): DealCategory {
   const lower = text.toLowerCase();
+  if (matchesAny(lower, ["csd", "festival", "events today", "weekend tips"])) {
+    return "event";
+  }
   if (matchesAny(lower, ["kreuzfahrt", "cruise", "aida", "msc", "mein schiff"])) {
     return "cruise";
   }
@@ -418,14 +436,17 @@ function classifyCategory(text: string): DealCategory {
   if (matchesAny(lower, ["pauschalreise", "inkl. flug", "flug &", "transfer"])) {
     return "package";
   }
-  if (matchesAny(lower, ["flug", "flüge", "flight", "airline", "roundtrip"])) {
-    return "flight";
+  if (matchesAny(lower, ["bahn", "zug", "rail", "interrail"])) {
+    return "day-trip";
   }
   if (
     matchesAny(lower, [
       "hotel",
       "resort",
       "ferienwohnung",
+      "ferienhaus",
+      "übernachtung",
+      "overnight",
       "apartment",
       "therme",
       "wellness",
@@ -433,6 +454,23 @@ function classifyCategory(text: string): DealCategory {
     ])
   ) {
     return "hotel-resort";
+  }
+  if (
+    matchesAny(lower, [
+      "flug",
+      "flüge",
+      "flight",
+      "airline",
+      "roundtrip",
+      "oneway",
+      "gepäck",
+      "eco",
+      "condor",
+      "ryanair",
+      "norse atlantic",
+    ])
+  ) {
+    return "flight";
   }
   if (matchesAny(lower, ["ticket", "festival", "event", "museum", "show"])) {
     return "event";
@@ -500,6 +538,312 @@ function extractDurationDays(text: string): number | undefined {
   const match = text.match(/(\d{1,2})\s*(nächte|nacht|tage|tag|nights|days)/i);
   if (!match) return undefined;
   return Number(match[1]);
+}
+
+function ensureChineseTitle(item: TravelItem): TravelItem {
+  if (item.titleZh) return item;
+  return {
+    ...item,
+    titleZh: generateChineseTitle(item.title, {
+      category: item.category,
+      scope: item.scope,
+      priceLabel: item.priceLabel,
+      durationDays: item.durationDays,
+      departureHint: item.departureHint,
+      locationHint: item.locationHint,
+    }),
+  };
+}
+
+function generateChineseTitle(
+  title: string,
+  context: {
+    category: DealCategory;
+    scope: TravelScope;
+    priceLabel?: string;
+    durationDays?: number;
+    departureHint?: string;
+    locationHint?: string;
+  },
+): string {
+  const cleaned = title
+    .replace(/[⭐🔥😍🤩😎🥳☀️🌴🏖️✈️🚅🟢❤️💖🌊🎉🏳️‍🌈✨💦🏝️🤫]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const translated = translateTravelTitle(cleaned);
+  const prefixParts = [
+    categoryLabel(context.category),
+    scopeLabel(context.scope),
+    context.locationHint && !translated.includes(context.locationHint)
+      ? translateTravelTitle(context.locationHint)
+      : undefined,
+  ].filter(Boolean);
+  const facts = [
+    context.durationDays ? `${context.durationDays} 天/晚` : undefined,
+    context.priceLabel ? `${formatChinesePrice(context.priceLabel)} 起` : undefined,
+    context.departureHint ? context.departureHint : undefined,
+  ].filter(Boolean);
+
+  const prefix = prefixParts.length > 0 ? `${prefixParts.join(" · ")}｜` : "";
+  const suffix = facts.length > 0 ? `（${facts.join("，")}）` : "";
+  return `${prefix}${translated}${suffix}`.replace(/\s+/g, " ").trim();
+}
+
+function formatChinesePrice(priceLabel: string): string {
+  return priceLabel.replace(/^ab\s+/i, "").trim();
+}
+
+function translateTravelTitle(title: string): string {
+  let output = title;
+  const replacements: Array<[RegExp, string]> = [
+    [/&#038;|&amp;/gi, "&"],
+    [/Zum CSD nach Berlin/gi, "去柏林参加 CSD"],
+    [/Tierpark Hagenbeck/gi, "哈根贝克动物园"],
+    [/Köpenick/gi, "克佩尼克"],
+    [/Funchal/gi, "丰沙尔"],
+    [/True Italian Pizza/gi, "真意大利披萨"],
+    [/\bGut & günstig\b/gi, "又好又便宜"],
+    [/\bPolnischen Ostsee\b/gi, "波兰波罗的海"],
+    [/Ägypten/gi, "埃及"],
+    [/Österreich/gi, "奥地利"],
+    [/Düsseldorf/gi, "杜塞尔多夫"],
+    [/München/gi, "慕尼黑"],
+    [/Köln/gi, "科隆"],
+    [/Zürich/gi, "苏黎世"],
+    [/Übernachtung/gi, "住宿"],
+    [/Luxuskreuzfahrt/gi, "豪华邮轮"],
+    [/Málaga/gi, "马拉加"],
+    [/Stockholm/gi, "斯德哥尔摩"],
+    [/Lübeck/gi, "吕贝克"],
+    [/Weissenhäuser Strand/gi, "魏森豪瑟海滩"],
+    [/\bFlug\b/gi, "航班"],
+    [/\bHoteltransfer\b/gi, "酒店接送"],
+    [/\binklusive\b/gi, "含"],
+    [/\binkl\./gi, "含"],
+    [/\bDirect flights?\b/gi, "直飞航班"],
+    [/\bmit der Bahn\b/gi, "坐火车"],
+    [/\bvon Deutschland\b/gi, "从德国"],
+    [/\bzusätzliche Rabatte\b/gi, "额外折扣"],
+    [/\balle bis 26 Jahre\b/gi, "26 岁以下人群"],
+    [/\bStrandurlaub\b/gi, "海滩度假"],
+    [/\bmit Condor\b/gi, "乘 Condor"],
+    [/\ban der\b/gi, "在"],
+    [/\ban\b/gi, "在"],
+    [/\bin\b/gi, "在"],
+    [/\buvm\b/gi, "等"],
+    [/\bAuszeit\b/gi, "小休假"],
+    [/\bSummer\b/gi, "夏季"],
+    [/\bWoche\b/gi, "周"],
+    [/\bFlughäfen\b/gi, "机场"],
+    [/\bTransfers\b/gi, "接送"],
+    [/\bPremium\b/gi, "高级"],
+    [/\bZum\b/gi, "去"],
+    [/\bLanzarote\b/gi, "兰萨罗特"],
+    [/\bWeekend Tips\b/gi, "周末推荐"],
+    [/\bEvents Today\b/gi, "今日活动"],
+    [/\bEvents Tomorrow\b/gi, "明日活动"],
+    [/\bEvent calendar\b/gi, "活动日历"],
+    [/\bFood and Dance Festival\b/gi, "美食与舞蹈节"],
+    [/\bFood Festival\b/gi, "美食节"],
+    [/\bStreet Festival\b/gi, "街头节"],
+    [/\bSummer Festival\b/gi, "夏日节"],
+    [/\bKosher Street\b/gi, "犹太洁食街头"],
+    [/\bLatin\b/gi, "拉丁"],
+    [/\bItalian\b/gi, "意大利"],
+    [/\bGuided Tours?\b/gi, "导览"],
+    [/\bExhibition(s)?\b/gi, "展览"],
+    [/\bConcert(s)?\b/gi, "音乐会"],
+    [/\bClassical Music\b/gi, "古典音乐"],
+    [/\bCabaret\b/gi, "卡巴莱"],
+    [/\bComedy\b/gi, "喜剧"],
+    [/\bEducation\b/gi, "教育"],
+    [/\bSports?\b/gi, "体育"],
+    [/\bFestival\b/gi, "节庆"],
+    [/\bMuseum\b/gi, "博物馆"],
+    [/\bTheatre\b/gi, "剧院"],
+    [/\bTickets?\b/gi, "门票"],
+    [/\bLast Minute\b/gi, "临期特价"],
+    [/\bAll[- ]Inclusive\b/gi, "全包"],
+    [/\bInclusive\b/gi, "包含"],
+    [/\bincluding\b/gi, "含"],
+    [/\bincl\./gi, "含"],
+    [/\bNonstopflüge\b/gi, "直飞航班"],
+    [/\bDirektflüge\b/gi, "直飞航班"],
+    [/\bFlights?\b/gi, "航班"],
+    [/\bAirline(s)?\b/gi, "航空公司"],
+    [/\bRückflug\b/gi, "返程航班"],
+    [/\bHin- und Zurück\b/gi, "往返"],
+    [/\bRoundtrip\b/gi, "往返"],
+    [/\boneway\b/gi, "单程"],
+    [/\bPremium Eco\b/gi, "高级经济舱"],
+    [/\bEco\b/gi, "经济舱"],
+    [/\bzzgl\. Gepäck\b/gi, "不含行李"],
+    [/\bGepäck\b/gi, "行李"],
+    [/\bBahn\b/gi, "火车"],
+    [/\bZug\b/gi, "火车"],
+    [/\bAirport\b/gi, "机场"],
+    [/\bHotel\b/gi, "酒店"],
+    [/\bHotels\b/gi, "酒店"],
+    [/\bResort\b/gi, "度假村"],
+    [/\bApartment\b/gi, "公寓"],
+    [/\bFerienwohnung\b/gi, "度假公寓"],
+    [/\bFerienhaus\b/gi, "度假屋"],
+    [/\bBungalow\b/gi, "小屋"],
+    [/\bPauschalreisen?\b/gi, "机酒套餐"],
+    [/\bCitytrip\b/gi, "城市短途"],
+    [/\bCitybreak\b/gi, "城市短假"],
+    [/\bKreuzfahrt(en)?\b/gi, "邮轮"],
+    [/\bCruise(s)?\b/gi, "邮轮"],
+    [/\bInnenkabine\b/gi, "内舱"],
+    [/\bAußenkabine\b/gi, "海景舱"],
+    [/\bBalkonkabine\b/gi, "阳台舱"],
+    [/\bTransfer\b/gi, "接送"],
+    [/\bEintritt\b/gi, "门票"],
+    [/\bnach Wahl\b/gi, "可选"],
+    [/\bFrühstück\b/gi, "早餐"],
+    [/\bHalbpension\b/gi, "半膳"],
+    [/\bVollpension\b/gi, "全膳"],
+    [/\bSelbstverpflegung\b/gi, "自炊"],
+    [/\bWellness\b/gi, "康养"],
+    [/\bSpa\b/gi, "Spa"],
+    [/\bTherme\b/gi, "温泉"],
+    [/\bStrand\b/gi, "海滩"],
+    [/\bBeach\b/gi, "海滩"],
+    [/\bPool\b/gi, "泳池"],
+    [/\bWasserpark\b/gi, "水上乐园"],
+    [/\bFamil(y|ie|ien)\b/gi, "家庭"],
+    [/\bKinder\b/gi, "儿童"],
+    [/\bKids\b/gi, "儿童"],
+    [/\bBabybett\b/gi, "婴儿床"],
+    [/\bMiniclub\b/gi, "儿童俱乐部"],
+    [/\bSpielplatz\b/gi, "游乐场"],
+    [/\bNächte\b/gi, "晚"],
+    [/\bNacht\b/gi, "晚"],
+    [/\bTage\b/gi, "天"],
+    [/\bTag\b/gi, "天"],
+    [/\bWochenende\b/gi, "周末"],
+    [/\bSommer\b/gi, "夏季"],
+    [/\bWinter\b/gi, "冬季"],
+    [/\bHerbst\b/gi, "秋季"],
+    [/\bFrühling\b/gi, "春季"],
+    [/\bJuli\b/gi, "7 月"],
+    [/\bAugust\b/gi, "8 月"],
+    [/\bSeptember\b/gi, "9 月"],
+    [/\bOktober\b/gi, "10 月"],
+    [/\bNovember\b/gi, "11 月"],
+    [/\bDezember\b/gi, "12 月"],
+    [/\bJanuar\b/gi, "1 月"],
+    [/\bFebruar\b/gi, "2 月"],
+    [/\bMärz\b/gi, "3 月"],
+    [/\bApril\b/gi, "4 月"],
+    [/\bMai\b/gi, "5 月"],
+    [/\bJuni\b/gi, "6 月"],
+    [/\bab\b/gi, "从"],
+    [/\bvon\b/gi, "从"],
+    [/\bbis\b/gi, "至"],
+    [/\bnach\b/gi, "去"],
+    [/\bim\b/gi, "在"],
+    [/\bam\b/gi, "在"],
+    [/\bbei\b/gi, "在"],
+    [/\bfür\b/gi, "适合"],
+    [/\bmit\b/gi, "含"],
+    [/\bund\b/gi, "和"],
+    [/\boder\b/gi, "或"],
+    [/\bpro Person\b/gi, "每人"],
+    [/\bp\.P\./gi, "每人"],
+    [/\bNUR\b/gi, "仅"],
+    [/\bnur\b/gi, "仅"],
+    [/\bTOP\b/gi, "优质"],
+    [/\bMega\b/gi, "超值"],
+    [/\bBestpreis\b/gi, "好价"],
+    [/\bSchnäppchen\b/gi, "特价"],
+    [/\bGünstig\b/gi, "低价"],
+    [/\bgünstig\b/gi, "低价"],
+    [/\bRabatt(code)?\b/gi, "折扣码"],
+    [/\bGutschein\b/gi, "优惠券"],
+    [/\bSale\b/gi, "促销"],
+    [/\bSpecial\b/gi, "特惠"],
+    [/\bAngebot(e)?\b/gi, "优惠"],
+    [/\bUSA\b/gi, "美国"],
+    [/\bBerlin\b/gi, "柏林"],
+    [/\bBrandenburg\b/gi, "勃兰登堡"],
+    [/\bPotsdam\b/gi, "波茨坦"],
+    [/\bSpreewald\b/gi, "施普雷森林"],
+    [/\bOstsee\b/gi, "波罗的海"],
+    [/\bDeutschland\b/gi, "德国"],
+    [/\bGermany\b/gi, "德国"],
+    [/\bFrankreich\b/gi, "法国"],
+    [/\bFrance\b/gi, "法国"],
+    [/\bItalien\b/gi, "意大利"],
+    [/\bItaly\b/gi, "意大利"],
+    [/\bSpanien\b/gi, "西班牙"],
+    [/\bSpain\b/gi, "西班牙"],
+    [/\bPortugal\b/gi, "葡萄牙"],
+    [/\bÖsterreich\b/gi, "奥地利"],
+    [/\bAustria\b/gi, "奥地利"],
+    [/\bDänemark\b/gi, "丹麦"],
+    [/\bDenmark\b/gi, "丹麦"],
+    [/\bPolen\b/gi, "波兰"],
+    [/\bPoland\b/gi, "波兰"],
+    [/\bNiederlande\b/gi, "荷兰"],
+    [/\bNetherlands\b/gi, "荷兰"],
+    [/\bTürkei\b/gi, "土耳其"],
+    [/\bTurkey\b/gi, "土耳其"],
+    [/\bÄgypten\b/gi, "埃及"],
+    [/\bEgypt\b/gi, "埃及"],
+    [/\bGriechenland\b/gi, "希腊"],
+    [/\bGreece\b/gi, "希腊"],
+    [/\bRhodos\b/gi, "罗德岛"],
+    [/\bKreta\b/gi, "克里特岛"],
+    [/\bKorfu\b/gi, "科孚岛"],
+    [/\bMallorca\b/gi, "马略卡"],
+    [/\bMenorca\b/gi, "梅诺卡"],
+    [/\bFormentera\b/gi, "福门特拉"],
+    [/\bTeneriffa\b/gi, "特内里费"],
+    [/\bFuerteventura\b/gi, "富埃特文图拉"],
+    [/\bKanaren\b/gi, "加那利群岛"],
+    [/\bSide\b/gi, "锡德"],
+    [/\bAntalya\b/gi, "安塔利亚"],
+    [/\bHurghada\b/gi, "赫尔格达"],
+    [/\bIstanbul\b/gi, "伊斯坦布尔"],
+    [/\bBudapest\b/gi, "布达佩斯"],
+    [/\bLondon\b/gi, "伦敦"],
+    [/\bAmsterdam\b/gi, "阿姆斯特丹"],
+    [/\bPrag\b/gi, "布拉格"],
+    [/\bParis\b/gi, "巴黎"],
+    [/\bHamburg\b/gi, "汉堡"],
+    [/\bKöln\b/gi, "科隆"],
+    [/\bDüsseldorf\b/gi, "杜塞尔多夫"],
+    [/\bFrankfurt\b/gi, "法兰克福"],
+    [/\bMünchen\b/gi, "慕尼黑"],
+    [/\bHannover\b/gi, "汉诺威"],
+    [/\bNürnberg\b/gi, "纽伦堡"],
+    [/\bLeipzig\b/gi, "莱比锡"],
+    [/\bDresden\b/gi, "德累斯顿"],
+    [/\bWien\b/gi, "维也纳"],
+    [/\bZürich\b/gi, "苏黎世"],
+    [/\bMittelmeer\b/gi, "地中海"],
+    [/\bNordeuropa\b/gi, "北欧"],
+    [/\bKaribik\b/gi, "加勒比"],
+    [/\bAlaska\b/gi, "阿拉斯加"],
+    [/\bNew York\b/gi, "纽约"],
+    [/\bSingapur\b/gi, "新加坡"],
+    [/\bSingapore\b/gi, "新加坡"],
+    [/\bMalaysia\b/gi, "马来西亚"],
+    [/\bJapan\b/gi, "日本"],
+    [/\bMadeira\b/gi, "马德拉"],
+  ];
+
+  for (const [pattern, replacement] of replacements) {
+    output = output.replace(pattern, replacement);
+  }
+
+  return output
+    .replace(/\|\s*/g, "｜")
+    .replace(/\s*-\s*/g, " - ")
+    .replace(/\s*:\s*/g, "：")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function departureHint(text: string): string | undefined {

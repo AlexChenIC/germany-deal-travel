@@ -48,6 +48,7 @@ export interface TravelItem {
   sourceId: string;
   sourceName: string;
   title: string;
+  titleZh: string;
   url: string;
   summary: string;
   publishedAt?: string;
