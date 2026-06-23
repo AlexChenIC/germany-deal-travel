@@ -208,7 +208,12 @@ async function fetchJson(url: string, options?: RequestInit): Promise<unknown> {
         ...(options?.headers ?? {}),
       },
     });
-    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(
+        `${response.status} ${response.statusText}${body ? `: ${body.slice(0, 300)}` : ""}`,
+      );
+    }
     return response.json();
   } finally {
     clearTimeout(timeout);
@@ -350,6 +355,9 @@ async function fetchPriceStatus(
     hl: "en",
     api_key: serpApiKey,
   });
+  if (window.children > 0) {
+    params.set("children_ages", Array.from({ length: window.children }, () => "1").join(","));
+  }
 
   try {
     const json = (await fetchJson(`https://serpapi.com/search.json?${params.toString()}`)) as {
