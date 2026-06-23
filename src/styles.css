@@ -77,7 +77,10 @@ h1 {
 .fact-row span,
 .tag-row span,
 .source-tags span,
-.source-title span {
+.source-title span,
+.status-chip,
+.freshness-badge,
+.automation-stat {
   border: 1px solid #d7d2c5;
   background: #fffdfa;
 }
@@ -122,6 +125,169 @@ h1 {
 .metric span {
   color: #6f766d;
   font-size: 0.9rem;
+}
+
+.automation-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
+  gap: 14px;
+  align-items: start;
+  margin: 0 0 18px;
+  padding: 14px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.automation-panel.is-warning {
+  border-color: #d8b663;
+  background: #fffaf0;
+}
+
+.automation-panel.is-error {
+  border-color: #d89a8a;
+  background: #fff6f3;
+}
+
+.automation-copy {
+  min-width: 0;
+}
+
+.automation-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 8px;
+  color: #0d5f59;
+}
+
+.automation-heading h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: #43504c;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.status-chip.is-ok {
+  border-color: #95c6ba;
+  background: #e9f7f3;
+  color: #0d5f59;
+}
+
+.status-chip.is-warning {
+  border-color: #d8b663;
+  background: #fff2c7;
+  color: #73530a;
+}
+
+.status-chip.is-error {
+  border-color: #d89a8a;
+  background: #ffe5de;
+  color: #9b2f1f;
+}
+
+.automation-copy p {
+  max-width: 760px;
+  margin: 0;
+  color: #4f5a56;
+  line-height: 1.55;
+}
+
+.automation-link {
+  margin-top: 10px;
+}
+
+.automation-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.automation-stat {
+  min-height: 72px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.automation-stat strong {
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1.15;
+}
+
+.automation-stat span {
+  color: #66736f;
+  font-size: 0.82rem;
+}
+
+.automation-stat.is-ok strong,
+.automation-stat.is-fresh strong {
+  color: #0f766e;
+}
+
+.automation-stat.is-warning {
+  border-color: #d8b663;
+  background: #fff7dc;
+}
+
+.automation-stat.is-warning strong {
+  color: #8a5b13;
+}
+
+.automation-stat.is-error {
+  border-color: #d89a8a;
+  background: #ffece7;
+}
+
+.automation-stat.is-error strong {
+  color: #a33a28;
+}
+
+.automation-alerts {
+  display: grid;
+  grid-column: 1 / -1;
+  gap: 8px;
+}
+
+.automation-alert {
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+}
+
+.automation-alert.is-warning {
+  border-color: #d8b663;
+  background: #fff7dc;
+}
+
+.automation-alert.is-error {
+  border-color: #d89a8a;
+  background: #ffece7;
+}
+
+.automation-alert strong {
+  font-size: 0.9rem;
+}
+
+.automation-alert span {
+  color: #5e6864;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .tabs {
@@ -233,6 +399,33 @@ h1 {
   margin-bottom: 10px;
   color: #66736f;
   font-size: 0.78rem;
+}
+
+.meta-end {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.freshness-badge {
+  min-height: 22px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  color: #0d5f59;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.freshness-badge.is-today {
+  border-color: #7db9aa;
+  background: #e3f3ef;
+}
+
+.freshness-badge.is-week {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #7a5514;
 }
 
 .spotlight-body h2,
@@ -457,6 +650,21 @@ h1 {
   color: #0f766e;
 }
 
+.source-status.is-warning {
+  background: #fff2c7;
+  color: #8a5b13;
+}
+
+.source-status.is-error {
+  background: #ffe5de;
+  color: #9b2f1f;
+}
+
+.source-status.is-skipped {
+  background: #eef0ed;
+  color: #59636d;
+}
+
 .source-title {
   display: flex;
   align-items: center;
@@ -489,6 +697,12 @@ h1 {
 .source-side span {
   font-size: 0.86rem;
   line-height: 1.45;
+}
+
+.source-side small {
+  color: #7c837f;
+  font-size: 0.76rem;
+  line-height: 1.35;
 }
 
 .plan-board {
@@ -927,6 +1141,10 @@ h1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .automation-panel {
+    grid-template-columns: 1fr;
+  }
+
   .plan-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -959,6 +1177,7 @@ h1 {
 
   .metric-strip,
   .toolbar,
+  .automation-stats,
   .spotlight-grid,
   .card-grid,
   .plan-board,

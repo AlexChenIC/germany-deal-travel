@@ -34,6 +34,7 @@ import type {
   KidActivityCategory,
   KidActivityData,
   RadarData,
+  SourceRun,
   SourceDefinition,
   TravelItem,
   TravelScope,
@@ -43,6 +44,8 @@ const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
 const kidsActivities = kidsActivitiesJson as KidActivityData;
 const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
+const actionsWorkflowUrl =
+  "https://github.com/AlexChenIC/germany-deal-travel/actions/workflows/pages.yml";
 
 const categoryLabels: Record<DealCategory, string> = {
   event: "活动",
@@ -76,6 +79,24 @@ const kidCategoryLabels: Record<KidActivityCategory, string> = {
 
 type Tab = "radar" | "events" | "favorites" | "kids" | "sources" | "plan";
 type SortMode = "priority" | "newest" | "price";
+type FreshnessKind = "today" | "week";
+type AutomationStatus = "ok" | "warning" | "error";
+
+interface AutomationSummary {
+  status: AutomationStatus;
+  generatedAt: string;
+  timezone: string;
+  activeTotal: number;
+  okCount: number;
+  errorCount: number;
+  skippedCount: number;
+  cacheFallbackCount: number;
+  issueCount: number;
+  newToday: number;
+  newThisWeek: number;
+  staleHours: number;
+  problemRuns: SourceRun[];
+}
 
 function App() {
   const [query, setQuery] = useState("");
@@ -159,6 +180,7 @@ function App() {
     () => radar.items.filter((item) => excluded.ids.has(item.id)),
     [excluded.ids],
   );
+  const automationSummary = buildAutomationSummary(radar);
 
   const spotlight = filteredItems.slice(0, 4);
   const listItems =
@@ -204,11 +226,13 @@ function App() {
         <Metric label="家庭友好" value={radar.stats.familyFriendly} icon={<Baby />} />
         <Metric label="柏林相关" value={radar.stats.fromBerlin} icon={<MapPin />} />
         <Metric
-          label="源站异常"
-          value={radar.stats.sourceErrors}
+          label="源站提醒"
+          value={automationSummary.issueCount}
           icon={<CircleAlert />}
         />
       </section>
+
+      <AutomationStatusPanel summary={automationSummary} />
 
       <nav className="tabs" aria-label="views">
         <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
@@ -383,6 +407,89 @@ function Metric({
   );
 }
 
+function AutomationStatusPanel({ summary }: { summary: AutomationSummary }) {
+  const statusLabel =
+    summary.status === "error"
+      ? "需要查看"
+      : summary.status === "warning"
+        ? "有提醒"
+        : "运行正常";
+  const statusIcon =
+    summary.status === "ok" ? (
+      <CheckCircle2 size={18} aria-hidden="true" />
+    ) : (
+      <CircleAlert size={18} aria-hidden="true" />
+    );
+  const staleText =
+    summary.staleHours > 30
+      ? `数据已 ${Math.round(summary.staleHours)} 小时未更新`
+      : formatRelativeDateTime(summary.generatedAt);
+
+  return (
+    <section className={`automation-panel is-${summary.status}`} aria-label="每日自动检索状态">
+      <div className="automation-copy">
+        <div className="automation-heading">
+          <RefreshCcw size={18} aria-hidden="true" />
+          <h2>每日自动检索</h2>
+          <span className={`status-chip is-${summary.status}`}>
+            {statusIcon}
+            {statusLabel}
+          </span>
+        </div>
+        <p>
+          最近更新：{formatFullDateTime(summary.generatedAt, summary.timezone)}，
+          {staleText}。GitHub Actions 每天 05:10 UTC 自动更新，柏林时间夏季约
+          07:10、冬季约 06:10。
+        </p>
+        <a className="text-link automation-link" href={actionsWorkflowUrl} target="_blank" rel="noreferrer">
+          打开自动化任务
+          <ExternalLink size={15} aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="automation-stats" aria-label="自动检索统计">
+        <AutomationStat label="已接入源" value={`${summary.okCount}/${summary.activeTotal}`} />
+        <AutomationStat label="失败来源" value={summary.errorCount} tone={summary.errorCount > 0 ? "error" : "ok"} />
+        <AutomationStat label="跳过/候选" value={summary.skippedCount} />
+        <AutomationStat label="缓存回退" value={summary.cacheFallbackCount} tone={summary.cacheFallbackCount > 0 ? "warning" : "ok"} />
+        <AutomationStat label="今日新增" value={summary.newToday} tone={summary.newToday > 0 ? "fresh" : undefined} />
+        <AutomationStat label="近 7 天新增" value={summary.newThisWeek} tone={summary.newThisWeek > 0 ? "fresh" : undefined} />
+      </div>
+
+      {summary.problemRuns.length > 0 && (
+        <div className="automation-alerts">
+          {summary.problemRuns.map((run) => (
+            <div className={isCacheFallbackRun(run) ? "automation-alert is-warning" : "automation-alert is-error"} key={run.id}>
+              <strong>{run.name}</strong>
+              <span>
+                {isCacheFallbackRun(run) ? "已使用缓存回退" : "抓取失败"}
+                {run.message ? `：${run.message}` : ""}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
+
+function AutomationStat({
+  label,
+  value,
+  tone,
+}: {
+  label: string;
+  value: number | string;
+  tone?: "ok" | "warning" | "error" | "fresh";
+}) {
+  return (
+    <div className={tone ? `automation-stat is-${tone}` : "automation-stat"}>
+      <strong>{value}</strong>
+      <span>{label}</span>
+    </div>
+  );
+}
+
 function TabButton({
   active,
   onClick,
@@ -443,7 +550,10 @@ function SpotlightCard({
       <div className="spotlight-body">
         <div className="card-meta">
           <span>{item.sourceName}</span>
-          <span>{scopeLabels[item.scope]}</span>
+          <div className="meta-end">
+            <FreshnessBadge item={item} />
+            <span>{scopeLabels[item.scope]}</span>
+          </div>
         </div>
         <h2>{displayTitle(item)}</h2>
         <p className="original-title">{item.title}</p>
@@ -493,7 +603,10 @@ function TravelCard({
       <div className="travel-card-body">
         <div className="card-meta">
           <span>{item.sourceName}</span>
-          <span>{formatDate(item.publishedAt)}</span>
+          <div className="meta-end">
+            <FreshnessBadge item={item} />
+            <span>{formatDate(item.publishedAt)}</span>
+          </div>
         </div>
         <h3>{displayTitle(item)}</h3>
         <p className="original-title">{item.title}</p>
@@ -564,6 +677,17 @@ function CardFacts({ item }: { item: TravelItem }) {
       {item.locationHint && <span>{item.locationHint}</span>}
       <span>家庭分 {item.familyScore}</span>
     </div>
+  );
+}
+
+function FreshnessBadge({ item }: { item: TravelItem }) {
+  const freshness = getFreshnessKind(item.publishedAt, radar.generatedAt, radar.timezone);
+  if (!freshness) return null;
+
+  return (
+    <span className={`freshness-badge is-${freshness}`}>
+      {freshness === "today" ? "今日新增" : "本周新增"}
+    </span>
   );
 }
 
@@ -997,11 +1121,14 @@ function SourcesView({ runs }: { runs: RadarData["sources"] }) {
     <section className="source-list">
       {sourceCatalog.map((source) => {
         const run = runsById.get(source.id);
+        const sourceState = getSourceState(run, source);
         return (
           <article className="source-row" key={source.id}>
-            <div className="source-status">
-              {run?.status === "ok" ? (
+            <div className={`source-status is-${sourceState.tone}`}>
+              {sourceState.tone === "ok" ? (
                 <CheckCircle2 size={22} />
+              ) : sourceState.tone === "warning" ? (
+                <RefreshCcw size={22} />
               ) : source.status === "candidate" ? (
                 <Sparkles size={22} />
               ) : (
@@ -1011,7 +1138,7 @@ function SourcesView({ runs }: { runs: RadarData["sources"] }) {
             <div className="source-main">
               <div className="source-title">
                 <h3>{source.name}</h3>
-                <span>{source.status === "active" ? "已接入" : "候选"}</span>
+                <span>{sourceState.label}</span>
               </div>
               <p>{source.notes}</p>
               <div className="source-tags">
@@ -1023,6 +1150,9 @@ function SourcesView({ runs }: { runs: RadarData["sources"] }) {
             <div className="source-side">
               <strong>{run?.itemCount ?? 0}</strong>
               <span>{run?.message ?? source.access}</span>
+              {run?.fetchedAt && (
+                <small>最近抓取：{formatFullDateTime(run.fetchedAt, radar.timezone)}</small>
+              )}
               <a href={source.homepage} target="_blank" rel="noreferrer">
                 源站
                 <ExternalLink size={14} />
@@ -1145,6 +1275,135 @@ function buildGoogleDirectionsUrl(activity: KidActivity) {
 
 function hasConcreteAddress(activity: KidActivity) {
   return !["多处", "全城", "活动聚合"].some((term) => activity.address.includes(term));
+}
+
+function buildAutomationSummary(data: RadarData): AutomationSummary {
+  const activeSourceIds = new Set(
+    sourceCatalog
+      .filter((source) => source.status === "active" && source.enabled)
+      .map((source) => source.id),
+  );
+  const activeRuns = data.sources.filter((run) => activeSourceIds.has(run.id));
+  const errorRuns = activeRuns.filter((run) => run.status === "error");
+  const cacheFallbackRuns = activeRuns.filter(isCacheFallbackRun);
+  const problemRuns = Array.from(
+    new Map([...errorRuns, ...cacheFallbackRuns].map((run) => [run.id, run])).values(),
+  );
+  const generatedAtMs = new Date(data.generatedAt).getTime();
+  const staleHours = Number.isNaN(generatedAtMs)
+    ? 0
+    : Math.max(0, (Date.now() - generatedAtMs) / (1000 * 60 * 60));
+  const status: AutomationStatus =
+    errorRuns.length > 0 || staleHours > 48
+      ? "error"
+      : cacheFallbackRuns.length > 0 || staleHours > 30
+        ? "warning"
+        : "ok";
+
+  return {
+    status,
+    generatedAt: data.generatedAt,
+    timezone: data.timezone,
+    activeTotal: activeSourceIds.size,
+    okCount: activeRuns.filter((run) => run.status === "ok").length,
+    errorCount: errorRuns.length,
+    skippedCount: data.sources.filter((run) => run.status === "skipped").length,
+    cacheFallbackCount: cacheFallbackRuns.length,
+    issueCount: errorRuns.length + cacheFallbackRuns.length,
+    newToday:
+      data.stats.newToday ??
+      countFreshItems(data.items, data.generatedAt, data.timezone, "today"),
+    newThisWeek:
+      data.stats.newThisWeek ??
+      countFreshItems(data.items, data.generatedAt, data.timezone, "week"),
+    staleHours,
+    problemRuns,
+  };
+}
+
+function countFreshItems(
+  items: TravelItem[],
+  generatedAt: string,
+  timeZone: string,
+  window: FreshnessKind,
+) {
+  return items.filter((item) => {
+    const freshness = getFreshnessKind(item.publishedAt, generatedAt, timeZone);
+    return window === "today" ? freshness === "today" : Boolean(freshness);
+  }).length;
+}
+
+function getFreshnessKind(
+  publishedAt: string | undefined,
+  generatedAt: string,
+  timeZone: string,
+): FreshnessKind | undefined {
+  if (!publishedAt) return undefined;
+  const publishedDate = new Date(publishedAt);
+  const generatedDate = new Date(generatedAt);
+  if (
+    Number.isNaN(publishedDate.getTime()) ||
+    Number.isNaN(generatedDate.getTime()) ||
+    publishedDate.getTime() > generatedDate.getTime() + 5 * 60 * 1000
+  ) {
+    return undefined;
+  }
+
+  if (dateKeyInTimezone(publishedDate, timeZone) === dateKeyInTimezone(generatedDate, timeZone)) {
+    return "today";
+  }
+
+  const ageMs = generatedDate.getTime() - publishedDate.getTime();
+  return ageMs <= 7 * 24 * 60 * 60 * 1000 ? "week" : undefined;
+}
+
+function dateKeyInTimezone(date: Date, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function isCacheFallbackRun(run: SourceRun) {
+  return Boolean(run.usedCache || /cached|cache|缓存|回退/i.test(run.message ?? ""));
+}
+
+function getSourceState(run: SourceRun | undefined, source: SourceDefinition) {
+  if (!run || run.status === "skipped" || source.status !== "active") {
+    return { label: source.status === "active" ? "已跳过" : "候选/未启用", tone: "skipped" };
+  }
+  if (run.status === "error") return { label: "抓取失败", tone: "error" };
+  if (isCacheFallbackRun(run)) return { label: "缓存回退", tone: "warning" };
+  return { label: "运行正常", tone: "ok" };
+}
+
+function formatFullDateTime(value: string, timeZone: string) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZoneName: "short",
+  }).format(new Date(value));
+}
+
+function formatRelativeDateTime(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "更新时间待确认";
+  const diffMs = Date.now() - date.getTime();
+  if (diffMs < 60 * 1000) return "刚刚更新";
+  const minutes = Math.floor(diffMs / (1000 * 60));
+  if (minutes < 60) return `${minutes} 分钟前更新`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours} 小时前更新`;
+  return `${Math.floor(hours / 24)} 天前更新`;
 }
 
 function formatDateTime(value: string) {

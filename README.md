@@ -52,6 +52,7 @@ npm run check
 
 - 路线图见 [docs/ROADMAP.md](docs/ROADMAP.md)。
 - 分步执行清单见 [docs/IMPLEMENTATION_STEPS.md](docs/IMPLEMENTATION_STEPS.md)。
+- 自动更新说明见 [docs/AUTOMATION.md](docs/AUTOMATION.md)。
 
 ## 部署
 

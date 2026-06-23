@@ -392,6 +392,7 @@ async function fetchSource(
       items,
     };
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     if (cachedItems.length > 0) {
       return {
         run: {
@@ -399,9 +400,9 @@ async function fetchSource(
           name: source.name,
           status: "ok",
           itemCount: cachedItems.length,
-          message: `Using cached items after fetch failed: ${
-            error instanceof Error ? error.message : String(error)
-          }`,
+          message: `抓取失败，已回退到缓存：${errorMessage}`,
+          usedCache: true,
+          errorMessage,
           fetchedAt,
         },
         items: cachedItems.map(ensureChineseTitle),
@@ -414,7 +415,8 @@ async function fetchSource(
         name: source.name,
         status: "error",
         itemCount: 0,
-        message: error instanceof Error ? error.message : String(error),
+        message: errorMessage,
+        errorMessage,
         fetchedAt,
       },
       items: [],
@@ -1032,13 +1034,19 @@ function dedupeItems(items: TravelItem[]): TravelItem[] {
   });
 }
 
-function buildStats(items: TravelItem[], runs: SourceRun[]) {
+function buildStats(items: TravelItem[], runs: SourceRun[], generatedAt: string) {
   const byCategory: Record<string, number> = {};
   const byScope: Record<string, number> = {};
+  let newToday = 0;
+  let newThisWeek = 0;
 
   for (const item of items) {
     byCategory[item.category] = (byCategory[item.category] ?? 0) + 1;
     byScope[item.scope] = (byScope[item.scope] ?? 0) + 1;
+
+    const freshness = freshnessKind(item.publishedAt, generatedAt);
+    if (freshness === "today") newToday += 1;
+    if (freshness) newThisWeek += 1;
   }
 
   return {
@@ -1046,9 +1054,52 @@ function buildStats(items: TravelItem[], runs: SourceRun[]) {
     familyFriendly: items.filter((item) => item.familyScore >= 65).length,
     fromBerlin: items.filter((item) => item.fromBerlin).length,
     sourceErrors: runs.filter((run) => run.status === "error").length,
+    sourceOk: runs.filter((run) => run.status === "ok").length,
+    sourceSkipped: runs.filter((run) => run.status === "skipped").length,
+    sourceCacheFallbacks: runs.filter(isCacheFallbackRun).length,
+    newToday,
+    newThisWeek,
     byCategory,
     byScope,
   };
+}
+
+function isCacheFallbackRun(run: SourceRun) {
+  return Boolean(run.usedCache || /cached|缓存/i.test(run.message ?? ""));
+}
+
+function freshnessKind(
+  publishedAt: string | undefined,
+  generatedAt: string,
+): "today" | "week" | undefined {
+  if (!publishedAt) return undefined;
+  const publishedDate = new Date(publishedAt);
+  const generatedDate = new Date(generatedAt);
+  if (
+    Number.isNaN(publishedDate.getTime()) ||
+    Number.isNaN(generatedDate.getTime()) ||
+    publishedDate.getTime() > generatedDate.getTime() + 5 * 60 * 1000
+  ) {
+    return undefined;
+  }
+
+  if (dateKeyInTimezone(publishedDate, timezone) === dateKeyInTimezone(generatedDate, timezone)) {
+    return "today";
+  }
+
+  const ageMs = generatedDate.getTime() - publishedDate.getTime();
+  return ageMs <= 7 * 24 * 60 * 60 * 1000 ? "week" : undefined;
+}
+
+function dateKeyInTimezone(date: Date, timeZone: string) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
 }
 
 async function main() {
@@ -1059,9 +1110,10 @@ async function main() {
   );
   const runs = results.map((result) => result.run);
   const items = dedupeItems(results.flatMap((result) => result.items)).slice(0, 220);
+  const generatedAt = new Date().toISOString();
 
   const data: RadarData = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     timezone,
     homeBase,
     assumptions: [
@@ -1069,7 +1121,7 @@ async function main() {
       "家庭画像按 2 位成人、宝宝/幼儿、可带长辈同行来评分。",
       "价格、库存和日期会快速变化，点击源站前需要二次确认。",
     ],
-    stats: buildStats(items, runs),
+    stats: buildStats(items, runs, generatedAt),
     sources: runs,
     items,
   };

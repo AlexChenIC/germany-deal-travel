@@ -40,6 +40,8 @@ export interface SourceRun {
   status: "ok" | "error" | "skipped";
   itemCount: number;
   message?: string;
+  usedCache?: boolean;
+  errorMessage?: string;
   fetchedAt: string;
 }
 
@@ -72,6 +74,11 @@ export interface RadarStats {
   familyFriendly: number;
   fromBerlin: number;
   sourceErrors: number;
+  sourceOk?: number;
+  sourceSkipped?: number;
+  sourceCacheFallbacks?: number;
+  newToday?: number;
+  newThisWeek?: number;
   byCategory: Record<string, number>;
   byScope: Record<string, number>;
 }
