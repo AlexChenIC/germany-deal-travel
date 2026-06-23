@@ -48,6 +48,11 @@ npm run check
 
 候选源和接入策略见 [docs/SOURCE_STRATEGY.md](docs/SOURCE_STRATEGY.md)。
 
+## 开发路线
+
+- 路线图见 [docs/ROADMAP.md](docs/ROADMAP.md)。
+- 分步执行清单见 [docs/IMPLEMENTATION_STEPS.md](docs/IMPLEMENTATION_STEPS.md)。
+
 ## 部署
 
 `.github/workflows/pages.yml` 会在 push、手动触发和每日定时任务中更新数据、构建静态站点并部署到 GitHub Pages。
