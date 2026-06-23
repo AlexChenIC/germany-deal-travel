@@ -5,6 +5,7 @@ export interface StoredIdSet {
   add: (id: string) => void;
   remove: (id: string) => void;
   toggle: (id: string) => void;
+  replace: (ids: Iterable<string>) => void;
   clear: () => void;
 }
 
@@ -46,6 +47,9 @@ export function useStoredIdSet(storageKey: string): StoredIdSet {
         nextIds.add(id);
       }
       save(nextIds);
+    },
+    replace(nextIds: Iterable<string>) {
+      save(new Set(nextIds));
     },
     clear() {
       save(new Set());

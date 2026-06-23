@@ -33,11 +33,18 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Quality gate
+        run: npm run quality
+
       - name: Update radar data
         env:
           SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
           GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
         run: npm run update-data
+
+      - name: Write update summary
+        if: always()
+        run: npm run automation-summary
 
       - name: Build
         env:

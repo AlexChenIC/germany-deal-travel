@@ -123,13 +123,18 @@
 
 ## Phase 9: 收藏可迁移
 
+状态：已完成第一版。
+
 目标：让家庭计划可以跨浏览器、跨设备转移。
 
 - 增加收藏和排除列表的 JSON 导出/导入。
 - 增加可复制的 shortlist 文本摘要。
 - 后续评估 GitHub Gist、Cloudflare D1、Supabase 等私人同步方案。
+- 当前已支持本地 JSON 导出/导入和中文 shortlist 复制。
 
 ## Phase 10: 质量门禁
+
+状态：已完成第一版。
 
 目标：随着自动化和来源变多，保持项目可靠。
 
@@ -138,3 +143,14 @@
 - 为数据源解析器增加 fixture 测试。
 - 增加 Playwright 冒烟测试，覆盖主要页面、收藏、儿童页和地图回退/内嵌逻辑。
 - 在 GitHub Actions 部署前运行这些检查。
+- 当前已新增推荐规则、核心数据完整性测试和 TypeScript typecheck，并在 GitHub Actions 部署前通过 `npm run quality` 运行。
+
+## Phase 11: 自动化摘要和提醒
+
+状态：已完成第一版。
+
+目标：让每日数据更新的结果更容易复查。
+
+- 在 GitHub Actions step summary 中输出更新时间、新增数量、来源状态、避暑天气触发、价格和评论检查状态。
+- 对来源失败、缓存回退、高温触发和 API 异常输出 Actions annotation。
+- 后续可升级为 GitHub issue、邮件或其他私人渠道提醒。

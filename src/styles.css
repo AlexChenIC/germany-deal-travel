@@ -551,7 +551,8 @@ h1 {
 
 .link-row,
 .card-actions,
-.header-actions {
+.header-actions,
+.collection-tools {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1040,10 +1041,44 @@ h1 {
   gap: 12px;
 }
 
+.collection-side {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
 .collection-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+}
+
+.collection-tools .icon-action {
+  flex: 1 1 132px;
+  background: #fffdfa;
+}
+
+.file-action {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-action input {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.collection-notice {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #bad6cf;
+  border-radius: 8px;
+  background: #edf9f6;
+  color: #0d5f59;
+  font-size: 0.88rem;
+  line-height: 1.45;
 }
 
 .excluded-panel {
@@ -2176,6 +2211,7 @@ h1 {
   .plan-board,
   .api-safety-grid,
   .api-safety-panel,
+  .collection-side,
   .collection-stats,
   .kid-filter-toggles,
   .kid-fit-grid,

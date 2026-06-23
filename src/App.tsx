@@ -7,9 +7,11 @@ import {
   CheckCircle2,
   CircleAlert,
   Clock3,
+  ClipboardList,
   Compass,
   Coffee,
   Drama,
+  Download,
   ExternalLink,
   Filter,
   Heart,
@@ -30,9 +32,10 @@ import {
   Sparkles,
   Tags,
   ThermometerSun,
+  Upload,
   Waves,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { type ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Metric, SelectField, TabButton } from "./components/Controls";
 import { KidsOsmMap, type MappedKidActivity } from "./components/KidsOsmMap";
 import {
@@ -132,6 +135,16 @@ interface AutomationSummary {
   problemRuns: SourceRun[];
 }
 
+interface CollectionExportV1 {
+  schemaVersion: 1;
+  exportedAt: string;
+  radarGeneratedAt: string;
+  timezone: string;
+  homeBase: string;
+  favorites: string[];
+  excluded: string[];
+}
+
 const kidDistanceOrigins = {
   mitte: { label: "Mitte 参考点", lat: 52.52, lng: 13.405 },
   prenzlauerBerg: { label: "Prenzlauer Berg", lat: 52.543, lng: 13.421 },
@@ -153,6 +166,7 @@ function App() {
   const [fromBerlinOnly, setFromBerlinOnly] = useState(false);
   const [sortMode, setSortMode] = useState<SortMode>("priority");
   const [activeTab, setActiveTabState] = useState<Tab>(getInitialTab);
+  const [collectionNotice, setCollectionNotice] = useState("");
   const favorites = useStoredIdSet("germany-deal-travel:favorites:v1");
   const excluded = useStoredIdSet("germany-deal-travel:excluded:v1");
 
@@ -226,6 +240,7 @@ function App() {
     () => radar.items.filter((item) => excluded.ids.has(item.id)),
     [excluded.ids],
   );
+  const allItemIds = useMemo(() => new Set(radar.items.map((item) => item.id)), []);
   const familyRecommendations = useMemo(
     () =>
       buildFamilyRecommendations({
@@ -263,6 +278,64 @@ function App() {
   const excludeItem = (id: string) => {
     favorites.remove(id);
     excluded.add(id);
+  };
+
+  const exportCollection = () => {
+    const payload: CollectionExportV1 = {
+      schemaVersion: 1,
+      exportedAt: new Date().toISOString(),
+      radarGeneratedAt: radar.generatedAt,
+      timezone: radar.timezone,
+      homeBase: radar.homeBase,
+      favorites: Array.from(favorites.ids),
+      excluded: Array.from(excluded.ids),
+    };
+    const filenameDate = new Date().toISOString().slice(0, 10);
+    downloadJsonFile(payload, `berlin-family-travel-collection-${filenameDate}.json`);
+    setCollectionNotice(
+      `已导出 ${payload.favorites.length} 个收藏和 ${payload.excluded.length} 个排除项。`,
+    );
+  };
+
+  const importCollection = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    try {
+      const rawValue = await file.text();
+      const parsedValue = normalizeCollectionImport(JSON.parse(rawValue));
+      const nextExcluded = keepKnownIds(parsedValue.excluded, allItemIds);
+      const excludedIdSet = new Set(nextExcluded);
+      const nextFavorites = keepKnownIds(parsedValue.favorites, allItemIds).filter(
+        (id) => !excludedIdSet.has(id),
+      );
+      const ignoredCount =
+        parsedValue.favorites.length +
+        parsedValue.excluded.length -
+        nextFavorites.length -
+        nextExcluded.length;
+
+      favorites.replace(nextFavorites);
+      excluded.replace(nextExcluded);
+      setCollectionNotice(
+        `已导入 ${nextFavorites.length} 个收藏和 ${nextExcluded.length} 个排除项。${
+          ignoredCount > 0 ? `已忽略 ${ignoredCount} 个旧条目。` : ""
+        }`,
+      );
+    } catch {
+      setCollectionNotice("导入失败：请选择由本站导出的 JSON 收藏文件。");
+    }
+  };
+
+  const copyShortlist = async () => {
+    const shortlistText = buildShortlistText(favoriteItems, excludedItems, radar);
+    try {
+      await copyTextToClipboard(shortlistText);
+      setCollectionNotice(`已复制 ${favoriteItems.length} 个收藏项目的中文清单。`);
+    } catch {
+      setCollectionNotice("复制失败：浏览器阻止了剪贴板访问，请改用导出 JSON。");
+    }
   };
 
   return (
@@ -346,6 +419,10 @@ function App() {
           onRestoreExcluded={excluded.remove}
           onClearExcluded={excluded.clear}
           favoriteIds={favorites.ids}
+          collectionNotice={collectionNotice}
+          onCopyShortlist={copyShortlist}
+          onExportCollection={exportCollection}
+          onImportCollection={importCollection}
         />
       ) : activeTab === "kids" ? (
         <KidsActivitiesView />
@@ -1337,6 +1414,10 @@ function FavoritesView({
   favoriteItems,
   excludedItems,
   favoriteIds,
+  collectionNotice,
+  onCopyShortlist,
+  onExportCollection,
+  onImportCollection,
   onToggleFavorite,
   onExclude,
   onRestoreExcluded,
@@ -1345,6 +1426,10 @@ function FavoritesView({
   favoriteItems: TravelItem[];
   excludedItems: TravelItem[];
   favoriteIds: Set<string>;
+  collectionNotice: string;
+  onCopyShortlist: () => void;
+  onExportCollection: () => void;
+  onImportCollection: (event: ChangeEvent<HTMLInputElement>) => void;
   onToggleFavorite: (id: string) => void;
   onExclude: (id: string) => void;
   onRestoreExcluded: (id: string) => void;
@@ -1360,9 +1445,27 @@ function FavoritesView({
             适合把想进一步核对、和家人讨论、或等待价格变化的项目先收在这里。
           </p>
         </div>
-        <div className="collection-stats" aria-label="collection summary">
-          <Metric label="收藏" value={favoriteItems.length} icon={<Heart />} />
-          <Metric label="已排除" value={excludedItems.length} icon={<EyeOff />} />
+        <div className="collection-side">
+          <div className="collection-stats" aria-label="collection summary">
+            <Metric label="收藏" value={favoriteItems.length} icon={<Heart />} />
+            <Metric label="已排除" value={excludedItems.length} icon={<EyeOff />} />
+          </div>
+          <div className="collection-tools" aria-label="collection portability">
+            <button className="icon-action" onClick={onExportCollection} type="button">
+              <Download size={16} aria-hidden="true" />
+              导出 JSON
+            </button>
+            <label className="icon-action file-action">
+              <Upload size={16} aria-hidden="true" />
+              导入 JSON
+              <input accept="application/json,.json" onChange={onImportCollection} type="file" />
+            </label>
+            <button className="icon-action" onClick={onCopyShortlist} type="button">
+              <ClipboardList size={16} aria-hidden="true" />
+              复制清单
+            </button>
+          </div>
+          {collectionNotice && <p className="collection-notice">{collectionNotice}</p>}
         </div>
       </div>
 
@@ -2137,6 +2240,101 @@ function buildAutomationSummary(data: RadarData): AutomationSummary {
     staleHours,
     problemRuns,
   };
+}
+
+function downloadJsonFile(payload: CollectionExportV1, filename: string) {
+  if (typeof document === "undefined") return;
+  const blob = new Blob([JSON.stringify(payload, null, 2)], {
+    type: "application/json;charset=utf-8",
+  });
+  const objectUrl = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = objectUrl;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(objectUrl);
+}
+
+function normalizeCollectionImport(value: unknown) {
+  if (!value || typeof value !== "object") {
+    throw new Error("Invalid collection file");
+  }
+  const record = value as Record<string, unknown>;
+  return {
+    favorites: parseIdArray(record.favorites ?? record.favoriteIds),
+    excluded: parseIdArray(record.excluded ?? record.excludedIds),
+  };
+}
+
+function parseIdArray(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return Array.from(
+    new Set(value.filter((id): id is string => typeof id === "string" && id.length > 0)),
+  );
+}
+
+function keepKnownIds(ids: string[], knownIds: ReadonlySet<string>) {
+  return ids.filter((id) => knownIds.has(id));
+}
+
+async function copyTextToClipboard(text: string) {
+  if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  if (typeof document === "undefined") {
+    throw new Error("Clipboard unavailable");
+  }
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.setAttribute("readonly", "true");
+  textArea.style.position = "fixed";
+  textArea.style.opacity = "0";
+  document.body.appendChild(textArea);
+  textArea.select();
+  const copied = document.execCommand("copy");
+  document.body.removeChild(textArea);
+  if (!copied) throw new Error("Clipboard command failed");
+}
+
+function buildShortlistText(
+  favoriteItems: TravelItem[],
+  excludedItems: TravelItem[],
+  data: RadarData,
+) {
+  const lines = [
+    "# 柏林家庭出行收藏清单",
+    `生成时间：${formatFullDateTime(new Date().toISOString(), data.timezone)}`,
+    `数据更新时间：${formatFullDateTime(data.generatedAt, data.timezone)}`,
+    "",
+    "## 收藏",
+  ];
+
+  if (favoriteItems.length === 0) {
+    lines.push("- 暂无收藏项目");
+  } else {
+    favoriteItems.forEach((item, index) => {
+      lines.push(
+        `${index + 1}. ${displayTitle(item)}`,
+        `   来源：${item.sourceName}`,
+        `   价格/日期：${item.priceLabel ?? "待核对"} / ${
+          item.publishedAt ? formatDateTime(item.publishedAt) : "待核对"
+        }`,
+        `   区域：${scopeLabels[item.scope]} / ${categoryLabels[item.category]}`,
+        `   链接：${item.url}`,
+        "",
+      );
+    });
+  }
+
+  lines.push("## 已排除", excludedItems.length > 0 ? "" : "- 暂无排除项目");
+  excludedItems.forEach((item, index) => {
+    lines.push(`${index + 1}. ${displayTitle(item)}（${item.sourceName}）`);
+  });
+
+  return lines.join("\n").trimEnd();
 }
 
 function isCacheFallbackRun(run: SourceRun) {
