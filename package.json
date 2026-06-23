@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit -p tsconfig.json && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "update-data": "tsx scripts/update-data.ts",
+    "update-data": "tsx scripts/update-data.ts && tsx scripts/update-heat-status.ts",
+    "update-heat-status": "tsx scripts/update-heat-status.ts",
     "check": "npm run update-data && npm run build"
   },
   "dependencies": {

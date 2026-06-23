@@ -86,7 +86,16 @@ h1 {
 .heat-score,
 .heat-section-block,
 .heat-text-list,
-.heat-evidence {
+.heat-evidence,
+.heat-weather-panel,
+.heat-source-status,
+.heat-day,
+.heat-live-block,
+.heat-live-card,
+.heat-trigger-chip,
+.heat-boost-chip,
+.live-status-chip,
+.risk-chip {
   border: 1px solid #d7d2c5;
   background: #fffdfa;
 }
@@ -827,7 +836,7 @@ h1 {
 
 .heat-metrics {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -1326,11 +1335,157 @@ h1 {
 .heat-toolbar {
   display: grid;
   grid-template-columns:
-    repeat(4, minmax(128px, auto))
+    repeat(5, minmax(118px, auto))
     minmax(150px, 0.8fr)
     minmax(170px, 0.9fr);
   gap: 10px;
   align-items: center;
+}
+
+.heat-weather-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.72fr);
+  gap: 14px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.heat-weather-panel.is-hot,
+.heat-weather-panel.is-extreme {
+  border-color: #d89a8a;
+  background: #fff6f3;
+}
+
+.heat-weather-panel.is-watch {
+  border-color: #d8c4a0;
+  background: #fffaf0;
+}
+
+.heat-weather-main h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.heat-weather-main p {
+  margin: 8px 0 10px;
+  color: #4f5a56;
+  line-height: 1.55;
+}
+
+.heat-trigger-chip,
+.heat-boost-chip,
+.live-status-chip,
+.risk-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.heat-trigger-chip.is-none,
+.heat-trigger-chip.is-watch {
+  color: #755317;
+}
+
+.heat-trigger-chip.is-hot,
+.heat-trigger-chip.is-extreme {
+  border-color: #d89a8a;
+  background: #ffe5de;
+  color: #9b2f1f;
+}
+
+.heat-status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.heat-status-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 5px 8px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  color: #43504c;
+  font-size: 0.8rem;
+}
+
+.heat-source-panel {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.heat-source-status {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heat-source-status span {
+  color: #5e6864;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.heat-source-status.is-unconfigured,
+.heat-source-status.is-partial {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.heat-source-status.is-error {
+  border-color: #d89a8a;
+  background: #ffece7;
+}
+
+.heat-forecast-strip {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.heat-day {
+  display: grid;
+  gap: 2px;
+  min-height: 74px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.heat-day strong {
+  font-size: 0.78rem;
+}
+
+.heat-day span {
+  color: #0d5f59;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.heat-day small {
+  color: #66736f;
+  font-size: 0.72rem;
+  line-height: 1.25;
+}
+
+.heat-day.is-hot {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.heat-day.is-extreme {
+  border-color: #d89a8a;
+  background: #ffece7;
 }
 
 .heat-card-grid {
@@ -1411,6 +1566,151 @@ h1 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 10px;
+}
+
+.heat-live-block {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f9fbf4;
+}
+
+.heat-live-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.heat-live-heading p {
+  margin: 7px 0 0;
+  color: #4f5a56;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.heat-live-heading small {
+  flex: 0 0 auto;
+  color: #66736f;
+  font-size: 0.74rem;
+}
+
+.heat-boost-chip.is-on {
+  border-color: #d89a8a;
+  background: #ffe5de;
+  color: #9b2f1f;
+}
+
+.heat-live-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.heat-live-card {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heat-live-card p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.heat-live-card .text-link {
+  margin-top: 0;
+  font-size: 0.82rem;
+}
+
+.live-status-chip.is-available,
+.risk-chip.is-low {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.live-status-chip.is-unconfigured,
+.live-status-chip.is-unknown,
+.risk-chip.is-unknown,
+.risk-chip.is-medium {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.live-status-chip.is-error,
+.live-status-chip.is-sold-out,
+.risk-chip.is-high {
+  border-color: #d89a8a;
+  background: #ffece7;
+  color: #9b2f1f;
+}
+
+.heat-price-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.heat-price-line strong {
+  color: #0d5f59;
+  font-size: 1.1rem;
+}
+
+.heat-price-line span,
+.heat-review-facts span,
+.heat-signal-row span {
+  color: #5e6864;
+  font-size: 0.8rem;
+}
+
+.heat-review-facts,
+.heat-signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.heat-review-facts span,
+.heat-signal-row span {
+  min-height: 24px;
+  padding: 3px 7px;
+  border: 1px solid #d7d2c5;
+  border-radius: 999px;
+  background: #fffdfa;
+}
+
+.heat-signal-row span {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.heat-review-snippets {
+  display: grid;
+  gap: 6px;
+}
+
+.heat-review-snippets blockquote {
+  display: grid;
+  gap: 3px;
+  margin: 0;
+  padding: 8px;
+  border-left: 3px solid #d2a84c;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #4f5a56;
+  font-size: 0.8rem;
+  line-height: 1.4;
 }
 
 .heat-score {
@@ -1606,7 +1906,15 @@ h1 {
   }
 
   .heat-toolbar {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .heat-weather-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .heat-forecast-strip {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .automation-panel {
@@ -1657,6 +1965,8 @@ h1 {
   .heat-score-grid,
   .heat-feature-grid,
   .heat-list-grid,
+  .heat-live-grid,
+  .heat-forecast-strip,
   .spotlight-grid,
   .card-grid,
   .plan-board,
@@ -1693,6 +2003,10 @@ h1 {
 
   .heat-card-top {
     grid-template-columns: 1fr;
+  }
+
+  .heat-live-heading {
+    display: grid;
   }
 
   .heat-rank {

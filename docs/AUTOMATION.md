@@ -28,6 +28,22 @@
 
 卡片上的“今日新增”和“本周新增”只在有可靠 `publishedAt` 时间时显示。如果源站给的是未来活动日期，页面不会把它误判成新增内容。
 
+## 避暑短住状态
+
+`npm run update-data` 现在也会运行 `scripts/update-heat-status.ts`，生成：
+
+- `src/data/heat-live-status.json`
+- `public/heat-live-status.json`
+
+默认无需 key 即可使用 Open-Meteo 拉取柏林未来 16 天天气，并在预测达到 32°C+ / 35°C+ 时触发避暑推荐加权。
+
+可选 GitHub Secrets：
+
+- `SERPAPI_API_KEY`：查询 Google Hotels 价格/可订性线索。
+- `GOOGLE_PLACES_API_KEY`：查询 Google Places 最新排序评论样本并提取风险信号。
+
+如果没有配置这些 key，页面会显示“未配置”并提供 Google Hotels / Google Maps 检查入口。
+
 ## 手动检查
 
 本地可用：

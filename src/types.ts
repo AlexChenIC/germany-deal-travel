@@ -195,3 +195,115 @@ export interface HeatEscapeStayData {
   notes: string[];
   items: HeatEscapeStay[];
 }
+
+export type HeatWeatherLevel = "none" | "watch" | "hot" | "extreme";
+
+export interface HeatWeatherDay {
+  date: string;
+  maxTempC: number;
+  minTempC?: number;
+  apparentMaxTempC?: number;
+  precipitationProbabilityMax?: number;
+}
+
+export interface HeatWeatherTrigger {
+  active: boolean;
+  level: HeatWeatherLevel;
+  peakDate?: string;
+  peakMaxTempC?: number;
+  hotDayCount: number;
+  messageZh: string;
+}
+
+export interface HeatWeatherForecast {
+  sourceName: string;
+  sourceUrl: string;
+  status: "ok" | "fallback" | "error";
+  message?: string;
+  days: HeatWeatherDay[];
+  trigger: HeatWeatherTrigger;
+}
+
+export interface HeatStayWindow {
+  checkIn: string;
+  checkOut: string;
+  nights: number;
+  adults: number;
+  children: number;
+  currency: string;
+}
+
+export type HeatAvailabilityStatus =
+  | "available"
+  | "sold-out"
+  | "unknown"
+  | "unconfigured"
+  | "error";
+
+export interface HeatStayPriceStatus {
+  status: HeatAvailabilityStatus;
+  provider: string;
+  sourceUrl: string;
+  fetchedAt?: string;
+  priceLabel?: string;
+  nightlyPriceValue?: number;
+  totalPriceLabel?: string;
+  bookingLink?: string;
+  messageZh: string;
+}
+
+export type HeatReviewRiskLevel = "low" | "medium" | "high" | "unknown";
+
+export interface HeatReviewRiskSignal {
+  labelZh: string;
+  count: number;
+}
+
+export interface HeatReviewSnippet {
+  rating?: number;
+  relativeTime?: string;
+  text: string;
+}
+
+export interface HeatStayReviewStatus {
+  status: "ok" | "manual" | "unconfigured" | "error";
+  provider: string;
+  sourceUrl?: string;
+  fetchedAt?: string;
+  rating?: number;
+  reviewCount?: number;
+  newestReviewCount?: number;
+  riskLevel: HeatReviewRiskLevel;
+  signals: HeatReviewRiskSignal[];
+  snippets: HeatReviewSnippet[];
+  messageZh: string;
+}
+
+export interface HeatStayLiveStatus {
+  id: string;
+  updatedAt: string;
+  weatherBoost: boolean;
+  recommendationLabelZh: string;
+  price: HeatStayPriceStatus;
+  reviews: HeatStayReviewStatus;
+}
+
+export interface HeatEscapeLiveData {
+  generatedAt: string;
+  timezone: string;
+  stayWindow: HeatStayWindow;
+  weather: HeatWeatherForecast;
+  sourceStatus: {
+    price: {
+      provider: string;
+      status: "ok" | "unconfigured" | "partial" | "error";
+      messageZh: string;
+    };
+    reviews: {
+      provider: string;
+      status: "ok" | "unconfigured" | "partial" | "error";
+      messageZh: string;
+    };
+  };
+  items: HeatStayLiveStatus[];
+}

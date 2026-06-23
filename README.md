@@ -8,6 +8,7 @@
 
 - 推荐雷达：汇总旅行折扣、柏林活动、酒店/度假村、机酒套餐、邮轮和全包行程。
 - 避暑短住：筛选柏林市内和周边 1-2 小时范围内，房间空调较可信、有泳池/SPA、适合宝宝和长辈的酒店候选。
+- 避暑短住每日状态：自动拉取柏林未来 16 天天气；可选接入 SerpApi 查询 Google Hotels 价格/可订性、Google Places 查询近期评论风险。
 - 我的收藏：在浏览器本地保存收藏项目，并可把不感兴趣的项目加入排除列表。
 - 儿童活动：柏林市区儿童咖啡馆、亲子音乐会、开放活动、儿童博物馆、剧场和游泳课资料库，带近似地图点位。
 - 信息源：展示已接入和候选的旅行/活动资料源。
@@ -28,6 +29,15 @@ VITE_GOOGLE_MAPS_EMBED_API_KEY=your_key_here
 ```
 
 线上 GitHub Pages 使用仓库 Secret `GOOGLE_MAPS_EMBED_API_KEY`，workflow 会在构建时注入为 `VITE_GOOGLE_MAPS_EMBED_API_KEY`。没有配置 key 时，页面会自动回退到本地示意地图和 Google Maps 跳转链接。
+
+可选：如果要让“避暑短住”页自动抓取价格/可订性和近期评论风险，在本地或 GitHub Secrets 配置：
+
+```bash
+SERPAPI_API_KEY=your_serpapi_key
+GOOGLE_PLACES_API_KEY=your_google_places_key
+```
+
+没有这两个 key 时，天气触发仍会自动运行，价格和评论模块会显示检查入口和未配置状态。
 
 ## 构建
 

@@ -16,6 +16,7 @@ import {
   Hotel,
   EyeOff,
   Landmark,
+  MessageSquareWarning,
   MapPin,
   MapPinned,
   Music2,
@@ -33,6 +34,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import heatEscapeStaysJson from "./data/heat-escape-stays.json";
+import heatLiveStatusJson from "./data/heat-live-status.json";
 import kidsActivitiesJson from "./data/kids-activities.json";
 import radarJson from "./data/radar-data.json";
 import sourceCatalogJson from "./data/source-catalog.json";
@@ -48,7 +50,10 @@ import type {
   DealCategory,
   HeatEscapeStay,
   HeatEscapeStayData,
+  HeatEscapeLiveData,
+  HeatReviewRiskLevel,
   HeatEscapeStayType,
+  HeatStayLiveStatus,
   KidActivity,
   KidActivityCategory,
   KidActivityData,
@@ -63,6 +68,7 @@ const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
 const kidsActivities = kidsActivitiesJson as KidActivityData;
 const heatEscapeStays = heatEscapeStaysJson as HeatEscapeStayData;
+const heatLiveStatus = heatLiveStatusJson as HeatEscapeLiveData;
 const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
 const actionsWorkflowUrl =
   "https://github.com/AlexChenIC/germany-deal-travel/actions/workflows/pages.yml";
@@ -122,7 +128,7 @@ type Tab =
   | "sources"
   | "plan";
 type SortMode = "priority" | "newest" | "price";
-type HeatSortMode = "fit" | "distance" | "baby" | "ac";
+type HeatSortMode = "fit" | "distance" | "baby" | "ac" | "price" | "review";
 type FreshnessKind = "today" | "week";
 type AutomationStatus = "ok" | "warning" | "error";
 
@@ -463,7 +469,7 @@ function Metric({
   icon,
 }: {
   label: string;
-  value: number;
+  value: number | string;
   icon: React.ReactElement;
 }) {
   return (
@@ -848,38 +854,61 @@ function HeatEscapeView() {
   const [poolOnly, setPoolOnly] = useState(true);
   const [spaOnly, setSpaOnly] = useState(false);
   const [babyReadyOnly, setBabyReadyOnly] = useState(false);
+  const [availableOnly, setAvailableOnly] = useState(false);
   const [maxCarMinutes, setMaxCarMinutes] = useState("120");
   const [sortMode, setSortMode] = useState<HeatSortMode>("fit");
+  const liveStatusById = useMemo(
+    () => new Map(heatLiveStatus.items.map((item) => [item.id, item])),
+    [],
+  );
 
   const filteredStays = useMemo(() => {
     const maxMinutes = Number(maxCarMinutes);
     return heatEscapeStays.items
       .filter((stay) => {
+        const liveStatus = liveStatusById.get(stay.id);
         return (
           (!reliableAcOnly || isReliableAc(stay.airConditioning.status)) &&
           (!poolOnly || hasPool(stay)) &&
           (!spaOnly || stay.spa.sauna || stay.spa.treatments) &&
           (!babyReadyOnly || stay.family.babyScore >= 4) &&
+          (!availableOnly || liveStatus?.price.status === "available") &&
           stay.carMinutes <= maxMinutes
         );
       })
       .sort((a, b) => {
+        const liveA = liveStatusById.get(a.id);
+        const liveB = liveStatusById.get(b.id);
         if (sortMode === "distance") return a.carMinutes - b.carMinutes;
         if (sortMode === "baby") return b.family.babyScore - a.family.babyScore;
         if (sortMode === "ac") {
           return b.airConditioning.confidence - a.airConditioning.confidence;
         }
-        return scoreHeatStay(b) - scoreHeatStay(a);
+        if (sortMode === "price") return priceSortValue(liveA) - priceSortValue(liveB);
+        if (sortMode === "review") return reviewRiskSortValue(liveA) - reviewRiskSortValue(liveB);
+        return scoreHeatStay(b, liveB) - scoreHeatStay(a, liveA);
       });
-  }, [babyReadyOnly, maxCarMinutes, poolOnly, reliableAcOnly, sortMode, spaOnly]);
+  }, [
+    availableOnly,
+    babyReadyOnly,
+    liveStatusById,
+    maxCarMinutes,
+    poolOnly,
+    reliableAcOnly,
+    sortMode,
+    spaOnly,
+  ]);
 
   const reliableAcCount = heatEscapeStays.items.filter((stay) =>
     isReliableAc(stay.airConditioning.status),
   ).length;
-  const poolCount = heatEscapeStays.items.filter(hasPool).length;
   const babyReadyCount = heatEscapeStays.items.filter(
     (stay) => stay.family.babyScore >= 4,
   ).length;
+  const availableCount = heatLiveStatus.items.filter(
+    (item) => item.price.status === "available",
+  ).length;
+  const peakTemp = heatLiveStatus.weather.trigger.peakMaxTempC;
 
   return (
     <section className="heat-page">
@@ -902,9 +931,16 @@ function HeatEscapeView() {
       <section className="heat-metrics" aria-label="heat escape summary">
         <Metric label="候选酒店" value={heatEscapeStays.items.length} icon={<Hotel />} />
         <Metric label="可靠空调" value={reliableAcCount} icon={<AirVent />} />
-        <Metric label="有泳池" value={poolCount} icon={<Waves />} />
+        <Metric
+          label="高温峰值"
+          value={peakTemp ? `${peakTemp}°C` : "待更新"}
+          icon={<ThermometerSun />}
+        />
         <Metric label="宝宝优先" value={babyReadyCount} icon={<Baby />} />
+        <Metric label="有价格线索" value={availableCount} icon={<BadgeEuro />} />
       </section>
+
+      <HeatWeatherPanel />
 
       <section className="heat-toolbar" aria-label="heat stay filters">
         <button
@@ -939,6 +975,14 @@ function HeatEscapeView() {
           <Baby size={17} aria-hidden="true" />
           宝宝优先
         </button>
+        <button
+          className={availableOnly ? "toggle is-on" : "toggle"}
+          onClick={() => setAvailableOnly((value) => !value)}
+          type="button"
+        >
+          <BadgeEuro size={17} aria-hidden="true" />
+          有价格
+        </button>
         <SelectField
           icon={<Clock3 size={16} />}
           value={maxCarMinutes}
@@ -959,6 +1003,8 @@ function HeatEscapeView() {
             ["distance", "按距离"],
             ["baby", "按宝宝友好"],
             ["ac", "按空调证据"],
+            ["price", "按价格线索"],
+            ["review", "按评论风险"],
           ]}
         />
       </section>
@@ -970,7 +1016,12 @@ function HeatEscapeView() {
 
       <section className="heat-card-grid">
         {filteredStays.map((stay, index) => (
-          <HeatStayCard key={stay.id} rank={index + 1} stay={stay} />
+          <HeatStayCard
+            key={stay.id}
+            liveStatus={liveStatusById.get(stay.id)}
+            rank={index + 1}
+            stay={stay}
+          />
         ))}
       </section>
 
@@ -984,7 +1035,102 @@ function HeatEscapeView() {
   );
 }
 
-function HeatStayCard({ stay, rank }: { stay: HeatEscapeStay; rank: number }) {
+function HeatWeatherPanel() {
+  const trigger = heatLiveStatus.weather.trigger;
+  const stayWindow = heatLiveStatus.stayWindow;
+  const visibleDays = heatLiveStatus.weather.days.slice(0, 10);
+
+  return (
+    <section
+      className={`heat-weather-panel is-${trigger.level}`}
+      aria-label="Berlin heat forecast"
+    >
+      <div className="heat-weather-main">
+        <div className="heat-section-title">
+          <ThermometerSun size={18} aria-hidden="true" />
+          <h3>{trigger.active ? "天气触发推荐已开启" : "天气观察"}</h3>
+          <span className={`heat-trigger-chip is-${trigger.level}`}>
+            {heatWeatherLevelLabel(trigger.level)}
+          </span>
+        </div>
+        <p>{trigger.messageZh}</p>
+        <div className="heat-status-row">
+          <span>
+            <CalendarDays size={15} aria-hidden="true" />
+            {stayWindow.checkIn} 至 {stayWindow.checkOut}，{stayWindow.nights} 晚
+          </span>
+          <span>
+            <Baby size={15} aria-hidden="true" />
+            {stayWindow.adults} 位成人 + {stayWindow.children} 位宝宝/儿童
+          </span>
+          <span>
+            <RefreshCcw size={15} aria-hidden="true" />
+            {formatFullDateTime(heatLiveStatus.generatedAt, heatLiveStatus.timezone)}
+          </span>
+        </div>
+      </div>
+
+      <div className="heat-source-panel">
+        <HeatSourceStatus
+          label="价格/可订性"
+          message={heatLiveStatus.sourceStatus.price.messageZh}
+          status={heatLiveStatus.sourceStatus.price.status}
+        />
+        <HeatSourceStatus
+          label="近期评论"
+          message={heatLiveStatus.sourceStatus.reviews.messageZh}
+          status={heatLiveStatus.sourceStatus.reviews.status}
+        />
+        <a
+          className="text-link"
+          href={heatLiveStatus.weather.sourceUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          Open-Meteo 预报源
+          <ExternalLink size={14} aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="heat-forecast-strip" aria-label="upcoming forecast">
+        {visibleDays.map((day) => (
+          <div className={day.maxTempC >= 35 ? "heat-day is-extreme" : day.maxTempC >= 32 ? "heat-day is-hot" : "heat-day"} key={day.date}>
+            <strong>{formatMonthDay(day.date)}</strong>
+            <span>{day.maxTempC}°C</span>
+            {day.apparentMaxTempC && <small>体感 {day.apparentMaxTempC}°C</small>}
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function HeatSourceStatus({
+  label,
+  message,
+  status,
+}: {
+  label: string;
+  message: string;
+  status: HeatEscapeLiveData["sourceStatus"]["price"]["status"];
+}) {
+  return (
+    <div className={`heat-source-status is-${status}`}>
+      <strong>{label}</strong>
+      <span>{message}</span>
+    </div>
+  );
+}
+
+function HeatStayCard({
+  stay,
+  rank,
+  liveStatus,
+}: {
+  stay: HeatEscapeStay;
+  rank: number;
+  liveStatus?: HeatStayLiveStatus;
+}) {
   const evidenceLinks = collectHeatEvidence(stay);
   const acTone = stay.airConditioning.status;
 
@@ -1025,10 +1171,12 @@ function HeatStayCard({ stay, rank }: { stay: HeatEscapeStay; rank: number }) {
         <HeatScore label="宝宝" value={`${stay.family.babyScore}/5`} icon={<Baby />} />
         <HeatScore
           label="匹配"
-          value={String(scoreHeatStay(stay))}
+          value={String(scoreHeatStay(stay, liveStatus))}
           icon={<ShieldCheck />}
         />
       </div>
+
+      {liveStatus && <HeatLiveStatusBlock status={liveStatus} />}
 
       <div className="heat-section-block">
         <div className="heat-section-title">
@@ -1084,6 +1232,100 @@ function HeatStayCard({ stay, rank }: { stay: HeatEscapeStay; rank: number }) {
 
       <span className="heat-checked">核验日期：{stay.checkedAt}</span>
     </article>
+  );
+}
+
+function HeatLiveStatusBlock({ status }: { status: HeatStayLiveStatus }) {
+  return (
+    <div className="heat-live-block">
+      <div className="heat-live-heading">
+        <div>
+          <span className={status.weatherBoost ? "heat-boost-chip is-on" : "heat-boost-chip"}>
+            {status.weatherBoost ? "高温加权" : "常规观察"}
+          </span>
+          <p>{status.recommendationLabelZh}</p>
+        </div>
+        <small>{formatDateTime(status.updatedAt)}</small>
+      </div>
+      <div className="heat-live-grid">
+        <HeatPriceBlock status={status} />
+        <HeatReviewBlock status={status} />
+      </div>
+    </div>
+  );
+}
+
+function HeatPriceBlock({ status }: { status: HeatStayLiveStatus }) {
+  const price = status.price;
+  return (
+    <div className={`heat-live-card is-${price.status}`}>
+      <div className="heat-section-title">
+        <BadgeEuro size={17} aria-hidden="true" />
+        <strong>价格/可订性</strong>
+        <span className={`live-status-chip is-${price.status}`}>
+          {priceStatusLabel(price.status)}
+        </span>
+      </div>
+      {(price.priceLabel || price.totalPriceLabel) && (
+        <div className="heat-price-line">
+          {price.priceLabel && <strong>{price.priceLabel}</strong>}
+          {price.totalPriceLabel && <span>总价 {price.totalPriceLabel}</span>}
+        </div>
+      )}
+      <p>{price.messageZh}</p>
+      <a className="text-link" href={price.bookingLink ?? price.sourceUrl} target="_blank" rel="noreferrer">
+        打开价格检查
+        <ExternalLink size={14} aria-hidden="true" />
+      </a>
+    </div>
+  );
+}
+
+function HeatReviewBlock({ status }: { status: HeatStayLiveStatus }) {
+  const reviews = status.reviews;
+  return (
+    <div className={`heat-live-card is-risk-${reviews.riskLevel}`}>
+      <div className="heat-section-title">
+        <MessageSquareWarning size={17} aria-hidden="true" />
+        <strong>近期评论风险</strong>
+        <span className={`risk-chip is-${reviews.riskLevel}`}>
+          {reviewRiskLabel(reviews.riskLevel)}
+        </span>
+      </div>
+      <p>{reviews.messageZh}</p>
+      {(reviews.rating || reviews.reviewCount) && (
+        <div className="heat-review-facts">
+          {reviews.rating && <span>评分 {reviews.rating}</span>}
+          {reviews.reviewCount && <span>{reviews.reviewCount} 条评价</span>}
+          {reviews.newestReviewCount && <span>样本 {reviews.newestReviewCount} 条</span>}
+        </div>
+      )}
+      {reviews.signals.length > 0 && (
+        <div className="heat-signal-row">
+          {reviews.signals.map((signal) => (
+            <span key={signal.labelZh}>
+              {signal.labelZh} × {signal.count}
+            </span>
+          ))}
+        </div>
+      )}
+      {reviews.snippets.length > 0 && (
+        <div className="heat-review-snippets">
+          {reviews.snippets.map((snippet) => (
+            <blockquote key={`${snippet.rating ?? "review"}-${snippet.text}`}>
+              {snippet.rating && <strong>{snippet.rating}/5</strong>}
+              <span>{snippet.text}</span>
+            </blockquote>
+          ))}
+        </div>
+      )}
+      {reviews.sourceUrl && (
+        <a className="text-link" href={reviews.sourceUrl} target="_blank" rel="noreferrer">
+          打开评论源
+          <ExternalLink size={14} aria-hidden="true" />
+        </a>
+      )}
+    </div>
   );
 }
 
@@ -1745,7 +1987,7 @@ function hasPool(stay: HeatEscapeStay) {
   return stay.pool.indoor || stay.pool.outdoor || stay.pool.thermal || stay.pool.lake;
 }
 
-function scoreHeatStay(stay: HeatEscapeStay) {
+function scoreHeatStay(stay: HeatEscapeStay, liveStatus?: HeatStayLiveStatus) {
   const acScore: Record<AirConditioningStatus, number> = {
     confirmed: 20,
     likely: 13,
@@ -1756,6 +1998,14 @@ function scoreHeatStay(stay: HeatEscapeStay) {
   const spaScore = stay.spa.sauna || stay.spa.treatments ? 7 : 0;
   const childrenPoolScore = stay.pool.children ? 5 : 0;
   const distancePenalty = Math.round(stay.carMinutes / 10);
+  const weatherBoost = liveStatus?.weatherBoost ? 10 : 0;
+  const availabilityBoost = liveStatus?.price.status === "available" ? 8 : 0;
+  const reviewPenalty =
+    liveStatus?.reviews.riskLevel === "high"
+      ? 12
+      : liveStatus?.reviews.riskLevel === "medium"
+        ? 6
+        : 0;
 
   return (
     stay.heatScore * 12 +
@@ -1764,8 +2014,58 @@ function scoreHeatStay(stay: HeatEscapeStay) {
     poolScore +
     spaScore +
     childrenPoolScore -
-    distancePenalty
+    distancePenalty +
+    weatherBoost +
+    availabilityBoost -
+    reviewPenalty
   );
+}
+
+function priceSortValue(status?: HeatStayLiveStatus) {
+  if (!status) return Number.MAX_SAFE_INTEGER;
+  if (typeof status.price.nightlyPriceValue === "number") {
+    return status.price.nightlyPriceValue;
+  }
+  if (status.price.status === "available") return 9999;
+  return Number.MAX_SAFE_INTEGER;
+}
+
+function reviewRiskSortValue(status?: HeatStayLiveStatus) {
+  const order: Record<HeatReviewRiskLevel, number> = {
+    low: 0,
+    unknown: 1,
+    medium: 2,
+    high: 3,
+  };
+  return status ? order[status.reviews.riskLevel] : order.unknown;
+}
+
+function heatWeatherLevelLabel(level: HeatEscapeLiveData["weather"]["trigger"]["level"]) {
+  return {
+    none: "无高温",
+    watch: "观察",
+    hot: "高温",
+    extreme: "强高温",
+  }[level];
+}
+
+function priceStatusLabel(status: HeatStayLiveStatus["price"]["status"]) {
+  return {
+    available: "有价格",
+    "sold-out": "无房",
+    unknown: "待确认",
+    unconfigured: "未配置",
+    error: "失败",
+  }[status];
+}
+
+function reviewRiskLabel(level: HeatReviewRiskLevel) {
+  return {
+    low: "低风险",
+    medium: "中风险",
+    high: "高风险",
+    unknown: "未知",
+  }[level];
 }
 
 function collectHeatEvidence(stay: HeatEscapeStay) {
@@ -2093,6 +2393,13 @@ function formatDate(value?: string) {
     month: "2-digit",
     day: "2-digit",
   }).format(new Date(value));
+}
+
+function formatMonthDay(value: string) {
+  return new Intl.DateTimeFormat("zh-CN", {
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date(`${value}T12:00:00Z`));
 }
 
 function normalizeSearchText(value: string) {
