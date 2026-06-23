@@ -9,8 +9,9 @@
 - 推荐雷达：汇总旅行折扣、柏林活动、酒店/度假村、机酒套餐、邮轮和全包行程。
 - 避暑短住：筛选柏林市内和周边 1-2 小时范围内，房间空调较可信、有泳池/SPA、适合宝宝和长辈的酒店候选。
 - 避暑短住每日状态：自动拉取柏林未来 16 天天气；可选接入 SerpApi 查询 Google Hotels 价格/可订性、Google Places 查询近期评论风险。
+- API 成本和安全：在信息源页展示预算提醒、后端 secret、前端地图 key 和 quota 建议。
 - 我的收藏：在浏览器本地保存收藏项目，并可把不感兴趣的项目加入排除列表。
-- 儿童活动：柏林市区儿童咖啡馆、亲子音乐会、开放活动、儿童博物馆、剧场和游泳课资料库，带近似地图点位。
+- 儿童活动：柏林市区儿童咖啡馆、亲子音乐会、开放活动、儿童博物馆、剧场和游泳课资料库，带近似地图点位、宝宝/热天/雨天/低价筛选和核验提示。
 - 信息源：展示已接入和候选的旅行/活动资料源。
 - 路线规划：按城市半日、周末短途、3-5 天、7 天全包和邮轮整理规划方向。
 
@@ -66,6 +67,7 @@ npm run check
 - 自动更新说明见 [docs/AUTOMATION.md](docs/AUTOMATION.md)。
 - 家庭推荐规则见 [docs/RECOMMENDATIONS.md](docs/RECOMMENDATIONS.md)。
 - 避暑短住数据说明见 [docs/HEAT_ESCAPE_STAYS.md](docs/HEAT_ESCAPE_STAYS.md)。
+- API 成本和安全清单见 [docs/API_COST_SECURITY.md](docs/API_COST_SECURITY.md)。
 
 ## 部署
 

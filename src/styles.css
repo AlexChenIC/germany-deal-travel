@@ -377,6 +377,7 @@ h1 {
 .spotlight-card,
 .travel-card,
 .source-row,
+.api-safety-panel,
 .plan-row {
   overflow: hidden;
   border: 1px solid #d7d2c5;
@@ -646,6 +647,69 @@ h1 {
 .plan-board {
   display: grid;
   gap: 10px;
+}
+
+.sources-page {
+  display: grid;
+  gap: 14px;
+}
+
+.api-safety-panel {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+.api-safety-panel h2 {
+  margin-bottom: 8px;
+}
+
+.api-safety-panel p {
+  margin-bottom: 0;
+  color: #4f5a56;
+  line-height: 1.55;
+}
+
+.api-safety-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.api-safety-item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 9px;
+  padding: 10px;
+  border: 1px solid #bad6cf;
+  border-radius: 8px;
+  background: #edf9f6;
+}
+
+.api-safety-item svg {
+  margin-top: 2px;
+  color: #0f766e;
+}
+
+.api-safety-item strong,
+.api-safety-item span,
+.api-safety-item small {
+  display: block;
+}
+
+.api-safety-item span {
+  margin-top: 2px;
+  color: #33413d;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.api-safety-item small {
+  margin-top: 4px;
+  color: #66736f;
+  font-size: 0.76rem;
+  line-height: 1.35;
 }
 
 .source-row {
@@ -1245,6 +1309,12 @@ h1 {
   gap: 8px;
 }
 
+.kid-filter-toggles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
 .kid-category {
   min-height: 40px;
   padding: 0 10px;
@@ -1254,7 +1324,7 @@ h1 {
 
 .kid-highlights {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -1330,6 +1400,102 @@ h1 {
   background: #fff7e5;
   color: #5f4a18;
   line-height: 1.5;
+}
+
+.kid-suitability {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.kid-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.kid-fit-badge {
+  display: grid;
+  gap: 2px;
+  min-height: 46px;
+  padding: 7px 8px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  color: #43504c;
+  font-size: 0.78rem;
+  line-height: 1.1;
+}
+
+.kid-fit-badge strong {
+  color: #1c2526;
+  font-size: 0.76rem;
+}
+
+.kid-fit-badge.is-excellent,
+.kid-fit-badge.is-good,
+.kid-fit-badge.is-yes {
+  border-color: #95c6ba;
+  background: #e9f7f3;
+  color: #0d5f59;
+}
+
+.kid-fit-badge.is-limited,
+.kid-fit-badge.is-partial,
+.kid-fit-badge.is-check {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.kid-fit-badge.is-future,
+.kid-fit-badge.is-unknown {
+  border-color: #d5d9d2;
+  background: #f4f5f1;
+  color: #59636d;
+}
+
+.kid-fit-badge.is-no {
+  border-color: #d89a8a;
+  background: #ffece7;
+  color: #9b2f1f;
+}
+
+.kid-suitability-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.kid-low-cost,
+.kid-review-date {
+  min-height: 26px;
+  padding: 5px 8px;
+  border: 1px solid #bad6cf;
+  border-radius: 999px;
+  background: #edf9f6;
+  color: #0d5f59;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.kid-review-date {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.kid-review-date.is-stale {
+  border-color: #d89a8a;
+  background: #ffece7;
+  color: #9b2f1f;
+}
+
+.kid-suitability-copy {
+  margin: 0;
+  color: #5e6864;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .heat-toolbar {
@@ -1901,7 +2067,9 @@ h1 {
   .picks-metrics,
   .heat-metrics,
   .kid-pick-grid,
-  .heat-card-grid {
+  .heat-card-grid,
+  .api-safety-grid,
+  .api-safety-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1970,7 +2138,11 @@ h1 {
   .spotlight-grid,
   .card-grid,
   .plan-board,
+  .api-safety-grid,
+  .api-safety-panel,
   .collection-stats,
+  .kid-filter-toggles,
+  .kid-fit-grid,
   .kid-highlights {
     grid-template-columns: 1fr;
   }

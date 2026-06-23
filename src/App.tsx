@@ -33,11 +33,39 @@ import {
   Waves,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { Metric, SelectField, TabButton } from "./components/Controls";
+import {
+  CardFacts,
+  displayTitle,
+  FreshnessBadge,
+  iconForCategory,
+  ItemActions,
+  SpotlightCard,
+  TravelCard,
+} from "./components/TravelCards";
 import heatEscapeStaysJson from "./data/heat-escape-stays.json";
 import heatLiveStatusJson from "./data/heat-live-status.json";
 import kidsActivitiesJson from "./data/kids-activities.json";
 import radarJson from "./data/radar-data.json";
 import sourceCatalogJson from "./data/source-catalog.json";
+import {
+  acStatusLabels,
+  actionsWorkflowUrl,
+  categoryLabels,
+  googleMapsEmbedApiKey,
+  heatStayTypeLabels,
+  kidCategoryLabels,
+  scopeLabels,
+} from "./config";
+import { useStoredIdSet } from "./hooks/useStoredIdSet";
+import {
+  countFreshItems,
+  formatDateTime,
+  formatFullDateTime,
+  formatMonthDay,
+  formatRelativeDateTime,
+  type FreshnessKind,
+} from "./lib/date";
 import {
   buildFamilyRecommendations,
   type FamilyRecommendations,
@@ -45,6 +73,9 @@ import {
   type RecommendationBucket,
   type TravelRecommendation,
 } from "./lib/recommendations";
+import { expandQuery, normalizeSearchText } from "./lib/search";
+import { PlanView } from "./pages/PlanView";
+import { SourcesView } from "./pages/SourcesView";
 import type {
   AirConditioningStatus,
   DealCategory,
@@ -57,6 +88,8 @@ import type {
   KidActivity,
   KidActivityCategory,
   KidActivityData,
+  KidActivityFitLevel,
+  KidFacilityStatus,
   RadarData,
   SourceRun,
   SourceDefinition,
@@ -69,54 +102,6 @@ const sourceCatalog = sourceCatalogJson as SourceDefinition[];
 const kidsActivities = kidsActivitiesJson as KidActivityData;
 const heatEscapeStays = heatEscapeStaysJson as HeatEscapeStayData;
 const heatLiveStatus = heatLiveStatusJson as HeatEscapeLiveData;
-const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
-const actionsWorkflowUrl =
-  "https://github.com/AlexChenIC/germany-deal-travel/actions/workflows/pages.yml";
-
-const categoryLabels: Record<DealCategory, string> = {
-  event: "活动",
-  "hotel-resort": "酒店/度假村",
-  package: "机酒套餐",
-  flight: "机票",
-  cruise: "邮轮",
-  "all-inclusive": "全包",
-  "day-trip": "一日游",
-  planning: "灵感",
-};
-
-const scopeLabels: Record<TravelScope, string> = {
-  "berlin-city": "柏林市内",
-  "berlin-nearby": "柏林周边",
-  germany: "德国",
-  europe: "欧洲",
-  "sun-resort": "阳光度假",
-  "long-haul": "长线",
-};
-
-const kidCategoryLabels: Record<KidActivityCategory, string> = {
-  cafe: "儿童咖啡",
-  music: "音乐/演出",
-  "open-play": "开放活动",
-  swim: "游泳课",
-  museum: "博物馆/室内",
-  theatre: "儿童剧场",
-  calendar: "活动日历",
-};
-
-const heatStayTypeLabels: Record<HeatEscapeStayType, string> = {
-  "waterpark-resort": "水上度假区",
-  "lake-resort": "湖畔度假",
-  "thermal-spa": "温泉 SPA",
-  "spa-hotel": "SPA 酒店",
-  "city-staycation": "城市避暑",
-};
-
-const acStatusLabels: Record<AirConditioningStatus, string> = {
-  confirmed: "确认房间空调",
-  likely: "较可信空调",
-  uncertain: "空调待确认",
-  none: "不建议高温周末",
-};
 
 type Tab =
   | "picks"
@@ -129,7 +114,6 @@ type Tab =
   | "plan";
 type SortMode = "priority" | "newest" | "price";
 type HeatSortMode = "fit" | "distance" | "baby" | "ac" | "price" | "review";
-type FreshnessKind = "today" | "week";
 type AutomationStatus = "ok" | "warning" | "error";
 
 interface AutomationSummary {
@@ -338,7 +322,7 @@ function App() {
       ) : activeTab === "heat" ? (
         <HeatEscapeView />
       ) : activeTab === "sources" ? (
-        <SourcesView runs={radar.sources} />
+        <SourcesView runs={radar.sources} sources={sourceCatalog} timezone={radar.timezone} />
       ) : activeTab === "plan" ? (
         <PlanView />
       ) : activeTab === "favorites" ? (
@@ -424,9 +408,11 @@ function App() {
             <section className="spotlight-grid" aria-label="top picks">
               {spotlight.map((item) => (
                 <SpotlightCard
+                  generatedAt={radar.generatedAt}
                   key={item.id}
                   item={item}
                   isFavorite={favorites.ids.has(item.id)}
+                  timezone={radar.timezone}
                   onToggleFavorite={toggleFavorite}
                   onExclude={excludeItem}
                 />
@@ -442,9 +428,11 @@ function App() {
           <section className="card-grid">
             {listItems.map((item) => (
               <TravelCard
+                generatedAt={radar.generatedAt}
                 key={item.id}
                 item={item}
                 isFavorite={favorites.ids.has(item.id)}
+                timezone={radar.timezone}
                 onToggleFavorite={toggleFavorite}
                 onExclude={excludeItem}
               />
@@ -460,26 +448,6 @@ function App() {
         </>
       )}
     </main>
-  );
-}
-
-function Metric({
-  label,
-  value,
-  icon,
-}: {
-  label: string;
-  value: number | string;
-  icon: React.ReactElement;
-}) {
-  return (
-    <div className="metric">
-      {icon}
-      <div>
-        <strong>{value}</strong>
-        <span>{label}</span>
-      </div>
-    </div>
   );
 }
 
@@ -563,207 +531,6 @@ function AutomationStat({
       <strong>{value}</strong>
       <span>{label}</span>
     </div>
-  );
-}
-
-function TabButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button className={active ? "tab is-active" : "tab"} onClick={onClick} type="button">
-      {children}
-    </button>
-  );
-}
-
-function SelectField({
-  icon,
-  value,
-  options,
-  onChange,
-}: {
-  icon: React.ReactElement;
-  value: string;
-  options: Array<[string, string]>;
-  onChange: (value: string) => void;
-}) {
-  return (
-    <label className="select-field">
-      {icon}
-      <select value={value} onChange={(event) => onChange(event.target.value)}>
-        {options.map(([optionValue, label]) => (
-          <option key={optionValue} value={optionValue}>
-            {label}
-          </option>
-        ))}
-      </select>
-    </label>
-  );
-}
-
-function SpotlightCard({
-  item,
-  isFavorite,
-  onToggleFavorite,
-  onExclude,
-}: {
-  item: TravelItem;
-  isFavorite: boolean;
-  onToggleFavorite: (id: string) => void;
-  onExclude: (id: string) => void;
-}) {
-  return (
-    <article className="spotlight-card">
-      {item.imageUrl && (
-        <img src={item.imageUrl} alt="" loading="lazy" referrerPolicy="no-referrer" />
-      )}
-      <div className="spotlight-body">
-        <div className="card-meta">
-          <span>{item.sourceName}</span>
-          <div className="meta-end">
-            <FreshnessBadge item={item} />
-            <span>{scopeLabels[item.scope]}</span>
-          </div>
-        </div>
-        <h2>{displayTitle(item)}</h2>
-        <p className="original-title">{item.title}</p>
-        <p>{item.summary}</p>
-        <CardFacts item={item} />
-        <ItemActions
-          isFavorite={isFavorite}
-          onToggleFavorite={() => onToggleFavorite(item.id)}
-          onExclude={() => onExclude(item.id)}
-        />
-        <a className="primary-link" href={item.url} target="_blank" rel="noreferrer">
-          打开源站
-          <ExternalLink size={16} aria-hidden="true" />
-        </a>
-      </div>
-    </article>
-  );
-}
-
-function TravelCard({
-  item,
-  isFavorite,
-  onToggleFavorite,
-  onExclude,
-}: {
-  item: TravelItem;
-  isFavorite: boolean;
-  onToggleFavorite: (id: string) => void;
-  onExclude: (id: string) => void;
-}) {
-  const Icon = iconForCategory(item.category);
-  return (
-    <article className="travel-card">
-      {item.imageUrl ? (
-        <img
-          className="card-image"
-          src={item.imageUrl}
-          alt=""
-          loading="lazy"
-          referrerPolicy="no-referrer"
-        />
-      ) : (
-        <div className="image-fallback">
-          <Icon size={30} aria-hidden="true" />
-        </div>
-      )}
-      <div className="travel-card-body">
-        <div className="card-meta">
-          <span>{item.sourceName}</span>
-          <div className="meta-end">
-            <FreshnessBadge item={item} />
-            <span>{formatDate(item.publishedAt)}</span>
-          </div>
-        </div>
-        <h3>{displayTitle(item)}</h3>
-        <p className="original-title">{item.title}</p>
-        <p>{item.summary}</p>
-        <div className="tag-row">
-          {item.tags.slice(0, 5).map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-        <CardFacts item={item} />
-        <ItemActions
-          isFavorite={isFavorite}
-          onToggleFavorite={() => onToggleFavorite(item.id)}
-          onExclude={() => onExclude(item.id)}
-        />
-        <a className="text-link" href={item.url} target="_blank" rel="noreferrer">
-          查看详情
-          <ExternalLink size={15} aria-hidden="true" />
-        </a>
-      </div>
-    </article>
-  );
-}
-
-function ItemActions({
-  isFavorite,
-  onToggleFavorite,
-  onExclude,
-}: {
-  isFavorite: boolean;
-  onToggleFavorite: () => void;
-  onExclude: () => void;
-}) {
-  return (
-    <div className="card-actions">
-      <button
-        className={isFavorite ? "icon-action is-favorite" : "icon-action"}
-        onClick={onToggleFavorite}
-        title={isFavorite ? "取消收藏" : "收藏"}
-        type="button"
-      >
-        <Heart
-          size={16}
-          fill={isFavorite ? "currentColor" : "none"}
-          aria-hidden="true"
-        />
-        {isFavorite ? "已收藏" : "收藏"}
-      </button>
-      <button
-        className="icon-action"
-        onClick={onExclude}
-        title="排除，不再显示在雷达列表"
-        type="button"
-      >
-        <EyeOff size={16} aria-hidden="true" />
-        排除
-      </button>
-    </div>
-  );
-}
-
-function CardFacts({ item }: { item: TravelItem }) {
-  return (
-    <div className="fact-row">
-      {item.priceLabel && <span>{item.priceLabel}</span>}
-      {item.durationDays && <span>{item.durationDays} 天/晚</span>}
-      {item.departureHint && <span>{item.departureHint}</span>}
-      {item.locationHint && <span>{item.locationHint}</span>}
-      <span>家庭分 {item.familyScore}</span>
-    </div>
-  );
-}
-
-function FreshnessBadge({ item }: { item: TravelItem }) {
-  const freshness = getFreshnessKind(item.publishedAt, radar.generatedAt, radar.timezone);
-  if (!freshness) return null;
-
-  return (
-    <span className={`freshness-badge is-${freshness}`}>
-      {freshness === "today" ? "今日新增" : "本周新增"}
-    </span>
   );
 }
 
@@ -1459,7 +1226,7 @@ function RecommendationTravelCard({
       <div className="card-meta">
         <span>{item.sourceName}</span>
         <div className="meta-end">
-          <FreshnessBadge item={item} />
+          <FreshnessBadge generatedAt={radar.generatedAt} item={item} timezone={radar.timezone} />
           <span>{scopeLabels[item.scope]}</span>
         </div>
       </div>
@@ -1596,9 +1363,11 @@ function FavoritesView({
         <section className="card-grid">
           {favoriteItems.map((item) => (
             <TravelCard
+              generatedAt={radar.generatedAt}
               key={item.id}
               item={item}
               isFavorite={favoriteIds.has(item.id)}
+              timezone={radar.timezone}
               onToggleFavorite={onToggleFavorite}
               onExclude={onExclude}
             />
@@ -1659,6 +1428,10 @@ function FavoritesView({
 function KidsActivitiesView() {
   const [kidCategory, setKidCategory] = useState<KidActivityCategory | "all">("all");
   const [kidQuery, setKidQuery] = useState("");
+  const [babyFitOnly, setBabyFitOnly] = useState(true);
+  const [heatFitOnly, setHeatFitOnly] = useState(false);
+  const [rainFitOnly, setRainFitOnly] = useState(false);
+  const [lowCostOnly, setLowCostOnly] = useState(false);
   const [selectedMapActivityId, setSelectedMapActivityId] = useState("");
 
   const filteredKidsActivities = useMemo(() => {
@@ -1675,11 +1448,15 @@ function KidsActivitiesView() {
       const normalizedHaystack = normalizeSearchText(haystack);
       return (
         (kidCategory === "all" || activity.category === kidCategory) &&
+        (!babyFitOnly || isGoodKidFit(activity.suitability.baby)) &&
+        (!heatFitOnly || isGoodKidFit(activity.suitability.heat)) &&
+        (!rainFitOnly || isGoodKidFit(activity.suitability.rain)) &&
+        (!lowCostOnly || activity.suitability.lowCost) &&
         (queryTerms.length === 0 ||
           queryTerms.some((term) => normalizedHaystack.includes(term)))
       );
     });
-  }, [kidCategory, kidQuery]);
+  }, [babyFitOnly, heatFitOnly, kidCategory, kidQuery, lowCostOnly, rainFitOnly]);
 
   const categoryOptions: Array<[KidActivityCategory | "all", string]> = [
     ["all", "全部"],
@@ -1748,6 +1525,41 @@ function KidsActivitiesView() {
             ))}
           </div>
 
+          <div className="kid-filter-toggles" aria-label="kids activity fit filters">
+            <button
+              className={babyFitOnly ? "toggle is-on" : "toggle"}
+              onClick={() => setBabyFitOnly((value) => !value)}
+              type="button"
+            >
+              <Baby size={17} aria-hidden="true" />
+              11个月宝宝
+            </button>
+            <button
+              className={heatFitOnly ? "toggle is-on" : "toggle"}
+              onClick={() => setHeatFitOnly((value) => !value)}
+              type="button"
+            >
+              <ThermometerSun size={17} aria-hidden="true" />
+              热天适合
+            </button>
+            <button
+              className={rainFitOnly ? "toggle is-on" : "toggle"}
+              onClick={() => setRainFitOnly((value) => !value)}
+              type="button"
+            >
+              <Waves size={17} aria-hidden="true" />
+              雨天适合
+            </button>
+            <button
+              className={lowCostOnly ? "toggle is-on" : "toggle"}
+              onClick={() => setLowCostOnly((value) => !value)}
+              type="button"
+            >
+              <BadgeEuro size={17} aria-hidden="true" />
+              免费/低价
+            </button>
+          </div>
+
           <div className="kid-highlights">
             <div>
               <strong>{kidsActivities.items.length}</strong>
@@ -1760,6 +1572,10 @@ function KidsActivitiesView() {
             <div>
               <strong>{countKidCategory("swim")}</strong>
               <span>游泳入口</span>
+            </div>
+            <div>
+              <strong>{countKidFit("baby")}</strong>
+              <span>宝宝适合</span>
             </div>
           </div>
         </div>
@@ -1933,6 +1749,7 @@ function KidActivityCard({
             <span key={tag}>{tag}</span>
           ))}
         </div>
+        <KidSuitabilityBlock activity={activity} />
         <p className="kid-tip">{activity.tipZh}</p>
         <div className="link-row">
           <a className="text-link" href={activity.website} target="_blank" rel="noreferrer">
@@ -1971,6 +1788,63 @@ function KidActivityCard({
         </div>
       </div>
     </article>
+  );
+}
+
+function KidSuitabilityBlock({ activity }: { activity: KidActivity }) {
+  const suitability = activity.suitability;
+  const needsReview = isPastDate(suitability.refreshAfter);
+  return (
+    <div className="kid-suitability">
+      <div className="kid-fit-grid" aria-label="kids activity suitability">
+        <KidFitBadge label="宝宝" value={suitability.baby} />
+        <KidFitBadge label="热天" value={suitability.heat} />
+        <KidFitBadge label="雨天" value={suitability.rain} />
+        <KidFacilityBadge label="制冷" value={suitability.indoorCooling} />
+        <KidFacilityBadge label="推车" value={suitability.stroller} />
+        <KidFacilityBadge label="换尿布" value={suitability.changingTable} />
+      </div>
+      <div className="kid-suitability-notes">
+        {suitability.lowCost && <span className="kid-low-cost">免费/低价优先</span>}
+        <span className={needsReview ? "kid-review-date is-stale" : "kid-review-date"}>
+          核验 {suitability.verificationDate}
+          {needsReview ? "，建议复查" : ""}
+        </span>
+      </div>
+      {suitability.notesZh.length > 0 && (
+        <p className="kid-suitability-copy">{suitability.notesZh[0]}</p>
+      )}
+    </div>
+  );
+}
+
+function KidFitBadge({
+  label,
+  value,
+}: {
+  label: string;
+  value: KidActivityFitLevel;
+}) {
+  return (
+    <span className={`kid-fit-badge is-${value}`}>
+      <strong>{label}</strong>
+      {kidFitLabel(value)}
+    </span>
+  );
+}
+
+function KidFacilityBadge({
+  label,
+  value,
+}: {
+  label: string;
+  value: KidFacilityStatus;
+}) {
+  return (
+    <span className={`kid-fit-badge is-${value}`}>
+      <strong>{label}</strong>
+      {kidFacilityLabel(value)}
+    </span>
   );
 }
 
@@ -2082,90 +1956,6 @@ function collectHeatEvidence(stay: HeatEscapeStay) {
   });
 }
 
-function displayTitle(item: TravelItem) {
-  return item.titleZh || item.title;
-}
-
-function SourcesView({ runs }: { runs: RadarData["sources"] }) {
-  const runsById = new Map(runs.map((run) => [run.id, run]));
-  return (
-    <section className="source-list">
-      {sourceCatalog.map((source) => {
-        const run = runsById.get(source.id);
-        const sourceState = getSourceState(run, source);
-        return (
-          <article className="source-row" key={source.id}>
-            <div className={`source-status is-${sourceState.tone}`}>
-              {sourceState.tone === "ok" ? (
-                <CheckCircle2 size={22} />
-              ) : sourceState.tone === "warning" ? (
-                <RefreshCcw size={22} />
-              ) : source.status === "candidate" ? (
-                <Sparkles size={22} />
-              ) : (
-                <CircleAlert size={22} />
-              )}
-            </div>
-            <div className="source-main">
-              <div className="source-title">
-                <h3>{source.name}</h3>
-                <span>{sourceState.label}</span>
-              </div>
-              <p>{source.notes}</p>
-              <div className="source-tags">
-                {source.focus.map((focus) => (
-                  <span key={focus}>{focus}</span>
-                ))}
-              </div>
-            </div>
-            <div className="source-side">
-              <strong>{run?.itemCount ?? 0}</strong>
-              <span>{run?.message ?? source.access}</span>
-              {run?.fetchedAt && (
-                <small>最近抓取：{formatFullDateTime(run.fetchedAt, radar.timezone)}</small>
-              )}
-              <a href={source.homepage} target="_blank" rel="noreferrer">
-                源站
-                <ExternalLink size={14} />
-              </a>
-            </div>
-          </article>
-        );
-      })}
-    </section>
-  );
-}
-
-function PlanView() {
-  const planRows = [
-    ["城市半日", "柏林市内活动、展览、food festival、亲子馆", "宝宝作息优先，控制换乘"],
-    ["周末短途", "Potsdam、Brandenburg、Spreewald、Ostsee、Therme", "车程/火车 1-3 小时"],
-    ["3-5 天轻度假", "德国/波兰/丹麦/奥地利酒店与度假村", "厨房、婴儿床、泳池优先"],
-    ["7 天全包", "Turkey、Egypt、Greece、Spain 等阳光目的地", "直飞、接送、全包、儿童设施"],
-    ["邮轮", "MSC、Mein Schiff、AIDA、地中海/北欧", "确认婴儿政策和岸上节奏"],
-  ];
-
-  return (
-    <section className="plan-board">
-      {planRows.map(([title, focus, note]) => (
-        <article className="plan-row" key={title}>
-          <h3>{title}</h3>
-          <p>{focus}</p>
-          <span>{note}</span>
-        </article>
-      ))}
-    </section>
-  );
-}
-
-function iconForCategory(category: DealCategory) {
-  if (category === "cruise") return Ship;
-  if (category === "flight" || category === "package") return Plane;
-  if (category === "event") return CalendarDays;
-  if (category === "hotel-resort" || category === "all-inclusive") return Hotel;
-  return Compass;
-}
-
 function iconForKidCategory(category: KidActivityCategory) {
   if (category === "cafe") return Coffee;
   if (category === "music") return Music2;
@@ -2178,6 +1968,38 @@ function iconForKidCategory(category: KidActivityCategory) {
 
 function countKidCategory(category: KidActivityCategory) {
   return kidsActivities.items.filter((activity) => activity.category === category).length;
+}
+
+function countKidFit(kind: "baby" | "heat" | "rain") {
+  return kidsActivities.items.filter((activity) => isGoodKidFit(activity.suitability[kind])).length;
+}
+
+function isGoodKidFit(level: KidActivityFitLevel) {
+  return level === "excellent" || level === "good";
+}
+
+function kidFitLabel(level: KidActivityFitLevel) {
+  return {
+    excellent: "优先",
+    good: "适合",
+    limited: "有限",
+    future: "稍大",
+    check: "待筛",
+  }[level];
+}
+
+function kidFacilityLabel(status: KidFacilityStatus) {
+  return {
+    yes: "明确",
+    partial: "部分",
+    unknown: "待查",
+    no: "没有",
+  }[status];
+}
+
+function isPastDate(value: string) {
+  const date = new Date(`${value}T23:59:59+02:00`);
+  return !Number.isNaN(date.getTime()) && date.getTime() < Date.now();
 }
 
 function hasMapLocation(activity: KidActivity): activity is KidActivity & {
@@ -2292,53 +2114,6 @@ function buildAutomationSummary(data: RadarData): AutomationSummary {
   };
 }
 
-function countFreshItems(
-  items: TravelItem[],
-  generatedAt: string,
-  timeZone: string,
-  window: FreshnessKind,
-) {
-  return items.filter((item) => {
-    const freshness = getFreshnessKind(item.publishedAt, generatedAt, timeZone);
-    return window === "today" ? freshness === "today" : Boolean(freshness);
-  }).length;
-}
-
-function getFreshnessKind(
-  publishedAt: string | undefined,
-  generatedAt: string,
-  timeZone: string,
-): FreshnessKind | undefined {
-  if (!publishedAt) return undefined;
-  const publishedDate = new Date(publishedAt);
-  const generatedDate = new Date(generatedAt);
-  if (
-    Number.isNaN(publishedDate.getTime()) ||
-    Number.isNaN(generatedDate.getTime()) ||
-    publishedDate.getTime() > generatedDate.getTime() + 5 * 60 * 1000
-  ) {
-    return undefined;
-  }
-
-  if (dateKeyInTimezone(publishedDate, timeZone) === dateKeyInTimezone(generatedDate, timeZone)) {
-    return "today";
-  }
-
-  const ageMs = generatedDate.getTime() - publishedDate.getTime();
-  return ageMs <= 7 * 24 * 60 * 60 * 1000 ? "week" : undefined;
-}
-
-function dateKeyInTimezone(date: Date, timeZone: string) {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).formatToParts(date);
-  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${values.year}-${values.month}-${values.day}`;
-}
-
 function isCacheFallbackRun(run: SourceRun) {
   return Boolean(run.usedCache || /cached|cache|缓存|回退/i.test(run.message ?? ""));
 }
@@ -2350,86 +2125,6 @@ function getSourceState(run: SourceRun | undefined, source: SourceDefinition) {
   if (run.status === "error") return { label: "抓取失败", tone: "error" };
   if (isCacheFallbackRun(run)) return { label: "缓存回退", tone: "warning" };
   return { label: "运行正常", tone: "ok" };
-}
-
-function formatFullDateTime(value: string, timeZone: string) {
-  return new Intl.DateTimeFormat("zh-CN", {
-    timeZone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-    timeZoneName: "short",
-  }).format(new Date(value));
-}
-
-function formatRelativeDateTime(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return "更新时间待确认";
-  const diffMs = Date.now() - date.getTime();
-  if (diffMs < 60 * 1000) return "刚刚更新";
-  const minutes = Math.floor(diffMs / (1000 * 60));
-  if (minutes < 60) return `${minutes} 分钟前更新`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} 小时前更新`;
-  return `${Math.floor(hours / 24)} 天前更新`;
-}
-
-function formatDateTime(value: string) {
-  return new Intl.DateTimeFormat("zh-CN", {
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(new Date(value));
-}
-
-function formatDate(value?: string) {
-  if (!value) return "待确认";
-  return new Intl.DateTimeFormat("zh-CN", {
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(value));
-}
-
-function formatMonthDay(value: string) {
-  return new Intl.DateTimeFormat("zh-CN", {
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(`${value}T12:00:00Z`));
-}
-
-function normalizeSearchText(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/ß/g, "ss")
-    .normalize("NFD")
-    .replace(/\p{Diacritic}/gu, "");
-}
-
-function expandQuery(value: string) {
-  const normalized = normalizeSearchText(value.trim());
-  if (!normalized) return [];
-
-  const aliases: Record<string, string[]> = {
-    turkey: ["turkey", "turkei", "tuerkei", "side", "antalya"],
-    egypt: ["egypt", "agypten", "aegypten", "hurghada"],
-    cruise: ["cruise", "kreuzfahrt", "msc", "aida", "mein schiff"],
-    baby: ["baby", "babybett", "gitterbett", "kinder"],
-    family: ["family", "familie", "kinder", "kids"],
-    "all inclusive": ["all inclusive", "all-inclusive", "vollpension"],
-  };
-
-  const terms = new Set([normalized]);
-  for (const [key, values] of Object.entries(aliases)) {
-    if (normalized.includes(key)) {
-      values.forEach((alias) => terms.add(normalizeSearchText(alias)));
-    }
-  }
-  return Array.from(terms);
 }
 
 function getInitialTab(): Tab {
@@ -2451,51 +2146,6 @@ function hashToTab(hash: string): Tab {
     return normalized;
   }
   return "radar";
-}
-
-function useStoredIdSet(storageKey: string) {
-  const [ids, setIds] = useState<Set<string>>(() => {
-    if (typeof window === "undefined") return new Set();
-    try {
-      const rawValue = window.localStorage.getItem(storageKey);
-      const parsedValue = rawValue ? (JSON.parse(rawValue) as string[]) : [];
-      return new Set(parsedValue);
-    } catch {
-      return new Set();
-    }
-  });
-
-  const save = (nextIds: Set<string>) => {
-    setIds(nextIds);
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(storageKey, JSON.stringify(Array.from(nextIds)));
-  };
-
-  return {
-    ids,
-    add(id: string) {
-      const nextIds = new Set(ids);
-      nextIds.add(id);
-      save(nextIds);
-    },
-    remove(id: string) {
-      const nextIds = new Set(ids);
-      nextIds.delete(id);
-      save(nextIds);
-    },
-    toggle(id: string) {
-      const nextIds = new Set(ids);
-      if (nextIds.has(id)) {
-        nextIds.delete(id);
-      } else {
-        nextIds.add(id);
-      }
-      save(nextIds);
-    },
-    clear() {
-      save(new Set());
-    },
-  };
 }
 
 export default App;

@@ -65,7 +65,17 @@
 - 第一版已支持可靠空调、泳池、SPA、宝宝优先和车程筛选；仍不宣称实时可订或实时价格。
 - 已增加 Open-Meteo 天气触发；价格/可订性和近期评论风险已具备可选 API key 接口。
 
+## Phase 4.6: API 成本和安全收口
+
+状态：已完成。
+
+- 记录 Google Cloud `€10 Monthly budget alert` 的用途和限制。
+- 文档化 SerpApi、Google Places 和 Google Maps Embed key 的使用边界。
+- 在站内信息源页展示 API 防护清单。
+
 ## Phase 5: 前端组件拆分
+
+状态：已完成。
 
 目标：在功能继续增多前降低维护成本。
 
@@ -74,8 +84,11 @@
 - 抽取本地存储集合逻辑。
 - 把推荐规则移动到 `src/lib/recommendations.ts`。
 - 拆分时保持用户可见行为不变。
+- 已完成第一轮拆分：配置、hooks、日期/搜索工具、通用控件、旅行卡片、路线页和信息源页。
 
 ## Phase 6: 数据源适配器架构
+
+状态：已完成。
 
 目标：让新增旅行源、活动源和儿童活动源更安全、更快。
 
@@ -83,14 +96,18 @@
 - 为当前源添加 fixture 测试。
 - 定义统一 source adapter contract。
 - 准备接入 Center Parcs、Travelcircus、thermal spa hotel、Groupon、Eventbrite、Fever、Familotel 等高价值来源。
+- 已新增 source adapter contract 和基础测试，当前 RSS 与 visitBerlin 来源已通过 adapter 运行。
 
 ## Phase 7: 儿童活动增强
+
+状态：已完成。
 
 目标：把儿童活动页从资料目录升级为可直接做周末/平日计划的工具。
 
 - 为每个地点/活动增加宝宝年龄适配、热天适配、雨天适配、推车友好、换尿布、室内制冷、信息核验日期等字段。
 - 添加“11 个月宝宝”“热天”“雨天”“免费/低价”等筛选。
 - 对信息过期的条目显示复查提示。
+- 已新增宝宝、热天、雨天、低价筛选，以及推车/换尿布/制冷/核验日期展示。
 
 ## Phase 8: 地图增强
 

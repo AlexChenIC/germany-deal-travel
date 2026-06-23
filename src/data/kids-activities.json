@@ -23,8 +23,28 @@
       "website": "https://spielzimmer.berlin/en/",
       "sourceName": "Spielzimmer / visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/kindercafe-spielzimmer",
-      "tags": ["儿童咖啡馆", "室内", "低龄友好", "Prenzlauer Berg"],
-      "tipZh": "离 Kollwitzkiez、Helmholtzplatz 一带较近，适合和公园散步组合。"
+      "tags": [
+        "儿童咖啡馆",
+        "室内",
+        "低龄友好",
+        "Prenzlauer Berg"
+      ],
+      "tipZh": "离 Kollwitzkiez、Helmholtzplatz 一带较近，适合和公园散步组合。",
+      "suitability": {
+        "baby": "excellent",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "unknown",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "低龄室内玩耍空间，适合 11 个月宝宝短暂停留。",
+          "高温天需回源确认室内温度和通风。"
+        ]
+      }
     },
     {
       "id": "cafe-kreuzzwerg",
@@ -42,8 +62,27 @@
       "website": "https://cafe-kreuzzwerg.de/en/",
       "sourceName": "Cafe Kreuzzwerg / visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/cafe-kreuzzwerg",
-      "tags": ["儿童咖啡馆", "室内", "Kreuzberg", "生日活动"],
-      "tipZh": "适合安排在 Technikmuseum 或 Gleisdreieck 公园附近行程里。"
+      "tags": [
+        "儿童咖啡馆",
+        "室内",
+        "Kreuzberg",
+        "生日活动"
+      ],
+      "tipZh": "适合安排在 Technikmuseum 或 Gleisdreieck 公园附近行程里。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "unknown",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "室内玩耍设施丰富，适合低龄宝宝放电。"
+        ]
+      }
     },
     {
       "id": "cafe-blume-hasenheide",
@@ -61,8 +100,26 @@
       "website": "https://blumeberlin.de/en/",
       "sourceName": "Blume Berlin / Kindaling",
       "sourceUrl": "https://www.kindaling.de/kindercafes/cafe-blume-an-der-hasenheide/berlin-neukoelln",
-      "tags": ["儿童友好咖啡", "公园附近", "Neukoelln"],
-      "tipZh": "如果宝宝坐不住，可以和 Hasenheide 公园散步搭配。"
+      "tags": [
+        "儿童友好咖啡",
+        "公园附近",
+        "Neukoelln"
+      ],
+      "tipZh": "如果宝宝坐不住，可以和 Hasenheide 公园散步搭配。",
+      "suitability": {
+        "baby": "good",
+        "heat": "limited",
+        "rain": "limited",
+        "indoorCooling": "unknown",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "更适合和公园散步组合；极端高温或雨天需确认室内座位。"
+        ]
+      }
     },
     {
       "id": "familienzentrum-mehringdamm",
@@ -80,8 +137,27 @@
       "website": "https://www.pfh-berlin.de/de/familienzentrum-mehringdamm",
       "sourceName": "PFH Berlin / Berliner Familienportal",
       "sourceUrl": "https://familienportal.berlin.de/artikel/berliner-familienzentren-in-friedrichshain-kreuzberg",
-      "tags": ["家庭中心", "开放活动", "低价", "社区"],
-      "tipZh": "适合长期关注固定周活动，比一次性景点更适合 11 个月宝宝建立节奏。"
+      "tags": [
+        "家庭中心",
+        "开放活动",
+        "低价",
+        "社区"
+      ],
+      "tipZh": "适合长期关注固定周活动，比一次性景点更适合 11 个月宝宝建立节奏。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "unknown",
+        "stroller": "yes",
+        "changingTable": "unknown",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "信息已按宝宝、天气和出行便利性做初步标注，出发前仍需回源确认。"
+        ]
+      }
     },
     {
       "id": "familienzentrum-moabit-ost",
@@ -99,8 +175,27 @@
       "website": "https://familienzentrum-moabit.de/angebote/familiencafe/",
       "sourceName": "Familienzentrum Moabit-Ost",
       "sourceUrl": "https://familienzentrum-moabit.de/termine/",
-      "tags": ["家庭咖啡", "开放活动", "唱歌", "Moabit"],
-      "tipZh": "如果家附近交通方便，家庭中心是比商业游乐场更稳定的日常选择。"
+      "tags": [
+        "家庭咖啡",
+        "开放活动",
+        "唱歌",
+        "Moabit"
+      ],
+      "tipZh": "如果家附近交通方便，家庭中心是比商业游乐场更稳定的日常选择。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "unknown",
+        "stroller": "yes",
+        "changingTable": "unknown",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "信息已按宝宝、天气和出行便利性做初步标注，出发前仍需回源确认。"
+        ]
+      }
     },
     {
       "id": "la-famiglia-metrum",
@@ -118,8 +213,27 @@
       "website": "https://www.metrumberlin.de/index.php/unsere-angebote/angebote-fuer-alle-eltern-mit-kind/235-la-famiglia-der-familientreff-fuer-eltern-mit-kind-alle-informationen",
       "sourceName": "Metrum Berlin",
       "sourceUrl": "https://www.metrumberlin.de/index.php/unsere-angebote/angebote-fuer-alle-eltern-mit-kind/235-la-famiglia-der-familientreff-fuer-eltern-mit-kind-alle-informationen",
-      "tags": ["免费", "家庭聚点", "开放活动", "东柏林"],
-      "tipZh": "位置偏东，适合住在或计划去 Marzahn-Hellersdorf 一带时使用。"
+      "tags": [
+        "免费",
+        "家庭聚点",
+        "开放活动",
+        "东柏林"
+      ],
+      "tipZh": "位置偏东，适合住在或计划去 Marzahn-Hellersdorf 一带时使用。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "unknown",
+        "stroller": "yes",
+        "changingTable": "unknown",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "信息已按宝宝、天气和出行便利性做初步标注，出发前仍需回源确认。"
+        ]
+      }
     },
     {
       "id": "konzerthaus-family",
@@ -137,8 +251,27 @@
       "website": "https://www.konzerthaus.de/en/for-families",
       "sourceName": "Konzerthaus Berlin / visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/event/rasselbande-baby-concert",
-      "tags": ["儿童音乐会", "婴儿音乐会", "Mitte", "需购票"],
-      "tipZh": "11 个月宝宝优先看 RasselBande 或低龄专场，不要误选 5+、7+ 场次。"
+      "tags": [
+        "儿童音乐会",
+        "婴儿音乐会",
+        "Mitte",
+        "需购票"
+      ],
+      "tipZh": "11 个月宝宝优先看 RasselBande 或低龄专场，不要误选 5+、7+ 场次。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "优先选择 baby concert 或低龄专场，避免较长演出。"
+        ]
+      }
     },
     {
       "id": "berliner-philharmoniker-family",
@@ -156,8 +289,27 @@
       "website": "https://www.berliner-philharmoniker.de/en/education/children-family/",
       "sourceName": "Berliner Philharmoniker",
       "sourceUrl": "https://www.berliner-philharmoniker.de/en/education/children-family/interactive-concerts/",
-      "tags": ["儿童音乐会", "互动音乐", "Tiergarten", "需购票"],
-      "tipZh": "现阶段可先收藏，等孩子到 3 岁左右会更合适。"
+      "tags": [
+        "儿童音乐会",
+        "互动音乐",
+        "Tiergarten",
+        "需购票"
+      ],
+      "tipZh": "现阶段可先收藏，等孩子到 3 岁左右会更合适。",
+      "suitability": {
+        "baby": "future",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "当前宝宝年龄偏小，更适合作为未来 3+ 清单。"
+        ]
+      }
     },
     {
       "id": "atze-musiktheater",
@@ -175,8 +327,27 @@
       "website": "https://atzeberlin.de/",
       "sourceName": "visitBerlin / Berlin Buehnen",
       "sourceUrl": "https://www.visitberlin.de/en/atze-musictheatre",
-      "tags": ["儿童剧场", "音乐剧", "Wedding", "3+"],
-      "tipZh": "看清每场年龄建议；很多儿童剧对语言和坐席耐心有要求。"
+      "tags": [
+        "儿童剧场",
+        "音乐剧",
+        "Wedding",
+        "3+"
+      ],
+      "tipZh": "看清每场年龄建议；很多儿童剧对语言和坐席耐心有要求。",
+      "suitability": {
+        "baby": "future",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "多数剧目偏 3+，目前适合收藏观察。"
+        ]
+      }
     },
     {
       "id": "theater-an-der-parkaue",
@@ -194,8 +365,26 @@
       "website": "https://www.parkaue.de/",
       "sourceName": "visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/theater-der-parkaue",
-      "tags": ["儿童剧场", "Lichtenberg", "周末活动"],
-      "tipZh": "适合孩子稍大后重点关注；目前可先收藏低龄场次。"
+      "tags": [
+        "儿童剧场",
+        "Lichtenberg",
+        "周末活动"
+      ],
+      "tipZh": "适合孩子稍大后重点关注；目前可先收藏低龄场次。",
+      "suitability": {
+        "baby": "future",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "剧目年龄差异大，低龄场次需要单独确认。"
+        ]
+      }
     },
     {
       "id": "machmit-museum",
@@ -213,8 +402,27 @@
       "website": "https://machmitmuseum.de/",
       "sourceName": "MACHmit! / visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/machmit-museum-kids",
-      "tags": ["儿童博物馆", "室内", "动手体验", "Prenzlauer Berg"],
-      "tipZh": "适合雨天备用；周末人多时尽量早点去。"
+      "tags": [
+        "儿童博物馆",
+        "室内",
+        "动手体验",
+        "Prenzlauer Berg"
+      ],
+      "tipZh": "适合雨天备用；周末人多时尽量早点去。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "室内亲子互动强，适合作为雨天/热天备选。"
+        ]
+      }
     },
     {
       "id": "labyrinth-kindermuseum",
@@ -232,8 +440,27 @@
       "website": "https://www.labyrinth-kindermuseum.de/en/visit",
       "sourceName": "Labyrinth Kindermuseum / Museumsportal",
       "sourceUrl": "https://www.museumsportal-berlin.de/en/plan-your-visit/kinder-ins-museum/museen-fuer-kinder/",
-      "tags": ["儿童博物馆", "互动展", "Wedding", "室内"],
-      "tipZh": "对 11 个月宝宝可能偏早，可作为未来 1-2 年重点清单。"
+      "tags": [
+        "儿童博物馆",
+        "互动展",
+        "Wedding",
+        "室内"
+      ],
+      "tipZh": "对 11 个月宝宝可能偏早，可作为未来 1-2 年重点清单。",
+      "suitability": {
+        "baby": "future",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "约 2+ 后更合适，当前可作为未来清单。"
+        ]
+      }
     },
     {
       "id": "anoha",
@@ -251,8 +478,27 @@
       "website": "https://anoha.de/en",
       "sourceName": "ANOHA / Museumsportal",
       "sourceUrl": "https://www.museumsportal-berlin.de/en/museums/anoha/",
-      "tags": ["儿童博物馆", "免费", "室内", "Kreuzberg"],
-      "tipZh": "免费且市中心交通方便，适合加入雨天或半日轻行程。"
+      "tags": [
+        "儿童博物馆",
+        "免费",
+        "室内",
+        "Kreuzberg"
+      ],
+      "tipZh": "免费且市中心交通方便，适合加入雨天或半日轻行程。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "免费且室内，适合轻量半日安排。"
+        ]
+      }
     },
     {
       "id": "fez-berlin",
@@ -270,8 +516,27 @@
       "website": "https://fez-berlin.de/",
       "sourceName": "Berlin.de / visitBerlin",
       "sourceUrl": "https://www.berlin.de/en/attractions-and-sights/3561064-3104052-fez-berlin.en.html",
-      "tags": ["大型亲子中心", "室内外", "周末", "东南柏林"],
-      "tipZh": "目的地较大，去前先选具体馆/演出/活动，避免到场后决策成本太高。"
+      "tags": [
+        "大型亲子中心",
+        "室内外",
+        "周末",
+        "东南柏林"
+      ],
+      "tipZh": "目的地较大，去前先选具体馆/演出/活动，避免到场后决策成本太高。",
+      "suitability": {
+        "baby": "good",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "unknown",
+        "stroller": "yes",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "体量大，适合先选具体馆/活动再出发。"
+        ]
+      }
     },
     {
       "id": "spectrum-technikmuseum",
@@ -289,8 +554,27 @@
       "website": "https://technikmuseum.berlin/en/spectrum/science-center-spectrum/",
       "sourceName": "Technikmuseum / visitBerlin",
       "sourceUrl": "https://www.visitberlin.de/en/spectrum-science-centre-deutsches-technikmuseum",
-      "tags": ["科学体验", "室内", "Kreuzberg", "动手实验"],
-      "tipZh": "现阶段可和家人先踩点，孩子大一点后会更有收获。"
+      "tags": [
+        "科学体验",
+        "室内",
+        "Kreuzberg",
+        "动手实验"
+      ],
+      "tipZh": "现阶段可和家人先踩点，孩子大一点后会更有收获。",
+      "suitability": {
+        "baby": "future",
+        "heat": "good",
+        "rain": "excellent",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "动手科学体验对 11 个月宝宝偏早。"
+        ]
+      }
     },
     {
       "id": "zeiss-grossplanetarium",
@@ -308,8 +592,27 @@
       "website": "https://www.planetarium.berlin/en/zeiss-grossplanetarium",
       "sourceName": "Planetarium Berlin",
       "sourceUrl": "https://www.planetarium.berlin/en/zeiss-grossplanetarium",
-      "tags": ["家庭节目", "音乐视觉", "室内", "Prenzlauer Berg"],
-      "tipZh": "注意节目年龄和时长，低龄宝宝优先选择短场。"
+      "tags": [
+        "家庭节目",
+        "音乐视觉",
+        "室内",
+        "Prenzlauer Berg"
+      ],
+      "tipZh": "注意节目年龄和时长，低龄宝宝优先选择短场。",
+      "suitability": {
+        "baby": "limited",
+        "heat": "good",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "unknown",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "选择短场和低龄节目，注意宝宝是否能接受暗场。"
+        ]
+      }
     },
     {
       "id": "berliner-baeder-swim",
@@ -327,8 +630,27 @@
       "website": "https://www.berlinerbaeder.de/kurse/schwimmkurse/",
       "sourceName": "Berliner Baeder",
       "sourceUrl": "https://familienportal.berlin.de/artikel/schwimmen-lernen-in-berlin",
-      "tags": ["游泳课", "Seepferdchen", "全城", "需抢课"],
-      "tipZh": "把常去泳池加入书签，定期看新课释放；候补和假期强化课都值得关注。"
+      "tags": [
+        "游泳课",
+        "Seepferdchen",
+        "全城",
+        "需抢课"
+      ],
+      "tipZh": "把常去泳池加入书签，定期看新课释放；候补和假期强化课都值得关注。",
+      "suitability": {
+        "baby": "limited",
+        "heat": "excellent",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "yes",
+        "lowCost": false,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "游泳课按年龄分班，11 个月宝宝需找 baby swim 或亲子水适应课程。"
+        ]
+      }
     },
     {
       "id": "sportjugend-free-swim",
@@ -346,8 +668,27 @@
       "website": "https://www.schwimmkurse-sportjugend.de/",
       "sourceName": "Sportjugend Berlin",
       "sourceUrl": "https://www.schwimmkurse-sportjugend.de/",
-      "tags": ["游泳课", "假期", "公益", "Seepferdchen"],
-      "tipZh": "孩子到合适年龄后，假期强化课可能比常规周课更容易形成连续练习。"
+      "tags": [
+        "游泳课",
+        "假期",
+        "公益",
+        "Seepferdchen"
+      ],
+      "tipZh": "孩子到合适年龄后，假期强化课可能比常规周课更容易形成连续练习。",
+      "suitability": {
+        "baby": "future",
+        "heat": "excellent",
+        "rain": "good",
+        "indoorCooling": "partial",
+        "stroller": "partial",
+        "changingTable": "yes",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "主要面向较大儿童，适合作为未来游泳强化课观察。"
+        ]
+      }
     },
     {
       "id": "berlinmitkind-calendar",
@@ -363,8 +704,27 @@
       "website": "https://berlinmitkind.de/veranstaltungskalender/",
       "sourceName": "Berlin mit Kind",
       "sourceUrl": "https://berlinmitkind.de/veranstaltungskalender/",
-      "tags": ["活动日历", "周末", "课程", "全城"],
-      "tipZh": "适合每周五快速扫一遍，找周末临时活动。"
+      "tags": [
+        "活动日历",
+        "周末",
+        "课程",
+        "全城"
+      ],
+      "tipZh": "适合每周五快速扫一遍，找周末临时活动。",
+      "suitability": {
+        "baby": "check",
+        "heat": "check",
+        "rain": "check",
+        "indoorCooling": "unknown",
+        "stroller": "unknown",
+        "changingTable": "unknown",
+        "lowCost": true,
+        "verificationDate": "2026-06-23",
+        "refreshAfter": "2026-09-23",
+        "notesZh": [
+          "聚合日历需要按具体活动二次筛选年龄、室内和价格。"
+        ]
+      }
     }
   ]
 }

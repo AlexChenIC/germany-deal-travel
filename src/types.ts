@@ -102,6 +102,23 @@ export type KidActivityCategory =
   | "theatre"
   | "calendar";
 
+export type KidActivityFitLevel = "excellent" | "good" | "limited" | "future" | "check";
+
+export type KidFacilityStatus = "yes" | "partial" | "unknown" | "no";
+
+export interface KidActivitySuitability {
+  baby: KidActivityFitLevel;
+  heat: KidActivityFitLevel;
+  rain: KidActivityFitLevel;
+  indoorCooling: KidFacilityStatus;
+  stroller: KidFacilityStatus;
+  changingTable: KidFacilityStatus;
+  lowCost: boolean;
+  verificationDate: string;
+  refreshAfter: string;
+  notesZh: string[];
+}
+
 export interface KidActivity {
   id: string;
   name: string;
@@ -120,6 +137,7 @@ export interface KidActivity {
   sourceUrl: string;
   tags: string[];
   tipZh: string;
+  suitability: KidActivitySuitability;
 }
 
 export interface KidActivityData {

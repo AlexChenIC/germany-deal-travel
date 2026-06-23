@@ -11,6 +11,10 @@ import type {
   TravelItem,
   TravelScope,
 } from "../src/types";
+import {
+  createSourceAdapters,
+  fetchItemsWithAdapters,
+} from "./radar/source-adapters";
 
 const rootDir = process.cwd();
 const catalogPath = path.join(rootDir, "src/data/source-catalog.json");
@@ -24,6 +28,17 @@ const parser = new XMLParser({
   attributeNamePrefix: "@_",
   trimValues: true,
   cdataPropName: "#cdata",
+});
+
+const sourceAdapters = createSourceAdapters({
+  fetchRssItems: async (source) => {
+    if (!source.url) return [];
+    const xml = await fetchText(source.url);
+    return getFeedItems(xml)
+      .map((item) => normalizeRssItem(item, source))
+      .filter((item): item is TravelItem => Boolean(item));
+  },
+  fetchVisitBerlinEvents: scrapeVisitBerlin,
 });
 
 const euroPattern =
@@ -371,15 +386,7 @@ async function fetchSource(
   }
 
   try {
-    let items: TravelItem[] = [];
-    if (source.kind === "rss" && source.url) {
-      const xml = await fetchText(source.url);
-      items = getFeedItems(xml)
-        .map((item) => normalizeRssItem(item, source))
-        .filter((item): item is TravelItem => Boolean(item));
-    } else if (source.id === "visitberlin-events") {
-      items = await scrapeVisitBerlin(source);
-    }
+    const items = await fetchItemsWithAdapters(source, sourceAdapters);
 
     return {
       run: {

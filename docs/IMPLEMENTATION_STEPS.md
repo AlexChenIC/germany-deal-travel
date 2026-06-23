@@ -120,7 +120,25 @@
 - 已新增近期评论风险接口，支持可选 `GOOGLE_PLACES_API_KEY`。
 - 没有 API key 时，页面明确显示未配置并提供检查入口。
 
+## Step 4.6: API 成本和安全收口
+
+状态：已完成。
+
+目的：在接入 SerpApi 和 Google Places 后，把费用与 key 暴露风险收住。
+
+任务：
+- 记录 Google Cloud budget alert、quota、API key 限制和 secret 使用方式。
+- 在站内信息源页展示 API 防护清单。
+- 明确 `GOOGLE_PLACES_API_KEY` 和 `SERPAPI_API_KEY` 只能作为后端/Actions secret 使用。
+- 明确 `VITE_GOOGLE_MAPS_EMBED_API_KEY` 是前端可见 key，必须单独创建并限制 referrer。
+
+完成标准：
+- 项目文档包含可复查的 API 成本和安全清单。
+- 站内能看到当前防护状态和后续 quota 建议。
+
 ## Step 5: 前端组件拆分
+
+状态：已完成。
 
 目的：降低后续开发维护成本。
 
@@ -136,7 +154,16 @@
 - 构建通过。
 - 后续功能改动的 diff 明显变小。
 
+当前完成：
+- 已抽出 `src/config.ts`，集中管理标签、API 防护清单和环境配置。
+- 已抽出 `src/hooks/useStoredIdSet.ts`，统一收藏/排除本地存储逻辑。
+- 已抽出 `src/lib/date.ts` 和 `src/lib/search.ts`，复用日期、新增标签和搜索别名逻辑。
+- 已抽出 `src/components/Controls.tsx` 和 `src/components/TravelCards.tsx`。
+- 已抽出 `src/pages/PlanView.tsx` 和 `src/pages/SourcesView.tsx`。
+
 ## Step 6: 数据源适配器重构
+
+状态：已完成。
 
 目的：让自动化检索更容易扩展，也更不容易因为单个来源失败而影响整体。
 
@@ -151,7 +178,15 @@
 - 当前来源输出保持等价。
 - 至少覆盖当前来源类型的 parser 测试。
 
+当前完成：
+- 已新增 `scripts/radar/source-adapters.ts`，定义 `SourceAdapter` contract。
+- 已把 RSS feed 和 visitBerlin HTML 来源接入 adapter 列表。
+- 已新增 `tests/source-adapters.test.ts`，覆盖 RSS、visitBerlin 和 unsupported source 回退。
+- `npm run test` 和 `npm run build` 已通过。
+
 ## Step 7: 儿童活动增强
+
+状态：已完成。
 
 目的：让儿童活动页可以直接帮助日常和周末决策。
 
@@ -164,6 +199,12 @@
 完成标准：
 - 可以快速筛选“热天 + 11 个月宝宝 + 室内”。
 - 每条资料能看出是否近期核验。
+
+当前完成：
+- 已为儿童活动数据增加 `suitability` 字段：宝宝适配、热天/雨天适配、室内制冷、推车、换尿布、低价标记、核验/复查日期。
+- 儿童活动页已新增“11个月宝宝”“热天适合”“雨天适合”“免费/低价”筛选。
+- 每张儿童活动卡展示适配标签、核验日期和复查提醒。
+- 已保留地图和 Google Maps 跳转/内嵌逻辑。
 
 ## Step 8: 地图增强
 
