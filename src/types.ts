@@ -128,3 +128,70 @@ export interface KidActivityData {
   notes: string[];
   items: KidActivity[];
 }
+
+export type HeatEscapeStayType =
+  | "waterpark-resort"
+  | "lake-resort"
+  | "thermal-spa"
+  | "spa-hotel"
+  | "city-staycation";
+
+export type AirConditioningStatus = "confirmed" | "likely" | "uncertain" | "none";
+
+export interface HeatEscapeEvidence {
+  label: string;
+  url: string;
+}
+
+export interface HeatEscapeStay {
+  id: string;
+  name: string;
+  nameZh: string;
+  type: HeatEscapeStayType;
+  ratingLabel: string;
+  location: string;
+  region: string;
+  carMinutes: number;
+  trainMinutes?: number;
+  travelNoteZh: string;
+  priceRangeZh: string;
+  bookingUrl: string;
+  mapsUrl: string;
+  airConditioning: {
+    status: AirConditioningStatus;
+    confidence: 1 | 2 | 3;
+    labelZh: string;
+    evidence: HeatEscapeEvidence[];
+  };
+  pool: {
+    indoor: boolean;
+    outdoor: boolean;
+    children: boolean;
+    thermal: boolean;
+    lake: boolean;
+    labelZh: string;
+    evidence: HeatEscapeEvidence[];
+  };
+  spa: {
+    sauna: boolean;
+    treatments: boolean;
+    labelZh: string;
+    evidence: HeatEscapeEvidence[];
+  };
+  family: {
+    babyScore: 1 | 2 | 3 | 4 | 5;
+    labelZh: string;
+    babyNotesZh: string;
+  };
+  heatScore: 1 | 2 | 3 | 4 | 5;
+  prosZh: string[];
+  risksZh: string[];
+  checkedAt: string;
+}
+
+export interface HeatEscapeStayData {
+  updatedAt: string;
+  timezone: string;
+  notes: string[];
+  items: HeatEscapeStay[];
+}

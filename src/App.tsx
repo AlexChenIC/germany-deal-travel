@@ -1,8 +1,12 @@
 import {
+  AirVent,
   Baby,
+  BadgeEuro,
+  BedDouble,
   CalendarDays,
   CheckCircle2,
   CircleAlert,
+  Clock3,
   Compass,
   Coffee,
   Drama,
@@ -19,12 +23,16 @@ import {
   RefreshCcw,
   RotateCcw,
   Search,
+  ShieldCheck,
   Ship,
+  Snowflake,
   Sparkles,
   Tags,
+  ThermometerSun,
   Waves,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import heatEscapeStaysJson from "./data/heat-escape-stays.json";
 import kidsActivitiesJson from "./data/kids-activities.json";
 import radarJson from "./data/radar-data.json";
 import sourceCatalogJson from "./data/source-catalog.json";
@@ -36,7 +44,11 @@ import {
   type TravelRecommendation,
 } from "./lib/recommendations";
 import type {
+  AirConditioningStatus,
   DealCategory,
+  HeatEscapeStay,
+  HeatEscapeStayData,
+  HeatEscapeStayType,
   KidActivity,
   KidActivityCategory,
   KidActivityData,
@@ -50,6 +62,7 @@ import type {
 const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
 const kidsActivities = kidsActivitiesJson as KidActivityData;
+const heatEscapeStays = heatEscapeStaysJson as HeatEscapeStayData;
 const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
 const actionsWorkflowUrl =
   "https://github.com/AlexChenIC/germany-deal-travel/actions/workflows/pages.yml";
@@ -84,8 +97,32 @@ const kidCategoryLabels: Record<KidActivityCategory, string> = {
   calendar: "活动日历",
 };
 
-type Tab = "picks" | "radar" | "events" | "favorites" | "kids" | "sources" | "plan";
+const heatStayTypeLabels: Record<HeatEscapeStayType, string> = {
+  "waterpark-resort": "水上度假区",
+  "lake-resort": "湖畔度假",
+  "thermal-spa": "温泉 SPA",
+  "spa-hotel": "SPA 酒店",
+  "city-staycation": "城市避暑",
+};
+
+const acStatusLabels: Record<AirConditioningStatus, string> = {
+  confirmed: "确认房间空调",
+  likely: "较可信空调",
+  uncertain: "空调待确认",
+  none: "不建议高温周末",
+};
+
+type Tab =
+  | "picks"
+  | "heat"
+  | "radar"
+  | "events"
+  | "favorites"
+  | "kids"
+  | "sources"
+  | "plan";
 type SortMode = "priority" | "newest" | "price";
+type HeatSortMode = "fit" | "distance" | "baby" | "ac";
 type FreshnessKind = "today" | "week";
 type AutomationStatus = "ok" | "warning" | "error";
 
@@ -256,6 +293,9 @@ function App() {
         <TabButton active={activeTab === "picks"} onClick={() => selectTab("picks")}>
           为我推荐
         </TabButton>
+        <TabButton active={activeTab === "heat"} onClick={() => selectTab("heat")}>
+          避暑短住
+        </TabButton>
         <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
           推荐雷达
         </TabButton>
@@ -289,6 +329,8 @@ function App() {
           onToggleFavorite={toggleFavorite}
           onExclude={excludeItem}
         />
+      ) : activeTab === "heat" ? (
+        <HeatEscapeView />
       ) : activeTab === "sources" ? (
         <SourcesView runs={radar.sources} />
       ) : activeTab === "plan" ? (
@@ -798,6 +840,308 @@ function PersonalizedPicksView({
         </div>
       </section>
     </section>
+  );
+}
+
+function HeatEscapeView() {
+  const [reliableAcOnly, setReliableAcOnly] = useState(true);
+  const [poolOnly, setPoolOnly] = useState(true);
+  const [spaOnly, setSpaOnly] = useState(false);
+  const [babyReadyOnly, setBabyReadyOnly] = useState(false);
+  const [maxCarMinutes, setMaxCarMinutes] = useState("120");
+  const [sortMode, setSortMode] = useState<HeatSortMode>("fit");
+
+  const filteredStays = useMemo(() => {
+    const maxMinutes = Number(maxCarMinutes);
+    return heatEscapeStays.items
+      .filter((stay) => {
+        return (
+          (!reliableAcOnly || isReliableAc(stay.airConditioning.status)) &&
+          (!poolOnly || hasPool(stay)) &&
+          (!spaOnly || stay.spa.sauna || stay.spa.treatments) &&
+          (!babyReadyOnly || stay.family.babyScore >= 4) &&
+          stay.carMinutes <= maxMinutes
+        );
+      })
+      .sort((a, b) => {
+        if (sortMode === "distance") return a.carMinutes - b.carMinutes;
+        if (sortMode === "baby") return b.family.babyScore - a.family.babyScore;
+        if (sortMode === "ac") {
+          return b.airConditioning.confidence - a.airConditioning.confidence;
+        }
+        return scoreHeatStay(b) - scoreHeatStay(a);
+      });
+  }, [babyReadyOnly, maxCarMinutes, poolOnly, reliableAcOnly, sortMode, spaOnly]);
+
+  const reliableAcCount = heatEscapeStays.items.filter((stay) =>
+    isReliableAc(stay.airConditioning.status),
+  ).length;
+  const poolCount = heatEscapeStays.items.filter(hasPool).length;
+  const babyReadyCount = heatEscapeStays.items.filter(
+    (stay) => stay.family.babyScore >= 4,
+  ).length;
+
+  return (
+    <section className="heat-page">
+      <div className="heat-hero">
+        <div>
+          <p className="eyebrow">35°C+ weekend escape</p>
+          <h2>避暑短住</h2>
+          <p>
+            专门筛选柏林 1-2 小时范围内，房间空调较可信、有泳池或 SPA、适合三位成年人和
+            11 个月宝宝短住的酒店候选。
+          </p>
+        </div>
+        <div className="heat-notes">
+          {heatEscapeStays.notes.map((note) => (
+            <span key={note}>{note}</span>
+          ))}
+        </div>
+      </div>
+
+      <section className="heat-metrics" aria-label="heat escape summary">
+        <Metric label="候选酒店" value={heatEscapeStays.items.length} icon={<Hotel />} />
+        <Metric label="可靠空调" value={reliableAcCount} icon={<AirVent />} />
+        <Metric label="有泳池" value={poolCount} icon={<Waves />} />
+        <Metric label="宝宝优先" value={babyReadyCount} icon={<Baby />} />
+      </section>
+
+      <section className="heat-toolbar" aria-label="heat stay filters">
+        <button
+          className={reliableAcOnly ? "toggle is-on" : "toggle"}
+          onClick={() => setReliableAcOnly((value) => !value)}
+          type="button"
+        >
+          <Snowflake size={17} aria-hidden="true" />
+          可靠空调
+        </button>
+        <button
+          className={poolOnly ? "toggle is-on" : "toggle"}
+          onClick={() => setPoolOnly((value) => !value)}
+          type="button"
+        >
+          <Waves size={17} aria-hidden="true" />
+          有泳池
+        </button>
+        <button
+          className={spaOnly ? "toggle is-on" : "toggle"}
+          onClick={() => setSpaOnly((value) => !value)}
+          type="button"
+        >
+          <Sparkles size={17} aria-hidden="true" />
+          桑拿/SPA
+        </button>
+        <button
+          className={babyReadyOnly ? "toggle is-on" : "toggle"}
+          onClick={() => setBabyReadyOnly((value) => !value)}
+          type="button"
+        >
+          <Baby size={17} aria-hidden="true" />
+          宝宝优先
+        </button>
+        <SelectField
+          icon={<Clock3 size={16} />}
+          value={maxCarMinutes}
+          onChange={setMaxCarMinutes}
+          options={[
+            ["45", "45 分钟内"],
+            ["75", "75 分钟内"],
+            ["90", "90 分钟内"],
+            ["120", "2 小时内"],
+          ]}
+        />
+        <SelectField
+          icon={<Filter size={16} />}
+          value={sortMode}
+          onChange={(value) => setSortMode(value as HeatSortMode)}
+          options={[
+            ["fit", "按家庭匹配"],
+            ["distance", "按距离"],
+            ["baby", "按宝宝友好"],
+            ["ac", "按空调证据"],
+          ]}
+        />
+      </section>
+
+      <section className="results-header">
+        <h2>避暑候选</h2>
+        <span>{filteredStays.length} 条</span>
+      </section>
+
+      <section className="heat-card-grid">
+        {filteredStays.map((stay, index) => (
+          <HeatStayCard key={stay.id} rank={index + 1} stay={stay} />
+        ))}
+      </section>
+
+      {filteredStays.length === 0 && (
+        <div className="empty-state">
+          <Search size={28} aria-hidden="true" />
+          <p>当前筛选没有结果</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function HeatStayCard({ stay, rank }: { stay: HeatEscapeStay; rank: number }) {
+  const evidenceLinks = collectHeatEvidence(stay);
+  const acTone = stay.airConditioning.status;
+
+  return (
+    <article className="heat-card">
+      <div className="heat-card-top">
+        <div>
+          <div className="card-meta">
+            <span>{heatStayTypeLabels[stay.type]}</span>
+            <span>{stay.ratingLabel}</span>
+          </div>
+          <h3>{stay.nameZh}</h3>
+          <p className="original-title">{stay.name}</p>
+        </div>
+        <div className="heat-rank">
+          <strong>{rank}</strong>
+          <span>推荐</span>
+        </div>
+      </div>
+
+      <div className="heat-location-row">
+        <span>
+          <MapPin size={15} aria-hidden="true" />
+          {stay.location}
+        </span>
+        <span>
+          <Clock3 size={15} aria-hidden="true" />
+          {formatHeatTravelTime(stay)}
+        </span>
+        <span>
+          <BadgeEuro size={15} aria-hidden="true" />
+          {stay.priceRangeZh}
+        </span>
+      </div>
+
+      <div className="heat-score-grid">
+        <HeatScore label="避暑" value={`${stay.heatScore}/5`} icon={<ThermometerSun />} />
+        <HeatScore label="宝宝" value={`${stay.family.babyScore}/5`} icon={<Baby />} />
+        <HeatScore
+          label="匹配"
+          value={String(scoreHeatStay(stay))}
+          icon={<ShieldCheck />}
+        />
+      </div>
+
+      <div className="heat-section-block">
+        <div className="heat-section-title">
+          <AirVent size={17} aria-hidden="true" />
+          <span className={`ac-badge is-${acTone}`}>{acStatusLabels[acTone]}</span>
+        </div>
+        <p>{stay.airConditioning.labelZh}</p>
+      </div>
+
+      <div className="heat-feature-grid">
+        <div className="heat-section-block">
+          <div className="heat-section-title">
+            <Waves size={17} aria-hidden="true" />
+            <strong>泳池/水区</strong>
+          </div>
+          <p>{stay.pool.labelZh}</p>
+        </div>
+        <div className="heat-section-block">
+          <div className="heat-section-title">
+            <Sparkles size={17} aria-hidden="true" />
+            <strong>桑拿/SPA</strong>
+          </div>
+          <p>{stay.spa.labelZh}</p>
+        </div>
+      </div>
+
+      <div className="heat-section-block">
+        <div className="heat-section-title">
+          <BedDouble size={17} aria-hidden="true" />
+          <strong>家庭适配</strong>
+        </div>
+        <p>{stay.family.labelZh}</p>
+        <p className="heat-baby-note">{stay.family.babyNotesZh}</p>
+      </div>
+
+      <div className="heat-list-grid">
+        <HeatTextList title="优点" tone="pro" items={stay.prosZh} />
+        <HeatTextList title="风险" tone="risk" items={stay.risksZh} />
+      </div>
+
+      <HeatEvidenceLinks links={evidenceLinks} />
+
+      <div className="link-row heat-card-links">
+        <a className="primary-link" href={stay.bookingUrl} target="_blank" rel="noreferrer">
+          打开预订/官网
+          <ExternalLink size={16} aria-hidden="true" />
+        </a>
+        <a className="text-link map-link" href={stay.mapsUrl} target="_blank" rel="noreferrer">
+          Google 地图
+          <MapPin size={15} aria-hidden="true" />
+        </a>
+      </div>
+
+      <span className="heat-checked">核验日期：{stay.checkedAt}</span>
+    </article>
+  );
+}
+
+function HeatScore({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon: React.ReactElement;
+}) {
+  return (
+    <div className="heat-score">
+      {icon}
+      <div>
+        <strong>{value}</strong>
+        <span>{label}</span>
+      </div>
+    </div>
+  );
+}
+
+function HeatTextList({
+  title,
+  tone,
+  items,
+}: {
+  title: string;
+  tone: "pro" | "risk";
+  items: string[];
+}) {
+  return (
+    <div className={`heat-text-list is-${tone}`}>
+      <strong>{title}</strong>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function HeatEvidenceLinks({ links }: { links: Array<{ label: string; url: string }> }) {
+  if (links.length === 0) return null;
+  return (
+    <div className="heat-evidence">
+      <strong>证据链接</strong>
+      <div>
+        {links.map((link) => (
+          <a className="text-link" href={link.url} key={link.url} target="_blank" rel="noreferrer">
+            {link.label}
+            <ExternalLink size={14} aria-hidden="true" />
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -1388,6 +1732,56 @@ function KidActivityCard({
   );
 }
 
+function formatHeatTravelTime(stay: HeatEscapeStay) {
+  const trainPart = stay.trainMinutes ? `；火车约 ${stay.trainMinutes} 分钟` : "";
+  return `自驾约 ${stay.carMinutes} 分钟${trainPart}`;
+}
+
+function isReliableAc(status: AirConditioningStatus) {
+  return status === "confirmed" || status === "likely";
+}
+
+function hasPool(stay: HeatEscapeStay) {
+  return stay.pool.indoor || stay.pool.outdoor || stay.pool.thermal || stay.pool.lake;
+}
+
+function scoreHeatStay(stay: HeatEscapeStay) {
+  const acScore: Record<AirConditioningStatus, number> = {
+    confirmed: 20,
+    likely: 13,
+    uncertain: 4,
+    none: -20,
+  };
+  const poolScore = hasPool(stay) ? 12 : 0;
+  const spaScore = stay.spa.sauna || stay.spa.treatments ? 7 : 0;
+  const childrenPoolScore = stay.pool.children ? 5 : 0;
+  const distancePenalty = Math.round(stay.carMinutes / 10);
+
+  return (
+    stay.heatScore * 12 +
+    stay.family.babyScore * 8 +
+    acScore[stay.airConditioning.status] +
+    poolScore +
+    spaScore +
+    childrenPoolScore -
+    distancePenalty
+  );
+}
+
+function collectHeatEvidence(stay: HeatEscapeStay) {
+  const links = [
+    ...stay.airConditioning.evidence,
+    ...stay.pool.evidence,
+    ...stay.spa.evidence,
+  ];
+  const seenUrls = new Set<string>();
+  return links.filter((link) => {
+    if (seenUrls.has(link.url)) return false;
+    seenUrls.add(link.url);
+    return true;
+  });
+}
+
 function displayTitle(item: TravelItem) {
   return item.titleZh || item.title;
 }
@@ -1740,6 +2134,7 @@ function hashToTab(hash: string): Tab {
   const normalized = hash.replace(/^#\/?/, "");
   if (
     normalized === "picks" ||
+    normalized === "heat" ||
     normalized === "events" ||
     normalized === "favorites" ||
     normalized === "kids" ||

@@ -80,7 +80,13 @@ h1 {
 .source-title span,
 .status-chip,
 .freshness-badge,
-.automation-stat {
+.automation-stat,
+.ac-badge,
+.heat-location-row span,
+.heat-score,
+.heat-section-block,
+.heat-text-list,
+.heat-evidence {
   border: 1px solid #d7d2c5;
   background: #fffdfa;
 }
@@ -734,7 +740,8 @@ h1 {
 
 .collection-page,
 .kids-page,
-.picks-page {
+.picks-page,
+.heat-page {
   display: grid;
   gap: 18px;
 }
@@ -742,6 +749,7 @@ h1 {
 .collection-hero,
 .kids-hero,
 .picks-hero,
+.heat-hero,
 .kids-workbench {
   border: 1px solid #d7d2c5;
   border-radius: 8px;
@@ -751,7 +759,8 @@ h1 {
 
 .collection-hero,
 .kids-hero,
-.picks-hero {
+.picks-hero,
+.heat-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
   gap: 20px;
@@ -760,7 +769,8 @@ h1 {
 
 .collection-hero h2,
 .kids-hero h2,
-.picks-hero h2 {
+.picks-hero h2,
+.heat-hero h2 {
   margin-bottom: 10px;
   font-size: clamp(1.5rem, 2.4vw, 2.35rem);
   letter-spacing: 0;
@@ -768,7 +778,8 @@ h1 {
 
 .collection-hero p,
 .kids-hero p,
-.picks-hero p {
+.picks-hero p,
+.heat-hero p {
   max-width: 760px;
   margin-bottom: 0;
   color: #4f5a56;
@@ -809,6 +820,12 @@ h1 {
 }
 
 .picks-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.heat-metrics {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
@@ -994,13 +1011,15 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.kids-notes {
+.kids-notes,
+.heat-notes {
   display: grid;
   align-content: start;
   gap: 8px;
 }
 
-.kids-notes span {
+.kids-notes span,
+.heat-notes span {
   display: block;
   padding: 9px 10px;
   border: 1px solid #dde3d1;
@@ -1304,6 +1323,264 @@ h1 {
   line-height: 1.5;
 }
 
+.heat-toolbar {
+  display: grid;
+  grid-template-columns:
+    repeat(4, minmax(128px, auto))
+    minmax(150px, 0.8fr)
+    minmax(170px, 0.9fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.heat-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.heat-card {
+  display: flex;
+  min-width: 0;
+  min-height: 560px;
+  flex-direction: column;
+  padding: 14px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.heat-card-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.heat-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.12rem;
+  line-height: 1.28;
+}
+
+.heat-rank {
+  display: grid;
+  min-width: 62px;
+  justify-items: center;
+  padding: 8px 9px;
+  border: 1px solid #a8cfc5;
+  border-radius: 8px;
+  background: #e9f7f3;
+  color: #0d5f59;
+}
+
+.heat-rank strong {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.heat-rank span,
+.heat-checked {
+  color: #66736f;
+  font-size: 0.76rem;
+}
+
+.heat-location-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.heat-location-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 31px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: #43504c;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.heat-score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.heat-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 62px;
+  padding: 9px;
+  border-radius: 8px;
+}
+
+.heat-score svg {
+  flex: 0 0 auto;
+  color: #0f766e;
+}
+
+.heat-score strong {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+
+.heat-score span {
+  color: #66736f;
+  font-size: 0.76rem;
+}
+
+.heat-section-block {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heat-section-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: #0d5f59;
+}
+
+.heat-section-title strong {
+  font-size: 0.9rem;
+}
+
+.heat-section-block p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.ac-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.ac-badge.is-confirmed {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.ac-badge.is-likely {
+  border-color: #b8cf9b;
+  background: #f2f8e8;
+  color: #526d1e;
+}
+
+.ac-badge.is-uncertain {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.ac-badge.is-none {
+  border-color: #d89a8a;
+  background: #ffece7;
+  color: #9b2f1f;
+}
+
+.heat-feature-grid,
+.heat-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.heat-feature-grid .heat-section-block {
+  margin-bottom: 10px;
+}
+
+.heat-baby-note {
+  border-left: 3px solid #d2a84c;
+  padding-left: 9px;
+}
+
+.heat-text-list {
+  min-width: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heat-text-list strong,
+.heat-evidence strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 0.9rem;
+}
+
+.heat-text-list ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: #4f5a56;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.heat-text-list.is-pro {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.heat-text-list.is-risk {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.heat-evidence {
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.heat-evidence div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.heat-evidence .text-link {
+  margin-top: 0;
+  font-size: 0.82rem;
+}
+
+.heat-card-links {
+  margin-top: 12px;
+}
+
+.heat-card-links .primary-link {
+  min-width: 190px;
+  padding: 0 12px;
+}
+
+.heat-checked {
+  display: block;
+  margin-top: 10px;
+}
+
 @media (max-width: 1180px) {
   .toolbar {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1322,8 +1599,14 @@ h1 {
   }
 
   .picks-metrics,
-  .kid-pick-grid {
+  .heat-metrics,
+  .kid-pick-grid,
+  .heat-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .heat-toolbar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .automation-panel {
@@ -1337,6 +1620,7 @@ h1 {
   .collection-hero,
   .kids-hero,
   .picks-hero,
+  .heat-hero,
   .kids-workbench,
   .recommendation-grid,
   .kids-card-grid {
@@ -1366,7 +1650,13 @@ h1 {
   .toolbar,
   .automation-stats,
   .picks-metrics,
+  .heat-metrics,
   .kid-pick-grid,
+  .heat-card-grid,
+  .heat-toolbar,
+  .heat-score-grid,
+  .heat-feature-grid,
+  .heat-list-grid,
   .spotlight-grid,
   .card-grid,
   .plan-board,
@@ -1395,8 +1685,19 @@ h1 {
 
   .collection-hero,
   .kids-hero,
+  .picks-hero,
+  .heat-hero,
   .kids-workbench {
     padding: 12px;
+  }
+
+  .heat-card-top {
+    grid-template-columns: 1fr;
+  }
+
+  .heat-rank {
+    width: 72px;
+    justify-items: start;
   }
 
   .kid-category-grid {

@@ -7,6 +7,7 @@
 ## 当前功能
 
 - 推荐雷达：汇总旅行折扣、柏林活动、酒店/度假村、机酒套餐、邮轮和全包行程。
+- 避暑短住：筛选柏林市内和周边 1-2 小时范围内，房间空调较可信、有泳池/SPA、适合宝宝和长辈的酒店候选。
 - 我的收藏：在浏览器本地保存收藏项目，并可把不感兴趣的项目加入排除列表。
 - 儿童活动：柏林市区儿童咖啡馆、亲子音乐会、开放活动、儿童博物馆、剧场和游泳课资料库，带近似地图点位。
 - 信息源：展示已接入和候选的旅行/活动资料源。
@@ -54,6 +55,7 @@ npm run check
 - 分步执行清单见 [docs/IMPLEMENTATION_STEPS.md](docs/IMPLEMENTATION_STEPS.md)。
 - 自动更新说明见 [docs/AUTOMATION.md](docs/AUTOMATION.md)。
 - 家庭推荐规则见 [docs/RECOMMENDATIONS.md](docs/RECOMMENDATIONS.md)。
+- 避暑短住数据说明见 [docs/HEAT_ESCAPE_STAYS.md](docs/HEAT_ESCAPE_STAYS.md)。
 
 ## 部署
 

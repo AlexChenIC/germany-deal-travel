@@ -1,0 +1,551 @@
+{
+  "updatedAt": "2026-06-23",
+  "timezone": "Europe/Berlin",
+  "notes": [
+    "这是第一版人工核验 shortlist，不是实时可订性或实时价格搜索。",
+    "只把房间空调证据分为确认、较可信、待确认和不推荐；预订前仍需核对具体房型。",
+    "高温周末优先选择确认房间空调 + 室内/室外泳池 + 电梯/家庭房/婴儿床可确认的房型。"
+  ],
+  "items": [
+    {
+      "id": "tropical-islands-resort",
+      "name": "Tropical Islands Resort",
+      "nameZh": "Tropical Islands 热带岛度假区",
+      "type": "waterpark-resort",
+      "ratingLabel": "大型水上度假区",
+      "location": "Krausnick, Brandenburg",
+      "region": "Spreewald / Krausnick",
+      "carMinutes": 70,
+      "trainMinutes": 80,
+      "travelNoteZh": "自驾约 1 小时 10 分；公共交通通常到 Brand Tropical Islands 后接驳。",
+      "priceRangeZh": "中高；房型、门票和套票差异很大，需按日期回源确认。",
+      "bookingUrl": "https://www.tropical-islands.de/en/overnight-stay/accommodation/all-our-accommodations",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Tropical%20Islands%20Resort%20Krausnick",
+      "airConditioning": {
+        "status": "confirmed",
+        "confidence": 3,
+        "labelZh": "确认：Premium 房、OHANA、AMAZONIA 等房型/屋型列出空调；帐篷明确没有空调。",
+        "evidence": [
+          {
+            "label": "官方 Premium room facilities",
+            "url": "https://www.tropical-islands.de/en/unterkunft/zimmer-dome/premium-doppelzimmer"
+          },
+          {
+            "label": "官方 AMAZONIA house facilities",
+            "url": "https://www.tropical-islands.de/en/unterkunft/sunrise-homes/amazonia-house-standard-4-pers"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": true,
+        "children": true,
+        "thermal": false,
+        "lake": false,
+        "labelZh": "大型室内热带水世界、儿童水上设施和室外 AMAZONIA 区。",
+        "evidence": [
+          {
+            "label": "官方首页：大型热带度假区和水区",
+            "url": "https://www.tropical-islands.de/en"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "有 Sauna & Spa、按摩和 wellness 区。",
+        "evidence": [
+          {
+            "label": "官方 Sauna & Spa",
+            "url": "https://www.tropical-islands.de/en/entdecke-die-tropen/sauna-und-spa"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 5,
+        "labelZh": "宝宝和儿童非常友好，但动线复杂、人多、噪音较高。",
+        "babyNotesZh": "只订带空调的房型/度假屋，不选帐篷；提前安排午睡、辅食和推车路线。"
+      },
+      "heatScore": 5,
+      "prosZh": [
+        "能在度假区里待两天，不需要外出晒太阳。",
+        "水上活动、儿童区域和餐饮选择多。",
+        "空调证据最明确，但必须选对房型。"
+      ],
+      "risksZh": [
+        "高峰期人多且室内热带环境可能潮湿。",
+        "Dome 内部分房型可能热闹，宝宝午睡需谨慎选房。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "van-der-valk-berlin-brandenburg",
+      "name": "Van der Valk Hotel Berlin Brandenburg",
+      "nameZh": "Van der Valk 柏林勃兰登堡酒店",
+      "type": "spa-hotel",
+      "ratingLabel": "4 星酒店",
+      "location": "Blankenfelde-Mahlow",
+      "region": "南柏林 / BER 方向",
+      "carMinutes": 35,
+      "trainMinutes": 55,
+      "travelNoteZh": "自驾从柏林南部较近；公共交通可达但更适合自驾带娃。",
+      "priceRangeZh": "中等；第三方曾显示约 €100+ 起，周末需重新核价。",
+      "bookingUrl": "https://berlin.vandervalk.de/en",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Van%20der%20Valk%20Hotel%20Berlin%20Brandenburg",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：第三方房型页列出 270 间空调客房；预订前仍需确认具体房型。",
+        "evidence": [
+          {
+            "label": "Travelocity room features",
+            "url": "https://www.travelocity.com/Berlin-Hotels-Van-Der-Valk-Hotel-Berlin-Brandenburg.h922217.Hotel-Information"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": false,
+        "children": false,
+        "thermal": false,
+        "lake": false,
+        "labelZh": "酒店客人可用室内泳池。",
+        "evidence": [
+          {
+            "label": "官方 wellness/pool description",
+            "url": "https://berlin.vandervalk.de/en"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "有 Finnish sauna、健身房和按摩/护理。",
+        "evidence": [
+          {
+            "label": "官方 wellness facilities",
+            "url": "https://berlin.vandervalk.de/en"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 4,
+        "labelZh": "家庭房最高可住 5 人，停车方便，适合作为低风险近郊避暑。",
+        "babyNotesZh": "更像便利型酒店，不是强度假村；宝宝床和家庭房需预订时确认。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "离柏林近，取消/改计划成本低。",
+        "室内泳池和桑拿足够支持酒店内待半天到一天。",
+        "家庭房和停车对三大一小较实用。"
+      ],
+      "risksZh": [
+        "空调证据主要来自第三方房型页。",
+        "不是湖边/大型 resort，度假感弱于其他候选。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "sunday-resort-schwielowsee",
+      "name": "Sunday Resort Schwielowsee",
+      "nameZh": "Sunday/Schwielowsee 湖畔度假村",
+      "type": "lake-resort",
+      "ratingLabel": "4 星湖畔度假村",
+      "location": "Werder (Havel)",
+      "region": "Potsdam / Schwielowsee",
+      "carMinutes": 55,
+      "trainMinutes": 75,
+      "travelNoteZh": "自驾约 50-60 分钟；到 Potsdam/Werder 后还需衔接。",
+      "priceRangeZh": "中等到中高；房型和周末价格波动大。",
+      "bookingUrl": "https://www.expedia.com/Berlin-Hotels-Precise-Resort-Schwielowsee.h1162510.Hotel-Information",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Sunday%20Resort%20Schwielowsee%20Werder",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：第三方页面列出客房空调；具体房型需二次确认。",
+        "evidence": [
+          {
+            "label": "Expedia room features",
+            "url": "https://www.expedia.com/Berlin-Hotels-Precise-Resort-Schwielowsee.h1162510.Hotel-Information"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": true,
+        "children": true,
+        "thermal": false,
+        "lake": true,
+        "labelZh": "湖边 resort，第三方和酒店目录描述 indoor-outdoor pools、季节性户外泳池。",
+        "evidence": [
+          {
+            "label": "HRS resort description",
+            "url": "https://www.hrs.com/en/hotel/26254"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "Spa、sauna、treatment rooms；儿童进 spa/pool 有成人陪同规则。",
+        "evidence": [
+          {
+            "label": "Hotels.com spa/pool policy",
+            "url": "https://www.hotels.com/ho353402/precise-resort-schwielowsee-werder-havel-germany/"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 4,
+        "labelZh": "湖畔、儿童俱乐部和家庭房友好，但 spa/泳池儿童规则需看清。",
+        "babyNotesZh": "适合 1-2 晚；预订前确认儿童入池时段、婴儿床和房间空调。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "湖边度假感强，离柏林不远。",
+        "泳池、spa、儿童设施线索丰富。",
+        "房型选择比普通酒店灵活。"
+      ],
+      "risksZh": [
+        "空调证据来自第三方而非当前官方房型页。",
+        "部分评论提到服务稳定性需核对。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "seminaris-seehotel-potsdam",
+      "name": "Seminaris SeeHotel Potsdam",
+      "nameZh": "Seminaris 波茨坦湖畔酒店",
+      "type": "lake-resort",
+      "ratingLabel": "湖畔 Spa 酒店",
+      "location": "Potsdam, Templiner See",
+      "region": "Potsdam",
+      "carMinutes": 45,
+      "trainMinutes": 55,
+      "travelNoteZh": "柏林到 Potsdam 方向较容易；适合不想开太远的避暑短住。",
+      "priceRangeZh": "中等；常见比大型 resort 低，需按日期确认。",
+      "bookingUrl": "https://www.seminaris.de/en/hotels/potsdam-seehotel-seminaris/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seminaris%20SeeHotel%20Potsdam",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：第三方酒店设施列出 air-conditioned；需确认具体房型。",
+        "evidence": [
+          {
+            "label": "KAYAK amenities",
+            "url": "https://www.kayak.com/Potsdam-Hotels-Seminaris-Seehotel-Potsdam.7297.ksp"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": false,
+        "children": true,
+        "thermal": false,
+        "lake": true,
+        "labelZh": "官方 wellness 页列出 pool、儿童价格和湖边环境。",
+        "evidence": [
+          {
+            "label": "官方 Gym & Wellness",
+            "url": "https://www.seminaris.de/en/hotels/potsdam-seehotel-seminaris/gym-wellness/"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": false,
+        "labelZh": "官方列出 pool、sauna、gym。",
+        "evidence": [
+          {
+            "label": "官方 Pool/Sauna",
+            "url": "https://www.seminaris.de/en/hotels/potsdam-seehotel-seminaris/gym-wellness/"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 4,
+        "labelZh": "近、湖边、有泳池；适合不折腾的短住。",
+        "babyNotesZh": "泳池/桑拿对儿童有价格规则；房间空调和婴儿床需预订时确认。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "离柏林近，交通压力低。",
+        "湖边环境和室内泳池适合热天备用。",
+        "比远郊 resort 更适合临时决策。"
+      ],
+      "risksZh": [
+        "空调证据主要来自第三方设施页。",
+        "酒店偏会议/湖畔，不是典型亲子 resort。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "resort-mark-brandenburg",
+      "name": "Resort Mark Brandenburg & Fontane Therme",
+      "nameZh": "Resort Mark Brandenburg + Fontane Therme",
+      "type": "thermal-spa",
+      "ratingLabel": "4 星 Superior 温泉酒店",
+      "location": "Neuruppin",
+      "region": "Ruppiner See",
+      "carMinutes": 80,
+      "trainMinutes": 70,
+      "travelNoteZh": "自驾约 1 小时 20 分；火车到 Neuruppin 后步行/打车衔接。",
+      "priceRangeZh": "中高到高；官方套餐曾显示每人 €136+ 起，周末需重新核价。",
+      "bookingUrl": "https://www.resort-mark-brandenburg.de/en/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Resort%20Mark%20Brandenburg%20Fontane%20Therme",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：第三方设施页列出房间 air conditioning；官方首页未直接在房型概览证明。",
+        "evidence": [
+          {
+            "label": "Reserving room facilities",
+            "url": "https://reserving.com/hotels/europe/germany/brandenburg/neuruppin/resort-mark-brandenburg-fontane-therme"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": true,
+        "children": false,
+        "thermal": true,
+        "lake": true,
+        "labelZh": "官方 Fontane Therme：热盐水 indoor/outdoor pools、湖边桑拿和 sunbathing lawn。",
+        "evidence": [
+          {
+            "label": "官方 Resort Mark Brandenburg",
+            "url": "https://www.resort-mark-brandenburg.de/en/"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "Fontane Therme 温泉、主题桑拿、Beauty & Spa。",
+        "evidence": [
+          {
+            "label": "官方 Fontane Therme overview",
+            "url": "https://www.resort-mark-brandenburg.de/en/"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 3,
+        "labelZh": "温泉/成人放松属性强，带宝宝可行但不算最亲子。",
+        "babyNotesZh": "优先确认婴儿能否进入热盐水/泳池、房间空调、婴儿床和餐厅高椅。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "温泉和湖边组合强，适合长辈放松。",
+        "火车也相对可达。",
+        "官方 spa/pool 证据较强。"
+      ],
+      "risksZh": [
+        "空调证据非官方房型页。",
+        "价格偏高；更像成人 wellness，不是儿童 resort。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "hotel-doellnsee-schorfheide",
+      "name": "Hotel Döllnsee-Schorfheide",
+      "nameZh": "Döllnsee-Schorfheide 湖畔酒店",
+      "type": "lake-resort",
+      "ratingLabel": "4 星自然湖畔酒店",
+      "location": "Templin / Schorfheide",
+      "region": "Schorfheide",
+      "carMinutes": 85,
+      "trainMinutes": 120,
+      "travelNoteZh": "自驾约 1 小时 20-30 分；公共交通衔接较麻烦。",
+      "priceRangeZh": "中等到中高；自然度假型酒店，需按日期确认。",
+      "bookingUrl": "https://www.doellnsee.de/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel%20D%C3%B6llnsee-Schorfheide",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：HRS 明确写房间配有自己的空调。",
+        "evidence": [
+          {
+            "label": "HRS hotel FAQ",
+            "url": "https://www.hrs.com/en/hotel/391076"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": false,
+        "children": false,
+        "thermal": false,
+        "lake": true,
+        "labelZh": "室内 panoramic pool、桑拿和湖边可游泳/划船。",
+        "evidence": [
+          {
+            "label": "HRS description",
+            "url": "https://www.hrs.com/en/hotel/391076"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "室内泳池、桑拿、按摩和湖边自然环境。",
+        "evidence": [
+          {
+            "label": "HRS pool/sauna evidence",
+            "url": "https://www.hrs.com/en/hotel/391076"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 3,
+        "labelZh": "自然安静，适合长辈；宝宝设施需要逐项确认。",
+        "babyNotesZh": "更适合自驾家庭；确认电梯/房间位置、婴儿床和餐厅安排。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "湖边、森林和室内泳池，热天避暑感强。",
+        "空调和泳池证据来自同一酒店目录页。",
+        "比城市酒店更安静。"
+      ],
+      "risksZh": [
+        "公共交通不方便。",
+        "不是专门亲子 resort，宝宝便利性需确认。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "aspria-berlin-kudamm",
+      "name": "Aspria Berlin Ku'damm",
+      "nameZh": "Aspria Berlin Ku'damm 城市 Spa 酒店",
+      "type": "city-staycation",
+      "ratingLabel": "城市 Spa / 4 星级别",
+      "location": "Berlin-Halensee / Ku'damm",
+      "region": "柏林市内",
+      "carMinutes": 25,
+      "trainMinutes": 30,
+      "travelNoteZh": "柏林市内 staycation，最适合临时避暑和不想折腾交通。",
+      "priceRangeZh": "中等到中高；按城市酒店价格波动。",
+      "bookingUrl": "https://www.aspria.com/en/berlin-kudamm/hotel",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Aspria%20Berlin%20Ku'damm",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：Booking/第三方列出 family rooms with air-conditioning；官方页重点是设施和 family pool times。",
+        "evidence": [
+          {
+            "label": "Booking.com accommodation snippet",
+            "url": "https://www.booking.com/hotel/de/aspria-spa-sporting-club.html"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": false,
+        "children": true,
+        "thermal": false,
+        "lake": false,
+        "labelZh": "官方列出 family pool times，适合按时间段带孩子使用。",
+        "evidence": [
+          {
+            "label": "官方 Hotel / Family Times",
+            "url": "https://www.aspria.com/en/berlin-kudamm/hotel"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "Spa、sauna、fitness；儿童使用有 family time 限制。",
+        "evidence": [
+          {
+            "label": "官方 family pool/sauna times",
+            "url": "https://www.aspria.com/en/berlin-kudamm/hotel"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 4,
+        "labelZh": "城市内低折腾，但必须按 family times 使用泳池/桑拿。",
+        "babyNotesZh": "适合住一晚或白天避暑；确认儿童入场时段、房型空调和是否可加婴儿床。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "不出城，交通最省心。",
+        "明确有 family pool / sauna times。",
+        "适合突发高温日的城市避暑。"
+      ],
+      "risksZh": [
+        "儿童使用 spa/pool 受时间段限制。",
+        "空调证据主要来自第三方预订页。"
+      ],
+      "checkedAt": "2026-06-23"
+    },
+    {
+      "id": "hotel-palace-berlin",
+      "name": "Hotel Palace Berlin",
+      "nameZh": "Hotel Palace Berlin 城市泳池 Spa 酒店",
+      "type": "city-staycation",
+      "ratingLabel": "4.5 星/高端城市酒店",
+      "location": "Berlin-Charlottenburg",
+      "region": "柏林市内 / Zoo",
+      "carMinutes": 25,
+      "trainMinutes": 25,
+      "travelNoteZh": "柏林市内，适合高温周末临时住一晚，避免出城交通。",
+      "priceRangeZh": "中高到高；城市高端酒店，需实时查价。",
+      "bookingUrl": "https://palace.de/en/welcome",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel%20Palace%20Berlin",
+      "airConditioning": {
+        "status": "likely",
+        "confidence": 2,
+        "labelZh": "较可信：第三方房型页列出全部客房空调；预订前确认具体房型。",
+        "evidence": [
+          {
+            "label": "Expedia room features",
+            "url": "https://www.expedia.com/Berlin-Hotels-Hotel-Palace-Berlin.h18069.Hotel-Information"
+          }
+        ]
+      },
+      "pool": {
+        "indoor": true,
+        "outdoor": false,
+        "children": false,
+        "thermal": false,
+        "lake": false,
+        "labelZh": "官方 Palace Spa 有泳池和 whirlpool。",
+        "evidence": [
+          {
+            "label": "官方 Palace Spa & Fitness",
+            "url": "https://palace.de/en/hotel/spa-fitness"
+          }
+        ]
+      },
+      "spa": {
+        "sauna": true,
+        "treatments": true,
+        "labelZh": "官方 800 m² spa、泳池、Finnish sauna、ice grotto、relaxation room。",
+        "evidence": [
+          {
+            "label": "官方 Spa details",
+            "url": "https://palace.de/en/hotel/spa-fitness"
+          }
+        ]
+      },
+      "family": {
+        "babyScore": 3,
+        "labelZh": "城市高端舒适，但不是亲子 resort。",
+        "babyNotesZh": "适合需要可靠房间舒适度和室内泳池的 city fallback；确认婴儿床、儿童入池和早餐安排。"
+      },
+      "heatScore": 4,
+      "prosZh": [
+        "城市内，临时性强。",
+        "Spa/泳池/空调组合适合高温日。",
+        "交通、餐饮和医疗便利。"
+      ],
+      "risksZh": [
+        "不是儿童主题酒店。",
+        "价格可能偏高；spa 规则和费用需确认。"
+      ],
+      "checkedAt": "2026-06-23"
+    }
+  ]
+}
