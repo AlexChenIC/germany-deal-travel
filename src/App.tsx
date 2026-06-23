@@ -835,6 +835,11 @@ function BerlinKidsMap({
 
 function KidActivityCard({ activity }: { activity: KidActivity }) {
   const Icon = iconForKidCategory(activity.category);
+  const googleMapsUrl = buildGoogleMapsUrl(activity);
+  const googleDirectionsUrl = hasConcreteAddress(activity)
+    ? buildGoogleDirectionsUrl(activity)
+    : undefined;
+
   return (
     <article className="kid-card" id={`kid-${activity.id}`}>
       <div className={`kid-icon kid-${activity.category}`}>
@@ -869,6 +874,21 @@ function KidActivityCard({ activity }: { activity: KidActivity }) {
             资料源
             <ExternalLink size={15} aria-hidden="true" />
           </a>
+          <a className="text-link map-link" href={googleMapsUrl} target="_blank" rel="noreferrer">
+            Google 地图
+            <MapPin size={15} aria-hidden="true" />
+          </a>
+          {googleDirectionsUrl && (
+            <a
+              className="text-link map-link"
+              href={googleDirectionsUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              公交路线
+              <Compass size={15} aria-hidden="true" />
+            </a>
+          )}
         </div>
       </div>
     </article>
@@ -1001,6 +1021,26 @@ function scrollToKidActivity(id: string) {
     behavior: "smooth",
     block: "start",
   });
+}
+
+function buildGoogleMapsUrl(activity: KidActivity) {
+  const query = hasConcreteAddress(activity)
+    ? `${activity.name} ${activity.address}`
+    : `${activity.name} Berlin`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function buildGoogleDirectionsUrl(activity: KidActivity) {
+  const destination = hasMapLocation(activity)
+    ? `${activity.lat},${activity.lng}`
+    : `${activity.name} ${activity.address}`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    destination,
+  )}&travelmode=transit`;
+}
+
+function hasConcreteAddress(activity: KidActivity) {
+  return !["多处", "全城", "活动聚合"].some((term) => activity.address.includes(term));
 }
 
 function formatDateTime(value: string) {

@@ -371,6 +371,14 @@ h1 {
   margin-top: 12px;
 }
 
+.map-link {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid #bad6cf;
+  border-radius: 8px;
+  background: #edf9f6;
+}
+
 .results-header {
   display: flex;
   align-items: center;
