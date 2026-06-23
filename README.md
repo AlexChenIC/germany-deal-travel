@@ -20,6 +20,14 @@ npm run update-data
 npm run dev
 ```
 
+可选：如果要在儿童活动页启用内嵌 Google Maps，把 Maps Embed API key 放到本地 `.env.local`：
+
+```bash
+VITE_GOOGLE_MAPS_EMBED_API_KEY=your_key_here
+```
+
+线上 GitHub Pages 使用仓库 Secret `GOOGLE_MAPS_EMBED_API_KEY`，workflow 会在构建时注入为 `VITE_GOOGLE_MAPS_EMBED_API_KEY`。没有配置 key 时，页面会自动回退到本地示意地图和 Google Maps 跳转链接。
+
 ## 构建
 
 ```bash

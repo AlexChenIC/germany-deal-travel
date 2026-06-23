@@ -37,6 +37,8 @@ jobs:
         run: npm run update-data
 
       - name: Build
+        env:
+          VITE_GOOGLE_MAPS_EMBED_API_KEY: ${{ secrets.GOOGLE_MAPS_EMBED_API_KEY }}
         run: npm run build
 
       - name: Configure Pages

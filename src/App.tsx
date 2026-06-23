@@ -42,6 +42,7 @@ import type {
 const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
 const kidsActivities = kidsActivitiesJson as KidActivityData;
+const googleMapsEmbedApiKey = import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
 
 const categoryLabels: Record<DealCategory, string> = {
   event: "活动",
@@ -671,6 +672,7 @@ function FavoritesView({
 function KidsActivitiesView() {
   const [kidCategory, setKidCategory] = useState<KidActivityCategory | "all">("all");
   const [kidQuery, setKidQuery] = useState("");
+  const [selectedMapActivityId, setSelectedMapActivityId] = useState("");
 
   const filteredKidsActivities = useMemo(() => {
     const queryTerms = expandQuery(kidQuery);
@@ -703,6 +705,8 @@ function KidsActivitiesView() {
   ];
 
   const mapItems = filteredKidsActivities.filter(hasMapLocation);
+  const selectedMapActivity =
+    mapItems.find((activity) => activity.id === selectedMapActivityId) ?? mapItems[0];
 
   return (
     <section className="kids-page">
@@ -727,7 +731,11 @@ function KidsActivitiesView() {
             <MapPinned size={18} aria-hidden="true" />
             <h3>柏林活动地图</h3>
           </div>
-          <BerlinKidsMap items={mapItems} />
+          <KidsMapPanel
+            items={mapItems}
+            selectedActivity={selectedMapActivity}
+            onSelectActivity={setSelectedMapActivityId}
+          />
         </div>
 
         <div className="kids-filter-panel">
@@ -777,7 +785,16 @@ function KidsActivitiesView() {
 
       <section className="kids-card-grid">
         {filteredKidsActivities.map((activity) => (
-          <KidActivityCard activity={activity} key={activity.id} />
+          <KidActivityCard
+            activity={activity}
+            isMapSelected={selectedMapActivity?.id === activity.id}
+            key={activity.id}
+            onFocusMap={
+              googleMapsEmbedApiKey && hasMapLocation(activity)
+                ? () => setSelectedMapActivityId(activity.id)
+                : undefined
+            }
+          />
         ))}
       </section>
 
@@ -791,10 +808,64 @@ function KidsActivitiesView() {
   );
 }
 
-function BerlinKidsMap({
+function KidsMapPanel({
   items,
+  selectedActivity,
+  onSelectActivity,
 }: {
   items: Array<KidActivity & { lat: number; lng: number }>;
+  selectedActivity?: KidActivity & { lat: number; lng: number };
+  onSelectActivity: (id: string) => void;
+}) {
+  if (googleMapsEmbedApiKey && selectedActivity) {
+    return (
+      <div className="google-map-shell">
+        <iframe
+          allowFullScreen
+          className="google-map-frame"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          src={buildGoogleMapsEmbedUrl(selectedActivity)}
+          title={`Google Maps - ${selectedActivity.nameZh}`}
+        />
+        <div className="map-selector" aria-label="Google Maps location selector">
+          {items.map((item, index) => (
+            <button
+              className={
+                selectedActivity.id === item.id
+                  ? "map-location-chip is-active"
+                  : "map-location-chip"
+              }
+              key={item.id}
+              onClick={() => onSelectActivity(item.id)}
+              type="button"
+            >
+              <span>{index + 1}</span>
+              {item.nameZh}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="map-fallback">
+      <BerlinKidsMap items={items} onSelectActivity={onSelectActivity} />
+      <div className="map-status-note">
+        <MapPinned size={16} aria-hidden="true" />
+        <span>配置 Google Maps Embed API key 后，这里会自动切换为内嵌 Google Maps。</span>
+      </div>
+    </div>
+  );
+}
+
+function BerlinKidsMap({
+  items,
+  onSelectActivity,
+}: {
+  items: Array<KidActivity & { lat: number; lng: number }>;
+  onSelectActivity?: (id: string) => void;
 }) {
   return (
     <div className="berlin-map" aria-label="柏林儿童活动地图">
@@ -820,7 +891,10 @@ function BerlinKidsMap({
           <button
             className={`map-pin pin-${item.category}`}
             key={item.id}
-            onClick={() => scrollToKidActivity(item.id)}
+            onClick={() => {
+              onSelectActivity?.(item.id);
+              scrollToKidActivity(item.id);
+            }}
             style={{ left: `${point.x}%`, top: `${point.y}%` }}
             title={`${item.nameZh} - ${item.district}`}
             type="button"
@@ -833,7 +907,15 @@ function BerlinKidsMap({
   );
 }
 
-function KidActivityCard({ activity }: { activity: KidActivity }) {
+function KidActivityCard({
+  activity,
+  isMapSelected,
+  onFocusMap,
+}: {
+  activity: KidActivity;
+  isMapSelected: boolean;
+  onFocusMap?: () => void;
+}) {
   const Icon = iconForKidCategory(activity.category);
   const googleMapsUrl = buildGoogleMapsUrl(activity);
   const googleDirectionsUrl = hasConcreteAddress(activity)
@@ -878,6 +960,16 @@ function KidActivityCard({ activity }: { activity: KidActivity }) {
             Google 地图
             <MapPin size={15} aria-hidden="true" />
           </a>
+          {onFocusMap && (
+            <button
+              className={isMapSelected ? "text-link map-link map-focus-button is-active" : "text-link map-link map-focus-button"}
+              onClick={onFocusMap}
+              type="button"
+            >
+              上方地图
+              <MapPinned size={15} aria-hidden="true" />
+            </button>
+          )}
           {googleDirectionsUrl && (
             <a
               className="text-link map-link"
@@ -1028,6 +1120,18 @@ function buildGoogleMapsUrl(activity: KidActivity) {
     ? `${activity.name} ${activity.address}`
     : `${activity.name} Berlin`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function buildGoogleMapsEmbedUrl(activity: KidActivity) {
+  const query = hasConcreteAddress(activity)
+    ? `${activity.name} ${activity.address}`
+    : `${activity.name} Berlin`;
+  const params = new URLSearchParams({
+    key: googleMapsEmbedApiKey ?? "",
+    q: query,
+    zoom: "13",
+  });
+  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 }
 
 function buildGoogleDirectionsUrl(activity: KidActivity) {
