@@ -4,22 +4,35 @@ import {
   CheckCircle2,
   CircleAlert,
   Compass,
+  Coffee,
+  Drama,
   ExternalLink,
   Filter,
+  Heart,
   Hotel,
+  EyeOff,
+  Landmark,
   MapPin,
+  MapPinned,
+  Music2,
   Plane,
   RefreshCcw,
+  RotateCcw,
   Search,
   Ship,
   Sparkles,
   Tags,
+  Waves,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import kidsActivitiesJson from "./data/kids-activities.json";
 import radarJson from "./data/radar-data.json";
 import sourceCatalogJson from "./data/source-catalog.json";
 import type {
   DealCategory,
+  KidActivity,
+  KidActivityCategory,
+  KidActivityData,
   RadarData,
   SourceDefinition,
   TravelItem,
@@ -28,6 +41,7 @@ import type {
 
 const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
+const kidsActivities = kidsActivitiesJson as KidActivityData;
 
 const categoryLabels: Record<DealCategory, string> = {
   event: "活动",
@@ -49,7 +63,17 @@ const scopeLabels: Record<TravelScope, string> = {
   "long-haul": "长线",
 };
 
-type Tab = "radar" | "events" | "sources" | "plan";
+const kidCategoryLabels: Record<KidActivityCategory, string> = {
+  cafe: "儿童咖啡",
+  music: "音乐/演出",
+  "open-play": "开放活动",
+  swim: "游泳课",
+  museum: "博物馆/室内",
+  theatre: "儿童剧场",
+  calendar: "活动日历",
+};
+
+type Tab = "radar" | "events" | "favorites" | "kids" | "sources" | "plan";
 type SortMode = "priority" | "newest" | "price";
 
 function App() {
@@ -60,7 +84,20 @@ function App() {
   const [familyOnly, setFamilyOnly] = useState(true);
   const [fromBerlinOnly, setFromBerlinOnly] = useState(false);
   const [sortMode, setSortMode] = useState<SortMode>("priority");
-  const [activeTab, setActiveTab] = useState<Tab>("radar");
+  const [activeTab, setActiveTabState] = useState<Tab>(getInitialTab);
+  const favorites = useStoredIdSet("germany-deal-travel:favorites:v1");
+  const excluded = useStoredIdSet("germany-deal-travel:excluded:v1");
+
+  useEffect(() => {
+    const syncTabFromHash = () => setActiveTabState(hashToTab(window.location.hash));
+    window.addEventListener("hashchange", syncTabFromHash);
+    window.addEventListener("popstate", syncTabFromHash);
+    syncTabFromHash();
+    return () => {
+      window.removeEventListener("hashchange", syncTabFromHash);
+      window.removeEventListener("popstate", syncTabFromHash);
+    };
+  }, []);
 
   const filteredItems = useMemo(() => {
     const queryTerms = expandQuery(query);
@@ -81,7 +118,8 @@ function App() {
         (scope === "all" || item.scope === scope) &&
         (sourceId === "all" || item.sourceId === sourceId) &&
         (!familyOnly || item.familyScore >= 65) &&
-        (!fromBerlinOnly || item.fromBerlin)
+        (!fromBerlinOnly || item.fromBerlin) &&
+        !excluded.ids.has(item.id)
       );
     });
 
@@ -98,13 +136,54 @@ function App() {
       }
       return b.priorityScore - a.priorityScore;
     });
-  }, [category, familyOnly, fromBerlinOnly, query, scope, sortMode, sourceId]);
+  }, [
+    category,
+    excluded.ids,
+    familyOnly,
+    fromBerlinOnly,
+    query,
+    scope,
+    sortMode,
+    sourceId,
+  ]);
+
+  const favoriteItems = useMemo(
+    () =>
+      radar.items.filter(
+        (item) => favorites.ids.has(item.id) && !excluded.ids.has(item.id),
+      ),
+    [excluded.ids, favorites.ids],
+  );
+  const excludedItems = useMemo(
+    () => radar.items.filter((item) => excluded.ids.has(item.id)),
+    [excluded.ids],
+  );
 
   const spotlight = filteredItems.slice(0, 4);
   const listItems =
     activeTab === "events"
       ? filteredItems.filter((item) => item.category === "event")
       : filteredItems;
+
+  const selectTab = (tab: Tab) => {
+    setActiveTabState(tab);
+    if (typeof window === "undefined") return;
+    const nextHash = tab === "radar" ? "" : `#${tab}`;
+    const nextUrl = `${window.location.pathname}${window.location.search}${nextHash}`;
+    window.history.pushState(null, "", nextUrl);
+  };
+
+  const toggleFavorite = (id: string) => {
+    if (excluded.ids.has(id)) {
+      excluded.remove(id);
+    }
+    favorites.toggle(id);
+  };
+
+  const excludeItem = (id: string) => {
+    favorites.remove(id);
+    excluded.add(id);
+  };
 
   return (
     <main className="app-shell">
@@ -131,19 +210,28 @@ function App() {
       </section>
 
       <nav className="tabs" aria-label="views">
-        <TabButton active={activeTab === "radar"} onClick={() => setActiveTab("radar")}>
+        <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
           推荐雷达
         </TabButton>
-        <TabButton active={activeTab === "events"} onClick={() => setActiveTab("events")}>
+        <TabButton active={activeTab === "events"} onClick={() => selectTab("events")}>
           柏林活动
         </TabButton>
         <TabButton
+          active={activeTab === "favorites"}
+          onClick={() => selectTab("favorites")}
+        >
+          我的收藏
+        </TabButton>
+        <TabButton active={activeTab === "kids"} onClick={() => selectTab("kids")}>
+          儿童活动
+        </TabButton>
+        <TabButton
           active={activeTab === "sources"}
-          onClick={() => setActiveTab("sources")}
+          onClick={() => selectTab("sources")}
         >
           信息源
         </TabButton>
-        <TabButton active={activeTab === "plan"} onClick={() => setActiveTab("plan")}>
+        <TabButton active={activeTab === "plan"} onClick={() => selectTab("plan")}>
           路线规划
         </TabButton>
       </nav>
@@ -152,6 +240,18 @@ function App() {
         <SourcesView runs={radar.sources} />
       ) : activeTab === "plan" ? (
         <PlanView />
+      ) : activeTab === "favorites" ? (
+        <FavoritesView
+          favoriteItems={favoriteItems}
+          excludedItems={excludedItems}
+          onToggleFavorite={toggleFavorite}
+          onExclude={excludeItem}
+          onRestoreExcluded={excluded.remove}
+          onClearExcluded={excluded.clear}
+          favoriteIds={favorites.ids}
+        />
+      ) : activeTab === "kids" ? (
+        <KidsActivitiesView />
       ) : (
         <>
           <section className="toolbar" aria-label="filters">
@@ -222,7 +322,13 @@ function App() {
           {spotlight.length > 0 && (
             <section className="spotlight-grid" aria-label="top picks">
               {spotlight.map((item) => (
-                <SpotlightCard key={item.id} item={item} />
+                <SpotlightCard
+                  key={item.id}
+                  item={item}
+                  isFavorite={favorites.ids.has(item.id)}
+                  onToggleFavorite={toggleFavorite}
+                  onExclude={excludeItem}
+                />
               ))}
             </section>
           )}
@@ -234,7 +340,13 @@ function App() {
 
           <section className="card-grid">
             {listItems.map((item) => (
-              <TravelCard key={item.id} item={item} />
+              <TravelCard
+                key={item.id}
+                item={item}
+                isFavorite={favorites.ids.has(item.id)}
+                onToggleFavorite={toggleFavorite}
+                onExclude={excludeItem}
+              />
             ))}
           </section>
 
@@ -311,7 +423,17 @@ function SelectField({
   );
 }
 
-function SpotlightCard({ item }: { item: TravelItem }) {
+function SpotlightCard({
+  item,
+  isFavorite,
+  onToggleFavorite,
+  onExclude,
+}: {
+  item: TravelItem;
+  isFavorite: boolean;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+}) {
   return (
     <article className="spotlight-card">
       {item.imageUrl && (
@@ -326,6 +448,11 @@ function SpotlightCard({ item }: { item: TravelItem }) {
         <p className="original-title">{item.title}</p>
         <p>{item.summary}</p>
         <CardFacts item={item} />
+        <ItemActions
+          isFavorite={isFavorite}
+          onToggleFavorite={() => onToggleFavorite(item.id)}
+          onExclude={() => onExclude(item.id)}
+        />
         <a className="primary-link" href={item.url} target="_blank" rel="noreferrer">
           打开源站
           <ExternalLink size={16} aria-hidden="true" />
@@ -335,7 +462,17 @@ function SpotlightCard({ item }: { item: TravelItem }) {
   );
 }
 
-function TravelCard({ item }: { item: TravelItem }) {
+function TravelCard({
+  item,
+  isFavorite,
+  onToggleFavorite,
+  onExclude,
+}: {
+  item: TravelItem;
+  isFavorite: boolean;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+}) {
   const Icon = iconForCategory(item.category);
   return (
     <article className="travel-card">
@@ -366,12 +503,54 @@ function TravelCard({ item }: { item: TravelItem }) {
           ))}
         </div>
         <CardFacts item={item} />
+        <ItemActions
+          isFavorite={isFavorite}
+          onToggleFavorite={() => onToggleFavorite(item.id)}
+          onExclude={() => onExclude(item.id)}
+        />
         <a className="text-link" href={item.url} target="_blank" rel="noreferrer">
           查看详情
           <ExternalLink size={15} aria-hidden="true" />
         </a>
       </div>
     </article>
+  );
+}
+
+function ItemActions({
+  isFavorite,
+  onToggleFavorite,
+  onExclude,
+}: {
+  isFavorite: boolean;
+  onToggleFavorite: () => void;
+  onExclude: () => void;
+}) {
+  return (
+    <div className="card-actions">
+      <button
+        className={isFavorite ? "icon-action is-favorite" : "icon-action"}
+        onClick={onToggleFavorite}
+        title={isFavorite ? "取消收藏" : "收藏"}
+        type="button"
+      >
+        <Heart
+          size={16}
+          fill={isFavorite ? "currentColor" : "none"}
+          aria-hidden="true"
+        />
+        {isFavorite ? "已收藏" : "收藏"}
+      </button>
+      <button
+        className="icon-action"
+        onClick={onExclude}
+        title="排除，不再显示在雷达列表"
+        type="button"
+      >
+        <EyeOff size={16} aria-hidden="true" />
+        排除
+      </button>
+    </div>
   );
 }
 
@@ -384,6 +563,315 @@ function CardFacts({ item }: { item: TravelItem }) {
       {item.locationHint && <span>{item.locationHint}</span>}
       <span>家庭分 {item.familyScore}</span>
     </div>
+  );
+}
+
+function FavoritesView({
+  favoriteItems,
+  excludedItems,
+  favoriteIds,
+  onToggleFavorite,
+  onExclude,
+  onRestoreExcluded,
+  onClearExcluded,
+}: {
+  favoriteItems: TravelItem[];
+  excludedItems: TravelItem[];
+  favoriteIds: Set<string>;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+  onRestoreExcluded: (id: string) => void;
+  onClearExcluded: () => void;
+}) {
+  return (
+    <section className="collection-page">
+      <div className="collection-hero">
+        <div>
+          <p className="eyebrow">Personal shortlist</p>
+          <h2>我的收藏</h2>
+          <p>
+            适合把想进一步核对、和家人讨论、或等待价格变化的项目先收在这里。
+          </p>
+        </div>
+        <div className="collection-stats" aria-label="collection summary">
+          <Metric label="收藏" value={favoriteItems.length} icon={<Heart />} />
+          <Metric label="已排除" value={excludedItems.length} icon={<EyeOff />} />
+        </div>
+      </div>
+
+      <section className="results-header">
+        <h2>收藏清单</h2>
+        <span>{favoriteItems.length} 条</span>
+      </section>
+
+      {favoriteItems.length > 0 ? (
+        <section className="card-grid">
+          {favoriteItems.map((item) => (
+            <TravelCard
+              key={item.id}
+              item={item}
+              isFavorite={favoriteIds.has(item.id)}
+              onToggleFavorite={onToggleFavorite}
+              onExclude={onExclude}
+            />
+          ))}
+        </section>
+      ) : (
+        <div className="empty-state">
+          <Heart size={28} aria-hidden="true" />
+          <p>还没有收藏项目</p>
+        </div>
+      )}
+
+      <section className="excluded-panel">
+        <div className="results-header">
+          <h2>排除列表</h2>
+          <div className="header-actions">
+            <span>{excludedItems.length} 条</span>
+            {excludedItems.length > 0 && (
+              <button className="icon-action" onClick={onClearExcluded} type="button">
+                <RotateCcw size={16} aria-hidden="true" />
+                全部恢复
+              </button>
+            )}
+          </div>
+        </div>
+
+        {excludedItems.length > 0 ? (
+          <div className="excluded-list">
+            {excludedItems.map((item) => (
+              <article className="excluded-row" key={item.id}>
+                <div>
+                  <span>{item.sourceName}</span>
+                  <h3>{displayTitle(item)}</h3>
+                  <p>{item.title}</p>
+                </div>
+                <button
+                  className="icon-action"
+                  onClick={() => onRestoreExcluded(item.id)}
+                  type="button"
+                >
+                  <RotateCcw size={16} aria-hidden="true" />
+                  恢复
+                </button>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-state compact">
+            <EyeOff size={24} aria-hidden="true" />
+            <p>当前没有被排除的项目</p>
+          </div>
+        )}
+      </section>
+    </section>
+  );
+}
+
+function KidsActivitiesView() {
+  const [kidCategory, setKidCategory] = useState<KidActivityCategory | "all">("all");
+  const [kidQuery, setKidQuery] = useState("");
+
+  const filteredKidsActivities = useMemo(() => {
+    const queryTerms = expandQuery(kidQuery);
+    return kidsActivities.items.filter((activity) => {
+      const haystack = [
+        activity.name,
+        activity.nameZh,
+        activity.summaryZh,
+        activity.district,
+        activity.address,
+        activity.tags.join(" "),
+      ].join(" ");
+      const normalizedHaystack = normalizeSearchText(haystack);
+      return (
+        (kidCategory === "all" || activity.category === kidCategory) &&
+        (queryTerms.length === 0 ||
+          queryTerms.some((term) => normalizedHaystack.includes(term)))
+      );
+    });
+  }, [kidCategory, kidQuery]);
+
+  const categoryOptions: Array<[KidActivityCategory | "all", string]> = [
+    ["all", "全部"],
+    ...Object.entries(kidCategoryLabels).map(
+      ([value, label]) => [value as KidActivityCategory, label] as [
+        KidActivityCategory,
+        string,
+      ],
+    ),
+  ];
+
+  const mapItems = filteredKidsActivities.filter(hasMapLocation);
+
+  return (
+    <section className="kids-page">
+      <div className="kids-hero">
+        <div>
+          <p className="eyebrow">Berlin kids city guide</p>
+          <h2>柏林市区儿童活动资料库</h2>
+          <p>
+            儿童咖啡馆、亲子音乐会、开放活动、儿童博物馆、剧场和游泳课入口。
+          </p>
+        </div>
+        <div className="kids-notes">
+          {kidsActivities.notes.map((note) => (
+            <span key={note}>{note}</span>
+          ))}
+        </div>
+      </div>
+
+      <section className="kids-workbench">
+        <div className="kids-map-panel">
+          <div className="panel-title">
+            <MapPinned size={18} aria-hidden="true" />
+            <h3>柏林活动地图</h3>
+          </div>
+          <BerlinKidsMap items={mapItems} />
+        </div>
+
+        <div className="kids-filter-panel">
+          <label className="search-box">
+            <Search size={18} aria-hidden="true" />
+            <input
+              value={kidQuery}
+              onChange={(event) => setKidQuery(event.target.value)}
+              placeholder="搜索：游泳、音乐、免费、Prenzlauer Berg..."
+            />
+          </label>
+
+          <div className="kid-category-grid" aria-label="kids activity categories">
+            {categoryOptions.map(([value, label]) => (
+              <button
+                className={kidCategory === value ? "kid-category is-active" : "kid-category"}
+                key={value}
+                onClick={() => setKidCategory(value)}
+                type="button"
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div className="kid-highlights">
+            <div>
+              <strong>{kidsActivities.items.length}</strong>
+              <span>精选资料</span>
+            </div>
+            <div>
+              <strong>{mapItems.length}</strong>
+              <span>地图点位</span>
+            </div>
+            <div>
+              <strong>{countKidCategory("swim")}</strong>
+              <span>游泳入口</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="results-header">
+        <h2>儿童活动清单</h2>
+        <span>{filteredKidsActivities.length} 条</span>
+      </section>
+
+      <section className="kids-card-grid">
+        {filteredKidsActivities.map((activity) => (
+          <KidActivityCard activity={activity} key={activity.id} />
+        ))}
+      </section>
+
+      {filteredKidsActivities.length === 0 && (
+        <div className="empty-state">
+          <Search size={28} aria-hidden="true" />
+          <p>当前筛选没有结果</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function BerlinKidsMap({
+  items,
+}: {
+  items: Array<KidActivity & { lat: number; lng: number }>;
+}) {
+  return (
+    <div className="berlin-map" aria-label="柏林儿童活动地图">
+      <svg aria-hidden="true" viewBox="0 0 1000 660" preserveAspectRatio="none">
+        <path
+          className="map-shape"
+          d="M119 203 L213 96 L381 90 L483 49 L630 86 L760 80 L902 179 L874 318 L930 430 L819 558 L642 612 L516 574 L391 632 L218 584 L126 463 L74 330 Z"
+        />
+        <ellipse className="map-ring" cx="500" cy="325" rx="265" ry="184" />
+        <path
+          className="map-spree"
+          d="M88 364 C193 331 239 377 335 341 C453 297 520 380 623 335 C722 292 796 304 920 267"
+        />
+        <text x="440" y="304">Mitte</text>
+        <text x="292" y="430">Kreuzberg</text>
+        <text x="520" y="188">Prenzlauer Berg</text>
+        <text x="690" y="424">Lichtenberg</text>
+      </svg>
+
+      {items.map((item, index) => {
+        const point = projectBerlinPoint(item);
+        return (
+          <button
+            className={`map-pin pin-${item.category}`}
+            key={item.id}
+            onClick={() => scrollToKidActivity(item.id)}
+            style={{ left: `${point.x}%`, top: `${point.y}%` }}
+            title={`${item.nameZh} - ${item.district}`}
+            type="button"
+          >
+            <span>{index + 1}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function KidActivityCard({ activity }: { activity: KidActivity }) {
+  const Icon = iconForKidCategory(activity.category);
+  return (
+    <article className="kid-card" id={`kid-${activity.id}`}>
+      <div className={`kid-icon kid-${activity.category}`}>
+        <Icon size={22} aria-hidden="true" />
+      </div>
+      <div className="kid-card-body">
+        <div className="card-meta">
+          <span>{kidCategoryLabels[activity.category]}</span>
+          <span>{activity.district}</span>
+        </div>
+        <h3>{activity.nameZh}</h3>
+        <p className="original-title">{activity.name}</p>
+        <p>{activity.summaryZh}</p>
+        <div className="fact-row">
+          <span>{activity.ageRange}</span>
+          <span>{activity.cost}</span>
+          <span>{activity.booking}</span>
+          <span>{activity.address}</span>
+        </div>
+        <div className="tag-row">
+          {activity.tags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+        <p className="kid-tip">{activity.tipZh}</p>
+        <div className="link-row">
+          <a className="text-link" href={activity.website} target="_blank" rel="noreferrer">
+            打开活动页
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+          <a className="text-link" href={activity.sourceUrl} target="_blank" rel="noreferrer">
+            资料源
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -465,6 +953,56 @@ function iconForCategory(category: DealCategory) {
   return Compass;
 }
 
+function iconForKidCategory(category: KidActivityCategory) {
+  if (category === "cafe") return Coffee;
+  if (category === "music") return Music2;
+  if (category === "swim") return Waves;
+  if (category === "museum") return Landmark;
+  if (category === "theatre") return Drama;
+  if (category === "calendar") return CalendarDays;
+  return Baby;
+}
+
+function countKidCategory(category: KidActivityCategory) {
+  return kidsActivities.items.filter((activity) => activity.category === category).length;
+}
+
+function hasMapLocation(activity: KidActivity): activity is KidActivity & {
+  lat: number;
+  lng: number;
+} {
+  return typeof activity.lat === "number" && typeof activity.lng === "number";
+}
+
+function projectBerlinPoint(activity: KidActivity & { lat: number; lng: number }) {
+  const bounds = {
+    west: 13.3,
+    east: 13.63,
+    south: 52.44,
+    north: 52.58,
+  };
+
+  const x = ((activity.lng - bounds.west) / (bounds.east - bounds.west)) * 100;
+  const y = ((bounds.north - activity.lat) / (bounds.north - bounds.south)) * 100;
+
+  return {
+    x: clamp(x, 4, 96),
+    y: clamp(y, 5, 95),
+  };
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function scrollToKidActivity(id: string) {
+  if (typeof document === "undefined") return;
+  document.getElementById(`kid-${id}`)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
 function formatDateTime(value: string) {
   return new Intl.DateTimeFormat("zh-CN", {
     month: "2-digit",
@@ -511,6 +1049,70 @@ function expandQuery(value: string) {
     }
   }
   return Array.from(terms);
+}
+
+function getInitialTab(): Tab {
+  if (typeof window === "undefined") return "radar";
+  return hashToTab(window.location.hash);
+}
+
+function hashToTab(hash: string): Tab {
+  const normalized = hash.replace(/^#\/?/, "");
+  if (
+    normalized === "events" ||
+    normalized === "favorites" ||
+    normalized === "kids" ||
+    normalized === "sources" ||
+    normalized === "plan"
+  ) {
+    return normalized;
+  }
+  return "radar";
+}
+
+function useStoredIdSet(storageKey: string) {
+  const [ids, setIds] = useState<Set<string>>(() => {
+    if (typeof window === "undefined") return new Set();
+    try {
+      const rawValue = window.localStorage.getItem(storageKey);
+      const parsedValue = rawValue ? (JSON.parse(rawValue) as string[]) : [];
+      return new Set(parsedValue);
+    } catch {
+      return new Set();
+    }
+  });
+
+  const save = (nextIds: Set<string>) => {
+    setIds(nextIds);
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(storageKey, JSON.stringify(Array.from(nextIds)));
+  };
+
+  return {
+    ids,
+    add(id: string) {
+      const nextIds = new Set(ids);
+      nextIds.add(id);
+      save(nextIds);
+    },
+    remove(id: string) {
+      const nextIds = new Set(ids);
+      nextIds.delete(id);
+      save(nextIds);
+    },
+    toggle(id: string) {
+      const nextIds = new Set(ids);
+      if (nextIds.has(id)) {
+        nextIds.delete(id);
+      } else {
+        nextIds.add(id);
+      }
+      save(nextIds);
+    },
+    clear() {
+      save(new Set());
+    },
+  };
 }
 
 export default App;

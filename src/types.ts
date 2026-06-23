@@ -85,3 +85,39 @@ export interface RadarData {
   sources: SourceRun[];
   items: TravelItem[];
 }
+
+export type KidActivityCategory =
+  | "cafe"
+  | "music"
+  | "open-play"
+  | "swim"
+  | "museum"
+  | "theatre"
+  | "calendar";
+
+export interface KidActivity {
+  id: string;
+  name: string;
+  nameZh: string;
+  category: KidActivityCategory;
+  summaryZh: string;
+  ageRange: string;
+  cost: string;
+  booking: string;
+  address: string;
+  district: string;
+  lat?: number;
+  lng?: number;
+  website: string;
+  sourceName: string;
+  sourceUrl: string;
+  tags: string[];
+  tipZh: string;
+}
+
+export interface KidActivityData {
+  updatedAt: string;
+  timezone: string;
+  notes: string[];
+  items: KidActivity[];
+}
