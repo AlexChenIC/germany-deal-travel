@@ -28,6 +28,13 @@ import { useEffect, useMemo, useState } from "react";
 import kidsActivitiesJson from "./data/kids-activities.json";
 import radarJson from "./data/radar-data.json";
 import sourceCatalogJson from "./data/source-catalog.json";
+import {
+  buildFamilyRecommendations,
+  type FamilyRecommendations,
+  type KidRecommendation,
+  type RecommendationBucket,
+  type TravelRecommendation,
+} from "./lib/recommendations";
 import type {
   DealCategory,
   KidActivity,
@@ -77,7 +84,7 @@ const kidCategoryLabels: Record<KidActivityCategory, string> = {
   calendar: "活动日历",
 };
 
-type Tab = "radar" | "events" | "favorites" | "kids" | "sources" | "plan";
+type Tab = "picks" | "radar" | "events" | "favorites" | "kids" | "sources" | "plan";
 type SortMode = "priority" | "newest" | "price";
 type FreshnessKind = "today" | "week";
 type AutomationStatus = "ok" | "warning" | "error";
@@ -180,6 +187,17 @@ function App() {
     () => radar.items.filter((item) => excluded.ids.has(item.id)),
     [excluded.ids],
   );
+  const familyRecommendations = useMemo(
+    () =>
+      buildFamilyRecommendations({
+        items: radar.items,
+        kidActivities: kidsActivities.items,
+        excludedIds: excluded.ids,
+        generatedAt: radar.generatedAt,
+        timezone: radar.timezone,
+      }),
+    [excluded.ids],
+  );
   const automationSummary = buildAutomationSummary(radar);
 
   const spotlight = filteredItems.slice(0, 4);
@@ -235,6 +253,9 @@ function App() {
       <AutomationStatusPanel summary={automationSummary} />
 
       <nav className="tabs" aria-label="views">
+        <TabButton active={activeTab === "picks"} onClick={() => selectTab("picks")}>
+          为我推荐
+        </TabButton>
         <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
           推荐雷达
         </TabButton>
@@ -261,7 +282,14 @@ function App() {
         </TabButton>
       </nav>
 
-      {activeTab === "sources" ? (
+      {activeTab === "picks" ? (
+        <PersonalizedPicksView
+          recommendations={familyRecommendations}
+          favoriteIds={favorites.ids}
+          onToggleFavorite={toggleFavorite}
+          onExclude={excludeItem}
+        />
+      ) : activeTab === "sources" ? (
         <SourcesView runs={radar.sources} />
       ) : activeTab === "plan" ? (
         <PlanView />
@@ -689,6 +717,255 @@ function FreshnessBadge({ item }: { item: TravelItem }) {
       {freshness === "today" ? "今日新增" : "本周新增"}
     </span>
   );
+}
+
+function PersonalizedPicksView({
+  recommendations,
+  favoriteIds,
+  onToggleFavorite,
+  onExclude,
+}: {
+  recommendations: FamilyRecommendations;
+  favoriteIds: Set<string>;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+}) {
+  const totalTravelPicks = recommendations.buckets.reduce(
+    (count, bucket) => count + bucket.items.length,
+    0,
+  );
+
+  return (
+    <section className="picks-page">
+      <div className="picks-hero">
+        <div>
+          <p className="eyebrow">Family decision board</p>
+          <h2>为我推荐</h2>
+          <p>
+            按当前家庭画像自动挑选近期活动、周边避暑、远期全包和邮轮观察项。
+          </p>
+        </div>
+        <div className="family-profile-panel">
+          <strong>{recommendations.profile.group}</strong>
+          <div>
+            {recommendations.profile.priorities.map((priority) => (
+              <span key={priority}>{priority}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <section className="picks-metrics" aria-label="personalized recommendation summary">
+        <Metric label="旅行推荐" value={totalTravelPicks} icon={<Sparkles />} />
+        <Metric label="儿童建议" value={recommendations.kidPicks.length} icon={<Baby />} />
+        <Metric
+          label="避暑候选"
+          value={bucketCount(recommendations.buckets, "cool-weekends")}
+          icon={<Hotel />}
+        />
+        <Metric
+          label="远期观察"
+          value={
+            bucketCount(recommendations.buckets, "sun-all-inclusive") +
+            bucketCount(recommendations.buckets, "cruise-watch")
+          }
+          icon={<Ship />}
+        />
+      </section>
+
+      {recommendations.buckets.map((bucket) => (
+        <RecommendationBucketSection
+          bucket={bucket}
+          favoriteIds={favoriteIds}
+          key={bucket.id}
+          onExclude={onExclude}
+          onToggleFavorite={onToggleFavorite}
+        />
+      ))}
+
+      <section className="recommendation-section">
+        <div className="recommendation-header">
+          <div>
+            <p className="eyebrow">Berlin kids</p>
+            <h3>儿童活动建议</h3>
+          </div>
+          <span>{recommendations.kidPicks.length} 条</span>
+        </div>
+        <div className="kid-pick-grid">
+          {recommendations.kidPicks.map((pick) => (
+            <KidRecommendationCard key={pick.activity.id} pick={pick} />
+          ))}
+        </div>
+      </section>
+    </section>
+  );
+}
+
+function RecommendationBucketSection({
+  bucket,
+  favoriteIds,
+  onToggleFavorite,
+  onExclude,
+}: {
+  bucket: RecommendationBucket;
+  favoriteIds: Set<string>;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+}) {
+  return (
+    <section className="recommendation-section">
+      <div className="recommendation-header">
+        <div>
+          <p className="eyebrow">{bucketTitleHint(bucket.id)}</p>
+          <h3>{bucket.title}</h3>
+          <p>{bucket.summary}</p>
+        </div>
+        <span>{bucket.items.length} 条</span>
+      </div>
+
+      {bucket.items.length > 0 ? (
+        <div className="recommendation-grid">
+          {bucket.items.map((recommendation) => (
+            <RecommendationTravelCard
+              isFavorite={favoriteIds.has(recommendation.item.id)}
+              key={recommendation.item.id}
+              recommendation={recommendation}
+              onExclude={onExclude}
+              onToggleFavorite={onToggleFavorite}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state compact">
+          <Search size={24} aria-hidden="true" />
+          <p>{bucket.emptyText}</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function RecommendationTravelCard({
+  recommendation,
+  isFavorite,
+  onToggleFavorite,
+  onExclude,
+}: {
+  recommendation: TravelRecommendation;
+  isFavorite: boolean;
+  onToggleFavorite: (id: string) => void;
+  onExclude: (id: string) => void;
+}) {
+  const item = recommendation.item;
+  const Icon = iconForCategory(item.category);
+
+  return (
+    <article className="recommendation-card">
+      <div className="recommendation-card-top">
+        <div className="recommendation-icon">
+          <Icon size={22} aria-hidden="true" />
+        </div>
+        <div className="recommendation-score">
+          <strong>{recommendation.score}</strong>
+          <span>匹配分</span>
+        </div>
+      </div>
+      <div className="card-meta">
+        <span>{item.sourceName}</span>
+        <div className="meta-end">
+          <FreshnessBadge item={item} />
+          <span>{scopeLabels[item.scope]}</span>
+        </div>
+      </div>
+      <h3>{displayTitle(item)}</h3>
+      <p className="original-title">{item.title}</p>
+      <p>{item.summary}</p>
+      <ReasonList reasons={recommendation.reasons} />
+      {recommendation.cautions.length > 0 && (
+        <div className="caution-list">
+          {recommendation.cautions.map((caution) => (
+            <span key={caution}>{caution}</span>
+          ))}
+        </div>
+      )}
+      <CardFacts item={item} />
+      <ItemActions
+        isFavorite={isFavorite}
+        onExclude={() => onExclude(item.id)}
+        onToggleFavorite={() => onToggleFavorite(item.id)}
+      />
+      <a className="text-link" href={item.url} target="_blank" rel="noreferrer">
+        查看详情
+        <ExternalLink size={15} aria-hidden="true" />
+      </a>
+    </article>
+  );
+}
+
+function KidRecommendationCard({ pick }: { pick: KidRecommendation }) {
+  const activity = pick.activity;
+  const Icon = iconForKidCategory(activity.category);
+
+  return (
+    <article className="kid-pick-card">
+      <div className="kid-pick-top">
+        <div className={`kid-icon kid-${activity.category}`}>
+          <Icon size={21} aria-hidden="true" />
+        </div>
+        <div className="recommendation-score">
+          <strong>{pick.score}</strong>
+          <span>匹配分</span>
+        </div>
+      </div>
+      <div className="card-meta">
+        <span>{kidCategoryLabels[activity.category]}</span>
+        <span>{activity.district}</span>
+      </div>
+      <h3>{activity.nameZh}</h3>
+      <p className="original-title">{activity.name}</p>
+      <p>{activity.summaryZh}</p>
+      <ReasonList reasons={pick.reasons} />
+      <div className="fact-row">
+        <span>{activity.ageRange}</span>
+        <span>{activity.cost}</span>
+        <span>{activity.booking}</span>
+      </div>
+      <div className="link-row">
+        <a className="text-link" href={activity.website} target="_blank" rel="noreferrer">
+          打开活动页
+          <ExternalLink size={15} aria-hidden="true" />
+        </a>
+        <a className="text-link map-link" href={buildGoogleMapsUrl(activity)} target="_blank" rel="noreferrer">
+          Google 地图
+          <MapPin size={15} aria-hidden="true" />
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function ReasonList({ reasons }: { reasons: string[] }) {
+  if (reasons.length === 0) return null;
+  return (
+    <div className="reason-list">
+      {reasons.map((reason) => (
+        <span key={reason}>{reason}</span>
+      ))}
+    </div>
+  );
+}
+
+function bucketCount(buckets: RecommendationBucket[], id: RecommendationBucket["id"]) {
+  return buckets.find((bucket) => bucket.id === id)?.items.length ?? 0;
+}
+
+function bucketTitleHint(id: RecommendationBucket["id"]) {
+  return {
+    "berlin-soon": "Near-term",
+    "cool-weekends": "Cool-down",
+    "sun-all-inclusive": "Longer trip",
+    "cruise-watch": "Watchlist",
+  }[id];
 }
 
 function FavoritesView({
@@ -1462,6 +1739,7 @@ function getInitialTab(): Tab {
 function hashToTab(hash: string): Tab {
   const normalized = hash.replace(/^#\/?/, "");
   if (
+    normalized === "picks" ||
     normalized === "events" ||
     normalized === "favorites" ||
     normalized === "kids" ||
