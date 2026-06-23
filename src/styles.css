@@ -1173,9 +1173,24 @@ h1 {
 }
 
 .google-map-shell,
+.osm-map-shell,
 .map-fallback {
   display: grid;
   gap: 10px;
+}
+
+.osm-map {
+  z-index: 0;
+  overflow: hidden;
+  width: 100%;
+  min-height: 460px;
+  border: 1px solid #cfd9cd;
+  border-radius: 8px;
+  background: #eef3ee;
+}
+
+.osm-map .leaflet-control-attribution {
+  font-size: 0.68rem;
 }
 
 .google-map-frame {
@@ -1315,6 +1330,12 @@ h1 {
   gap: 8px;
 }
 
+.kid-location-controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
 .kid-category {
   min-height: 40px;
   padding: 0 10px;
@@ -1324,7 +1345,7 @@ h1 {
 
 .kid-highlights {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 8px;
 }
 
@@ -1362,6 +1383,13 @@ h1 {
   background: #fffdfa;
   box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
   scroll-margin-top: 16px;
+}
+
+.kid-card.is-map-selected {
+  border-color: #0f766e;
+  box-shadow:
+    0 0 0 2px rgba(15, 118, 110, 0.16),
+    0 12px 28px rgba(37, 43, 37, 0.08);
 }
 
 .kid-icon {
@@ -2085,6 +2113,10 @@ h1 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  .kid-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .automation-panel {
     grid-template-columns: 1fr;
   }
@@ -2109,6 +2141,10 @@ h1 {
 
   .google-map-frame {
     min-height: 360px;
+  }
+
+  .osm-map {
+    min-height: 380px;
   }
 }
 
@@ -2195,6 +2231,10 @@ h1 {
   }
 
   .google-map-frame {
+    min-height: 320px;
+  }
+
+  .osm-map {
     min-height: 320px;
   }
 

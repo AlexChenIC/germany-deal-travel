@@ -111,12 +111,15 @@
 
 ## Phase 8: 地图增强
 
+状态：8.1-8.3 已完成。
+
 目标：提升地图浏览能力，同时控制 API 成本和 key 暴露风险。
 
 - 保留所有地点的 Google Maps 外部跳转链接。
 - 保留 Maps Embed API 作为可选的单地点内嵌地图。
 - 评估 Leaflet/OpenStreetMap 作为免费多点筛选地图。
 - 只有当 Google 原生多点地图体验明显值得时，再考虑 Google Maps JavaScript API。
+- 儿童活动页已使用 Leaflet/OpenStreetMap 做免费多点地图，并加入地图/卡片联动、区县筛选和参考点距离排序。
 
 ## Phase 9: 收藏可迁移
 

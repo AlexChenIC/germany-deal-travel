@@ -34,6 +34,7 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { Metric, SelectField, TabButton } from "./components/Controls";
+import { KidsOsmMap, type MappedKidActivity } from "./components/KidsOsmMap";
 import {
   CardFacts,
   displayTitle,
@@ -52,7 +53,6 @@ import {
   acStatusLabels,
   actionsWorkflowUrl,
   categoryLabels,
-  googleMapsEmbedApiKey,
   heatStayTypeLabels,
   kidCategoryLabels,
   scopeLabels,
@@ -131,6 +131,18 @@ interface AutomationSummary {
   staleHours: number;
   problemRuns: SourceRun[];
 }
+
+const kidDistanceOrigins = {
+  mitte: { label: "Mitte 参考点", lat: 52.52, lng: 13.405 },
+  prenzlauerBerg: { label: "Prenzlauer Berg", lat: 52.543, lng: 13.421 },
+  kreuzberg: { label: "Kreuzberg", lat: 52.499, lng: 13.404 },
+  moabit: { label: "Moabit", lat: 52.528, lng: 13.347 },
+  charlottenburg: { label: "Charlottenburg", lat: 52.506, lng: 13.305 },
+  lichtenberg: { label: "Lichtenberg", lat: 52.514, lng: 13.499 },
+} as const;
+
+type KidDistanceOriginId = keyof typeof kidDistanceOrigins;
+type KidSortMode = "default" | "distance";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -1432,11 +1444,16 @@ function KidsActivitiesView() {
   const [heatFitOnly, setHeatFitOnly] = useState(false);
   const [rainFitOnly, setRainFitOnly] = useState(false);
   const [lowCostOnly, setLowCostOnly] = useState(false);
+  const [kidDistrict, setKidDistrict] = useState("all");
+  const [kidSortMode, setKidSortMode] = useState<KidSortMode>("default");
+  const [distanceOriginId, setDistanceOriginId] =
+    useState<KidDistanceOriginId>("mitte");
   const [selectedMapActivityId, setSelectedMapActivityId] = useState("");
 
   const filteredKidsActivities = useMemo(() => {
     const queryTerms = expandQuery(kidQuery);
-    return kidsActivities.items.filter((activity) => {
+    const origin = kidDistanceOrigins[distanceOriginId];
+    const items = kidsActivities.items.filter((activity) => {
       const haystack = [
         activity.name,
         activity.nameZh,
@@ -1448,6 +1465,7 @@ function KidsActivitiesView() {
       const normalizedHaystack = normalizeSearchText(haystack);
       return (
         (kidCategory === "all" || activity.category === kidCategory) &&
+        (kidDistrict === "all" || activity.district === kidDistrict) &&
         (!babyFitOnly || isGoodKidFit(activity.suitability.baby)) &&
         (!heatFitOnly || isGoodKidFit(activity.suitability.heat)) &&
         (!rainFitOnly || isGoodKidFit(activity.suitability.rain)) &&
@@ -1456,7 +1474,21 @@ function KidsActivitiesView() {
           queryTerms.some((term) => normalizedHaystack.includes(term)))
       );
     });
-  }, [babyFitOnly, heatFitOnly, kidCategory, kidQuery, lowCostOnly, rainFitOnly]);
+    if (kidSortMode !== "distance") return items;
+    return [...items].sort(
+      (a, b) => kidDistanceSortValue(a, origin) - kidDistanceSortValue(b, origin),
+    );
+  }, [
+    babyFitOnly,
+    distanceOriginId,
+    heatFitOnly,
+    kidCategory,
+    kidDistrict,
+    kidQuery,
+    kidSortMode,
+    lowCostOnly,
+    rainFitOnly,
+  ]);
 
   const categoryOptions: Array<[KidActivityCategory | "all", string]> = [
     ["all", "全部"],
@@ -1467,10 +1499,28 @@ function KidsActivitiesView() {
       ],
     ),
   ];
+  const districtOptions: Array<[string, string]> = [
+    ["all", "全部区县"],
+    ...Array.from(new Set(kidsActivities.items.map((activity) => activity.district)))
+      .sort((a, b) => a.localeCompare(b))
+      .map((district) => [district, district] as [string, string]),
+  ];
+  const distanceOriginOptions: Array<[string, string]> = Object.entries(
+    kidDistanceOrigins,
+  ).map(([id, origin]) => [id, origin.label]);
 
   const mapItems = filteredKidsActivities.filter(hasMapLocation);
   const selectedMapActivity =
     mapItems.find((activity) => activity.id === selectedMapActivityId) ?? mapItems[0];
+  const distanceOrigin = kidDistanceOrigins[distanceOriginId];
+  const handleSelectMapActivity = (id: string) => {
+    setSelectedMapActivityId(id);
+    scrollToKidActivity(id);
+  };
+  const handleFocusMapActivity = (id: string) => {
+    setSelectedMapActivityId(id);
+    scrollToKidsMap();
+  };
 
   return (
     <section className="kids-page">
@@ -1491,14 +1541,14 @@ function KidsActivitiesView() {
 
       <section className="kids-workbench">
         <div className="kids-map-panel">
-          <div className="panel-title">
+          <div className="panel-title" id="kids-map-panel">
             <MapPinned size={18} aria-hidden="true" />
             <h3>柏林活动地图</h3>
           </div>
           <KidsMapPanel
             items={mapItems}
             selectedActivity={selectedMapActivity}
-            onSelectActivity={setSelectedMapActivityId}
+            onSelectActivity={handleSelectMapActivity}
           />
         </div>
 
@@ -1560,6 +1610,30 @@ function KidsActivitiesView() {
             </button>
           </div>
 
+          <div className="kid-location-controls" aria-label="kids map and district controls">
+            <SelectField
+              icon={<MapPin size={16} />}
+              value={kidDistrict}
+              onChange={setKidDistrict}
+              options={districtOptions}
+            />
+            <SelectField
+              icon={<Compass size={16} />}
+              value={distanceOriginId}
+              onChange={(value) => setDistanceOriginId(value as KidDistanceOriginId)}
+              options={distanceOriginOptions}
+            />
+            <SelectField
+              icon={<Filter size={16} />}
+              value={kidSortMode}
+              onChange={(value) => setKidSortMode(value as KidSortMode)}
+              options={[
+                ["default", "默认排序"],
+                ["distance", "按参考距离"],
+              ]}
+            />
+          </div>
+
           <div className="kid-highlights">
             <div>
               <strong>{kidsActivities.items.length}</strong>
@@ -1577,6 +1651,10 @@ function KidsActivitiesView() {
               <strong>{countKidFit("baby")}</strong>
               <span>宝宝适合</span>
             </div>
+            <div>
+              <strong>{formatDistanceKm(nearestMappedDistance(mapItems, distanceOrigin))}</strong>
+              <span>最近点</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1590,12 +1668,11 @@ function KidsActivitiesView() {
         {filteredKidsActivities.map((activity) => (
           <KidActivityCard
             activity={activity}
+            distanceKm={distanceFromOrigin(activity, distanceOrigin)}
             isMapSelected={selectedMapActivity?.id === activity.id}
             key={activity.id}
             onFocusMap={
-              googleMapsEmbedApiKey && hasMapLocation(activity)
-                ? () => setSelectedMapActivityId(activity.id)
-                : undefined
+              hasMapLocation(activity) ? () => handleFocusMapActivity(activity.id) : undefined
             }
           />
         ))}
@@ -1616,106 +1693,33 @@ function KidsMapPanel({
   selectedActivity,
   onSelectActivity,
 }: {
-  items: Array<KidActivity & { lat: number; lng: number }>;
-  selectedActivity?: KidActivity & { lat: number; lng: number };
+  items: MappedKidActivity[];
+  selectedActivity?: MappedKidActivity;
   onSelectActivity: (id: string) => void;
 }) {
-  if (googleMapsEmbedApiKey && selectedActivity) {
-    return (
-      <div className="google-map-shell">
-        <iframe
-          allowFullScreen
-          className="google-map-frame"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          src={buildGoogleMapsEmbedUrl(selectedActivity)}
-          title={`Google Maps - ${selectedActivity.nameZh}`}
-        />
-        <div className="map-selector" aria-label="Google Maps location selector">
-          {items.map((item, index) => (
-            <button
-              className={
-                selectedActivity.id === item.id
-                  ? "map-location-chip is-active"
-                  : "map-location-chip"
-              }
-              key={item.id}
-              onClick={() => onSelectActivity(item.id)}
-              type="button"
-            >
-              <span>{index + 1}</span>
-              {item.nameZh}
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="map-fallback">
-      <BerlinKidsMap items={items} onSelectActivity={onSelectActivity} />
+      <KidsOsmMap
+        items={items}
+        selectedActivity={selectedActivity}
+        onSelectActivity={onSelectActivity}
+      />
       <div className="map-status-note">
         <MapPinned size={16} aria-hidden="true" />
-        <span>配置 Google Maps Embed API key 后，这里会自动切换为内嵌 Google Maps。</span>
+        <span>使用 OpenStreetMap 多点地图；每张卡片仍保留 Google 地图和公交路线入口。</span>
       </div>
-    </div>
-  );
-}
-
-function BerlinKidsMap({
-  items,
-  onSelectActivity,
-}: {
-  items: Array<KidActivity & { lat: number; lng: number }>;
-  onSelectActivity?: (id: string) => void;
-}) {
-  return (
-    <div className="berlin-map" aria-label="柏林儿童活动地图">
-      <svg aria-hidden="true" viewBox="0 0 1000 660" preserveAspectRatio="none">
-        <path
-          className="map-shape"
-          d="M119 203 L213 96 L381 90 L483 49 L630 86 L760 80 L902 179 L874 318 L930 430 L819 558 L642 612 L516 574 L391 632 L218 584 L126 463 L74 330 Z"
-        />
-        <ellipse className="map-ring" cx="500" cy="325" rx="265" ry="184" />
-        <path
-          className="map-spree"
-          d="M88 364 C193 331 239 377 335 341 C453 297 520 380 623 335 C722 292 796 304 920 267"
-        />
-        <text x="440" y="304">Mitte</text>
-        <text x="292" y="430">Kreuzberg</text>
-        <text x="520" y="188">Prenzlauer Berg</text>
-        <text x="690" y="424">Lichtenberg</text>
-      </svg>
-
-      {items.map((item, index) => {
-        const point = projectBerlinPoint(item);
-        return (
-          <button
-            className={`map-pin pin-${item.category}`}
-            key={item.id}
-            onClick={() => {
-              onSelectActivity?.(item.id);
-              scrollToKidActivity(item.id);
-            }}
-            style={{ left: `${point.x}%`, top: `${point.y}%` }}
-            title={`${item.nameZh} - ${item.district}`}
-            type="button"
-          >
-            <span>{index + 1}</span>
-          </button>
-        );
-      })}
     </div>
   );
 }
 
 function KidActivityCard({
   activity,
+  distanceKm,
   isMapSelected,
   onFocusMap,
 }: {
   activity: KidActivity;
+  distanceKm?: number;
   isMapSelected: boolean;
   onFocusMap?: () => void;
 }) {
@@ -1726,7 +1730,10 @@ function KidActivityCard({
     : undefined;
 
   return (
-    <article className="kid-card" id={`kid-${activity.id}`}>
+    <article
+      className={isMapSelected ? "kid-card is-map-selected" : "kid-card"}
+      id={`kid-${activity.id}`}
+    >
       <div className={`kid-icon kid-${activity.category}`}>
         <Icon size={22} aria-hidden="true" />
       </div>
@@ -1743,6 +1750,7 @@ function KidActivityCard({
           <span>{activity.cost}</span>
           <span>{activity.booking}</span>
           <span>{activity.address}</span>
+          {typeof distanceKm === "number" && <span>约 {formatDistanceKm(distanceKm)}</span>}
         </div>
         <div className="tag-row">
           {activity.tags.map((tag) => (
@@ -1974,6 +1982,48 @@ function countKidFit(kind: "baby" | "heat" | "rain") {
   return kidsActivities.items.filter((activity) => isGoodKidFit(activity.suitability[kind])).length;
 }
 
+function distanceFromOrigin(
+  activity: KidActivity,
+  origin: { lat: number; lng: number },
+): number | undefined {
+  if (!hasMapLocation(activity)) return undefined;
+  return haversineKm(origin.lat, origin.lng, activity.lat, activity.lng);
+}
+
+function kidDistanceSortValue(
+  activity: KidActivity,
+  origin: { lat: number; lng: number },
+) {
+  return distanceFromOrigin(activity, origin) ?? Number.MAX_SAFE_INTEGER;
+}
+
+function nearestMappedDistance(
+  activities: MappedKidActivity[],
+  origin: { lat: number; lng: number },
+) {
+  if (activities.length === 0) return undefined;
+  return Math.min(
+    ...activities.map((activity) => haversineKm(origin.lat, origin.lng, activity.lat, activity.lng)),
+  );
+}
+
+function haversineKm(latA: number, lngA: number, latB: number, lngB: number) {
+  const toRad = (value: number) => (value * Math.PI) / 180;
+  const earthRadiusKm = 6371;
+  const dLat = toRad(latB - latA);
+  const dLng = toRad(lngB - lngA);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(latA)) * Math.cos(toRad(latB)) * Math.sin(dLng / 2) ** 2;
+  return earthRadiusKm * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function formatDistanceKm(value: number | undefined) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "待定";
+  if (value < 1) return `${Math.round(value * 1000)} m`;
+  return `${value.toFixed(value < 10 ? 1 : 0)} km`;
+}
+
 function isGoodKidFit(level: KidActivityFitLevel) {
   return level === "excellent" || level === "good";
 }
@@ -2009,30 +2059,17 @@ function hasMapLocation(activity: KidActivity): activity is KidActivity & {
   return typeof activity.lat === "number" && typeof activity.lng === "number";
 }
 
-function projectBerlinPoint(activity: KidActivity & { lat: number; lng: number }) {
-  const bounds = {
-    west: 13.3,
-    east: 13.63,
-    south: 52.44,
-    north: 52.58,
-  };
-
-  const x = ((activity.lng - bounds.west) / (bounds.east - bounds.west)) * 100;
-  const y = ((bounds.north - activity.lat) / (bounds.north - bounds.south)) * 100;
-
-  return {
-    x: clamp(x, 4, 96),
-    y: clamp(y, 5, 95),
-  };
-}
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
-
 function scrollToKidActivity(id: string) {
   if (typeof document === "undefined") return;
   document.getElementById(`kid-${id}`)?.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
+function scrollToKidsMap() {
+  if (typeof document === "undefined") return;
+  document.getElementById("kids-map-panel")?.scrollIntoView({
     behavior: "smooth",
     block: "start",
   });
@@ -2043,18 +2080,6 @@ function buildGoogleMapsUrl(activity: KidActivity) {
     ? `${activity.name} ${activity.address}`
     : `${activity.name} Berlin`;
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-}
-
-function buildGoogleMapsEmbedUrl(activity: KidActivity) {
-  const query = hasConcreteAddress(activity)
-    ? `${activity.name} ${activity.address}`
-    : `${activity.name} Berlin`;
-  const params = new URLSearchParams({
-    key: googleMapsEmbedApiKey ?? "",
-    q: query,
-    zoom: "13",
-  });
-  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 }
 
 function buildGoogleDirectionsUrl(activity: KidActivity) {
