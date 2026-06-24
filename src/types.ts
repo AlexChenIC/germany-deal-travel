@@ -325,3 +325,127 @@ export interface HeatEscapeLiveData {
   };
   items: HeatStayLiveStatus[];
 }
+
+export type CanaryIslandId =
+  | "gran-canaria"
+  | "tenerife"
+  | "fuerteventura"
+  | "lanzarote";
+
+export type CanaryFitLevel = "top" | "strong" | "check" | "backup";
+
+export type CanaryEvidenceStatus = "confirmed" | "partial" | "missing" | "check";
+
+export interface CanarySourceLink {
+  label: string;
+  url: string;
+  noteZh: string;
+}
+
+export interface CanaryAdviceBlock {
+  titleZh: string;
+  pointsZh: string[];
+}
+
+export interface CanaryCuratedBookingLink {
+  label: string;
+  site: string;
+  url: string;
+  hotelNameZh?: string;
+  reasonZh: string;
+  fitZh: string;
+  cautionZh: string;
+}
+
+export interface CanarySearchJump {
+  label: string;
+  site: string;
+  url: string;
+  intentZh: string;
+  prefilledZh: string[];
+  setManuallyZh: string[];
+}
+
+export interface CanaryFlightRoute {
+  id: string;
+  island: CanaryIslandId;
+  islandZh: string;
+  airportCode: string;
+  airportName: string;
+  directStatus: "confirmed" | "seasonal" | "check";
+  directStatusZh: string;
+  airlines: string[];
+  flightTimeZh: string;
+  julyAugustNoteZh: string;
+  sources: CanarySourceLink[];
+}
+
+export interface CanaryPriceHint {
+  monthZh: string;
+  labelZh: string;
+  sourceName: string;
+  sourceUrl: string;
+  noteZh: string;
+}
+
+export interface CanaryFacilitySignal {
+  status: CanaryEvidenceStatus;
+  labelZh: string;
+  detailZh: string;
+}
+
+export interface CanaryResortOption {
+  id: string;
+  name: string;
+  nameZh: string;
+  island: CanaryIslandId;
+  islandZh: string;
+  resortArea: string;
+  airportCode: string;
+  transferMinutes: number;
+  fitLevel: CanaryFitLevel;
+  fitScore: number;
+  priceRank: number;
+  priceBandZh: string;
+  bestForZh: string;
+  routeNoteZh: string;
+  mealPlanZh: string;
+  roomPlanZh: string;
+  babyFitZh: string;
+  facilities: {
+    allInclusive: CanaryFacilitySignal;
+    babyReady: CanaryFacilitySignal;
+    kidsPool: CanaryFacilitySignal;
+    saunaSpa: CanaryFacilitySignal;
+    directFlight: CanaryFacilitySignal;
+  };
+  priceHints: CanaryPriceHint[];
+  prosZh: string[];
+  risksZh: string[];
+  sourceLinks: CanarySourceLink[];
+  bookingLinks: CanarySourceLink[];
+  checkedAt: string;
+}
+
+export interface CanaryBookingPortal {
+  name: string;
+  url: string;
+  useForZh: string;
+  cautionZh: string;
+}
+
+export interface CanaryAllInclusiveData {
+  updatedAt: string;
+  timezone: string;
+  partyZh: string;
+  travelWindowZh: string;
+  stayLengthZh: string;
+  assumptionsZh: string[];
+  quickTakeawaysZh: string[];
+  familyAdviceZh: CanaryAdviceBlock[];
+  curatedBookingLinks: CanaryCuratedBookingLink[];
+  searchJumpLinks: CanarySearchJump[];
+  flightRoutes: CanaryFlightRoute[];
+  bookingPortals: CanaryBookingPortal[];
+  items: CanaryResortOption[];
+}

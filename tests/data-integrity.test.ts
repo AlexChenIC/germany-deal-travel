@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import type {
+  CanaryAllInclusiveData,
   HeatEscapeLiveData,
   HeatEscapeStayData,
   KidActivityData,
@@ -33,6 +34,67 @@ test("radar data keeps ids, links, and Chinese titles usable", async () => {
     assert.ok(item.sourceName, `${item.id} needs sourceName`);
     assert.ok(item.familyScore >= 0 && item.familyScore <= 100, `${item.id} family score`);
     assert.ok(item.priorityScore >= 0, `${item.id} priority score`);
+  }
+});
+
+test("canary all-inclusive shortlist keeps sources and evidence usable", async () => {
+  const data = await readJson<CanaryAllInclusiveData>(
+    "src/data/canary-all-inclusive-options.json",
+  );
+  assert.ok(data.updatedAt, "canary data needs an update timestamp");
+  assert.ok(data.items.length >= 5, "canary shortlist should have several options");
+  assertUniqueIds(
+    "canary resort options",
+    data.items.map((item) => item.id),
+  );
+
+  for (const route of data.flightRoutes) {
+    assert.ok(route.airportCode, `${route.id} needs airportCode`);
+    assert.ok(route.sources.length > 0, `${route.id} needs route sources`);
+    route.sources.forEach((source) => assertSourceLink(`${route.id} route`, source));
+  }
+
+  assert.ok(data.familyAdviceZh.length >= 3, "canary page needs family advice blocks");
+  for (const block of data.familyAdviceZh) {
+    assert.ok(block.titleZh.trim(), "family advice block needs a title");
+    assert.ok(block.pointsZh.length >= 2, `${block.titleZh} needs concrete points`);
+  }
+
+  assert.ok(
+    data.curatedBookingLinks.length >= 4,
+    "canary page needs curated high-quality booking links",
+  );
+  for (const link of data.curatedBookingLinks) {
+    assert.match(link.url, /^https?:\/\//, `${link.label} curated URL`);
+    assert.ok(link.reasonZh, `${link.label} needs a reason`);
+    assert.ok(link.fitZh, `${link.label} needs a fit note`);
+    assert.ok(link.cautionZh, `${link.label} needs a caution note`);
+  }
+
+  assert.ok(data.searchJumpLinks.length >= 4, "canary page needs search jump links");
+  for (const jump of data.searchJumpLinks) {
+    assert.match(jump.url, /^https?:\/\//, `${jump.label} jump URL`);
+    assert.ok(jump.prefilledZh.length > 0, `${jump.label} needs prefilled notes`);
+    assert.ok(jump.setManuallyZh.length > 0, `${jump.label} needs manual filter notes`);
+  }
+
+  for (const item of data.items) {
+    assert.ok(item.nameZh.trim(), `${item.id} needs a Chinese name`);
+    assert.ok(item.fitScore >= 0 && item.fitScore <= 100, `${item.id} fit score`);
+    assert.ok(item.transferMinutes > 0, `${item.id} transfer minutes`);
+    assert.ok(item.priceHints.length > 0, `${item.id} needs price hints`);
+    assert.ok(item.sourceLinks.length >= 2, `${item.id} needs source links`);
+    assert.ok(item.bookingLinks.length > 0, `${item.id} needs booking links`);
+    Object.values(item.facilities).forEach((facility) => {
+      assert.ok(facility.labelZh, `${item.id} facility label`);
+      assert.ok(facility.detailZh, `${item.id} facility detail`);
+    });
+    item.priceHints.forEach((hint) => {
+      assert.match(hint.sourceUrl, /^https?:\/\//, `${item.id} price hint URL`);
+      assert.ok(hint.noteZh, `${item.id} price hint note`);
+    });
+    item.sourceLinks.forEach((source) => assertSourceLink(`${item.id} source`, source));
+    item.bookingLinks.forEach((source) => assertSourceLink(`${item.id} booking`, source));
   }
 });
 
@@ -92,4 +154,10 @@ test("heat live status covers every heat escape stay", async () => {
 
 function assertUniqueIds(label: string, ids: string[]) {
   assert.equal(new Set(ids).size, ids.length, `${label} should have unique ids`);
+}
+
+function assertSourceLink(label: string, source: { label: string; url: string; noteZh: string }) {
+  assert.ok(source.label.trim(), `${label} needs label`);
+  assert.match(source.url, /^https?:\/\//, `${label} needs URL`);
+  assert.ok(source.noteZh.trim(), `${label} needs note`);
 }

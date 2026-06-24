@@ -77,6 +77,7 @@ import {
   type TravelRecommendation,
 } from "./lib/recommendations";
 import { expandQuery, normalizeSearchText } from "./lib/search";
+import { CanaryDealsView } from "./pages/CanaryDealsView";
 import { PlanView } from "./pages/PlanView";
 import { SourcesView } from "./pages/SourcesView";
 import type {
@@ -108,6 +109,7 @@ const heatLiveStatus = heatLiveStatusJson as HeatEscapeLiveData;
 
 type Tab =
   | "picks"
+  | "canary"
   | "heat"
   | "radar"
   | "events"
@@ -371,6 +373,9 @@ function App() {
         <TabButton active={activeTab === "heat"} onClick={() => selectTab("heat")}>
           避暑短住
         </TabButton>
+        <TabButton active={activeTab === "canary"} onClick={() => selectTab("canary")}>
+          加纳利全包
+        </TabButton>
         <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
           推荐雷达
         </TabButton>
@@ -406,6 +411,8 @@ function App() {
         />
       ) : activeTab === "heat" ? (
         <HeatEscapeView />
+      ) : activeTab === "canary" ? (
+        <CanaryDealsView />
       ) : activeTab === "sources" ? (
         <SourcesView runs={radar.sources} sources={sourceCatalog} timezone={radar.timezone} />
       ) : activeTab === "plan" ? (
@@ -2359,6 +2366,7 @@ function hashToTab(hash: string): Tab {
   const normalized = hash.replace(/^#\/?/, "");
   if (
     normalized === "picks" ||
+    normalized === "canary" ||
     normalized === "heat" ||
     normalized === "events" ||
     normalized === "favorites" ||
