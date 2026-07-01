@@ -116,6 +116,66 @@
     "notes": "Top 20 deal value is high; later consider newsletter parsing or browser adapter."
   },
   {
+    "id": "tui-last-minute",
+    "name": "TUI Last Minute",
+    "homepage": "https://www.tui.com/last-minute/",
+    "kind": "html",
+    "status": "candidate",
+    "enabled": false,
+    "focus": ["last-minute", "packages", "all-inclusive", "family", "canary-islands"],
+    "access": "Public HTML offer pages; final prices require date, airport and traveller selections.",
+    "quality": "high",
+    "notes": "官方 Last Minute Sale 适合监控 40%-50% 的机酒/酒店优惠，尤其是 Kanaren、Turkey、Egypt 等家庭全包方向。"
+  },
+  {
+    "id": "secret-escapes",
+    "name": "Secret Escapes",
+    "homepage": "https://www.secretescapes.de/aktuelle-angebote",
+    "kind": "html",
+    "status": "candidate",
+    "enabled": false,
+    "focus": ["luxury-hotels", "spa", "packages", "family", "all-inclusive"],
+    "access": "Browser-rendered pages and member pricing; best handled with manual review or browser adapter.",
+    "quality": "high",
+    "notes": "适合找高星酒店、Spa、近郊短住和全包套餐，但需要登录/JS 和家庭房二次核验。"
+  },
+  {
+    "id": "travelcircus-wellness",
+    "name": "Travelcircus Wellness",
+    "homepage": "https://www.travelcircus.de/wellnessurlaub",
+    "kind": "html",
+    "status": "candidate",
+    "enabled": false,
+    "focus": ["wellness", "thermal-spa", "short-stay", "theme-parks", "family"],
+    "access": "Public HTML pages with package cards; prices change by dates and travellers.",
+    "quality": "high",
+    "notes": "柏林周边和德国短住价值高，尤其是 Tropical Islands、温泉、乐园+酒店套餐。"
+  },
+  {
+    "id": "lidl-reisen",
+    "name": "Lidl Reisen",
+    "homepage": "https://www.lidl-reisen.de/lastminute/deutschland",
+    "kind": "html",
+    "status": "candidate",
+    "enabled": false,
+    "focus": ["germany", "last-minute", "hotels", "spa", "retail-packages"],
+    "access": "Public HTML pages; search results depend on dates and party size.",
+    "quality": "medium",
+    "notes": "适合发现德国境内 40%-50% Last Minute 酒店短住，但空调、宝宝设施和距离需要严格核对。"
+  },
+  {
+    "id": "holidaycheck-tui-deals",
+    "name": "HolidayCheck TUI Deals",
+    "homepage": "https://www.holidaycheck.de/deals/tui",
+    "kind": "html",
+    "status": "candidate",
+    "enabled": false,
+    "focus": ["tui", "hotel-reviews", "packages", "family-risk-check"],
+    "access": "Public deal pages; best used as review and price cross-check.",
+    "quality": "medium",
+    "notes": "适合把 TUI/airtours 优惠与住客评价、儿童设施和酒店风险放在一起核验。"
+  },
+  {
     "id": "groupon-berlin",
     "name": "Groupon Berlin",
     "homepage": "https://www.groupon.de/browse/berlin",

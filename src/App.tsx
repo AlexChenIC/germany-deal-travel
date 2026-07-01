@@ -78,6 +78,7 @@ import {
 } from "./lib/recommendations";
 import { expandQuery, normalizeSearchText } from "./lib/search";
 import { CanaryDealsView } from "./pages/CanaryDealsView";
+import { DiscountFocusView } from "./pages/DiscountFocusView";
 import { PlanView } from "./pages/PlanView";
 import { SourcesView } from "./pages/SourcesView";
 import type {
@@ -108,6 +109,7 @@ const heatEscapeStays = heatEscapeStaysJson as HeatEscapeStayData;
 const heatLiveStatus = heatLiveStatusJson as HeatEscapeLiveData;
 
 type Tab =
+  | "discounts"
   | "picks"
   | "canary"
   | "heat"
@@ -265,7 +267,7 @@ function App() {
   const selectTab = (tab: Tab) => {
     setActiveTabState(tab);
     if (typeof window === "undefined") return;
-    const nextHash = tab === "radar" ? "" : `#${tab}`;
+    const nextHash = tab === "discounts" ? "" : `#${tab}`;
     const nextUrl = `${window.location.pathname}${window.location.search}${nextHash}`;
     window.history.pushState(null, "", nextUrl);
   };
@@ -367,6 +369,12 @@ function App() {
       <AutomationStatusPanel summary={automationSummary} />
 
       <nav className="tabs" aria-label="views">
+        <TabButton
+          active={activeTab === "discounts"}
+          onClick={() => selectTab("discounts")}
+        >
+          重点折扣
+        </TabButton>
         <TabButton active={activeTab === "picks"} onClick={() => selectTab("picks")}>
           为我推荐
         </TabButton>
@@ -402,7 +410,17 @@ function App() {
         </TabButton>
       </nav>
 
-      {activeTab === "picks" ? (
+      {activeTab === "discounts" ? (
+        <DiscountFocusView
+          excludedIds={excluded.ids}
+          favoriteIds={favorites.ids}
+          generatedAt={radar.generatedAt}
+          items={radar.items}
+          timezone={radar.timezone}
+          onExclude={excludeItem}
+          onToggleFavorite={toggleFavorite}
+        />
+      ) : activeTab === "picks" ? (
         <PersonalizedPicksView
           recommendations={familyRecommendations}
           favoriteIds={favorites.ids}
@@ -2366,8 +2384,10 @@ function hashToTab(hash: string): Tab {
   const normalized = hash.replace(/^#\/?/, "");
   if (
     normalized === "picks" ||
+    normalized === "discounts" ||
     normalized === "canary" ||
     normalized === "heat" ||
+    normalized === "radar" ||
     normalized === "events" ||
     normalized === "favorites" ||
     normalized === "kids" ||
@@ -2376,7 +2396,7 @@ function hashToTab(hash: string): Tab {
   ) {
     return normalized;
   }
-  return "radar";
+  return "discounts";
 }
 
 export default App;

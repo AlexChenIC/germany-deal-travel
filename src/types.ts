@@ -449,3 +449,37 @@ export interface CanaryAllInclusiveData {
   bookingPortals: CanaryBookingPortal[];
   items: CanaryResortOption[];
 }
+
+export type DiscountSourceCategory =
+  | "package-sale"
+  | "hotel-club"
+  | "curated-top20"
+  | "short-stay"
+  | "community"
+  | "retail-package"
+  | "local-activity";
+
+export type DiscountSourcePriority = "primary" | "secondary" | "watch";
+
+export interface DiscountWatchSource {
+  id: string;
+  name: string;
+  url: string;
+  category: DiscountSourceCategory;
+  priority: DiscountSourcePriority;
+  headlineZh: string;
+  discountSignalZh: string;
+  thresholdZh: string;
+  familyFitZh: string;
+  useForZh: string[];
+  caveatsZh: string[];
+  evidence: CanarySourceLink[];
+}
+
+export interface DiscountWatchData {
+  updatedAt: string;
+  timezone: string;
+  designVerdictZh: string;
+  principlesZh: string[];
+  sources: DiscountWatchSource[];
+}

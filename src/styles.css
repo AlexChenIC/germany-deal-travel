@@ -828,6 +828,7 @@ h1 {
 
 .collection-page,
 .kids-page,
+.discount-page,
 .picks-page,
 .heat-page,
 .canary-page {
@@ -837,6 +838,7 @@ h1 {
 
 .collection-hero,
 .kids-hero,
+.discount-hero,
 .picks-hero,
 .heat-hero,
 .canary-hero,
@@ -849,6 +851,7 @@ h1 {
 
 .collection-hero,
 .kids-hero,
+.discount-hero,
 .picks-hero,
 .heat-hero,
 .canary-hero {
@@ -860,6 +863,7 @@ h1 {
 
 .collection-hero h2,
 .kids-hero h2,
+.discount-hero h2,
 .picks-hero h2,
 .heat-hero h2,
 .canary-hero h2 {
@@ -870,6 +874,7 @@ h1 {
 
 .collection-hero p,
 .kids-hero p,
+.discount-hero p,
 .picks-hero p,
 .heat-hero p,
 .canary-hero p {
@@ -916,6 +921,275 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
+}
+
+.discount-principles {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.discount-principles span {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  border: 1px solid #dfe7db;
+  border-radius: 8px;
+  background: #f7fbf3;
+  color: #42504b;
+  font-size: 0.86rem;
+  line-height: 1.42;
+}
+
+.discount-principles svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #0f766e;
+}
+
+.discount-metrics {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.discount-section {
+  display: grid;
+  gap: 12px;
+}
+
+.discount-source-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.discount-source-card {
+  display: flex;
+  min-width: 0;
+  min-height: 360px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.discount-source-card.is-primary {
+  border-color: #b7d3c5;
+  background: linear-gradient(180deg, #f8fdf9, #fffdfa 48%);
+}
+
+.discount-source-card.is-watch {
+  background: #fbfaf6;
+}
+
+.discount-source-top,
+.discount-deal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.discount-source-top span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #0f766e;
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.discount-source-card.is-secondary .discount-source-top span {
+  background: #8a5b13;
+}
+
+.discount-source-card.is-watch .discount-source-top span {
+  background: #68706c;
+}
+
+.discount-source-top small {
+  color: #6c746e;
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+.discount-source-card h3 {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.24;
+}
+
+.discount-source-card > strong {
+  color: #1c2526;
+  line-height: 1.35;
+}
+
+.discount-source-card p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.discount-source-rule {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 9px;
+  border: 1px solid #ecdcb8;
+  border-radius: 8px;
+  background: #fff8e8;
+  color: #735017;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.discount-source-rule svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.discount-family-fit {
+  padding-top: 2px;
+}
+
+.discount-caveats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.discount-caveats span {
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #f3f1ea;
+  color: #606b65;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.discount-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.32fr);
+  gap: 12px;
+  align-items: end;
+}
+
+.discount-rule-panel {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #dfe7db;
+  border-radius: 8px;
+  background: #f7fbf3;
+}
+
+.discount-rule-panel div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f766e;
+}
+
+.discount-rule-panel p {
+  margin: 0;
+  color: #4f5a56;
+  line-height: 1.55;
+}
+
+.discount-deal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.discount-deal-card {
+  display: flex;
+  min-width: 0;
+  min-height: 410px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.discount-deal-card.is-excellent {
+  border-color: #d1a43f;
+  background: linear-gradient(180deg, #fff9e8, #fffdfa 44%);
+}
+
+.discount-deal-card.is-strong {
+  border-color: #b7d3c5;
+  background: linear-gradient(180deg, #f8fdf9, #fffdfa 44%);
+}
+
+.discount-deal-top > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  color: #65716d;
+  font-size: 0.78rem;
+}
+
+.discount-deal-top > strong {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #0f766e;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+.discount-deal-card.is-excellent .discount-deal-top > strong {
+  background: #8a5b13;
+}
+
+.discount-deal-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.28;
+}
+
+.discount-deal-card > p:not(.original-title):not(.discount-caution) {
+  margin: 0;
+  color: #4f5a56;
+  line-height: 1.5;
+}
+
+.discount-signal-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.discount-signal-row span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #edf3f0;
+  color: #37524c;
+  font-size: 0.77rem;
+  font-weight: 700;
+}
+
+.discount-caution {
+  margin: 0;
+  padding: 8px 9px;
+  border: 1px solid #efd2c3;
+  border-radius: 8px;
+  background: #fff6f1;
+  color: #824228;
+  font-size: 0.84rem;
+  line-height: 1.45;
 }
 
 .canary-metrics {
@@ -2727,6 +3001,9 @@ h1 {
   }
 
   .picks-metrics,
+  .discount-metrics,
+  .discount-source-grid,
+  .discount-deal-grid,
   .canary-metrics,
   .canary-route-grid,
   .canary-takeaway-grid,
@@ -2769,6 +3046,7 @@ h1 {
 
   .collection-hero,
   .kids-hero,
+  .discount-hero,
   .picks-hero,
   .heat-hero,
   .canary-hero,
@@ -2805,6 +3083,10 @@ h1 {
   .toolbar,
   .automation-stats,
   .picks-metrics,
+  .discount-metrics,
+  .discount-source-grid,
+  .discount-deal-grid,
+  .discount-toolbar,
   .canary-metrics,
   .canary-route-grid,
   .canary-takeaway-grid,
@@ -2858,6 +3140,7 @@ h1 {
 
   .collection-hero,
   .kids-hero,
+  .discount-hero,
   .picks-hero,
   .heat-hero,
   .canary-hero,

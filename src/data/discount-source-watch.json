@@ -1,0 +1,213 @@
+{
+  "updatedAt": "2026-07-01T12:00:00+02:00",
+  "timezone": "Europe/Berlin",
+  "designVerdictZh": "当前网站的信息覆盖面已经足够广，但默认呈现仍偏全量聚合。下一步应该把 40%+ 大折扣、全包套餐、带泳池/SPA 的亲子住宿、柏林周边短住这些高价值线索放到第一屏，其他普通信息降到雷达列表里备用。",
+  "principlesZh": [
+    "首页优先展示折扣强度明确、对家庭决策有帮助的少量项目。",
+    "专门折扣站、官方 Last Minute、酒店会员价和社区爆料分开看，避免把普通灵感当成可预订优惠。",
+    "家庭画像优先：3 位成年人、1 位婴儿、长辈同行、柏林出发、低折腾、泳池/SPA/全包/空调加权。",
+    "低价值或间接旅行优惠降权，例如信用卡、礼品卡、机场免税和成人限定酒店。"
+  ],
+  "sources": [
+    {
+      "id": "tui-last-minute",
+      "name": "TUI Last Minute Sale",
+      "url": "https://www.tui.com/last-minute/",
+      "category": "package-sale",
+      "priority": "primary",
+      "headlineZh": "官方 50% 上限的机酒/酒店 Last Minute",
+      "discountSignalZh": "TUI 官方页面写明热门目的地最高可省 50%，且包括 Kanaren、Ägypten、Türkei 等目的地。",
+      "thresholdZh": "只重点展示明确出现 40%+、全包、家庭酒店、柏林/德国机场出发或 Kanaren/土耳其/埃及方向的条目。",
+      "familyFitZh": "很适合一周左右阳光度假：机票、酒店、转机/接送和取消政策更容易一起核对。",
+      "useForZh": ["加纳利/土耳其/埃及全包", "暑假 Last Minute", "官方套餐价格核验"],
+      "caveatsZh": ["要避开 Adults-only", "要逐项核对婴儿床、儿童泳池和房间空调", "限量库存，价格会快速变化"],
+      "evidence": [
+        {
+          "label": "TUI Last Minute",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "官方页面显示 Last Minute Sale 最高 50% 折扣，并列出 Kanaren、Ägypten 等目的地。"
+        }
+      ]
+    },
+    {
+      "id": "urlaubspiraten-all-inclusive",
+      "name": "Urlaubspiraten All Inclusive / Last Minute",
+      "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+      "category": "package-sale",
+      "priority": "primary",
+      "headlineZh": "德国折扣编辑站，适合发现便宜全包和临时套餐",
+      "discountSignalZh": "常见 1 周含机票、Transfer、酒店/公寓的低价全包或半包案例。",
+      "thresholdZh": "优先展示含 Flug + Transfer + All Inclusive/HP 且成人价低于 650 欧或总价有家庭优势的条目。",
+      "familyFitZh": "非常适合发现价格洼地，但需要回到 OTA/酒店页面核对宝宝设施。",
+      "useForZh": ["全包低价发现", "Kanaren/Mallorca/土耳其/葡萄牙", "柏林或德国机场出发线索"],
+      "caveatsZh": ["爆料页不等于最终库存", "有些价格默认 2 成人，需要手动改成 3 成人 + 婴儿"],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten All Inclusive",
+          "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+          "noteZh": "页面包含 Kanaren、Mallorca 等全包/Last Minute 示例和含机票、Transfer 的套餐描述。"
+        }
+      ]
+    },
+    {
+      "id": "travelzoo-top20",
+      "name": "Travelzoo Top 20",
+      "url": "https://www.travelzoo.com/de/top20/",
+      "category": "curated-top20",
+      "priority": "primary",
+      "headlineZh": "每周人工筛选的 Top 20 高性价比榜单",
+      "discountSignalZh": "榜单中经常直接标注 -40% 到 -50% 左右的酒店、度假和邮轮优惠。",
+      "thresholdZh": "优先展示明确标注 -40% 以上、4 星/5 星酒店、含餐、SPA 或短住的条目。",
+      "familyFitZh": "适合快速扫高质量短住、欧洲城市酒店、邮轮和度假套餐。",
+      "useForZh": ["每周人工精选", "4/5 星酒店折扣", "德国/欧洲短住", "邮轮观察"],
+      "caveatsZh": ["部分是双人报价", "家庭房和婴儿政策需要跳转后核对"],
+      "evidence": [
+        {
+          "label": "Travelzoo Top 20",
+          "url": "https://www.travelzoo.com/de/top20/",
+          "noteZh": "榜单页面说明优惠经过筛选，并展示带百分比折扣的酒店/旅行项目。"
+        }
+      ]
+    },
+    {
+      "id": "secret-escapes",
+      "name": "Secret Escapes",
+      "url": "https://www.secretescapes.de/aktuelle-angebote",
+      "category": "hotel-club",
+      "priority": "primary",
+      "headlineZh": "高星酒店和套餐会员价，适合找 Spa/5 星/家庭度假",
+      "discountSignalZh": "当前官方夏季促销写明最高可省 50%，并有 Hotels、Pauschalreisen、All-inclusive、Familienurlaub 分类。",
+      "thresholdZh": "重点展示 40%+、5 星/精品酒店、Spa、全包、家庭度假、近郊短住。",
+      "familyFitZh": "适合找舒服酒店和带餐套餐，但不是所有房型都适合婴儿。",
+      "useForZh": ["豪华酒店折扣", "Spa/Wellness", "近郊短住", "全包套餐二次核验"],
+      "caveatsZh": ["页面依赖 JavaScript，自动抓取稳定性一般", "会员价要登录后确认", "需避开 Adults-only"],
+      "evidence": [
+        {
+          "label": "Secret Escapes aktuelle Angebote",
+          "url": "https://www.secretescapes.de/aktuelle-angebote",
+          "noteZh": "官方页面列出酒店、套餐、全包、家庭度假分类，并显示最高 50% 夏季促销。"
+        }
+      ]
+    },
+    {
+      "id": "travelcircus-wellness",
+      "name": "Travelcircus Wellness",
+      "url": "https://www.travelcircus.de/wellnessurlaub",
+      "category": "short-stay",
+      "priority": "primary",
+      "headlineZh": "德国周边 Wellness/乐园/温泉短住折扣",
+      "discountSignalZh": "页面展示 Tropical Islands 等住宿+门票/早餐套餐，部分价格接近 40% 折扣。",
+      "thresholdZh": "优先展示 1-3 晚、带水世界/温泉/桑拿/早餐、且每人每晚明显低于原价的项目。",
+      "familyFitZh": "非常适合柏林周边避暑短住和带宝宝低折腾周末。",
+      "useForZh": ["Tropical Islands", "温泉/SPA", "乐园+酒店", "德国短住"],
+      "caveatsZh": ["要核对房间空调，不要只看水世界", "有些套餐默认 2 成人"],
+      "evidence": [
+        {
+          "label": "Travelcircus Wellnessurlaub",
+          "url": "https://www.travelcircus.de/wellnessurlaub",
+          "noteZh": "页面展示 Wellnesshotel、Spa、Tropical Islands 等套餐和原价/现价。"
+        }
+      ]
+    },
+    {
+      "id": "lidl-reisen-lastminute",
+      "name": "Lidl Reisen Last Minute Deutschland",
+      "url": "https://www.lidl-reisen.de/lastminute/deutschland",
+      "category": "retail-package",
+      "priority": "secondary",
+      "headlineZh": "德国境内酒店/短住的零售旅行特价",
+      "discountSignalZh": "德国 Last Minute 页面有酒店评分、日期、总价、Spa 标签和最高 50% 等优惠描述。",
+      "thresholdZh": "重点展示德国境内 40%+、Spa/海边/湖边、2-4 晚、价格低于常规酒店价的条目。",
+      "familyFitZh": "适合临时找德国短住，但距离柏林可能较远，需筛车程/火车时间。",
+      "useForZh": ["德国 Last Minute", "Ostsee/Nordsee/湖区", "Spa 酒店"],
+      "caveatsZh": ["不一定有空调", "不少报价按 2 成人，需要手动改人数"],
+      "evidence": [
+        {
+          "label": "Lidl Reisen Last Minute Deutschland",
+          "url": "https://www.lidl-reisen.de/lastminute/deutschland",
+          "noteZh": "页面展示德国酒店 Last Minute，包含评分、日期、价格、Spa 标签和最高折扣描述。"
+        }
+      ]
+    },
+    {
+      "id": "holidaycheck-tui-deals",
+      "name": "HolidayCheck TUI Deals",
+      "url": "https://www.holidaycheck.de/deals/tui",
+      "category": "package-sale",
+      "priority": "secondary",
+      "headlineZh": "TUI/airtours 优惠与住客评价交叉核验",
+      "discountSignalZh": "适合把 TUI 价格与 HolidayCheck 的酒店评分、评价和家庭友好线索放在一起看。",
+      "thresholdZh": "用于二次确认 40%+ TUI/airtours 优惠是否真的适合孩子和长辈。",
+      "familyFitZh": "比单纯 OTA 更适合核对近期差评、儿童设施和酒店真实体验。",
+      "useForZh": ["TUI 价格复核", "酒店评价风险", "家庭设施核对"],
+      "caveatsZh": ["不是所有 deal 都是最低价", "仍需到最终预订页核验房型和婴儿政策"],
+      "evidence": [
+        {
+          "label": "HolidayCheck TUI Deals",
+          "url": "https://www.holidaycheck.de/deals/tui",
+          "noteZh": "可用于检查 TUI/airtours 优惠、酒店评价和报价详情。"
+        }
+      ]
+    },
+    {
+      "id": "mydealz-reisen",
+      "name": "mydealz Reisen",
+      "url": "https://www.mydealz.de/gruppe/reisen",
+      "category": "community",
+      "priority": "secondary",
+      "headlineZh": "社区爆料，适合捕捉限时券和隐藏低价",
+      "discountSignalZh": "社区会快速发现 TUI、MSC、Travelcircus、Secret Escapes 等平台的折扣码和错价。",
+      "thresholdZh": "只展示温度高、旅行本体相关、40%+ 或明确低价的内容。",
+      "familyFitZh": "适合捡漏，但需要更严格过滤，因为会混入信用卡、礼品卡和机场购物。",
+      "useForZh": ["折扣码", "限时促销", "邮轮/套餐/酒店捡漏"],
+      "caveatsZh": ["噪音较多", "需要排除非旅行本体优惠", "评论区信息需人工判断"],
+      "evidence": [
+        {
+          "label": "mydealz Reisen",
+          "url": "https://www.mydealz.de/gruppe/reisen",
+          "noteZh": "社区旅行折扣页，当前项目已经通过 RSS 接入。"
+        }
+      ]
+    },
+    {
+      "id": "travel-dealz",
+      "name": "Travel-Dealz",
+      "url": "https://travel-dealz.de/",
+      "category": "community",
+      "priority": "secondary",
+      "headlineZh": "高质量编辑站，适合机票、邮轮和套餐补充",
+      "discountSignalZh": "不总是写百分比，但经常能提供很强的机票/邮轮/酒店套餐价格线索。",
+      "thresholdZh": "只有当价格确实异常低、含柏林出发或全包/邮轮相关时进入重点页。",
+      "familyFitZh": "适合找远期旅行灵感，家庭适配需要后续核验。",
+      "useForZh": ["机票低价", "邮轮", "套餐灵感", "里程/航司促销观察"],
+      "caveatsZh": ["机票低价不一定适合带婴儿", "行李、转机和时间要严格核对"],
+      "evidence": [
+        {
+          "label": "Travel-Dealz",
+          "url": "https://travel-dealz.de/",
+          "noteZh": "当前项目已经通过 RSS 接入，用于航班、酒店、邮轮和套餐监控。"
+        }
+      ]
+    },
+    {
+      "id": "groupon-berlin",
+      "name": "Groupon Berlin",
+      "url": "https://www.groupon.de/browse/berlin",
+      "category": "local-activity",
+      "priority": "watch",
+      "headlineZh": "柏林本地活动/餐饮/SPA 折扣候选源",
+      "discountSignalZh": "适合本地活动、亲子体验、Spa 和餐厅折扣，但自动抓取稳定性需要验证。",
+      "thresholdZh": "只有亲子、本地体验、Spa/泳池、明显折扣才进入重点页。",
+      "familyFitZh": "适合城市内低成本周末活动，未来可以补充儿童活动页。",
+      "useForZh": ["柏林本地体验", "餐饮/SPA 折扣", "低价亲子活动"],
+      "caveatsZh": ["可能需要浏览器渲染", "有些券限制多，需看细则"],
+      "evidence": [
+        {
+          "label": "Groupon Berlin",
+          "url": "https://www.groupon.de/browse/berlin",
+          "noteZh": "目前作为候选源，后续需要单独做稳定抓取和规则过滤。"
+        }
+      ]
+    }
+  ]
+}

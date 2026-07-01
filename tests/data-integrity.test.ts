@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import type {
   CanaryAllInclusiveData,
+  DiscountWatchData,
   HeatEscapeLiveData,
   HeatEscapeStayData,
   KidActivityData,
@@ -95,6 +96,35 @@ test("canary all-inclusive shortlist keeps sources and evidence usable", async (
     });
     item.sourceLinks.forEach((source) => assertSourceLink(`${item.id} source`, source));
     item.bookingLinks.forEach((source) => assertSourceLink(`${item.id} booking`, source));
+  }
+});
+
+test("discount watch sources stay focused and actionable", async () => {
+  const data = await readJson<DiscountWatchData>("src/data/discount-source-watch.json");
+  assert.ok(data.updatedAt, "discount watch data needs an update timestamp");
+  assert.ok(data.designVerdictZh.length > 30, "discount watch needs a design verdict");
+  assert.ok(data.principlesZh.length >= 3, "discount watch needs design principles");
+  assert.ok(data.sources.length >= 8, "discount watch needs enough curated sources");
+  assert.ok(
+    data.sources.filter((source) => source.priority === "primary").length >= 4,
+    "discount watch needs several primary sources",
+  );
+  assertUniqueIds(
+    "discount watch sources",
+    data.sources.map((source) => source.id),
+  );
+
+  for (const source of data.sources) {
+    assert.ok(source.name.trim(), `${source.id} needs a source name`);
+    assert.match(source.url, /^https?:\/\//, `${source.id} needs URL`);
+    assert.ok(source.headlineZh.trim(), `${source.id} needs Chinese headline`);
+    assert.ok(source.discountSignalZh.trim(), `${source.id} needs discount signal`);
+    assert.ok(source.thresholdZh.trim(), `${source.id} needs threshold rule`);
+    assert.ok(source.familyFitZh.trim(), `${source.id} needs family fit`);
+    assert.ok(source.useForZh.length > 0, `${source.id} needs use cases`);
+    assert.ok(source.caveatsZh.length > 0, `${source.id} needs caveats`);
+    assert.ok(source.evidence.length > 0, `${source.id} needs evidence links`);
+    source.evidence.forEach((evidence) => assertSourceLink(`${source.id} evidence`, evidence));
   }
 });
 
