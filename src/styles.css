@@ -156,6 +156,50 @@ h1 {
   font-size: 0.9rem;
 }
 
+.home-status-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  color: #52605b;
+  box-shadow: 0 8px 18px rgba(37, 43, 37, 0.05);
+}
+
+.home-status-strip.is-warning {
+  border-color: #d8b663;
+  background: #fffaf0;
+}
+
+.home-status-strip.is-error {
+  border-color: #d89a8a;
+  background: #fff6f3;
+}
+
+.home-status-strip > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.home-status-strip strong {
+  color: #1c2526;
+  font-size: 0.9rem;
+}
+
+.home-status-strip span {
+  font-size: 0.84rem;
+}
+
+.home-status-strip svg {
+  color: #0f766e;
+}
+
 .automation-panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(420px, 0.95fr);
@@ -959,6 +1003,68 @@ h1 {
   gap: 12px;
 }
 
+.booking-link-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.booking-link-card {
+  display: flex;
+  min-width: 0;
+  min-height: 245px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #d7d2c5;
+  border-radius: 8px;
+  background: #fffdfa;
+  box-shadow: 0 10px 22px rgba(37, 43, 37, 0.05);
+}
+
+.booking-link-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #0f766e;
+}
+
+.booking-link-top span {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #edf9f6;
+  color: #0d5f59;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.booking-link-card h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.25;
+}
+
+.booking-link-card p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.booking-link-card strong {
+  color: #27362f;
+  font-size: 0.84rem;
+  line-height: 1.38;
+}
+
+.booking-link-card small {
+  margin-top: auto;
+  color: #7a6252;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
 .discount-source-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -968,7 +1074,7 @@ h1 {
 .discount-source-card {
   display: flex;
   min-width: 0;
-  min-height: 360px;
+  min-height: 330px;
   flex-direction: column;
   gap: 10px;
   padding: 14px;
@@ -1112,7 +1218,7 @@ h1 {
 .discount-deal-card {
   display: flex;
   min-width: 0;
-  min-height: 410px;
+  min-height: 380px;
   flex-direction: column;
   gap: 10px;
   padding: 14px;
@@ -3002,6 +3108,7 @@ h1 {
 
   .picks-metrics,
   .discount-metrics,
+  .booking-link-grid,
   .discount-source-grid,
   .discount-deal-grid,
   .canary-metrics,
@@ -3084,6 +3191,7 @@ h1 {
   .automation-stats,
   .picks-metrics,
   .discount-metrics,
+  .booking-link-grid,
   .discount-source-grid,
   .discount-deal-grid,
   .discount-toolbar,
@@ -3118,6 +3226,11 @@ h1 {
   .kid-fit-grid,
   .kid-highlights {
     grid-template-columns: 1fr;
+  }
+
+  .home-status-strip {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .travel-card,

@@ -104,6 +104,10 @@ test("discount watch sources stay focused and actionable", async () => {
   assert.ok(data.updatedAt, "discount watch data needs an update timestamp");
   assert.ok(data.designVerdictZh.length > 30, "discount watch needs a design verdict");
   assert.ok(data.principlesZh.length >= 3, "discount watch needs design principles");
+  assert.ok(
+    data.regularBookingLinks.length >= 5,
+    "discount watch needs regular booking links",
+  );
   assert.ok(data.sources.length >= 8, "discount watch needs enough curated sources");
   assert.ok(
     data.sources.filter((source) => source.priority === "primary").length >= 4,
@@ -125,6 +129,15 @@ test("discount watch sources stay focused and actionable", async () => {
     assert.ok(source.caveatsZh.length > 0, `${source.id} needs caveats`);
     assert.ok(source.evidence.length > 0, `${source.id} needs evidence links`);
     source.evidence.forEach((evidence) => assertSourceLink(`${source.id} evidence`, evidence));
+  }
+
+  for (const link of data.regularBookingLinks) {
+    assert.ok(link.name.trim(), `${link.id} needs name`);
+    assert.match(link.url, /^https?:\/\//, `${link.id} needs URL`);
+    assert.ok(link.categoryZh.trim(), `${link.id} needs category`);
+    assert.ok(link.useForZh.trim(), `${link.id} needs use case`);
+    assert.ok(link.bestWhenZh.trim(), `${link.id} needs best-use note`);
+    assert.ok(link.cautionZh.trim(), `${link.id} needs caution`);
   }
 });
 

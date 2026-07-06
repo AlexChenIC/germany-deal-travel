@@ -476,10 +476,21 @@ export interface DiscountWatchSource {
   evidence: CanarySourceLink[];
 }
 
+export interface RegularBookingLink {
+  id: string;
+  name: string;
+  url: string;
+  categoryZh: string;
+  useForZh: string;
+  bestWhenZh: string;
+  cautionZh: string;
+}
+
 export interface DiscountWatchData {
   updatedAt: string;
   timezone: string;
   designVerdictZh: string;
   principlesZh: string[];
+  regularBookingLinks: RegularBookingLink[];
   sources: DiscountWatchSource[];
 }

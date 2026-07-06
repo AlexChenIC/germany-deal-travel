@@ -8,6 +8,62 @@
     "家庭画像优先：3 位成年人、1 位婴儿、长辈同行、柏林出发、低折腾、泳池/SPA/全包/空调加权。",
     "低价值或间接旅行优惠降权，例如信用卡、礼品卡、机场免税和成人限定酒店。"
   ],
+  "regularBookingLinks": [
+    {
+      "id": "booking-hotels",
+      "name": "Booking.com",
+      "url": "https://www.booking.com/",
+      "categoryZh": "酒店/公寓",
+      "useForZh": "普通酒店、可取消房型、公寓式住宿和家庭房快速查询。",
+      "bestWhenZh": "已经有目的地和日期，想横向比较房型、取消政策和住客评价。",
+      "cautionZh": "价格不一定最低；要手动筛空调、婴儿床、泳池和家庭房。"
+    },
+    {
+      "id": "google-hotels",
+      "name": "Google Hotels",
+      "url": "https://www.google.com/travel/hotels",
+      "categoryZh": "价格对比",
+      "useForZh": "对比同一家酒店在多个 OTA 的总价和可订状态。",
+      "bestWhenZh": "已经从折扣站看到某个酒店，想确认是不是全网低价。",
+      "cautionZh": "跳转后的最终价格、税费和儿童人数仍需在预订页确认。"
+    },
+    {
+      "id": "holidaycheck",
+      "name": "HolidayCheck",
+      "url": "https://www.holidaycheck.de/",
+      "categoryZh": "评价/套餐",
+      "useForZh": "核对酒店近期评价、家庭友好程度和德国用户真实反馈。",
+      "bestWhenZh": "看到 TUI/Secret Escapes/Travelzoo 酒店后做二次风险检查。",
+      "cautionZh": "低价未必覆盖所有日期；重点读近期差评和儿童设施评论。"
+    },
+    {
+      "id": "tui-search",
+      "name": "TUI",
+      "url": "https://www.tui.com/pauschalreisen/",
+      "categoryZh": "机酒/全包",
+      "useForZh": "查询常规机酒、全包、家庭酒店和 Flex Tarif。",
+      "bestWhenZh": "想从德国机场出发，优先要官方套餐和服务保障。",
+      "cautionZh": "要避开 Adults-only，并逐项核对婴儿政策、转机和房间空调。"
+    },
+    {
+      "id": "check24-reisen",
+      "name": "CHECK24 Reisen",
+      "url": "https://urlaub.check24.de/",
+      "categoryZh": "套餐比价",
+      "useForZh": "德国市场机酒套餐横向比价，适合看多个旅行社报价。",
+      "bestWhenZh": "想用同一组日期、机场和人数比较全包/半包套餐。",
+      "cautionZh": "儿童/婴儿人数和行李条件要进入最终报价后再确认。"
+    },
+    {
+      "id": "airbnb-family",
+      "name": "Airbnb",
+      "url": "https://www.airbnb.de/",
+      "categoryZh": "公寓/整租",
+      "useForZh": "找厨房、洗衣机、独立卧室和长住空间。",
+      "bestWhenZh": "家庭想慢节奏住几天，不一定需要酒店餐食或泳池。",
+      "cautionZh": "高温周末一定要确认真实制冷空调，不要只看风扇或 heating。"
+    }
+  ],
   "sources": [
     {
       "id": "tui-last-minute",

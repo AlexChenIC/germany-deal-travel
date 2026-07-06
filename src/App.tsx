@@ -355,18 +355,24 @@ function App() {
         </div>
       </header>
 
-      <section className="metric-strip" aria-label="summary">
-        <Metric label="总条目" value={radar.stats.total} icon={<Compass />} />
-        <Metric label="家庭友好" value={radar.stats.familyFriendly} icon={<Baby />} />
-        <Metric label="柏林相关" value={radar.stats.fromBerlin} icon={<MapPin />} />
-        <Metric
-          label="源站提醒"
-          value={automationSummary.issueCount}
-          icon={<CircleAlert />}
-        />
-      </section>
+      {activeTab === "discounts" ? (
+        <CompactHomeStatus summary={automationSummary} />
+      ) : (
+        <>
+          <section className="metric-strip" aria-label="summary">
+            <Metric label="总条目" value={radar.stats.total} icon={<Compass />} />
+            <Metric label="家庭友好" value={radar.stats.familyFriendly} icon={<Baby />} />
+            <Metric label="柏林相关" value={radar.stats.fromBerlin} icon={<MapPin />} />
+            <Metric
+              label="源站提醒"
+              value={automationSummary.issueCount}
+              icon={<CircleAlert />}
+            />
+          </section>
 
-      <AutomationStatusPanel summary={automationSummary} />
+          <AutomationStatusPanel summary={automationSummary} />
+        </>
+      )}
 
       <nav className="tabs" aria-label="views">
         <TabButton
@@ -562,6 +568,37 @@ function App() {
         </>
       )}
     </main>
+  );
+}
+
+function CompactHomeStatus({ summary }: { summary: AutomationSummary }) {
+  const statusLabel =
+    summary.status === "error"
+      ? "自动更新需要查看"
+      : summary.status === "warning"
+        ? "自动更新有提醒"
+        : "自动更新正常";
+
+  return (
+    <section className={`home-status-strip is-${summary.status}`} aria-label="site status">
+      <div>
+        {summary.status === "ok" ? (
+          <CheckCircle2 size={17} aria-hidden="true" />
+        ) : (
+          <CircleAlert size={17} aria-hidden="true" />
+        )}
+        <strong>{statusLabel}</strong>
+        <span>最近更新：{formatFullDateTime(summary.generatedAt, summary.timezone)}</span>
+      </div>
+      <div>
+        <span>今日新增 {summary.newToday}</span>
+        <span>近 7 天新增 {summary.newThisWeek}</span>
+        <a className="text-link" href={actionsWorkflowUrl} rel="noreferrer" target="_blank">
+          查看任务
+          <ExternalLink size={14} aria-hidden="true" />
+        </a>
+      </div>
+    </section>
   );
 }
 
