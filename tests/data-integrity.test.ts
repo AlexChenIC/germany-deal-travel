@@ -9,6 +9,7 @@ import type {
   HeatEscapeStayData,
   KidActivityData,
   RadarData,
+  SummerAllInclusiveData,
 } from "../src/types";
 
 const rootDir = process.cwd();
@@ -96,6 +97,75 @@ test("canary all-inclusive shortlist keeps sources and evidence usable", async (
     });
     item.sourceLinks.forEach((source) => assertSourceLink(`${item.id} source`, source));
     item.bookingLinks.forEach((source) => assertSourceLink(`${item.id} booking`, source));
+  }
+});
+
+test("summer all-inclusive recommendations stay actionable", async () => {
+  const data = await readJson<SummerAllInclusiveData>(
+    "src/data/summer-all-inclusive-recommendations.json",
+  );
+  assert.ok(data.updatedAt, "summer recommendations need an update timestamp");
+  assert.ok(data.verdictZh.length > 30, "summer page needs a clear verdict");
+  assert.ok(data.quickTakeawaysZh.length >= 4, "summer page needs quick takeaways");
+  assert.ok(data.destinations.length >= 5, "summer page needs several destinations");
+  assert.ok(data.dealSignals.length >= 4, "summer page needs deal signals");
+  assert.ok(data.searchPortals.length >= 5, "summer page needs search portals");
+  assertUniqueIds(
+    "summer deal signals",
+    data.dealSignals.map((signal) => signal.id),
+  );
+  assertUniqueIds(
+    "summer destinations",
+    data.destinations.map((destination) => destination.id),
+  );
+
+  const ranks = data.destinations.map((destination) => destination.rank);
+  assert.deepEqual(
+    ranks,
+    [...ranks].sort((a, b) => a - b),
+    "summer destinations should be rank-sorted",
+  );
+  assert.ok(
+    data.destinations.some((destination) => destination.budgetFit === "target"),
+    "summer page needs at least one target-budget option",
+  );
+
+  for (const signal of data.dealSignals) {
+    assert.ok(signal.titleZh.trim(), `${signal.id} needs a Chinese title`);
+    assert.ok(signal.priceLabelZh.trim(), `${signal.id} needs a price label`);
+    assert.match(signal.url, /^https?:\/\//, `${signal.id} needs URL`);
+    assert.ok(signal.evidence.length > 0, `${signal.id} needs evidence`);
+    signal.evidence.forEach((source) => assertSourceLink(`${signal.id} evidence`, source));
+  }
+
+  for (const destination of data.destinations) {
+    assert.ok(destination.destinationZh.trim(), `${destination.id} needs a destination`);
+    assert.ok(
+      destination.fitScore >= 0 && destination.fitScore <= 100,
+      `${destination.id} fit score`,
+    );
+    assert.ok(destination.priceExpectationZh.trim(), `${destination.id} price expectation`);
+    assert.ok(destination.whyZh.length >= 2, `${destination.id} needs reasons`);
+    assert.ok(destination.risksZh.length >= 2, `${destination.id} needs risks`);
+    assert.ok(destination.searchTermsZh.length >= 2, `${destination.id} needs search terms`);
+    assert.ok(
+      destination.priorityFiltersZh.length >= 4,
+      `${destination.id} needs priority filters`,
+    );
+    assert.ok(destination.evidence.length > 0, `${destination.id} needs evidence links`);
+    assert.ok(destination.bookingLinks.length > 0, `${destination.id} needs booking links`);
+    destination.evidence.forEach((source) =>
+      assertSourceLink(`${destination.id} evidence`, source),
+    );
+    destination.bookingLinks.forEach((source) =>
+      assertSourceLink(`${destination.id} booking`, source),
+    );
+  }
+
+  for (const portal of data.searchPortals) {
+    assert.match(portal.url, /^https?:\/\//, `${portal.label} portal URL`);
+    assert.ok(portal.intentZh.trim(), `${portal.label} needs intent`);
+    assert.ok(portal.setManuallyZh.length >= 3, `${portal.label} needs manual filters`);
   }
 });
 

@@ -81,6 +81,7 @@ import { CanaryDealsView } from "./pages/CanaryDealsView";
 import { DiscountFocusView } from "./pages/DiscountFocusView";
 import { PlanView } from "./pages/PlanView";
 import { SourcesView } from "./pages/SourcesView";
+import { SummerAllInclusiveView } from "./pages/SummerAllInclusiveView";
 import type {
   AirConditioningStatus,
   DealCategory,
@@ -111,6 +112,7 @@ const heatLiveStatus = heatLiveStatusJson as HeatEscapeLiveData;
 type Tab =
   | "discounts"
   | "picks"
+  | "summer"
   | "canary"
   | "heat"
   | "radar"
@@ -384,6 +386,9 @@ function App() {
         <TabButton active={activeTab === "picks"} onClick={() => selectTab("picks")}>
           为我推荐
         </TabButton>
+        <TabButton active={activeTab === "summer"} onClick={() => selectTab("summer")}>
+          暑期全包
+        </TabButton>
         <TabButton active={activeTab === "heat"} onClick={() => selectTab("heat")}>
           避暑短住
         </TabButton>
@@ -433,6 +438,8 @@ function App() {
           onToggleFavorite={toggleFavorite}
           onExclude={excludeItem}
         />
+      ) : activeTab === "summer" ? (
+        <SummerAllInclusiveView />
       ) : activeTab === "heat" ? (
         <HeatEscapeView />
       ) : activeTab === "canary" ? (
@@ -2421,6 +2428,7 @@ function hashToTab(hash: string): Tab {
   const normalized = hash.replace(/^#\/?/, "");
   if (
     normalized === "picks" ||
+    normalized === "summer" ||
     normalized === "discounts" ||
     normalized === "canary" ||
     normalized === "heat" ||

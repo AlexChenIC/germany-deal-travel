@@ -1,0 +1,614 @@
+{
+  "updatedAt": "2026-07-06T16:20:00+02:00",
+  "timezone": "Europe/Berlin",
+  "partyZh": "3 位成年人 + 1 位 11 个月左右婴儿",
+  "travelWindowZh": "2026 年 7-8 月，柏林 BER 出发，优先 7 晚左右",
+  "budgetZh": "目标 700-800 EUR / 成人 / 周；婴儿通常另有低额费用或税费，但房型和机票规则需逐单确认。",
+  "verdictZh": "如果现在就要在 7/8 月出发，最现实的路线是先查土耳其 Antalya/Side/Alanya，其次查埃及 Hurghada/Makadi Bay；加纳利、希腊、马略卡可以保留为捡漏，但在暑期旺季通常更容易超预算。",
+  "assumptionsZh": [
+    "优先全包或 All Inclusive Plus，减少带宝宝外出找饭的压力。",
+    "优先包机/直飞和含接送的 Pauschalreise，少折腾、少转场。",
+    "宝宝怕热，所以房间空调、遮阴泳池、室内休息空间比景点数量更重要。",
+    "3 位成年人可能需要家庭房、套房或 2 间房，最终价格可能比 2 成人报价高。",
+    "页面展示的是当前可用线索和推荐顺序，不替代下单前的实时库存确认。"
+  ],
+  "quickTakeawaysZh": [
+    "预算命中率最高：土耳其 Antalya/Side/Alanya。",
+    "价格也强但更热：埃及 Hurghada/Makadi Bay，需要认真评估婴儿耐热。",
+    "如果看到 5 星土耳其 600-750 EUR/人且评分好，应优先点开核实。",
+    "加纳利 7/8 月气候舒服，但全包+直飞+家庭友好常常超出 800 EUR。",
+    "所有平台都要手动设：BER、7 nights、All Inclusive、3 Erwachsene、Baby 0 Jahre、Direktflug、Transfer。"
+  ],
+  "dealSignals": [
+    {
+      "id": "tui-last-minute-sale-2026",
+      "titleZh": "TUI Last Minute Sale：暑期包价游最高约 50% 优惠线索",
+      "sourceName": "TUI",
+      "priceLabelZh": "折扣最高约 50%，价格随库存更新",
+      "dateWindowZh": "旅行期覆盖 2026-05-07 至 2026-11-08，活动可订至 2026-08-31",
+      "familyFitZh": "适合用来查土耳其、希腊、西班牙、加纳利的包价游；TUI 的筛选和服务链较完整。",
+      "cautionZh": "最高折扣不是所有酒店都有；必须逐单核实含行李、接送、房型和儿童政策。",
+      "url": "https://www.tui.com/last-minute/",
+      "evidence": [
+        {
+          "label": "TUI Last Minute Sale",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "TUI 页面写明暑期 Last Minute Sale，部分 Flugpauschalreisen / Nur-Hotel 可有最高 50% 优惠。"
+        }
+      ]
+    },
+    {
+      "id": "urlaubspiraten-turkey-family-summer",
+      "titleZh": "Urlaubspiraten：土耳其家庭全包暑期价位反复出现",
+      "sourceName": "Urlaubspiraten",
+      "priceLabelZh": "近期线索含约 441-644 EUR / 人的土耳其全包例子",
+      "dateWindowZh": "7/8 月及暑期档需逐条打开确认",
+      "familyFitZh": "非常适合监控低价家庭全包和包价游，大幅低价线索常比常规平台更早浮出。",
+      "cautionZh": "部分低价酒店评价可能一般，需交叉看 HolidayCheck / Google Reviews。",
+      "url": "https://www.urlaubspiraten.de/reisethemen/sommerurlaub",
+      "evidence": [
+        {
+          "label": "Urlaubspiraten Sommerurlaub",
+          "url": "https://www.urlaubspiraten.de/reisethemen/sommerurlaub",
+          "noteZh": "搜索结果显示土耳其家庭全包和 5 星全包暑期例子，适合作为每日监控源。"
+        },
+        {
+          "label": "Urlaubspiraten All Inclusive",
+          "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+          "noteZh": "All Inclusive 专题集中展示土耳其、埃及、加纳利、马略卡等全包线索。"
+        }
+      ]
+    },
+    {
+      "id": "travelzoo-egypt-ai",
+      "titleZh": "Travelzoo：埃及 Makadi Bay 飞机+接送+全包线索",
+      "sourceName": "Travelzoo",
+      "priceLabelZh": "Top 20 当前显示约 675 EUR / 人起；详情页提示起价可能已上调",
+      "dateWindowZh": "Travelzoo 标注可用期较长，暑期需按日期重查",
+      "familyFitZh": "适合拿来判断红海全包底价和供应商打包方式。",
+      "cautionZh": "当前最低价不一定从柏林或 7/8 月出发；埃及暑期很热，婴儿舒适度风险高。",
+      "url": "https://www.travelzoo.com/de/top20/",
+      "evidence": [
+        {
+          "label": "Travelzoo Top 20",
+          "url": "https://www.travelzoo.com/de/top20/",
+          "noteZh": "Top 20 页面列出埃及 Makadi Bay 飞机与 All Inclusive 线索。"
+        },
+        {
+          "label": "Travelzoo Egypt offer",
+          "url": "https://www.travelzoo.com/de/urlaubsreisen/afrika-orient/ab-675-p-P-%C3%84gypten-mit-Flug-All-Inclusive-3267931/",
+          "noteZh": "详情页列出 Hurghada 往返、酒店接送、7 晚和 All Inclusive。"
+        }
+      ]
+    },
+    {
+      "id": "check24-ai-discounts",
+      "titleZh": "CHECK24：全包折扣筛选，可快速比较土耳其/希腊/埃及",
+      "sourceName": "CHECK24 Urlaub",
+      "priceLabelZh": "页面展示多个 -37% 至 -59% 级别示例，实时价格需改筛选条件",
+      "dateWindowZh": "2026 年全包旅行，按 7/8 月和 BER 重查",
+      "familyFitZh": "适合做全量比价、看取消规则、按评分和推荐度排序。",
+      "cautionZh": "示例常是 2 人或短天数；不要直接等同于 3 成人+婴儿 7 晚价格。",
+      "url": "https://urlaub.check24.de/allinclusive",
+      "evidence": [
+        {
+          "label": "CHECK24 All Inclusive",
+          "url": "https://urlaub.check24.de/allinclusive",
+          "noteZh": "全包专题页展示多个目的地和折扣示例，可手动设置 BER 与旅客组合。"
+        }
+      ]
+    },
+    {
+      "id": "tui-blue-last-minute",
+      "titleZh": "TUI BLUE / Magic Life：高品质 club hotel 的优惠监控源",
+      "sourceName": "TUI BLUE / TUI Magic Life",
+      "priceLabelZh": "TUI BLUE 页面显示部分酒店最高约 35% 价格优势，登录用户可能另有优惠码",
+      "dateWindowZh": "旅行期覆盖 2026 年下半年，适合查暑期和秋季",
+      "familyFitZh": "适合筛高品质全包、泳池、SPA、儿童设施比较稳定的酒店。",
+      "cautionZh": "部分品牌/酒店可能 adults-only 或房型昂贵；必须排除成人限定酒店。",
+      "url": "https://www.tui-blue.com/de/de/angebote/last-minute/",
+      "evidence": [
+        {
+          "label": "TUI BLUE Last Minute",
+          "url": "https://www.tui-blue.com/de/de/angebote/last-minute/",
+          "noteZh": "适合作为品牌酒店优惠监控入口。"
+        },
+        {
+          "label": "TUI Magic Life Last Minute",
+          "url": "https://www.magiclife.com/de/de/angebote/last-minute/",
+          "noteZh": "Magic Life 常见全包 club hotel，可查土耳其、希腊、西班牙等。"
+        }
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "id": "turkey-antalya-side-alanya",
+      "rank": 1,
+      "destinationZh": "土耳其 Antalya / Side / Alanya",
+      "regionsZh": "Antalya, Side, Manavgat, Alanya, Belek",
+      "fitLevel": "best",
+      "budgetFit": "target",
+      "fitScore": 94,
+      "priceExpectationZh": "最有希望压到 700-800 EUR / 成人 / 周；近期 deal 线索里 5 星或家庭全包低价反复出现。",
+      "flightZh": "BER 到 Antalya 通常有较多直飞/包机选择，飞行约 3-3.5 小时，是带婴儿较可控的海滨路线。",
+      "heatZh": "7/8 月炎热，必须优先强空调、遮阴、儿童浅水池和午睡方便的房型。",
+      "babyFitZh": "家庭 resort 密度高，婴儿床、高脚椅、儿童泳池和 mini club 更常见；11 个月宝宝主要看餐厅便利和房间安静。",
+      "allInclusiveFitZh": "全包供给最成熟，餐饮、饮料、泳池、接送、家庭房选择多。",
+      "whyZh": [
+        "在德国出发的全包包价游里，土耳其 Riviera 是最稳定的性价比区域。",
+        "Urlaubspiraten 与 CHECK24 都有土耳其全包和暑期家庭价线索。",
+        "酒店体量大，找到儿童泳池、SPA、家庭房的概率高。"
+      ],
+      "risksZh": [
+        "极低价酒店可能评分、位置或餐饮一般，不能只看星级。",
+        "Side/Alanya 到机场接送可能 60-120 分钟，婴儿到达时间要看清。",
+        "部分 adults-only 酒店会混入结果，必须排除。"
+      ],
+      "searchTermsZh": [
+        "Antalya All Inclusive BER 7 Nächte",
+        "Side Familienhotel All Inclusive Direktflug Berlin",
+        "Alanya 5 Sterne All Inclusive Transfer"
+      ],
+      "priorityFiltersZh": [
+        "Direktflug",
+        "Transfer inklusive",
+        "Weiterempfehlung 85%+",
+        "Familienzimmer oder 2 Zimmer",
+        "Kinderpool",
+        "Klimaanlage im Zimmer"
+      ],
+      "evidence": [
+        {
+          "label": "TUI All Inclusive Türkei",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/tuerkei/",
+          "noteZh": "TUI 介绍土耳其全包家庭、儿童酒店、SPA/Hamam 和包价游结构。"
+        },
+        {
+          "label": "CHECK24 Türkei AI",
+          "url": "https://urlaub.check24.de/allinclusive/tuerkei",
+          "noteZh": "CHECK24 土耳其全包页适合实时比较全包价格、评价和取消规则。"
+        },
+        {
+          "label": "Urlaubspiraten Sommerurlaub",
+          "url": "https://www.urlaubspiraten.de/reisethemen/sommerurlaub",
+          "noteZh": "当前检索显示土耳其暑期家庭全包低价线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Last Minute",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "先设 Antalya/Side、BER、All Inclusive、3 Erwachsene + Baby。"
+        },
+        {
+          "label": "CHECK24 Side & Alanya",
+          "url": "https://urlaub.check24.de/allinclusive/side-alanya",
+          "noteZh": "适合按评分、价格、直飞和儿童友好快速排序。"
+        },
+        {
+          "label": "HolidayCheck Türkei",
+          "url": "https://www.holidaycheck.de/urlaub/tuerkei",
+          "noteZh": "用于核查近期评价和酒店真实家庭体验。"
+        }
+      ]
+    },
+    {
+      "id": "egypt-hurghada-makadi",
+      "rank": 2,
+      "destinationZh": "埃及 Hurghada / Makadi Bay / Soma Bay",
+      "regionsZh": "Hurghada, Makadi Bay, Sahl Hasheesh, Soma Bay",
+      "fitLevel": "strong",
+      "budgetFit": "target",
+      "fitScore": 86,
+      "priceExpectationZh": "全包性价比很强，700-800 EUR / 成人有机会；5 星红海 resort 常有包价线索。",
+      "flightZh": "BER 到 Hurghada 有直飞/季节航班线索，飞行约 4.5 小时左右。",
+      "heatZh": "最大问题是 7/8 月非常热；如果宝宝特别怕热，只建议选择高评分、空调可靠、泳池遮阴好的 resort。",
+      "babyFitZh": "大 resort 通常有婴儿床和儿童区，但户外热浪对 11 个月宝宝不友好，适合酒店躺平，不适合外出活动。",
+      "allInclusiveFitZh": "红海全包供给非常成熟，酒店接送、餐饮和泳池通常包含在包价游中。",
+      "whyZh": [
+        "Travelzoo 当前 Top 20 有 Hurghada/Makadi Bay 飞机+接送+7 晚全包线索。",
+        "TUI 埃及全包页确认红海多个区域适合全包酒店。",
+        "如果目标是预算优先，埃及常能给出比加纳利更低的全包价。"
+      ],
+      "risksZh": [
+        "暑期高温对婴儿是核心风险，不能只按价格决策。",
+        "最低价日期可能不是 7/8 月或不是 BER 出发。",
+        "红海 resort 的儿童设施差异大，要看最近评论。"
+      ],
+      "searchTermsZh": [
+        "Hurghada All Inclusive BER 7 Nächte",
+        "Makadi Bay Familienhotel All Inclusive Flug Berlin",
+        "Soma Bay Kinderpool All Inclusive"
+      ],
+      "priorityFiltersZh": [
+        "Direktflug或最多1 Stopp",
+        "Transfer inklusive",
+        "Zimmer mit Klimaanlage",
+        "Kinderpool / Aquapark",
+        "Bewertung 85%+",
+        "kurzer Transfer"
+      ],
+      "evidence": [
+        {
+          "label": "Travelzoo Egypt AI",
+          "url": "https://www.travelzoo.com/de/urlaubsreisen/afrika-orient/ab-675-p-P-%C3%84gypten-mit-Flug-All-Inclusive-3267931/",
+          "noteZh": "Travelzoo 详情页列出 Hurghada 航班、接送、7 晚和 All Inclusive。"
+        },
+        {
+          "label": "TUI Ägypten AI",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/aegypten/",
+          "noteZh": "TUI 列出 Hurghada、Makadi Bay、Soma Bay 等红海全包目的地。"
+        },
+        {
+          "label": "Skyscanner BER-HRG",
+          "url": "https://www.skyscanner.de/routen/ber/hrg/berlin-brandenburg-nach-hurghada.html",
+          "noteZh": "用于核查 BER 到 Hurghada 的直飞和月份价格。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "Travelzoo Top 20",
+          "url": "https://www.travelzoo.com/de/top20/",
+          "noteZh": "每周看一次是否有红海全包进入 Top 20。"
+        },
+        {
+          "label": "Urlaubspiraten Ägypten AI",
+          "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive/aegypten",
+          "noteZh": "监控低价红海全包和 5 星 resort 线索。"
+        },
+        {
+          "label": "TUI Ägypten AI",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/aegypten/",
+          "noteZh": "适合用 TUI 的包价游筛选器重查日期。"
+        }
+      ]
+    },
+    {
+      "id": "tunisia-djerba-hammamet",
+      "rank": 3,
+      "destinationZh": "突尼斯 Djerba / Hammamet / Monastir",
+      "regionsZh": "Djerba, Hammamet, Monastir, Sousse",
+      "fitLevel": "strong",
+      "budgetFit": "target",
+      "fitScore": 78,
+      "priceExpectationZh": "常被低估的预算路线，理论上有机会接近 700-800 EUR / 成人，但 BER 直飞和好酒店库存需实时确认。",
+      "flightZh": "直飞/包机不如 Antalya 稳定，可能需要转机或特定出发日。",
+      "heatZh": "暑期热，但海边 resort 休息型度假可行；宝宝仍需强空调和遮阴。",
+      "babyFitZh": "选择家庭 resort 时可行，但儿童泳池、餐饮和医疗便利要比土耳其更仔细核查。",
+      "allInclusiveFitZh": "All Inclusive 供给成熟，通常比希腊/加纳利更容易靠近预算。",
+      "whyZh": [
+        "Urlaubspiraten Frühbucher/全包信息将突尼斯列为价格友好的全包目的地。",
+        "适合当土耳其好酒店价格突然上去时的第二备选。",
+        "酒店内躺平式度假符合带婴儿低体力消耗需求。"
+      ],
+      "risksZh": [
+        "BER 直飞和航班时间不稳定，带婴儿要避免半夜到达。",
+        "酒店评分参差，需要强依赖近期评价。",
+        "医疗和食品便利性需提前查。"
+      ],
+      "searchTermsZh": [
+        "Tunesien All Inclusive BER 7 Nächte",
+        "Djerba Familienhotel All Inclusive Berlin",
+        "Hammamet Kinderpool All Inclusive"
+      ],
+      "priorityFiltersZh": [
+        "Transfer inklusive",
+        "Bewertung 85%+",
+        "Kinderpool",
+        "Klimaanlage",
+        "kurzer Transfer",
+        "keine Nachtankunft"
+      ],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten Frühbucher",
+          "url": "https://www.urlaubspiraten.de/reisethemen/fruehbucher",
+          "noteZh": "页面提到突尼斯常被低估，适合预算型 All Inclusive。"
+        },
+        {
+          "label": "CHECK24 All Inclusive",
+          "url": "https://urlaub.check24.de/allinclusive",
+          "noteZh": "用于快速比较突尼斯、土耳其、埃及同日期价位。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "CHECK24 Urlaub",
+          "url": "https://urlaub.check24.de/",
+          "noteZh": "用全包、BER、7 晚和评分筛突尼斯。"
+        },
+        {
+          "label": "HolidayCheck Tunesien",
+          "url": "https://www.holidaycheck.de/urlaub/tunesien",
+          "noteZh": "用近期评价判断酒店适不适合宝宝和长辈。"
+        }
+      ]
+    },
+    {
+      "id": "bulgaria-black-sea",
+      "rank": 4,
+      "destinationZh": "保加利亚黑海 Sunny Beach / Albena / Golden Sands",
+      "regionsZh": "Burgas, Varna, Sunny Beach, Albena, Goldstrand",
+      "fitLevel": "deal-only",
+      "budgetFit": "stretch",
+      "fitScore": 72,
+      "priceExpectationZh": "可能便宜，但高品质全包 resort 和婴儿友好体验需要细筛；更像预算捡漏备选。",
+      "flightZh": "BER 到 Burgas/Varna 的暑期航班需按日期查，飞行时间比红海短。",
+      "heatZh": "相对土耳其/埃及稍温和，但 7/8 月仍需空调可靠。",
+      "babyFitZh": "适合选大型家庭酒店或度假村；低价酒店设施和餐饮质量波动较大。",
+      "allInclusiveFitZh": "全包可找，但豪华程度和服务稳定性通常不如土耳其 Riviera。",
+      "whyZh": [
+        "Urlaubspiraten 将保加利亚作为 All Inclusive 和低价包价游目的地。",
+        "如果土耳其/埃及价格上升，黑海可能出现低价替代。",
+        "海边休假，不需要密集行程。"
+      ],
+      "risksZh": [
+        "低价酒店评价差异大，儿童设施可能老旧。",
+        "全包餐饮可能不如土耳其/埃及丰富。",
+        "目的地机场和航班日期要实时确认。"
+      ],
+      "searchTermsZh": [
+        "Bulgarien All Inclusive Berlin 7 Nächte",
+        "Burgas Familienhotel All Inclusive",
+        "Albena Kinderpool All Inclusive"
+      ],
+      "priorityFiltersZh": [
+        "Burgas或Varna",
+        "Direktflug bevorzugt",
+        "Kinderpool",
+        "Bewertung 85%+",
+        "Klimaanlage",
+        "Transfer inklusive"
+      ],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten Bulgarien",
+          "url": "https://www.urlaubspiraten.de/reiseziele/bulgarien",
+          "noteZh": "页面将保加利亚作为 Last Minute、Pauschalreisen 和 All Inclusive 目的地。"
+        },
+        {
+          "label": "Urlaubspiraten Familienurlaub",
+          "url": "https://www.urlaubspiraten.de/reisethemen/familienurlaub",
+          "noteZh": "家庭游专题可作为儿童友好 deal 的监控入口。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "Urlaubspiraten Bulgarien",
+          "url": "https://www.urlaubspiraten.de/reiseziele/bulgarien",
+          "noteZh": "等大幅折扣或家庭全包专题出现时再点。"
+        },
+        {
+          "label": "CHECK24 Urlaub",
+          "url": "https://urlaub.check24.de/",
+          "noteZh": "用 Burgas / Varna、AI、BER、评分过滤。"
+        }
+      ]
+    },
+    {
+      "id": "mallorca-greece-spain",
+      "rank": 5,
+      "destinationZh": "马略卡 / 希腊岛屿 / 西班牙本土",
+      "regionsZh": "Mallorca, Kreta, Rhodos, Kos, Korfu, Costa Barcelona",
+      "fitLevel": "deal-only",
+      "budgetFit": "stretch",
+      "fitScore": 68,
+      "priceExpectationZh": "航班多，但 7/8 月家庭友好全包常超 800 EUR；半膳或短天数更容易便宜。",
+      "flightZh": "BER 直飞选择多，飞行时间对婴儿较友好。",
+      "heatZh": "地中海暑期热但通常低于埃及；看酒店空调和午睡便利。",
+      "babyFitZh": "家庭基础设施好，医疗和超市便利；但热门海岛暑期拥挤。",
+      "allInclusiveFitZh": "AI 可找，但高评分家庭酒店价格容易偏高，半膳/公寓可能更划算。",
+      "whyZh": [
+        "TUI Last Minute 明确把 Mallorca、Griechenland、西班牙列入暑期 sale 目的地。",
+        "Travelzoo 当前 Top 20 有西班牙海岸机酒低价线索。",
+        "直飞短，适合宝宝，但要接受可能非全包。"
+      ],
+      "risksZh": [
+        "暑假旺季价格和拥挤度高。",
+        "AI 酒店可能比土耳其贵很多。",
+        "Travelzoo 的部分西班牙低价为 adults-only，不适合宝宝。"
+      ],
+      "searchTermsZh": [
+        "Mallorca All Inclusive BER Familienhotel",
+        "Kreta All Inclusive Berlin Kinderpool",
+        "Rhodos Familienhotel All Inclusive Direktflug"
+      ],
+      "priorityFiltersZh": [
+        "Direktflug",
+        "Family hotel",
+        "Kinderpool",
+        "AI 或 Halbpension Plus",
+        "Transfer inklusive",
+        "keine adults-only"
+      ],
+      "evidence": [
+        {
+          "label": "TUI Last Minute",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "TUI 暑期 sale 覆盖 Mallorca、Kreta、Rhodos、Spanien、Türkei 等。"
+        },
+        {
+          "label": "Travelzoo Top 20",
+          "url": "https://www.travelzoo.com/de/top20/",
+          "noteZh": "当前 Top 20 有西班牙海岸机酒低价线索，但需排除 adults-only。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Last Minute",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "用于查希腊/马略卡/西班牙的 sale。"
+        },
+        {
+          "label": "Travelzoo Top 20",
+          "url": "https://www.travelzoo.com/de/top20/",
+          "noteZh": "每周看是否有适合家庭且非 adults-only 的西班牙/希腊线索。"
+        }
+      ]
+    },
+    {
+      "id": "canary-islands",
+      "rank": 6,
+      "destinationZh": "加纳利群岛 Gran Canaria / Fuerteventura / Lanzarote",
+      "regionsZh": "Gran Canaria, Fuerteventura, Lanzarote, Tenerife",
+      "fitLevel": "backup",
+      "budgetFit": "unlikely",
+      "fitScore": 64,
+      "priceExpectationZh": "气候和度假体验很好，但 7/8 月全包+直飞+好酒店经常超过 800 EUR；只建议等待明显折扣。",
+      "flightZh": "BER 有部分岛屿直飞/季节航班，飞行约 5 小时左右。",
+      "heatZh": "相比土耳其/埃及更适合避暑，通常更舒适。",
+      "babyFitZh": "很适合宝宝慢节奏度假，但航程较长，价格压力更大。",
+      "allInclusiveFitZh": "全包酒店有，但高品质家庭酒店暑期价格偏硬。",
+      "whyZh": [
+        "如果宝宝怕热，加纳利的体感比红海更友好。",
+        "Urlaubspiraten 当前 All Inclusive 页有加纳利相关线索。",
+        "可与已有加纳利专题联动，作为较舒适但高价的备选。"
+      ],
+      "risksZh": [
+        "目标预算命中率低。",
+        "5 小时航程对 11 个月宝宝更累。",
+        "热门家庭全包酒店库存少。"
+      ],
+      "searchTermsZh": [
+        "Kanaren All Inclusive BER 7 Nächte",
+        "Fuerteventura Familienhotel All Inclusive",
+        "Gran Canaria Kinderpool Sauna All Inclusive"
+      ],
+      "priorityFiltersZh": [
+        "Direktflug",
+        "All Inclusive",
+        "Kinderpool",
+        "Babybett",
+        "Transfer unter 60 Minuten",
+        "Preis unter 900 EUR"
+      ],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten All Inclusive Kanaren",
+          "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+          "noteZh": "All Inclusive 页面有加纳利、Fuerteventura、Lanzarote 等线索。"
+        },
+        {
+          "label": "本站加纳利专题",
+          "url": "https://alexchenic.github.io/germany-deal-travel/#canary",
+          "noteZh": "查看已有加纳利全包候选和酒店设施核对。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "Urlaubspiraten All Inclusive",
+          "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+          "noteZh": "只在出现 4 折以上或接近预算线索时优先点。"
+        },
+        {
+          "label": "TUI Last Minute",
+          "url": "https://www.tui.com/last-minute/",
+          "noteZh": "用 Kanaren + BER + 7 晚 + AI 重查。"
+        }
+      ]
+    }
+  ],
+  "searchPortals": [
+    {
+      "label": "TUI Last Minute",
+      "site": "TUI",
+      "url": "https://www.tui.com/last-minute/",
+      "intentZh": "主查土耳其、希腊、西班牙、加纳利的包价游折扣。",
+      "bestForZh": "服务链完整、包价结构清晰、适合家庭下单前比价。",
+      "cautionZh": "折扣名义很大时，也要看是否含行李、接送和合适房型。",
+      "setManuallyZh": [
+        "Abflughafen: Berlin Brandenburg",
+        "Reisedauer: 7 Nächte",
+        "Reisende: 3 Erwachsene + Baby 0 Jahre",
+        "Verpflegung: All Inclusive",
+        "Direktflug + Transfer inklusive"
+      ]
+    },
+    {
+      "label": "Urlaubspiraten All Inclusive",
+      "site": "Urlaubspiraten",
+      "url": "https://www.urlaubspiraten.de/reisethemen/all-inclusive",
+      "intentZh": "专门看编辑挑出的低价全包和大幅折扣线索。",
+      "bestForZh": "最适合每天扫一遍，有低价再去 TUI/CHECK24/HolidayCheck 交叉验证。",
+      "cautionZh": "部分低价不是 BER 出发或不是家庭友好酒店。",
+      "setManuallyZh": [
+        "优先打开 Türkei / Ägypten / Familienurlaub",
+        "确认出发机场是否 BER",
+        "确认儿童年龄是否可加入同一房型",
+        "再用 HolidayCheck 看近期评价"
+      ]
+    },
+    {
+      "label": "CHECK24 All Inclusive",
+      "site": "CHECK24 Urlaub",
+      "url": "https://urlaub.check24.de/allinclusive",
+      "intentZh": "全量比价和过滤器最实用，适合把候选目的地全部横向比较。",
+      "bestForZh": "查价格、折扣、取消规则、评分、房型容量。",
+      "cautionZh": "默认示例不一定是 7 晚或 3 成人+婴儿。",
+      "setManuallyZh": [
+        "Flug ab: Berlin",
+        "Reisezeitraum: Juli/August 2026",
+        "7 Nächte",
+        "3 Erwachsene + 1 Baby",
+        "All Inclusive + gute Bewertung"
+      ]
+    },
+    {
+      "label": "Travelzoo Top 20",
+      "site": "Travelzoo",
+      "url": "https://www.travelzoo.com/de/top20/",
+      "intentZh": "每周看人工谈判/精选低价，尤其是埃及、土耳其和西班牙机酒。",
+      "bestForZh": "发现明显低于常规价格的包价游或酒店折扣。",
+      "cautionZh": "很多 Top 20 不是家庭房或不是暑期，需要点开看适用日期。",
+      "setManuallyZh": [
+        "过滤 Sommer / August",
+        "查是否 Flug + Transfer + AI",
+        "排除 Adults Only",
+        "看出发机场和儿童规则"
+      ]
+    },
+    {
+      "label": "HolidayCheck",
+      "site": "HolidayCheck",
+      "url": "https://www.holidaycheck.de/urlaub/tuerkei",
+      "intentZh": "核查酒店最近评价和儿童友好真实性。",
+      "bestForZh": "不要只看最低价，用近期评价判断空调、餐饮、泳池、儿童设施。",
+      "cautionZh": "有些酒店页面先显示 hotel-only，要切到 Pauschalreise 或再回到比价平台。",
+      "setManuallyZh": [
+        "Weiterempfehlung 85%+",
+        "Bewertungen neueste zuerst",
+        "搜索 Klimaanlage / Kinderpool / Babybett",
+        "排查 Lärm、Essen、Sauberkeit"
+      ]
+    },
+    {
+      "label": "Google Flights",
+      "site": "Google Travel",
+      "url": "https://www.google.com/travel/flights",
+      "intentZh": "当包价游太贵时，单独看 BER 到 Antalya/Hurghada/Burgas 的直飞价格。",
+      "bestForZh": "判断是机票贵还是酒店贵，再决定是否拆分预订。",
+      "cautionZh": "单订机票+酒店会少了包价游保障和接送便利，带宝宝不一定省心。",
+      "setManuallyZh": [
+        "From: Berlin BER",
+        "To: AYT / HRG / VAR / BOJ",
+        "Direct only",
+        "7 days in July/August",
+        "再回 Booking/TUI 查酒店"
+      ]
+    }
+  ],
+  "actionPlanZh": [
+    "第一轮只查土耳其 Antalya/Side/Alanya：把价格、评分、接送时间和儿童泳池放进同一张对比表。",
+    "如果土耳其没有满意结果，再查埃及 Hurghada/Makadi Bay，但把高温风险作为否决项。",
+    "每天扫 Urlaubspiraten、Travelzoo Top 20、TUI Last Minute；发现 600-800 EUR/人的全包线索再深挖。",
+    "所有候选必须二次核查：近期评价、房间空调、是否 adults-only、婴儿床、餐厅是否拥挤、接送时间。",
+    "如果全包预算超标，把希腊/西班牙改成半膳或公寓+短航程备选。"
+  ],
+  "sourceNotesZh": [
+    "TUI、CHECK24、HolidayCheck 更适合下单前核实库存和评价。",
+    "Urlaubspiraten、Travelzoo、Mydealz 更适合发现异常低价或大幅折扣线索。",
+    "Skyscanner / Google Flights 只用于判断航班价格和直飞可行性，不等于最终家庭包价。",
+    "当前页面没有自动下单或锁价能力，所有价格都需要点击源站确认。"
+  ]
+}

@@ -109,7 +109,18 @@ h1 {
 .canary-evidence-block,
 .canary-portal,
 .canary-checklist,
-.canary-fact-strip span {
+.canary-fact-strip span,
+.summer-verdict,
+.summer-takeaway-grid span,
+.summer-signal-card,
+.summer-destination-card,
+.summer-fact-grid span,
+.summer-list-block,
+.summer-keywords,
+.summer-link-block,
+.summer-portal-card,
+.summer-manual-list,
+.summer-action-panel {
   border: 1px solid #d7d2c5;
   background: #fffdfa;
 }
@@ -875,7 +886,8 @@ h1 {
 .discount-page,
 .picks-page,
 .heat-page,
-.canary-page {
+.canary-page,
+.summer-page {
   display: grid;
   gap: 18px;
 }
@@ -886,6 +898,7 @@ h1 {
 .picks-hero,
 .heat-hero,
 .canary-hero,
+.summer-hero,
 .kids-workbench {
   border: 1px solid #d7d2c5;
   border-radius: 8px;
@@ -898,7 +911,8 @@ h1 {
 .discount-hero,
 .picks-hero,
 .heat-hero,
-.canary-hero {
+.canary-hero,
+.summer-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
   gap: 20px;
@@ -910,7 +924,8 @@ h1 {
 .discount-hero h2,
 .picks-hero h2,
 .heat-hero h2,
-.canary-hero h2 {
+.canary-hero h2,
+.summer-hero h2 {
   margin-bottom: 10px;
   font-size: clamp(1.5rem, 2.4vw, 2.35rem);
   letter-spacing: 0;
@@ -921,7 +936,8 @@ h1 {
 .discount-hero p,
 .picks-hero p,
 .heat-hero p,
-.canary-hero p {
+.canary-hero p,
+.summer-hero p {
   max-width: 760px;
   margin-bottom: 0;
   color: #4f5a56;
@@ -3089,6 +3105,435 @@ h1 {
   line-height: 1.5;
 }
 
+.summer-verdict {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 8px;
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.summer-verdict svg {
+  color: #0f766e;
+}
+
+.summer-verdict strong {
+  color: #0d5f59;
+}
+
+.summer-verdict p {
+  color: #40504b;
+}
+
+.summer-verdict span {
+  color: #755317;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.summer-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summer-section {
+  display: grid;
+  gap: 12px;
+}
+
+.summer-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0d5f59;
+}
+
+.summer-section-heading h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.summer-takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.summer-takeaway-grid span {
+  min-height: 104px;
+  padding: 11px;
+  border-radius: 8px;
+  color: #40504b;
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.summer-takeaway-grid span:nth-child(2n) {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.summer-takeaway-grid span:nth-child(3n) {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.summer-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summer-signal-card {
+  display: flex;
+  min-height: 370px;
+  flex-direction: column;
+  gap: 9px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.summer-signal-card span,
+.summer-portal-top span {
+  color: #755317;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.summer-signal-card h3,
+.summer-portal-top h3 {
+  margin: 3px 0 4px;
+  color: #27362f;
+  font-size: 1rem;
+  line-height: 1.28;
+}
+
+.summer-signal-price {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #0d5f59;
+}
+
+.summer-signal-price svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.summer-signal-card p,
+.summer-signal-card small,
+.summer-signal-card em,
+.summer-portal-card p,
+.summer-portal-card small,
+.summer-portal-card em {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.summer-signal-card small,
+.summer-portal-card small {
+  color: #3f655f;
+}
+
+.summer-signal-card em,
+.summer-portal-card em {
+  margin-top: auto;
+  color: #755317;
+  font-style: normal;
+}
+
+.summer-evidence-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.summer-destination-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summer-destination-card {
+  display: flex;
+  min-width: 0;
+  min-height: 720px;
+  flex-direction: column;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.summer-destination-card.is-best,
+.summer-destination-card.is-strong {
+  border-color: #86c7ba;
+}
+
+.summer-destination-card.is-deal-only,
+.summer-destination-card.is-backup {
+  border-color: #d8c4a0;
+}
+
+.summer-card-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.summer-card-top h3 {
+  margin: 7px 0 5px;
+  font-size: 1.1rem;
+  line-height: 1.28;
+}
+
+.summer-card-top p {
+  margin: 0;
+  color: #5e6864;
+  font-size: 0.84rem;
+}
+
+.summer-fit-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 8px;
+  border: 1px solid #d7d2c5;
+  border-radius: 999px;
+  background: #fffdfa;
+  color: #755317;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.summer-fit-chip.is-best,
+.summer-fit-chip.is-strong {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.summer-score {
+  display: grid;
+  min-width: 86px;
+  justify-items: center;
+  padding: 8px 9px;
+  border: 1px solid #a8cfc5;
+  border-radius: 8px;
+  background: #e9f7f3;
+  color: #0d5f59;
+}
+
+.summer-score.is-stretch,
+.summer-score.is-unlikely {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.summer-score strong {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.summer-score span {
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.summer-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.summer-fact-grid span {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-height: 76px;
+  padding: 9px;
+  border-radius: 8px;
+  color: #43504c;
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.summer-fact-grid svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #0f766e;
+}
+
+.summer-list-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.summer-list-block {
+  min-height: 176px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.summer-list-block.is-positive {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.summer-list-block strong,
+.summer-keywords strong,
+.summer-link-block strong,
+.summer-manual-list strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #0d5f59;
+  font-size: 0.86rem;
+}
+
+.summer-list-block ul,
+.summer-manual-list ul,
+.summer-action-panel ol,
+.summer-action-panel ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  color: #4f5a56;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.summer-keywords,
+.summer-link-block {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.summer-keywords div,
+.summer-filter-strip,
+.summer-link-block div,
+.summer-booking-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.summer-keywords span,
+.summer-filter-strip span {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #d8c4a0;
+  border-radius: 999px;
+  background: #fff7e5;
+  color: #5f491f;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.summer-filter-strip {
+  margin-bottom: 10px;
+}
+
+.summer-filter-strip span:nth-child(2n) {
+  border-color: #bad6cf;
+  background: #edf9f6;
+  color: #0d5f59;
+}
+
+.summer-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0b665f;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.summer-source-link.is-compact {
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid #bad6cf;
+  border-radius: 999px;
+  background: #edf9f6;
+}
+
+.summer-booking-links {
+  margin-top: auto;
+}
+
+.summer-booking-links .primary-link,
+.summer-signal-card .primary-link,
+.summer-portal-card .primary-link {
+  min-width: 170px;
+  padding: 0 12px;
+}
+
+.summer-portal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.summer-portal-card {
+  display: flex;
+  min-height: 420px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.summer-portal-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.summer-portal-top svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #0f766e;
+}
+
+.summer-manual-list {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f8f3e8;
+}
+
+.summer-action-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.summer-action-panel > div {
+  min-width: 0;
+}
+
 @media (max-width: 1180px) {
   .toolbar {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3118,10 +3563,15 @@ h1 {
   .canary-curated-grid,
   .canary-jump-grid,
   .canary-portal-grid,
+  .summer-metrics,
+  .summer-takeaway-grid,
+  .summer-signal-grid,
+  .summer-portal-grid,
   .heat-metrics,
   .kid-pick-grid,
   .heat-card-grid,
   .canary-card-grid,
+  .summer-destination-grid,
   .api-safety-grid,
   .api-safety-panel {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3157,6 +3607,8 @@ h1 {
   .picks-hero,
   .heat-hero,
   .canary-hero,
+  .summer-hero,
+  .summer-action-panel,
   .kids-workbench,
   .recommendation-grid,
   .kids-card-grid {
@@ -3206,6 +3658,14 @@ h1 {
   .canary-facility-grid,
   .canary-detail-grid,
   .canary-portal-grid,
+  .summer-metrics,
+  .summer-takeaway-grid,
+  .summer-signal-grid,
+  .summer-destination-grid,
+  .summer-fact-grid,
+  .summer-list-grid,
+  .summer-portal-grid,
+  .summer-action-panel,
   .heat-metrics,
   .kid-pick-grid,
   .heat-card-grid,
@@ -3257,12 +3717,14 @@ h1 {
   .picks-hero,
   .heat-hero,
   .canary-hero,
+  .summer-hero,
   .kids-workbench {
     padding: 12px;
   }
 
   .heat-card-top,
-  .canary-card-top {
+  .canary-card-top,
+  .summer-card-top {
     grid-template-columns: 1fr;
   }
 
@@ -3271,7 +3733,8 @@ h1 {
   }
 
   .heat-rank,
-  .canary-rank {
+  .canary-rank,
+  .summer-score {
     width: 72px;
     justify-items: start;
   }

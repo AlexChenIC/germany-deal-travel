@@ -450,6 +450,75 @@ export interface CanaryAllInclusiveData {
   items: CanaryResortOption[];
 }
 
+export type SummerDestinationFit = "best" | "strong" | "deal-only" | "backup";
+
+export type SummerBudgetFit = "target" | "stretch" | "unlikely";
+
+export interface SummerSourceLink {
+  label: string;
+  url: string;
+  noteZh: string;
+}
+
+export interface SummerDealSignal {
+  id: string;
+  titleZh: string;
+  sourceName: string;
+  priceLabelZh: string;
+  dateWindowZh: string;
+  familyFitZh: string;
+  cautionZh: string;
+  url: string;
+  evidence: SummerSourceLink[];
+}
+
+export interface SummerDestinationRecommendation {
+  id: string;
+  rank: number;
+  destinationZh: string;
+  regionsZh: string;
+  fitLevel: SummerDestinationFit;
+  budgetFit: SummerBudgetFit;
+  fitScore: number;
+  priceExpectationZh: string;
+  flightZh: string;
+  heatZh: string;
+  babyFitZh: string;
+  allInclusiveFitZh: string;
+  whyZh: string[];
+  risksZh: string[];
+  searchTermsZh: string[];
+  priorityFiltersZh: string[];
+  evidence: SummerSourceLink[];
+  bookingLinks: SummerSourceLink[];
+}
+
+export interface SummerSearchPortal {
+  label: string;
+  site: string;
+  url: string;
+  intentZh: string;
+  bestForZh: string;
+  cautionZh: string;
+  setManuallyZh: string[];
+}
+
+export interface SummerAllInclusiveData {
+  updatedAt: string;
+  timezone: string;
+  partyZh: string;
+  travelWindowZh: string;
+  budgetZh: string;
+  verdictZh: string;
+  assumptionsZh: string[];
+  quickTakeawaysZh: string[];
+  dealSignals: SummerDealSignal[];
+  destinations: SummerDestinationRecommendation[];
+  searchPortals: SummerSearchPortal[];
+  actionPlanZh: string[];
+  sourceNotesZh: string[];
+}
+
 export type DiscountSourceCategory =
   | "package-sale"
   | "hotel-club"
