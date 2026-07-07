@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-07-06T16:20:00+02:00",
+  "updatedAt": "2026-07-07T13:30:00+02:00",
   "timezone": "Europe/Berlin",
   "partyZh": "3 位成年人 + 1 位 11 个月左右婴儿",
   "travelWindowZh": "2026 年 7-8 月，柏林 BER 出发，优先 7 晚左右",
   "budgetZh": "目标 700-800 EUR / 成人 / 周；婴儿通常另有低额费用或税费，但房型和机票规则需逐单确认。",
-  "verdictZh": "如果现在就要在 7/8 月出发，最现实的路线是先查土耳其 Antalya/Side/Alanya，其次查埃及 Hurghada/Makadi Bay；加纳利、希腊、马略卡可以保留为捡漏，但在暑期旺季通常更容易超预算。",
+  "verdictZh": "如果现在就要在 7/8 月出发，最现实的飞行路线仍是土耳其 Antalya/Side/Alanya，其次查埃及 Hurghada/Makadi Bay；但如果想减少飞行压力，德国北部/哈茨/厄尔士山和捷克 Liberec/Prague Aquapalace 也有一批自驾可达的真全包或准全包家庭酒店，尤其适合短住 2-5 晚。",
   "assumptionsZh": [
     "优先全包或 All Inclusive Plus，减少带宝宝外出找饭的压力。",
     "优先包机/直飞和含接送的 Pauschalreise，少折腾、少转场。",
@@ -15,6 +15,7 @@
   "quickTakeawaysZh": [
     "预算命中率最高：土耳其 Antalya/Side/Alanya。",
     "价格也强但更热：埃及 Hurghada/Makadi Bay，需要认真评估婴儿耐热。",
+    "不想坐飞机时，优先看 Borchard's Rookhus、Family Club Harz、AHORN Templin 和 Liberec Babylon。",
     "如果看到 5 星土耳其 600-750 EUR/人且评分好，应优先点开核实。",
     "加纳利 7/8 月气候舒服，但全包+直飞+家庭友好常常超出 800 EUR。",
     "所有平台都要手动设：BER、7 nights、All Inclusive、3 Erwachsene、Baby 0 Jahre、Direktflug、Transfer。"
@@ -117,6 +118,455 @@
           "label": "TUI Magic Life Last Minute",
           "url": "https://www.magiclife.com/de/de/angebote/last-minute/",
           "noteZh": "Magic Life 常见全包 club hotel，可查土耳其、希腊、西班牙等。"
+        }
+      ]
+    }
+  ],
+  "roadTripIntroZh": "这些是从柏林自驾可达的全包/准全包候选：真全包家庭酒店放在最前，半膳+水乐园/泳池/SPA 的酒店作为低压力短住备选。价格会比海岛包价游更分散，但优势是没有航班、可带更多宝宝用品，也更适合 2-5 晚灵活安排。",
+  "roadTripStays": [
+    {
+      "id": "borchards-rookhus-mecklenburg",
+      "name": "Familotel Borchard's Rookhus",
+      "nameZh": "Borchard's Rookhus 家庭全包酒店",
+      "country": "germany",
+      "regionZh": "梅克伦堡湖区 / Wesenberg 附近",
+      "driveTimeZh": "从柏林约 1小时45分-2小时",
+      "driveHours": 2,
+      "mealPlanLevel": "true-ai",
+      "fitLevel": "top",
+      "budgetFit": "stretch",
+      "fitScore": 95,
+      "mealPlanZh": "All-Inclusive / All-Inclusive Premium 家庭酒店逻辑，主打婴幼儿和儿童照护。",
+      "priceExpectationZh": "旺季大概率高于 700-800 EUR/成人/周，但省去机票后，短住 3-5 晚值得优先核价。",
+      "babyFitZh": "非常强：Familotel 体系，强调 baby/child care、婴儿餐、高脚椅、儿童活动和湖区慢节奏。",
+      "poolSpaZh": "更偏湖区亲子度假与室内儿童设施；具体泳池/SPA权益要按房价和套餐确认。",
+      "bestForZh": "最像德国境内的真家庭全包，适合不想飞、又想尽量少做饭少安排的家庭。",
+      "whyZh": [
+        "距离柏林很友好，宝宝用品和老人行李可以直接开车带过去。",
+        "Familotel/儿童酒店渠道都把它作为 All-Inclusive Premium 和 baby-friendly 家庭酒店展示。",
+        "湖区环境比城市避暑更舒服，行程压力低。"
+      ],
+      "risksZh": [
+        "价格可能是所有自驾候选里最高的一档，暑假库存也可能紧。",
+        "需要核对 3 成人 + 婴儿是否住一套房，还是必须订 2 个房间。",
+        "全包权益、照护时长和婴儿服务要以具体报价页为准。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Borchard's Rookhus 官方",
+          "url": "https://rookhus.de/",
+          "noteZh": "官方入口，用于核查当前套餐、房型和家庭服务。"
+        },
+        {
+          "label": "Familotel Rookhus",
+          "url": "https://www.familotel.com/de/familienhotels/mecklenburgische-seenplatte/borchards-rookhus/",
+          "noteZh": "Familotel 页面列出婴儿餐、儿童餐和家庭服务信息。"
+        },
+        {
+          "label": "Kinderhotel Rookhus",
+          "url": "https://www.kinderhotel.de/objekte/familotel-borchard-s-rookhus-100-familienurlaub-mit-60h-baby-und-kinderbetreuung-4714/",
+          "noteZh": "儿童酒店渠道用于交叉核查 All-Inclusive Premium 与照护信息。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开官方预订",
+          "url": "https://rookhus.de/",
+          "noteZh": "先查 3 成人 + Baby、3-5 晚，再比较 7 晚。"
+        },
+        {
+          "label": "Familotel 搜索",
+          "url": "https://www.familotel.com/de/familienhotels/mecklenburgische-seenplatte/",
+          "noteZh": "查看湖区同类 Familotel 是否有更合适日期。"
+        }
+      ]
+    },
+    {
+      "id": "family-club-harz-quedlinburg",
+      "name": "Family Club Harz",
+      "nameZh": "Family Club Harz 亲子全包度假村",
+      "country": "germany",
+      "regionZh": "哈茨 / Quedlinburg",
+      "driveTimeZh": "从柏林约 2.5-3小时",
+      "driveHours": 2.8,
+      "mealPlanLevel": "kids-ai",
+      "fitLevel": "top",
+      "budgetFit": "stretch",
+      "fitScore": 92,
+      "mealPlanZh": "儿童 All-Inclusive + 成人无酒精 All-Inclusive，偏真正亲子全包。",
+      "priceExpectationZh": "暑期旺季可能超预算，但对 3 成人 + 婴儿的省心程度很高，适合先查 3-4 晚。",
+      "babyFitZh": "很强：亲子酒店定位明确，有儿童照护、儿童餐、儿童泳池/浅水区和无车园区。",
+      "poolSpaZh": "Familotel 页面显示室内温水泳池、大型室外泳池和独立 baby/children pool；适合高温天酒店内休息。",
+      "bestForZh": "想自驾但又希望像 resort 一样有泳池、活动和餐饮安排时，它是最值得核价的一档。",
+      "whyZh": [
+        "Quedlinburg 对老人也友好，酒店之外可以低强度散步。",
+        "官方和 Familotel 都强调 All-Inclusive、儿童设施和家庭活动。",
+        "比飞行目的地少了机场和接送的不确定性。"
+      ],
+      "risksZh": [
+        "不一定能压到 700-800 EUR/成人/周，尤其暑假高峰。",
+        "热门家庭房可能很快售罄。",
+        "成人全包是无酒精版本，饮品权益需看具体条款。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Family Club 官方",
+          "url": "https://www.familyclub.de/",
+          "noteZh": "官方入口，用于核查 All-Inclusive 和暑期家庭套餐。"
+        },
+        {
+          "label": "Family Club 英文说明",
+          "url": "https://www.familyclub.de/en/the-family-club/",
+          "noteZh": "英文页列出 Kids All-Inclusive 与成人 All-Inclusive alcohol-free。"
+        },
+        {
+          "label": "Familotel Family Club",
+          "url": "https://www.familotel.com/de/familienhotels/harz/family-club-harz/",
+          "noteZh": "用于核查泳池、baby/children pool 和家庭设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方优惠",
+          "url": "https://www.familyclub.de/en/stays-offers/offers/",
+          "noteZh": "优先查 baby swimming / all-inclusive offers。"
+        },
+        {
+          "label": "Familotel 入口",
+          "url": "https://www.familotel.com/de/familienhotels/harz/family-club-harz/",
+          "noteZh": "看 Familotel 是否展示可订日期或套餐。"
+        }
+      ]
+    },
+    {
+      "id": "ahorn-seehotel-templin",
+      "name": "AHORN Seehotel Templin",
+      "nameZh": "AHORN Seehotel Templin 湖边家庭酒店",
+      "country": "germany",
+      "regionZh": "Uckermark / Lübbesee",
+      "driveTimeZh": "从柏林约 1-1.5小时",
+      "driveHours": 1.3,
+      "mealPlanLevel": "half-board-plus",
+      "fitLevel": "strong",
+      "budgetFit": "target",
+      "fitScore": 86,
+      "mealPlanZh": "更像半膳/家庭套餐，不要默认是真全包；但家庭设施和湖边位置很适合短住。",
+      "priceExpectationZh": "比真正 Familotel 更可能接近预算，适合 2-3 晚避暑或周末短住。",
+      "babyFitZh": "较好：AHORN 家庭酒店定位、YOKI 儿童世界、室内外活动多；婴儿具体服务要核查。",
+      "poolSpaZh": "湖边 + 酒店活动空间强；泳池/SPA权益需按具体房型和套餐确认。",
+      "bestForZh": "最省车程的家庭避暑短住候选，适合先从柏林周边试水。",
+      "whyZh": [
+        "距离柏林很近，宝宝不适应也容易调整行程。",
+        "AHORN 官方和旅行平台都把它作为 Uckermark 湖边家庭酒店展示。",
+        "适合老人、小宝宝和短住，不必追求一周全包。"
+      ],
+      "risksZh": [
+        "不是典型 All-Inclusive，需要看清是否只含早餐/半膳。",
+        "暑期周末价格可能不低，湖边房型可能紧张。",
+        "若核心需求是泳池+SPA躺平，需逐项核对设施。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "AHORN Templin 官方优惠",
+          "url": "https://www.ahorn-hotels.de/hotels/ahorn-seehotel-templin/angebote/",
+          "noteZh": "官方优惠页，用于查家庭套餐和可订日期。"
+        },
+        {
+          "label": "AHORN offers",
+          "url": "https://www.ahorn-hotels.de/angebote/",
+          "noteZh": "AHORN 总优惠页，覆盖 Uckermark 等家庭度假区域。"
+        },
+        {
+          "label": "KMW Templin",
+          "url": "https://www.kurz-mal-weg.de/ahorn-seehotel-templin-ht7234",
+          "noteZh": "短住平台用于快速比较车程和套餐价。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方查价",
+          "url": "https://www.ahorn-hotels.de/hotels/ahorn-seehotel-templin/angebote/",
+          "noteZh": "先查周中 2-3 晚，避免暑期周末溢价。"
+        },
+        {
+          "label": "Penny Reisen",
+          "url": "https://www.penny-reisen.de/urlaub/AHORN%2BSeehotel%2BTemplin-BER70001.html",
+          "noteZh": "可用于看是否有旅行社套餐价。"
+        }
+      ]
+    },
+    {
+      "id": "hotel-babylon-liberec",
+      "name": "Wellness Hotel Babylon Liberec",
+      "nameZh": "Liberec Babylon 水乐园亲子酒店",
+      "country": "czechia",
+      "regionZh": "捷克 Liberec",
+      "driveTimeZh": "从柏林约 3.5小时",
+      "driveHours": 3.5,
+      "mealPlanLevel": "half-board-plus",
+      "fitLevel": "strong",
+      "budgetFit": "stretch",
+      "fitScore": 88,
+      "mealPlanZh": "不是传统全包，但常见住宿+半膳+Aquapark/Sauna World/Funpark/iQLANDIA 等打包。",
+      "priceExpectationZh": "家庭套餐可能不便宜，但包含项目多；适合按 2-4 晚短住测算，不必硬凑 7 晚。",
+      "babyFitZh": "强：官方称 baby-friendly，3 岁以下儿童常有免费/优惠政策；水乐园和室内活动密度高。",
+      "poolSpaZh": "优势很明确：Aquapark、Sauna World、Funpark、科学馆等，雨天和高温天都能待在室内。",
+      "bestForZh": "捷克方向最像“不开飞机的度假村体验”，尤其适合需要大量室内玩法的家庭。",
+      "whyZh": [
+        "套餐把住宿、半膳和大量室内娱乐项目打在一起，带宝宝不用每天重新找活动。",
+        "Liberec 距离柏林自驾可接受，也可顺路安排轻量城市/动物园。",
+        "对怕热宝宝友好，因为核心玩法在室内水乐园和酒店建筑群。"
+      ],
+      "risksZh": [
+        "水乐园可能人多吵闹，11 个月宝宝要避开高峰时段。",
+        "不是 All-Inclusive 餐饮，午餐/饮料需要另算。",
+        "要确认婴儿能使用哪些水区、是否需要自带泳尿裤等。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Babylon 儿童套餐",
+          "url": "https://www.hotelbabylon.cz/en/accommodation/accommodation-packages/55839-babylonian-holiday-with-children/",
+          "noteZh": "官方套餐列出半膳、Aquapark、Sauna World、Funpark、iQLANDIA 等权益。"
+        },
+        {
+          "label": "Babylon hotel",
+          "url": "https://www.centrumbabylon.cz/en/wellness-hotel-babylon/a-199/",
+          "noteZh": "官方酒店页，用于核查 baby-friendly 和儿童政策。"
+        },
+        {
+          "label": "Expedia Babylon",
+          "url": "https://www.expedia.com/Liberec-Hotels-Wellness-Hotel-Babylon.h2802688.Hotel-Information",
+          "noteZh": "用于交叉核查儿童泳池、水滑梯和家庭设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方套餐",
+          "url": "https://www.hotelbabylon.cz/en/accommodation/accommodation-packages/55839-babylonian-holiday-with-children/",
+          "noteZh": "优先看儿童假期套餐是否覆盖 7/8 月。"
+        },
+        {
+          "label": "Google 交叉查价",
+          "url": "https://www.google.com/search?q=Wellness+Hotel+Babylon+Liberec+family+package",
+          "noteZh": "用于查实时评价和第三方价格。"
+        }
+      ]
+    },
+    {
+      "id": "aquapalace-hotel-prague",
+      "name": "Aquapalace Hotel Prague",
+      "nameZh": "Prague Aquapalace 水世界酒店",
+      "country": "czechia",
+      "regionZh": "捷克 Prague / Cestlice",
+      "driveTimeZh": "从柏林约 3.5-4小时",
+      "driveHours": 3.8,
+      "mealPlanLevel": "half-board-plus",
+      "fitLevel": "strong",
+      "budgetFit": "stretch",
+      "fitScore": 84,
+      "mealPlanZh": "以住宿+水世界/桑拿/家庭套餐为核心，不是标准全包。",
+      "priceExpectationZh": "暑期家庭套餐可能偏贵，但比飞去海岛更灵活；适合 2-4 晚而不是一周。",
+      "babyFitZh": "强：官方家庭页强调家庭房、儿童自助、baby menu、儿童俱乐部和小龄儿童水区。",
+      "poolSpaZh": "优势是大型 Aquapalace：室内外温水池、水滑梯、儿童浅水区和 Sauna World。",
+      "bestForZh": "想顺便去布拉格周边，又希望酒店本身能撑起 2 天活动时优先查。",
+      "whyZh": [
+        "对宝宝和老人都低压力，主要活动就在酒店和水世界。",
+        "布拉格周边医疗/超市/餐饮便利，临时调整空间大。",
+        "水世界比普通酒店泳池更能消耗大人和孩子的时间。"
+      ],
+      "risksZh": [
+        "不是全包餐饮，预算要把午餐和停车等额外费用算进去。",
+        "水乐园暑假人多，需要早进晚退或选择非周末。",
+        "3 成人 + 婴儿房型要核查是否需要套房或连通房。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Aquapalace 官方",
+          "url": "https://www.aquapalacehotel.cz/en/",
+          "noteZh": "官方入口，用于核查套餐和水世界权益。"
+        },
+        {
+          "label": "Family stays",
+          "url": "https://www.aquapalacehotel.cz/en/family-stays-with-children",
+          "noteZh": "官方家庭页列出儿童水区、baby menu、儿童自助和家庭房。"
+        },
+        {
+          "label": "Aquapalace 水世界",
+          "url": "https://www.aquapalace.cz/en",
+          "noteZh": "用于核查 Water World、Sauna World、wellness 等设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方查套餐",
+          "url": "https://www.aquapalacehotel.cz/en/family-stays-with-children",
+          "noteZh": "先看 summer/family packages，再比 Booking。"
+        },
+        {
+          "label": "Google 查价",
+          "url": "https://www.google.com/search?q=Aquapalace+Hotel+Prague+family+package+July+August+2026",
+          "noteZh": "交叉看实时价格和近期家庭评价。"
+        }
+      ]
+    },
+    {
+      "id": "erzgebirgshotel-freiberger-hoehe",
+      "name": "Erzgebirgshotel Freiberger Höhe",
+      "nameZh": "Freiberger Höhe 厄尔士山真全包酒店",
+      "country": "germany",
+      "regionZh": "萨克森 / Eppendorf",
+      "driveTimeZh": "从柏林约 3小时",
+      "driveHours": 3,
+      "mealPlanLevel": "true-ai",
+      "fitLevel": "value",
+      "budgetFit": "target",
+      "fitScore": 82,
+      "mealPlanZh": "官方/短住平台都展示 All-Inclusive：早餐、午餐小食、下午蛋糕、晚餐和 11-21 点饮品。",
+      "priceExpectationZh": "自驾候选里最有机会做出低预算短住，适合 3-5 晚；7 晚也可查。",
+      "babyFitZh": "中等：有家庭/休闲属性，但不是专门婴幼儿度假村，宝宝设施要逐项确认。",
+      "poolSpaZh": "有按摩/休闲项目，但不是水乐园型；如果你们核心要泳池，优先级低于 Babylon/Aquapalace/Family Club。",
+      "bestForZh": "预算优先、想要真全包餐饮且能接受设施没有那么儿童 resort 的家庭。",
+      "whyZh": [
+        "吃喝包进来的确定性强，减少带宝宝找饭压力。",
+        "厄尔士山比城市更适合夏天慢节奏待几天。",
+        "相比高端 Familotel，更可能出现明显低价套餐。"
+      ],
+      "risksZh": [
+        "亲子设施不如专门儿童酒店，11 个月宝宝可能主要靠房间和餐厅便利。",
+        "若没有泳池/儿童浅水池，不适合以玩水避暑为核心。",
+        "低价套餐需看是否适用于 3 成人 + 婴儿。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Travdo 官方",
+          "url": "https://travdo-hotels.de/hotels/erzgebirgshotel-freiberger-hoehe/",
+          "noteZh": "官方说明 All-Inclusive 餐饮和饮品时段。"
+        },
+        {
+          "label": "KMW Freiberger Höhe",
+          "url": "https://www.kurz-mal-weg.de/erzgebirgshotel-freiberger-hoehe-ht6161",
+          "noteZh": "短住平台显示 ECHT ALL INKLUSIVE 套餐和价格样例。"
+        },
+        {
+          "label": "REWE Reisen",
+          "url": "https://www.rewe-reisen.de/urlaub/Erzgebirgshotel%2BFreiberger%2BH%C3%B6he%2B%E2%80%93%2BAll%2BInklusive%2BHotel-DRS50006X.html",
+          "noteZh": "用于对比旅行社的 Vollpension Plus / All-Inclusive 套餐。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "KMW 查短住",
+          "url": "https://www.kurz-mal-weg.de/erzgebirgshotel-freiberger-hoehe-ht6161",
+          "noteZh": "适合查 3-5 晚低价。"
+        },
+        {
+          "label": "Travdo 官方",
+          "url": "https://travdo-hotels.de/hotels/erzgebirgshotel-freiberger-hoehe/",
+          "noteZh": "最终核查房型、儿童政策和取消规则。"
+        }
+      ]
+    },
+    {
+      "id": "ahorn-waldhotel-altenberg",
+      "name": "AHORN Waldhotel Altenberg",
+      "nameZh": "AHORN Waldhotel Altenberg 山区家庭酒店",
+      "country": "germany",
+      "regionZh": "萨克森 / 东厄尔士山 Altenberg",
+      "driveTimeZh": "从柏林约 2.75-3.25小时",
+      "driveHours": 3.1,
+      "mealPlanLevel": "half-board-plus",
+      "fitLevel": "value",
+      "budgetFit": "target",
+      "fitScore": 78,
+      "mealPlanZh": "更偏早餐/半膳+家庭设施套餐，不是真全包。",
+      "priceExpectationZh": "AHORN 体系常有可控价位；适合把它作为预算型山区避暑备选。",
+      "babyFitZh": "较好：家庭酒店、YOKI 儿童世界、活动多；婴儿餐和婴儿床需确认。",
+      "poolSpaZh": "官方显示大型室内泳池、桑拿/健身和家庭活动，适合天气不好时留在酒店。",
+      "bestForZh": "如果你们想开到山里、要室内泳池，但不一定坚持真全包。",
+      "whyZh": [
+        "山区比柏林市区更舒服，适合高温周末。",
+        "室内泳池比普通酒店更稳，孩子怕热时有替代活动。",
+        "价格通常比高端 Kinderhotel 更友好。"
+      ],
+      "risksZh": [
+        "餐饮不是全包，需要把午餐/饮料预算算进去。",
+        "酒店星级和设施风格更偏大众家庭酒店，不是豪华 resort。",
+        "暑期活动多时可能比较热闹，需看安静房型。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "AHORN Altenberg 官方",
+          "url": "https://www.ahorn-hotels.de/en/hotels/ahorn-waldhotel-altenberg/",
+          "noteZh": "官方酒店页，用于核查室内泳池、家庭设施和位置。"
+        },
+        {
+          "label": "AHORN Altenberg offers",
+          "url": "https://www.ahorn-hotels.de/en/hotels/ahorn-waldhotel-altenberg/offers/",
+          "noteZh": "官方优惠页显示家庭假期和半膳套餐。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方优惠",
+          "url": "https://www.ahorn-hotels.de/en/hotels/ahorn-waldhotel-altenberg/offers/",
+          "noteZh": "先查 2-5 晚的家庭/半膳套餐。"
+        },
+        {
+          "label": "AHORN 全部优惠",
+          "url": "https://www.ahorn-hotels.de/angebote/",
+          "noteZh": "横向比较 Templin、Altenberg 和其他 AHORN 家庭酒店。"
+        }
+      ]
+    },
+    {
+      "id": "elldus-resort-oberwiesenthal",
+      "name": "Elldus Resort Oberwiesenthal",
+      "nameZh": "Elldus Resort Oberwiesenthal 高端家庭全包度假村",
+      "country": "germany",
+      "regionZh": "萨克森 / Oberwiesenthal",
+      "driveTimeZh": "从柏林约 4小时",
+      "driveHours": 4,
+      "mealPlanLevel": "true-ai",
+      "fitLevel": "strong",
+      "budgetFit": "unlikely",
+      "fitScore": 87,
+      "mealPlanZh": "All-Inclusive Premium，官方强调餐饮、软饮、baby food、照护和 spa/wellness 权益。",
+      "priceExpectationZh": "很可能超过目标预算，但若有淡季/短住优惠，是自驾范围内质量很强的家庭 resort。",
+      "babyFitZh": "非常强：官方列出 baby care、childcare、play barn、baby food 和家庭度假设施。",
+      "poolSpaZh": "约 2,000 平米 spa/wellness，室内外玩法强，适合真正“酒店里待几天”。",
+      "bestForZh": "当你们愿意开远一点、预算可以上浮、想要高确定性的儿童酒店体验时再查。",
+      "whyZh": [
+        "真全包+照护+spa 的组合很接近你们想要的躺平式度假。",
+        "Oberwiesenthal 夏天比柏林舒适，山区散步也适合老人。",
+        "不用坐飞机，带婴儿用品和老人行李更自由。"
+      ],
+      "risksZh": [
+        "车程较长，不适合只住 1-2 晚。",
+        "价格大概率超出 700-800 EUR/成人/周目标。",
+        "暑假家庭房库存可能紧，需要尽快核查。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Elldus All-Inclusive",
+          "url": "https://www.elldus.de/en/resort/all-inclusive/",
+          "noteZh": "官方 All-Inclusive Premium 权益页。"
+        },
+        {
+          "label": "Elldus Resort",
+          "url": "https://www.elldus.de/en/",
+          "noteZh": "官方首页，用于核查 4 星家庭 resort、spa 和儿童设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "官方查价",
+          "url": "https://www.elldus.de/en/resort/all-inclusive/",
+          "noteZh": "先查 4-5 晚是否有优惠，比 7 晚更现实。"
+        },
+        {
+          "label": "Google 实时评价",
+          "url": "https://www.google.com/search?q=Elldus+Resort+Oberwiesenthal+reviews+family",
+          "noteZh": "交叉核查近期家庭评价、餐饮和泳池/spa体验。"
         }
       ]
     }

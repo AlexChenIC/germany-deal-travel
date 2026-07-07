@@ -114,6 +114,8 @@ h1 {
 .summer-takeaway-grid span,
 .summer-signal-card,
 .summer-destination-card,
+.summer-roadtrip-card,
+.summer-drive-row span,
 .summer-fact-grid span,
 .summer-list-block,
 .summer-keywords,
@@ -3156,6 +3158,14 @@ h1 {
   font-size: 1.02rem;
 }
 
+.summer-section-note {
+  max-width: 880px;
+  margin: 6px 0 0;
+  color: #4f5a56;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .summer-takeaway-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -3256,6 +3266,82 @@ h1 {
   gap: 7px;
 }
 
+.summer-roadtrip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summer-roadtrip-card {
+  display: flex;
+  min-width: 0;
+  min-height: 660px;
+  flex-direction: column;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.summer-roadtrip-card.is-top,
+.summer-roadtrip-card.is-strong {
+  border-color: #86c7ba;
+}
+
+.summer-roadtrip-card.is-value,
+.summer-roadtrip-card.is-backup {
+  border-color: #d8c4a0;
+}
+
+.summer-drive-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.summer-drive-row span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #43504c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.summer-drive-row svg {
+  flex: 0 0 auto;
+  color: #0f766e;
+}
+
+.summer-meal-chip.is-true-ai,
+.summer-meal-chip.is-kids-ai {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.summer-meal-chip.is-half-board-plus,
+.summer-meal-chip.is-full-board-plus {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.summer-roadtrip-best {
+  min-height: 58px;
+  margin: 0 0 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f6f8f3;
+  color: #40504b;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
 .summer-destination-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3316,10 +3402,18 @@ h1 {
 }
 
 .summer-fit-chip.is-best,
+.summer-fit-chip.is-top,
 .summer-fit-chip.is-strong {
   border-color: #86c7ba;
   background: #e3f3ef;
   color: #0d5f59;
+}
+
+.summer-fit-chip.is-value,
+.summer-fit-chip.is-backup {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
 }
 
 .summer-score {
@@ -3482,6 +3576,7 @@ h1 {
 
 .summer-booking-links .primary-link,
 .summer-signal-card .primary-link,
+.summer-roadtrip-card .primary-link,
 .summer-portal-card .primary-link {
   min-width: 170px;
   padding: 0 12px;
@@ -3566,6 +3661,7 @@ h1 {
   .summer-metrics,
   .summer-takeaway-grid,
   .summer-signal-grid,
+  .summer-roadtrip-grid,
   .summer-portal-grid,
   .heat-metrics,
   .kid-pick-grid,
@@ -3661,6 +3757,7 @@ h1 {
   .summer-metrics,
   .summer-takeaway-grid,
   .summer-signal-grid,
+  .summer-roadtrip-grid,
   .summer-destination-grid,
   .summer-fact-grid,
   .summer-list-grid,

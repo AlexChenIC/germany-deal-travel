@@ -1,17 +1,19 @@
 import {
   Baby,
   BadgeEuro,
+  Car,
   CheckCircle2,
   CircleAlert,
   Compass,
   ExternalLink,
   Hotel,
   ListChecks,
+  MapPinned,
   Plane,
   Search,
-  ShieldCheck,
   Sparkles,
   ThermometerSun,
+  Utensils,
   Waves,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -23,6 +25,9 @@ import type {
   SummerDealSignal,
   SummerDestinationFit,
   SummerDestinationRecommendation,
+  SummerRoadTripFit,
+  SummerRoadTripMealPlan,
+  SummerRoadTripStay,
   SummerSearchPortal,
   SummerSourceLink,
 } from "../types";
@@ -42,13 +47,24 @@ const budgetLabels: Record<SummerBudgetFit, string> = {
   unlikely: "大概率超预算",
 };
 
+const roadTripFitLabels: Record<SummerRoadTripFit, string> = {
+  top: "自驾优先",
+  strong: "强备选",
+  value: "性价比",
+  backup: "远程备选",
+};
+
+const mealPlanLabels: Record<SummerRoadTripMealPlan, string> = {
+  "true-ai": "真全包",
+  "kids-ai": "亲子全包",
+  "half-board-plus": "准全包",
+  "full-board-plus": "餐饮加强",
+};
+
 export function SummerAllInclusiveView() {
-  const targetBudgetCount = summerData.destinations.filter(
-    (destination) => destination.budgetFit === "target",
-  ).length;
-  const strongFitCount = summerData.destinations.filter(
-    (destination) => destination.fitLevel === "best" || destination.fitLevel === "strong",
-  ).length;
+  const targetBudgetCount =
+    summerData.destinations.filter((destination) => destination.budgetFit === "target").length +
+    summerData.roadTripStays.filter((stay) => stay.budgetFit === "target").length;
 
   return (
     <section className="summer-page">
@@ -70,9 +86,9 @@ export function SummerAllInclusiveView() {
       </div>
 
       <section className="summer-metrics" aria-label="summer all-inclusive summary">
-        <Metric label="目的地候选" value={summerData.destinations.length} icon={<Compass />} />
+        <Metric label="飞行目的地" value={summerData.destinations.length} icon={<Compass />} />
+        <Metric label="自驾候选" value={summerData.roadTripStays.length} icon={<Car />} />
         <Metric label="预算可冲" value={targetBudgetCount} icon={<BadgeEuro />} />
-        <Metric label="高匹配" value={strongFitCount} icon={<ShieldCheck />} />
         <Metric label="优惠源线索" value={summerData.dealSignals.length} icon={<Search />} />
       </section>
 
@@ -84,6 +100,21 @@ export function SummerAllInclusiveView() {
         <div className="summer-takeaway-grid">
           {summerData.quickTakeawaysZh.map((takeaway) => (
             <span key={takeaway}>{takeaway}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="summer-section" id="roadtrip-all-inclusive">
+        <div className="results-header">
+          <div>
+            <h2>柏林自驾可达的全包/准全包</h2>
+            <p className="summer-section-note">{summerData.roadTripIntroZh}</p>
+          </div>
+          <span>{summerData.roadTripStays.length} 个候选</span>
+        </div>
+        <div className="summer-roadtrip-grid">
+          {summerData.roadTripStays.map((stay) => (
+            <RoadTripStayCard key={stay.id} stay={stay} />
           ))}
         </div>
       </section>
@@ -149,6 +180,72 @@ export function SummerAllInclusiveView() {
         </div>
       </section>
     </section>
+  );
+}
+
+function RoadTripStayCard({ stay }: { stay: SummerRoadTripStay }) {
+  return (
+    <article className={`summer-roadtrip-card is-${stay.fitLevel}`}>
+      <div className="summer-card-top">
+        <div>
+          <span className={`summer-fit-chip is-${stay.fitLevel}`}>
+            {roadTripFitLabels[stay.fitLevel]}
+          </span>
+          <h3>{stay.nameZh}</h3>
+          <p>
+            {stay.name} · {stay.regionZh}
+          </p>
+        </div>
+        <div className={`summer-score is-${stay.budgetFit}`}>
+          <strong>{stay.fitScore}</strong>
+          <span>{budgetLabels[stay.budgetFit]}</span>
+        </div>
+      </div>
+
+      <div className="summer-drive-row">
+        <span>
+          <Car size={15} aria-hidden="true" />
+          {stay.driveTimeZh}
+        </span>
+        <span>
+          <MapPinned size={15} aria-hidden="true" />
+          {stay.country === "germany" ? "德国" : "捷克"}
+        </span>
+        <span className={`summer-meal-chip is-${stay.mealPlanLevel}`}>
+          <Utensils size={15} aria-hidden="true" />
+          {mealPlanLabels[stay.mealPlanLevel]}
+        </span>
+      </div>
+
+      <p className="summer-roadtrip-best">{stay.bestForZh}</p>
+
+      <div className="summer-fact-grid">
+        <Fact icon={<Utensils size={15} />} label={stay.mealPlanZh} />
+        <Fact icon={<BadgeEuro size={15} />} label={stay.priceExpectationZh} />
+        <Fact icon={<Baby size={15} />} label={stay.babyFitZh} />
+        <Fact icon={<Waves size={15} />} label={stay.poolSpaZh} />
+      </div>
+
+      <div className="summer-list-grid">
+        <ListBlock title="为什么值得查" items={stay.whyZh} positive />
+        <ListBlock title="下单前风险" items={stay.risksZh} />
+      </div>
+
+      <div className="summer-link-block">
+        <strong>核查来源</strong>
+        <div>
+          {stay.sourceLinks.map((source) => (
+            <SourceLink key={source.url} source={source} compact />
+          ))}
+        </div>
+      </div>
+
+      <div className="summer-booking-links">
+        {stay.bookingLinks.map((source, index) => (
+          <SourceLink key={source.url} source={source} primary={index === 0} />
+        ))}
+      </div>
+    </article>
   );
 }
 

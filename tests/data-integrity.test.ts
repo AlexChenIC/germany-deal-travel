@@ -108,11 +108,17 @@ test("summer all-inclusive recommendations stay actionable", async () => {
   assert.ok(data.verdictZh.length > 30, "summer page needs a clear verdict");
   assert.ok(data.quickTakeawaysZh.length >= 4, "summer page needs quick takeaways");
   assert.ok(data.destinations.length >= 5, "summer page needs several destinations");
+  assert.ok(data.roadTripIntroZh.length > 30, "summer page needs a road-trip intro");
+  assert.ok(data.roadTripStays.length >= 6, "summer page needs road-trip stays");
   assert.ok(data.dealSignals.length >= 4, "summer page needs deal signals");
   assert.ok(data.searchPortals.length >= 5, "summer page needs search portals");
   assertUniqueIds(
     "summer deal signals",
     data.dealSignals.map((signal) => signal.id),
+  );
+  assertUniqueIds(
+    "summer road-trip stays",
+    data.roadTripStays.map((stay) => stay.id),
   );
   assertUniqueIds(
     "summer destinations",
@@ -129,6 +135,21 @@ test("summer all-inclusive recommendations stay actionable", async () => {
     data.destinations.some((destination) => destination.budgetFit === "target"),
     "summer page needs at least one target-budget option",
   );
+  assert.ok(
+    data.roadTripStays.some((stay) => stay.country === "germany") &&
+      data.roadTripStays.some((stay) => stay.country === "czechia"),
+    "summer road-trip stays should cover Germany and Czechia",
+  );
+  assert.ok(
+    data.roadTripStays.some(
+      (stay) => stay.mealPlanLevel === "true-ai" || stay.mealPlanLevel === "kids-ai",
+    ),
+    "summer road-trip stays need at least one true all-inclusive option",
+  );
+  assert.ok(
+    data.roadTripStays.some((stay) => stay.budgetFit === "target"),
+    "summer road-trip stays need at least one target-budget option",
+  );
 
   for (const signal of data.dealSignals) {
     assert.ok(signal.titleZh.trim(), `${signal.id} needs a Chinese title`);
@@ -136,6 +157,24 @@ test("summer all-inclusive recommendations stay actionable", async () => {
     assert.match(signal.url, /^https?:\/\//, `${signal.id} needs URL`);
     assert.ok(signal.evidence.length > 0, `${signal.id} needs evidence`);
     signal.evidence.forEach((source) => assertSourceLink(`${signal.id} evidence`, source));
+  }
+
+  for (const stay of data.roadTripStays) {
+    assert.ok(stay.nameZh.trim(), `${stay.id} needs a Chinese name`);
+    assert.ok(stay.driveHours > 0 && stay.driveHours <= 5, `${stay.id} drive hours`);
+    assert.ok(stay.driveTimeZh.trim(), `${stay.id} needs drive time`);
+    assert.ok(stay.fitScore >= 0 && stay.fitScore <= 100, `${stay.id} fit score`);
+    assert.ok(stay.mealPlanZh.trim(), `${stay.id} needs meal-plan notes`);
+    assert.ok(stay.priceExpectationZh.trim(), `${stay.id} needs price notes`);
+    assert.ok(stay.babyFitZh.trim(), `${stay.id} needs baby fit`);
+    assert.ok(stay.poolSpaZh.trim(), `${stay.id} needs pool/spa notes`);
+    assert.ok(stay.bestForZh.trim(), `${stay.id} needs best-for note`);
+    assert.ok(stay.whyZh.length >= 2, `${stay.id} needs reasons`);
+    assert.ok(stay.risksZh.length >= 2, `${stay.id} needs risks`);
+    assert.ok(stay.sourceLinks.length >= 2, `${stay.id} needs source links`);
+    assert.ok(stay.bookingLinks.length > 0, `${stay.id} needs booking links`);
+    stay.sourceLinks.forEach((source) => assertSourceLink(`${stay.id} source`, source));
+    stay.bookingLinks.forEach((source) => assertSourceLink(`${stay.id} booking`, source));
   }
 
   for (const destination of data.destinations) {

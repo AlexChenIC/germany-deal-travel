@@ -454,6 +454,14 @@ export type SummerDestinationFit = "best" | "strong" | "deal-only" | "backup";
 
 export type SummerBudgetFit = "target" | "stretch" | "unlikely";
 
+export type SummerRoadTripMealPlan =
+  | "true-ai"
+  | "kids-ai"
+  | "half-board-plus"
+  | "full-board-plus";
+
+export type SummerRoadTripFit = "top" | "strong" | "value" | "backup";
+
 export interface SummerSourceLink {
   label: string;
   url: string;
@@ -493,6 +501,29 @@ export interface SummerDestinationRecommendation {
   bookingLinks: SummerSourceLink[];
 }
 
+export interface SummerRoadTripStay {
+  id: string;
+  name: string;
+  nameZh: string;
+  country: "germany" | "czechia";
+  regionZh: string;
+  driveTimeZh: string;
+  driveHours: number;
+  mealPlanLevel: SummerRoadTripMealPlan;
+  fitLevel: SummerRoadTripFit;
+  budgetFit: SummerBudgetFit;
+  fitScore: number;
+  mealPlanZh: string;
+  priceExpectationZh: string;
+  babyFitZh: string;
+  poolSpaZh: string;
+  bestForZh: string;
+  whyZh: string[];
+  risksZh: string[];
+  sourceLinks: SummerSourceLink[];
+  bookingLinks: SummerSourceLink[];
+}
+
 export interface SummerSearchPortal {
   label: string;
   site: string;
@@ -513,6 +544,8 @@ export interface SummerAllInclusiveData {
   assumptionsZh: string[];
   quickTakeawaysZh: string[];
   dealSignals: SummerDealSignal[];
+  roadTripIntroZh: string;
+  roadTripStays: SummerRoadTripStay[];
   destinations: SummerDestinationRecommendation[];
   searchPortals: SummerSearchPortal[];
   actionPlanZh: string[];
