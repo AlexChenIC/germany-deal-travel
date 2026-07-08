@@ -1,0 +1,635 @@
+{
+  "updatedAt": "2026-07-08T11:20:00+02:00",
+  "timezone": "Europe/Berlin",
+  "partyZh": "3 位成年人 + 1 位约 1 岁宝宝，从柏林出发，第一次尝试房车旅行",
+  "verdictZh": "可行，但不要把第一次房车旅行设计成很长、很热、每天换营地的大环线。你们这个组合更适合 4-6 座、至少 4 个核准行车座位、固定床位充足、有卫生间/淋浴、最好有 Isofix 或明确 3 点安全带座位的半集成/家庭型房车。第一次建议先做 3-4 晚近程试水，确认宝宝睡眠、儿童座椅安装、停车/补水/排污和三位成年人分工都顺，再升级到 7 晚波罗的海或湖区路线。",
+  "recommendedFirstStepZh": "第一步不要急着去丹麦或阿尔卑斯：先租 4-5 晚，路线控制在 Berlin - Müritz/Mecklenburg Lakes - Rügen/Usedom 或只做 Müritz 湖区，尽量每个营地住 2 晚，避免每天收车、找营地、哄睡、排污补水的连环疲劳。",
+  "assumptionsZh": [
+    "宝宝必须全程坐合规儿童座椅，不能在房车床上、沙发上或成人怀里行驶。",
+    "优先 3.5 吨以内车辆，普通德国 B 类驾照通常更简单；超过 3.5 吨会涉及限速、通行费和驾驶资格复杂度。",
+    "7/8 月是欧洲露营高峰，热门海边营地要尽早预订，不要指望完全随到随住。",
+    "三位成年人需要隐私和睡眠空间，推荐固定床 + 升降床/额头床/上下铺，不推荐只靠每天拼餐桌床。",
+    "房车旅行不是省钱神器；如果租车，暑期一周常常接近或超过普通度假公寓，但灵活性更高。"
+  ],
+  "quickTakeawaysZh": [
+    "结论：你们家可以尝试，但第一趟要短、慢、近。",
+    "车型优先：Family motorhome / semi-integrated / Class C，4-5 个安全带座位，4-5 个睡位，独立卫生间。",
+    "宝宝安全是第一否决项：儿童座椅必须能装在核准行车座位上，最好提前到取车点试装。",
+    "暑期路线优先北方：Müritz、Mecklenburg Lakes、Rügen、Usedom、丹麦南部比南欧更适合怕热宝宝。",
+    "成本预期：3-4 晚约 900-1600 EUR，全家一周约 2100-4300 EUR，取决于车型、营地和路线距离。"
+  ],
+  "guideCards": [
+    {
+      "id": "feasibility",
+      "titleZh": "你们家是否适合房车",
+      "summaryZh": "适合低强度尝试，但不适合第一次就每天移动、去太远、或者租太小的 campervan。",
+      "priority": "must",
+      "pointsZh": [
+        "3 成人 + 宝宝会明显挤，车型要按 4-5 人实际生活空间选，而不是只看“sleeps 4”。",
+        "宝宝午睡和晚上早睡会让车内公共空间变少，所以固定床位和可分区睡眠很重要。",
+        "三位成年人反而是优势：一个开车、一个照顾宝宝、一个处理导航/营地入住/补给。",
+        "第一次路线每天驾驶不超过 2-3 小时，单个营地至少住 2 晚，会显著降低失败概率。"
+      ],
+      "sources": [
+        {
+          "label": "PiNCAMP baby story",
+          "url": "https://www.pincamp.de/magazin/inspiration/camper-stories/der-1-urlaub-im-wohnmobil-mit-baby-entspannter-familienurlaub-oder-chaosfahrt",
+          "noteZh": "ADAC/PiNCAMP 的宝宝房车首旅经验，强调准备、收纳、作息和试错。"
+        },
+        {
+          "label": "ADAC child seat",
+          "url": "https://www.adac.de/rund-ums-fahrzeug/ausstattung-technik-zubehoer/kindersitze/kindersitzberater/kindersitz-bus-wohnmobil/",
+          "noteZh": "ADAC 对 Wohnmobil 儿童座椅和座位要求的说明。"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "titleZh": "儿童座椅和行车安全",
+      "summaryZh": "这是下单前最重要的一项：能否合法、安全地安装 1 岁宝宝座椅，决定这辆车能不能租。",
+      "priority": "must",
+      "pointsZh": [
+        "德国规则：未满 12 岁或身高低于 150 cm 的儿童需要合适儿童约束系统，房车也一样。",
+        "每个人都必须坐在核准行车座位上，不能超过安全带数量。",
+        "儿童座椅通常应装在前向行车座位上，必须确认该座位的安全带或 Isofix 适配你的座椅。",
+        "不要接受“宝宝行驶时睡床上”的方案；ADAC 明确提示房车睡眠区行驶中不能载人。",
+        "建议带自己的儿童座椅去取车点试装，或提前让租车方书面确认 Isofix/3 点安全带。"
+      ],
+      "sources": [
+        {
+          "label": "ADAC Wohnmobil Kindersitz",
+          "url": "https://www.adac.de/rund-ums-fahrzeug/ausstattung-technik-zubehoer/kindersitze/kindersitzberater/kindersitz-bus-wohnmobil/",
+          "noteZh": "ADAC 写明儿童座椅、前向座位、安全带数量和不得在睡眠区乘坐。"
+        },
+        {
+          "label": "ADAC rental guide",
+          "url": "https://autovermietung.adac.de/wohnmobile/ratgeber/kindersitz-im-wohnmobil/",
+          "noteZh": "ADAC 租赁指南提到 Isofix、3 点安全带和跨国儿童约束规则。"
+        }
+      ]
+    },
+    {
+      "id": "vehicle-choice",
+      "titleZh": "推荐车型",
+      "summaryZh": "你们不适合最小号 VW California 型 campervan；更适合 4-6 座家庭房车。",
+      "priority": "must",
+      "pointsZh": [
+        "优先 4-6 个核准座位、4-5 个睡位、固定床、独立卫生间、热水、遮阳篷、冰箱、足够储物。",
+        "3.5 吨以内优先，避免第一次就处理重车限速和通行费规则。",
+        "夏天要问清：驾驶舱空调几乎都有，但生活区驻车空调通常不是标配，营地遮阴和通风更现实。",
+        "不要只看“sleeps 4”：3 成人需要至少两块相对独立的成人睡眠区，宝宝需要旅行床或安全睡眠方案。"
+      ],
+      "sources": [
+        {
+          "label": "roadsurfer Europe fleet",
+          "url": "https://roadsurfer.com/rv-rental-europe/",
+          "noteZh": "roadsurfer 欧洲车型说明，含 4 成人 + 2 儿童级别车型和卫生间/厨房配置。"
+        },
+        {
+          "label": "Indie Campers Berlin",
+          "url": "https://indiecampers.com/discover/en-us/rent-an-rv/berlin",
+          "noteZh": "Berlin 页面列出 4/5/6 座、带 shower/toilet 的车型。"
+        }
+      ]
+    },
+    {
+      "id": "rental-workflow",
+      "titleZh": "第一次怎么租",
+      "summaryZh": "先用比较平台筛，再去直营网点或高评分私租核实，所有儿童座椅信息要书面确认。",
+      "priority": "recommended",
+      "pointsZh": [
+        "先用 CamperDays 比价，看 Berlin 取车的家庭车型、保险、里程、取消规则。",
+        "再看 roadsurfer / Indie Campers / McRent 这类直营网点，优势是流程标准、车型新、服务稳定。",
+        "PaulCamper / Yescapa 私租可能更便宜或更有家庭配置，但要更仔细确认交接、保险和儿童座椅。",
+        "下单前必须看：押金、自付额、里程限制、清洁费、床品/厨具、第二司机、境外驾驶是否允许。"
+      ],
+      "sources": [
+        {
+          "label": "CamperDays Berlin",
+          "url": "https://www.camperdays.com/campervans-germany/berlin.html",
+          "noteZh": "Berlin 比价页给出 7 月平均价位和家庭/团体筛选入口。"
+        },
+        {
+          "label": "Yescapa Berlin",
+          "url": "https://www.yescapa.com/campervan-hire/berlin",
+          "noteZh": "Yescapa 提醒家庭更适合 4-6 berth motorhome。"
+        }
+      ]
+    },
+    {
+      "id": "camping-reality",
+      "titleZh": "营地和自由停车现实",
+      "summaryZh": "不要把欧洲房车理解成到哪都能睡。德国和波罗的海热门区域要用正规营地或 Stellplatz。",
+      "priority": "must",
+      "pointsZh": [
+        "德国和多数欧洲国家野营/随意过夜有严格限制，热门海边停车场尤其容易被罚。",
+        "带宝宝建议优先正规 campsite：有卫生间、热水、洗衣、厨房、儿童设施和电源。",
+        "Stellplatz 适合中途过夜，但往往缺少卫生间/淋浴/遮阴，不适合第一次长住。",
+        "7/8 月热门海边营地要提前预订，尤其 Rügen、Usedom、Darß/Zingst 和丹麦海边。"
+      ],
+      "sources": [
+        {
+          "label": "Camping.info Wildcamping",
+          "url": "https://www.camping.info/de/thema/wildcamping",
+          "noteZh": "Camping.info 总结多数欧洲国家 wild camping 限制。"
+        },
+        {
+          "label": "Camping.info Baltic Sea",
+          "url": "https://www.camping.info/en/popular-region/baltic-sea",
+          "noteZh": "波罗的海页面提醒 camper/motorhome 在营地外过夜属于非法 wild camping。"
+        }
+      ]
+    }
+  ],
+  "rentalPortals": [
+    {
+      "id": "camperdays",
+      "name": "CamperDays Berlin",
+      "url": "https://www.camperdays.com/campervans-germany/berlin.html",
+      "typeZh": "比价平台",
+      "fitZh": "适合第一轮比较 Berlin 家庭房车、保险、里程和取消规则。",
+      "bestForZh": "先找价格锚点和车型范围；页面显示 7 月 Berlin 房车均价约 180 EUR/天级别。",
+      "cautionZh": "比价价位不等于最终总价，床品、保险升级、儿童座椅、清洁费可能另算。",
+      "mustCheckZh": [
+        "是否 Berlin 取还车",
+        "4 个以上核准座位和 4 个以上睡位",
+        "儿童座椅/Isofix/3 点安全带",
+        "自付额和押金",
+        "是否允许去捷克/丹麦/波兰"
+      ],
+      "evidence": [
+        {
+          "label": "CamperDays Berlin",
+          "url": "https://www.camperdays.com/campervans-germany/berlin.html",
+          "noteZh": "Berlin 租车比价和 7 月热门价格信息。"
+        }
+      ]
+    },
+    {
+      "id": "roadsurfer",
+      "name": "roadsurfer Berlin",
+      "url": "https://roadsurfer.com/uk/campervan-hire/germany/berlin/",
+      "typeZh": "直营网点",
+      "fitZh": "适合标准化租车流程和新手；Berlin 出发，里程/第二司机规则较清晰。",
+      "bestForZh": "适合查 Family Finca / Camper Castle / Road House 这类 4 座带卫生间车型。",
+      "cautionZh": "网页起价通常是低季/低配起价，暑期实际价和附加费要逐单确认。",
+      "mustCheckZh": [
+        "车型是否 4 个安全带座位",
+        "生活区是否有独立卫生间",
+        "宝宝座椅能否安装",
+        "生活区是否有驻车空调或至少良好通风",
+        "取车/还车时间是否适合宝宝作息"
+      ],
+      "evidence": [
+        {
+          "label": "roadsurfer Berlin",
+          "url": "https://roadsurfer.com/uk/campervan-hire/germany/berlin/",
+          "noteZh": "Berlin 租车页面和从柏林出发路线建议。"
+        },
+        {
+          "label": "roadsurfer fleet",
+          "url": "https://roadsurfer.com/rv-rental-europe/",
+          "noteZh": "欧洲车型容量和卫生间/厨房说明。"
+        }
+      ]
+    },
+    {
+      "id": "indie-campers",
+      "name": "Indie Campers Berlin",
+      "url": "https://indiecampers.com/discover/en-us/rent-an-rv/berlin",
+      "typeZh": "直营网点/国际平台",
+      "fitZh": "车型多，Berlin 页面能看到 5/6 座和带 shower/toilet 的 Family 车型。",
+      "bestForZh": "适合查较大的 Family Plus / Comfort Standard 等 5-6 人车型。",
+      "cautionZh": "实际价格、服务包、押金和评价要仔细看；大车也更难停车。",
+      "mustCheckZh": [
+        "Family Plus 是否可在 Berlin 取车",
+        "实际安全带数量",
+        "儿童座椅服务",
+        "保险自付额",
+        "取还车网点交通"
+      ],
+      "evidence": [
+        {
+          "label": "Indie Campers Berlin",
+          "url": "https://indiecampers.com/discover/en-us/rent-an-rv/berlin",
+          "noteZh": "Berlin 页面列出 Comfort Standard、Grand California、Family Plus 等。"
+        }
+      ]
+    },
+    {
+      "id": "mcrent",
+      "name": "McRent Germany",
+      "url": "https://www.mcrent.eu/motorhome-rv-rental/germany/",
+      "typeZh": "传统房车租赁",
+      "fitZh": "德国网点多，偏标准房车和家庭车型，适合稳妥型用户。",
+      "bestForZh": "适合比较半集成/alcove family motorhome，尤其重视正规交接和售后时。",
+      "cautionZh": "Berlin 具体网点、车型和儿童座椅要从可订页面确认，不要只看德国总页。",
+      "mustCheckZh": [
+        "Berlin/Brandenburg 是否有合适网点",
+        "车型是否 3.5 吨以内",
+        "床位布局",
+        "儿童座椅适配",
+        "境外驾驶许可"
+      ],
+      "evidence": [
+        {
+          "label": "McRent Germany",
+          "url": "https://www.mcrent.eu/motorhome-rv-rental/germany/",
+          "noteZh": "德国有 30 多个租赁站和主流欧洲房车车型。"
+        }
+      ]
+    },
+    {
+      "id": "paulcamper",
+      "name": "PaulCamper",
+      "url": "https://www.paulcamper.de/",
+      "typeZh": "私人房车共享",
+      "fitZh": "可能找到带儿童配置、取车地点更近、价格更灵活的家庭房车。",
+      "bestForZh": "适合愿意和车主沟通、看详细照片、试装儿童座椅的家庭。",
+      "cautionZh": "私租差异很大，必须确认保险、押金、交接、车况、儿童座椅安装点和取消规则。",
+      "mustCheckZh": [
+        "车主是否接受 1 岁宝宝",
+        "儿童座椅固定点/安全带照片",
+        "睡眠布局和防跌落",
+        "厨房/卫生间设备",
+        "车主评价和交接时间"
+      ],
+      "evidence": [
+        {
+          "label": "PaulCamper",
+          "url": "https://www.paulcamper.de/",
+          "noteZh": "德国大型 private camper 平台，车辆和价格差异较大。"
+        },
+        {
+          "label": "PaulCamper family campers",
+          "url": "https://www.paulcamper.de/magazin/camper-mit-kind",
+          "noteZh": "家庭友好车型建议，强调睡位、储物、浴室和儿童配置。"
+        }
+      ]
+    },
+    {
+      "id": "yescapa",
+      "name": "Yescapa Berlin",
+      "url": "https://www.yescapa.com/campervan-hire/berlin",
+      "typeZh": "私人房车共享",
+      "fitZh": "适合查 4-6 berth motorhome，Berlin 私人车源选择多。",
+      "bestForZh": "当直营网点太贵或没库存时，作为价格和车型补充。",
+      "cautionZh": "同样要仔细核查保险、儿童座椅、安全带、车重和真实评价。",
+      "mustCheckZh": [
+        "4-6 berth motorhome",
+        "全员安全带",
+        "儿童座椅是否可安装",
+        "车高和停车限制",
+        "保险和道路救援"
+      ],
+      "evidence": [
+        {
+          "label": "Yescapa Berlin",
+          "url": "https://www.yescapa.com/campervan-hire/berlin",
+          "noteZh": "页面建议家庭选择 4-6 berth motorhome，并提醒车高限制。"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "trial-mueritz-lakes",
+      "titleZh": "第一次试水：柏林 - Müritz 湖区",
+      "regionZh": "Mecklenburgische Seenplatte / Müritz",
+      "nightsZh": "3-4 晚",
+      "distanceKm": 350,
+      "difficulty": "easy",
+      "suitability": "recommended",
+      "summerFitZh": "7/8 月很适合，湖区比城市更舒服，开车距离短。",
+      "babyFitZh": "最适合第一次：车程短、营地多、可以固定一个营地住 2-3 晚。",
+      "routeStopsZh": [
+        "Berlin 取车 + 附近超市补给",
+        "Waren / Röbel / Müritz 湖区营地",
+        "可选轻量活动：湖边散步、短船、动物园/自然中心",
+        "原路回 Berlin"
+      ],
+      "whyZh": [
+        "从柏林到 Müritz 约 160 km，适合作为宝宝和大人都不崩的首旅。",
+        "湖区营地、泳水、散步和自然体验都足够，不需要每天换城市。",
+        "万一宝宝不适应，回柏林成本低。"
+      ],
+      "risksZh": [
+        "热门湖边营地暑假需要提前订。",
+        "湖区蚊虫和高温天遮阴要准备。",
+        "如果只住 Stellplatz，洗澡/洗衣/宝宝护理可能不够方便。"
+      ],
+      "bookingHintsZh": [
+        "优先查 PiNCAMP Müritz、Camping.info、ADAC 分类营地。",
+        "选有电源、卫生间、洗衣、儿童设施和湖边浅水区的 campsite。",
+        "第一晚不要安排太晚到达，留出取车讲解和第一次搭营时间。"
+      ],
+      "sources": [
+        {
+          "label": "PiNCAMP Müritz",
+          "url": "https://www.pincamp.com/camping-vacation/mueritz",
+          "noteZh": "PiNCAMP 写明从柏林到 Müritz 最短约 160 km，并介绍湖区 camping。"
+        },
+        {
+          "label": "Mecklenburg Lakes camping",
+          "url": "https://hinterland.camp/en/regions/camping-mecklenburg-lake-district-the-most-beautiful-pitches-on-the-lake",
+          "noteZh": "湖区私人营地和自然露营灵感。"
+        }
+      ]
+    },
+    {
+      "id": "baltic-ruegen-usedom",
+      "titleZh": "夏天主线：Rügen + Usedom 波罗的海",
+      "regionZh": "Mecklenburg-Vorpommern / Baltic Sea",
+      "nightsZh": "7-9 晚",
+      "distanceKm": 850,
+      "difficulty": "medium",
+      "suitability": "recommended",
+      "summerFitZh": "7/8 月最有度假感，海风、沙滩和家庭设施都强。",
+      "babyFitZh": "适合宝宝，但必须提前订营地；不要每天移动，建议 Rügen 3 晚 + Usedom 3 晚。",
+      "routeStopsZh": [
+        "Berlin - Stralsund / Rügen",
+        "Rügen 北部或东岸营地，Jasmund / Sellin / Binz 轻量游",
+        "Greifswald 或 Peenemünde 中途补给",
+        "Usedom / Trassenheide / Zinnowitz",
+        "可选 Szczecin 或直接回 Berlin"
+      ],
+      "whyZh": [
+        "波罗的海是柏林出发夏季房车最直觉、最适合家庭的方向。",
+        "Rügen/Usedom 活动足够丰富，但不需要高强度徒步。",
+        "海边气候通常比柏林 35°C 高温更舒服。"
+      ],
+      "risksZh": [
+        "7/8 月非常热门，海边 campsite 可能满位。",
+        "热门海滩停车和道路拥堵会消耗耐心。",
+        "野营/随意海边过夜风险高，应使用正规营地。"
+      ],
+      "bookingHintsZh": [
+        "优先有家庭浴室、洗衣、婴儿护理台、餐厅/小超市的营地。",
+        "营地尽量连住 2-3 晚，减少收纳和宝宝睡眠干扰。",
+        "避开周六大规模换营日的长途移动。"
+      ],
+      "sources": [
+        {
+          "label": "PiNCAMP Baltic Sea",
+          "url": "https://www.pincamp.com/camping-vacation/baltic-sea",
+          "noteZh": "ADAC/PiNCAMP 介绍 Baltic Sea 适合家庭、海滩和 campsites。"
+        },
+        {
+          "label": "Campwerk Berlin-Rügen-Usedom",
+          "url": "https://www.campwerk.co.uk/camping-tour-by-the-sea-from-berlin-to-ruegen-usedom-to-the-polish-eastern-sea/",
+          "noteZh": "Berlin 到 Rügen/Usedom 路线距离和营地示例。"
+        },
+        {
+          "label": "Camping.info Baltic Sea",
+          "url": "https://www.camping.info/en/popular-region/baltic-sea",
+          "noteZh": "波罗的海 campsites 和 wild camping 风险提醒。"
+        }
+      ]
+    },
+    {
+      "id": "spreewald-potsdam-brandenburg",
+      "titleZh": "短途练手：Potsdam + Spreewald + Brandenburg 湖区",
+      "regionZh": "Brandenburg",
+      "nightsZh": "3-5 晚",
+      "distanceKm": 300,
+      "difficulty": "easy",
+      "suitability": "trial-first",
+      "summerFitZh": "适合第一次熟悉车辆，不追求远方目的地。",
+      "babyFitZh": "车程短、补给容易，宝宝不适应时可以迅速回家。",
+      "routeStopsZh": [
+        "Berlin 取车",
+        "Potsdam / Werder 近程练车",
+        "Spreewald Lübbenau/Lübben 或湖边营地",
+        "可选 Tropical Islands 附近过夜",
+        "Berlin 还车"
+      ],
+      "whyZh": [
+        "适合练习倒车、接水、接电、排污、整理宝宝用品。",
+        "不用承担海边营地满位和长途堵车压力。",
+        "三位成年人可以快速建立分工。"
+      ],
+      "risksZh": [
+        "夏季 Spreewald 可能闷热，避暑感不如海边。",
+        "风景和度假感比 Rügen/Usedom 弱。",
+        "短途也要订合法营地或 Stellplatz。"
+      ],
+      "bookingHintsZh": [
+        "选离 Berlin 1-2 小时内、评价高、有卫生间和电源的营地。",
+        "适合作为正式一周旅行前的 rehearsal。",
+        "第一晚只安排到达和熟悉车辆，不安排景点。"
+      ],
+      "sources": [
+        {
+          "label": "roadsurfer Berlin",
+          "url": "https://roadsurfer.com/uk/campervan-hire/germany/berlin/",
+          "noteZh": "Berlin 作为房车出发点，适合向周边和北方路线扩展。"
+        },
+        {
+          "label": "PiNCAMP Germany",
+          "url": "https://www.pincamp.com/germany",
+          "noteZh": "德国 camping 总页，用于查 Brandenburg 和周边营地。"
+        }
+      ]
+    },
+    {
+      "id": "saxon-bohemian-switzerland",
+      "titleZh": "山地文化线：Dresden + Saxon/Bohemian Switzerland + Prague",
+      "regionZh": "Sachsen / Czech Republic",
+      "nightsZh": "5-7 晚",
+      "distanceKm": 650,
+      "difficulty": "medium",
+      "suitability": "trial-first",
+      "summerFitZh": "适合不想去海边时；山谷和森林舒服，但热门景点夏天人多。",
+      "babyFitZh": "可行但要保守：不要安排长徒步，重点是营地、Dresden、易达观景点和 Prague 周边。",
+      "routeStopsZh": [
+        "Berlin - Dresden/Pirna",
+        "Saxon Switzerland 营地 2-3 晚",
+        "Decin / Bohemian Switzerland 轻量停留",
+        "Prague 或 Aquapalace 周边",
+        "Berlin"
+      ],
+      "whyZh": [
+        "车程可控，文化城市和自然景观结合。",
+        "捷克方向可顺路测试跨境房车规则。",
+        "如果避暑短住页面里的 Prague Aquapalace 感兴趣，可和房车路线互补。"
+      ],
+      "risksZh": [
+        "山区道路、窄路和停车比湖区/海边更难。",
+        "带 1 岁宝宝不适合长距离登山或暴晒徒步。",
+        "进入捷克要确认租车合同允许跨境，并处理 vignette/通行费。"
+      ],
+      "bookingHintsZh": [
+        "优先选 Pirna/Bad Schandau 周边正规营地。",
+        "捷克高速要提前查 3.5 吨以内 vignette；超过 3.5 吨复杂度上升。",
+        "每天只安排一个轻量活动，保留午睡和营地休息。"
+      ],
+      "sources": [
+        {
+          "label": "Vanever Saxon Switzerland",
+          "url": "https://vanever.com/en/blog/saxon-switzerland-camping",
+          "noteZh": "Saxon Switzerland camping 介绍，靠近 Dresden 和捷克边境。"
+        },
+        {
+          "label": "ACSI Czech round trip",
+          "url": "https://www.eurocampings.co.uk/blog/listing/czech-republic-round-trip/",
+          "noteZh": "捷克露营环线灵感。"
+        },
+        {
+          "label": "Czech motorhome vignette",
+          "url": "https://europamaut.com/en/vignette/czech/motorhome",
+          "noteZh": "捷克 3.5 吨以内房车 vignette 说明。"
+        }
+      ]
+    },
+    {
+      "id": "denmark-south-jutland",
+      "titleZh": "凉爽扩展线：德国北部 + 丹麦南部",
+      "regionZh": "Schleswig-Holstein / Southern Denmark",
+      "nightsZh": "8-10 晚",
+      "distanceKm": 1100,
+      "difficulty": "hard",
+      "suitability": "caution",
+      "summerFitZh": "7/8 月气候舒适，丹麦营地完善，但第一次直接去会偏远。",
+      "babyFitZh": "适合第二次以后尝试；首旅不建议，因为路程和跨境安排更多。",
+      "routeStopsZh": [
+        "Berlin - Lübeck/Plön",
+        "Flensburg / Schleswig-Holstein 海边",
+        "Aabenraa / South Jutland",
+        "可选 Fyn 或 Legoland Billund",
+        "经 Hamburg 或 Mecklenburg 回 Berlin"
+      ],
+      "whyZh": [
+        "丹麦夏天对怕热宝宝友好，营地秩序和家庭设施通常很好。",
+        "北德和丹麦路线可做成海边慢旅行。",
+        "比南欧房车更不热。"
+      ],
+      "risksZh": [
+        "总里程较长，宝宝第一次不一定适应。",
+        "丹麦营地和热门家庭景点暑期也需要提前订。",
+        "桥费/轮渡/额外保险和跨境许可要查清。"
+      ],
+      "bookingHintsZh": [
+        "先确认租车合同允许丹麦。",
+        "选择连住营地，不要一路赶景点。",
+        "预算里加入桥费、景点门票和更高食物价格。"
+      ],
+      "sources": [
+        {
+          "label": "Guardian Denmark camper",
+          "url": "https://www.theguardian.com/travel/article/2024/jul/30/my-scandinavian-summer-a-campervan-trip-across-denmark-and-southern-sweden",
+          "noteZh": "丹麦南部 fjordside camping 和夏季 camper route 灵感。"
+        },
+        {
+          "label": "Denmark camper costs",
+          "url": "https://www.wheelingit.us/2021/10/31/our-denmark-mini-trip-route-costs-more/",
+          "noteZh": "丹麦营地费用经验，约 DKK 300-450/晚量级。"
+        },
+        {
+          "label": "roadsurfer tolls Europe",
+          "url": "https://roadsurfer.com/uk/blog/tolls-in-europe/",
+          "noteZh": "丹麦无一般高速费，但桥梁收费。"
+        }
+      ]
+    },
+    {
+      "id": "polish-baltic-wolin",
+      "titleZh": "预算扩展线：Usedom + 波兰 Baltic / Wolin",
+      "regionZh": "Usedom / Szczecin / Wolin",
+      "nightsZh": "5-7 晚",
+      "distanceKm": 650,
+      "difficulty": "medium",
+      "suitability": "trial-first",
+      "summerFitZh": "海边暑期舒服，可能比德国海边便宜一些。",
+      "babyFitZh": "可行，但要更仔细选营地卫生和评价；不建议完全随性找过夜点。",
+      "routeStopsZh": [
+        "Berlin - Usedom",
+        "Swinoujscie / Wolin / Misdroy",
+        "Szczecin 可选城市停留",
+        "Berlin"
+      ],
+      "whyZh": [
+        "从 Berlin 距离可控，能结合 Usedom 和波兰海边。",
+        "预算可能比德国热门海边更友好。",
+        "适合作为 Rügen/Usedom 没订到营地时的备选。"
+      ],
+      "risksZh": [
+        "跨境规则、保险和营地质量要提前确认。",
+        "波兰 wild camping 规则不适合新手随意过夜。",
+        "宝宝用品和医疗便利性要提前查位置。"
+      ],
+      "bookingHintsZh": [
+        "租车前确认 Poland allowed。",
+        "优先选择评价高、可在线预订的正规 campsite。",
+        "保留德国 Usedom 作为回撤点。"
+      ],
+      "sources": [
+        {
+          "label": "Campwerk Baltic route",
+          "url": "https://www.campwerk.co.uk/camping-tour-by-the-sea-from-berlin-to-ruegen-usedom-to-the-polish-eastern-sea/",
+          "noteZh": "Berlin - Rügen - Usedom - Polish Baltic 线路示例。"
+        },
+        {
+          "label": "Camping.info Wildcamping",
+          "url": "https://www.camping.info/de/thema/wildcamping",
+          "noteZh": "欧洲 wild camping 规则提醒。"
+        }
+      ]
+    }
+  ],
+  "budgetScenarios": [
+    {
+      "id": "trial-3-4-nights",
+      "titleZh": "试水短途",
+      "nights": 4,
+      "routeTypeZh": "Berlin - Brandenburg/Müritz，单个营地为主",
+      "rentalZh": "约 450-750 EUR，按 110-190 EUR/天估算，另看保险包和床品厨具。",
+      "campsiteZh": "约 120-240 EUR，家庭营地/湖边营地按 30-60 EUR/晚估算。",
+      "fuelZh": "约 80-140 EUR，350-500 km，按 10-14 L/100 km 和柴油约 1.7 EUR/L 粗算。",
+      "foodZh": "约 180-320 EUR，主要自炊 + 少量餐厅。",
+      "extrasZh": "约 80-160 EUR，儿童座椅、床品、停车、景点、清洁或燃气。",
+      "totalZh": "约 900-1600 EUR / 全家",
+      "verdictZh": "最推荐第一步：钱花得可控，主要目标是验证你们是否喜欢房车生活。"
+    },
+    {
+      "id": "one-week-lakes",
+      "titleZh": "一周湖区/北德",
+      "nights": 7,
+      "routeTypeZh": "Müritz + Mecklenburg Lakes，少换营地",
+      "rentalZh": "约 1100-1800 EUR，暑期家庭车型常是最大成本。",
+      "campsiteZh": "约 300-520 EUR，按 40-75 EUR/晚估算，旺季湖边可能更高。",
+      "fuelZh": "约 170-300 EUR，700-1000 km 范围。",
+      "foodZh": "约 420-650 EUR，自炊为主，包含宝宝食品和补给。",
+      "extrasZh": "约 150-300 EUR，保险升级、洗衣、船票/动物园/停车等。",
+      "totalZh": "约 2100-3570 EUR / 全家",
+      "verdictZh": "如果试水成功，这是最稳的一周版；不追求远方，追求节奏稳定。"
+    },
+    {
+      "id": "one-week-baltic",
+      "titleZh": "一周波罗的海",
+      "nights": 8,
+      "routeTypeZh": "Rügen + Usedom 或 Baltic coast，两到三个营地",
+      "rentalZh": "约 1300-2100 EUR，暑期海边需求高，建议早订。",
+      "campsiteZh": "约 420-700 EUR，海边家庭营地按 55-90 EUR/晚估算。",
+      "fuelZh": "约 260-420 EUR，900-1300 km，含绕行/找营地/购物。",
+      "foodZh": "约 450-750 EUR，自炊 + 海边餐厅/咖啡。",
+      "extrasZh": "约 200-450 EUR，景点、停车、洗衣、保险升级、儿童座椅等。",
+      "totalZh": "约 2630-4420 EUR / 全家",
+      "verdictZh": "度假感最强，但不便宜；适合在试水后或已经订到好营地时执行。"
+    }
+  ],
+  "packingChecklistZh": [
+    "自家儿童座椅 + 安装说明；取车前确认车型座位照片。",
+    "宝宝旅行床/床栏/睡袋/遮光帘，避免只靠车内临时拼床。",
+    "夏季降温：小风扇、遮阳帘、车外遮阳、薄毯、补水杯。",
+    "卫生护理：尿布、湿巾、折叠澡盆或可替代方案、宝宝常用药。",
+    "厨房：宝宝餐具、奶瓶清洁用品、保温杯、简单辅食、常用调味。",
+    "营地用品：长电缆、转换头、头灯、洗衣袋、拖鞋、晾衣绳。",
+    "行车节奏：下载离线地图、营地确认邮件、保险电话、跨境许可。"
+  ],
+  "sourceNotesZh": [
+    "页面中的价格是 2026 年夏季粗预算，不是锁价；实际价格取决于车型、日期、保险和营地。",
+    "儿童座椅、安全带座位、Isofix、跨境驾驶和车重限制必须以租车合同和车辆文件为准。",
+    "7/8 月热门海边营地建议先订营地再定完整路线；房车自由度不等于可以随意野营。",
+    "如果只想避暑和泳池，酒店/度假村仍然比房车省心；房车的价值在于灵活、自然、可带大量宝宝用品。"
+  ]
+}

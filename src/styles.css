@@ -122,7 +122,19 @@ h1 {
 .summer-link-block,
 .summer-portal-card,
 .summer-manual-list,
-.summer-action-panel {
+.summer-action-panel,
+.rv-verdict,
+.rv-takeaway-grid span,
+.rv-guide-card,
+.rv-portal-card,
+.rv-check-block,
+.rv-route-card,
+.rv-chip-row span,
+.rv-stop-list span,
+.rv-list-block,
+.rv-budget-card,
+.rv-budget-lines div,
+.rv-action-panel {
   border: 1px solid #d7d2c5;
   background: #fffdfa;
 }
@@ -3629,6 +3641,458 @@ h1 {
   min-width: 0;
 }
 
+.rv-page {
+  display: grid;
+  gap: 18px;
+}
+
+.rv-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: 16px;
+  align-items: stretch;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f4f7f1;
+}
+
+.rv-hero h2 {
+  margin: 0 0 8px;
+  color: #1f332b;
+  font-size: clamp(1.8rem, 3.5vw, 3.1rem);
+  line-height: 1.04;
+}
+
+.rv-hero p {
+  margin: 0;
+  color: #4f5a56;
+  line-height: 1.55;
+}
+
+.rv-verdict {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-color: #bad6cf;
+  border-radius: 8px;
+  background: #edf9f6;
+}
+
+.rv-verdict svg {
+  color: #0f766e;
+}
+
+.rv-verdict strong {
+  color: #0d5f59;
+}
+
+.rv-verdict span {
+  color: #755317;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.rv-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rv-section {
+  display: grid;
+  gap: 12px;
+}
+
+.rv-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0d5f59;
+}
+
+.rv-section-heading h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.rv-takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.rv-takeaway-grid span {
+  min-height: 112px;
+  padding: 11px;
+  border-radius: 8px;
+  color: #40504b;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.rv-takeaway-grid span:nth-child(2n) {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.rv-takeaway-grid span:nth-child(3n) {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.rv-guide-grid,
+.rv-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rv-guide-card,
+.rv-portal-card,
+.rv-route-card,
+.rv-budget-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.rv-guide-card.is-must,
+.rv-route-card.is-recommended {
+  border-color: #86c7ba;
+}
+
+.rv-guide-card h3,
+.rv-portal-card h3,
+.rv-route-card h3,
+.rv-budget-card h3 {
+  margin: 0;
+  color: #27362f;
+  font-size: 1.06rem;
+  line-height: 1.25;
+}
+
+.rv-guide-card p,
+.rv-portal-card p,
+.rv-portal-card strong,
+.rv-portal-card em,
+.rv-route-card p,
+.rv-budget-card em {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.86rem;
+  line-height: 1.48;
+}
+
+.rv-portal-card strong {
+  color: #0d5f59;
+}
+
+.rv-portal-card em,
+.rv-budget-card em {
+  color: #755317;
+  font-style: normal;
+}
+
+.rv-card-topline,
+.rv-route-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rv-priority-chip {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #d8c4a0;
+  border-radius: 999px;
+  background: #fff7e5;
+  color: #755317;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.rv-priority-chip.is-must,
+.rv-priority-chip.is-recommended {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.rv-priority-chip.is-caution {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+  color: #755317;
+}
+
+.rv-guide-card ul,
+.rv-check-block ul,
+.rv-list-block ul,
+.rv-action-panel ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  color: #4f5a56;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.rv-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.rv-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0b665f;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rv-source-link.is-compact {
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid #bad6cf;
+  border-radius: 999px;
+  background: #edf9f6;
+}
+
+.rv-portal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rv-portal-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.rv-portal-top svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #0f766e;
+}
+
+.rv-portal-top span,
+.rv-budget-card > div:first-child span {
+  color: #755317;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rv-check-block {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f8f3e8;
+}
+
+.rv-check-block span {
+  display: block;
+  margin-bottom: 7px;
+  color: #0d5f59;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.rv-portal-card .primary-link {
+  width: fit-content;
+  min-width: 150px;
+  padding: 0 12px;
+}
+
+.rv-route-card.is-caution {
+  border-color: #d8c4a0;
+}
+
+.rv-route-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.rv-route-top p {
+  margin-top: 5px;
+}
+
+.rv-route-score {
+  display: grid;
+  min-width: 92px;
+  justify-items: center;
+  padding: 8px 9px;
+  border: 1px solid #a8cfc5;
+  border-radius: 8px;
+  background: #e9f7f3;
+  color: #0d5f59;
+}
+
+.rv-route-score strong {
+  color: inherit;
+  font-size: 0.92rem;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.rv-route-score span {
+  color: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.rv-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.rv-chip-row span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #43504c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.rv-chip-row svg {
+  flex: 0 0 auto;
+  color: #0f766e;
+}
+
+.rv-route-summer {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f6f8f3;
+  font-weight: 700;
+}
+
+.rv-stop-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.rv-stop-list span {
+  min-height: 42px;
+  padding: 8px;
+  border-radius: 8px;
+  color: #40504b;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.rv-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.rv-list-block {
+  min-height: 156px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.rv-list-block.is-positive {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.rv-list-block strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #0d5f59;
+  font-size: 0.84rem;
+}
+
+.rv-budget-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.rv-budget-card {
+  min-height: 500px;
+}
+
+.rv-budget-total {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #edf9f6;
+  color: #0d5f59;
+}
+
+.rv-budget-total svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.rv-budget-total strong {
+  color: inherit;
+  line-height: 1.35;
+}
+
+.rv-budget-lines {
+  display: grid;
+  gap: 8px;
+}
+
+.rv-budget-lines div {
+  min-height: 70px;
+  padding: 9px;
+  border-radius: 8px;
+}
+
+.rv-budget-lines strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #0d5f59;
+  font-size: 0.82rem;
+}
+
+.rv-budget-lines p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.82rem;
+  line-height: 1.42;
+}
+
+.rv-action-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.rv-action-panel > div {
+  min-width: 0;
+}
+
 @media (max-width: 1180px) {
   .toolbar {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3663,6 +4127,11 @@ h1 {
   .summer-signal-grid,
   .summer-roadtrip-grid,
   .summer-portal-grid,
+  .rv-metrics,
+  .rv-takeaway-grid,
+  .rv-guide-grid,
+  .rv-route-grid,
+  .rv-detail-grid,
   .heat-metrics,
   .kid-pick-grid,
   .heat-card-grid,
@@ -3705,6 +4174,10 @@ h1 {
   .canary-hero,
   .summer-hero,
   .summer-action-panel,
+  .rv-hero,
+  .rv-portal-grid,
+  .rv-budget-grid,
+  .rv-action-panel,
   .kids-workbench,
   .recommendation-grid,
   .kids-card-grid {
@@ -3763,6 +4236,15 @@ h1 {
   .summer-list-grid,
   .summer-portal-grid,
   .summer-action-panel,
+  .rv-metrics,
+  .rv-takeaway-grid,
+  .rv-guide-grid,
+  .rv-portal-grid,
+  .rv-route-grid,
+  .rv-stop-list,
+  .rv-detail-grid,
+  .rv-budget-grid,
+  .rv-action-panel,
   .heat-metrics,
   .kid-pick-grid,
   .heat-card-grid,
@@ -3815,13 +4297,15 @@ h1 {
   .heat-hero,
   .canary-hero,
   .summer-hero,
+  .rv-hero,
   .kids-workbench {
     padding: 12px;
   }
 
   .heat-card-top,
   .canary-card-top,
-  .summer-card-top {
+  .summer-card-top,
+  .rv-route-top {
     grid-template-columns: 1fr;
   }
 

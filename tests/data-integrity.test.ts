@@ -9,6 +9,7 @@ import type {
   HeatEscapeStayData,
   KidActivityData,
   RadarData,
+  RvFamilyGuideData,
   SummerAllInclusiveData,
 } from "../src/types";
 
@@ -247,6 +248,82 @@ test("discount watch sources stay focused and actionable", async () => {
     assert.ok(link.useForZh.trim(), `${link.id} needs use case`);
     assert.ok(link.bestWhenZh.trim(), `${link.id} needs best-use note`);
     assert.ok(link.cautionZh.trim(), `${link.id} needs caution`);
+  }
+});
+
+test("rv family guide keeps beginner decisions actionable", async () => {
+  const data = await readJson<RvFamilyGuideData>("src/data/rv-family-guide.json");
+  assert.ok(data.updatedAt, "rv guide needs an update timestamp");
+  assert.ok(data.verdictZh.length > 50, "rv guide needs a clear verdict");
+  assert.ok(data.recommendedFirstStepZh.length > 30, "rv guide needs first step");
+  assert.ok(data.quickTakeawaysZh.length >= 4, "rv guide needs takeaways");
+  assert.ok(data.guideCards.length >= 4, "rv guide needs guide cards");
+  assert.ok(data.rentalPortals.length >= 4, "rv guide needs rental portals");
+  assert.ok(data.routes.length >= 5, "rv guide needs route recommendations");
+  assert.ok(data.budgetScenarios.length >= 3, "rv guide needs budget scenarios");
+  assertUniqueIds(
+    "rv guide cards",
+    data.guideCards.map((card) => card.id),
+  );
+  assertUniqueIds(
+    "rv rental portals",
+    data.rentalPortals.map((portal) => portal.id),
+  );
+  assertUniqueIds(
+    "rv route recommendations",
+    data.routes.map((route) => route.id),
+  );
+  assertUniqueIds(
+    "rv budget scenarios",
+    data.budgetScenarios.map((scenario) => scenario.id),
+  );
+  assert.ok(
+    data.guideCards.some((card) => card.priority === "must"),
+    "rv guide needs must-check safety cards",
+  );
+  assert.ok(
+    data.routes.some((route) => route.suitability === "recommended"),
+    "rv guide needs at least one recommended first route",
+  );
+
+  for (const card of data.guideCards) {
+    assert.ok(card.titleZh.trim(), `${card.id} needs title`);
+    assert.ok(card.summaryZh.trim(), `${card.id} needs summary`);
+    assert.ok(card.pointsZh.length >= 3, `${card.id} needs practical points`);
+    assert.ok(card.sources.length > 0, `${card.id} needs sources`);
+    card.sources.forEach((source) => assertSourceLink(`${card.id} source`, source));
+  }
+
+  for (const portal of data.rentalPortals) {
+    assert.ok(portal.name.trim(), `${portal.id} needs name`);
+    assert.match(portal.url, /^https?:\/\//, `${portal.id} needs URL`);
+    assert.ok(portal.fitZh.trim(), `${portal.id} needs fit note`);
+    assert.ok(portal.bestForZh.trim(), `${portal.id} needs best-for note`);
+    assert.ok(portal.cautionZh.trim(), `${portal.id} needs caution`);
+    assert.ok(portal.mustCheckZh.length >= 4, `${portal.id} needs must-check list`);
+    assert.ok(portal.evidence.length > 0, `${portal.id} needs evidence`);
+    portal.evidence.forEach((source) => assertSourceLink(`${portal.id} evidence`, source));
+  }
+
+  for (const route of data.routes) {
+    assert.ok(route.titleZh.trim(), `${route.id} needs title`);
+    assert.ok(route.distanceKm > 0, `${route.id} needs distance`);
+    assert.ok(route.nightsZh.trim(), `${route.id} needs nights`);
+    assert.ok(route.summerFitZh.trim(), `${route.id} needs summer fit`);
+    assert.ok(route.babyFitZh.trim(), `${route.id} needs baby fit`);
+    assert.ok(route.routeStopsZh.length >= 3, `${route.id} needs route stops`);
+    assert.ok(route.whyZh.length >= 2, `${route.id} needs reasons`);
+    assert.ok(route.risksZh.length >= 2, `${route.id} needs risks`);
+    assert.ok(route.bookingHintsZh.length >= 2, `${route.id} needs booking hints`);
+    assert.ok(route.sources.length > 0, `${route.id} needs sources`);
+    route.sources.forEach((source) => assertSourceLink(`${route.id} source`, source));
+  }
+
+  for (const scenario of data.budgetScenarios) {
+    assert.ok(scenario.titleZh.trim(), `${scenario.id} needs title`);
+    assert.ok(scenario.nights > 0, `${scenario.id} needs nights`);
+    assert.ok(scenario.totalZh.includes("EUR"), `${scenario.id} needs EUR total`);
+    assert.ok(scenario.verdictZh.trim(), `${scenario.id} needs verdict`);
   }
 });
 

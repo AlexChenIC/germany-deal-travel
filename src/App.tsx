@@ -80,6 +80,7 @@ import { expandQuery, normalizeSearchText } from "./lib/search";
 import { CanaryDealsView } from "./pages/CanaryDealsView";
 import { DiscountFocusView } from "./pages/DiscountFocusView";
 import { PlanView } from "./pages/PlanView";
+import { RvFamilyGuideView } from "./pages/RvFamilyGuideView";
 import { SourcesView } from "./pages/SourcesView";
 import { SummerAllInclusiveView } from "./pages/SummerAllInclusiveView";
 import type {
@@ -113,6 +114,7 @@ type Tab =
   | "discounts"
   | "picks"
   | "summer"
+  | "rv"
   | "canary"
   | "heat"
   | "radar"
@@ -389,6 +391,9 @@ function App() {
         <TabButton active={activeTab === "summer"} onClick={() => selectTab("summer")}>
           暑期全包
         </TabButton>
+        <TabButton active={activeTab === "rv"} onClick={() => selectTab("rv")}>
+          房车出行
+        </TabButton>
         <TabButton active={activeTab === "heat"} onClick={() => selectTab("heat")}>
           避暑短住
         </TabButton>
@@ -440,6 +445,8 @@ function App() {
         />
       ) : activeTab === "summer" ? (
         <SummerAllInclusiveView />
+      ) : activeTab === "rv" ? (
+        <RvFamilyGuideView />
       ) : activeTab === "heat" ? (
         <HeatEscapeView />
       ) : activeTab === "canary" ? (
@@ -2429,6 +2436,7 @@ function hashToTab(hash: string): Tab {
   if (
     normalized === "picks" ||
     normalized === "summer" ||
+    normalized === "rv" ||
     normalized === "discounts" ||
     normalized === "canary" ||
     normalized === "heat" ||

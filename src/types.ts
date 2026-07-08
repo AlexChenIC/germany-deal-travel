@@ -552,6 +552,84 @@ export interface SummerAllInclusiveData {
   sourceNotesZh: string[];
 }
 
+export type RvSuitabilityLevel = "recommended" | "trial-first" | "caution";
+
+export type RvDifficulty = "easy" | "medium" | "hard";
+
+export interface RvSourceLink {
+  label: string;
+  url: string;
+  noteZh: string;
+}
+
+export interface RvGuideCard {
+  id: string;
+  titleZh: string;
+  summaryZh: string;
+  priority: "must" | "recommended" | "optional";
+  pointsZh: string[];
+  sources: RvSourceLink[];
+}
+
+export interface RvRentalPortal {
+  id: string;
+  name: string;
+  url: string;
+  typeZh: string;
+  fitZh: string;
+  bestForZh: string;
+  cautionZh: string;
+  mustCheckZh: string[];
+  evidence: RvSourceLink[];
+}
+
+export interface RvRouteRecommendation {
+  id: string;
+  titleZh: string;
+  regionZh: string;
+  nightsZh: string;
+  distanceKm: number;
+  difficulty: RvDifficulty;
+  suitability: RvSuitabilityLevel;
+  summerFitZh: string;
+  babyFitZh: string;
+  routeStopsZh: string[];
+  whyZh: string[];
+  risksZh: string[];
+  bookingHintsZh: string[];
+  sources: RvSourceLink[];
+}
+
+export interface RvBudgetScenario {
+  id: string;
+  titleZh: string;
+  nights: number;
+  routeTypeZh: string;
+  rentalZh: string;
+  campsiteZh: string;
+  fuelZh: string;
+  foodZh: string;
+  extrasZh: string;
+  totalZh: string;
+  verdictZh: string;
+}
+
+export interface RvFamilyGuideData {
+  updatedAt: string;
+  timezone: string;
+  partyZh: string;
+  verdictZh: string;
+  recommendedFirstStepZh: string;
+  assumptionsZh: string[];
+  quickTakeawaysZh: string[];
+  guideCards: RvGuideCard[];
+  rentalPortals: RvRentalPortal[];
+  routes: RvRouteRecommendation[];
+  budgetScenarios: RvBudgetScenario[];
+  packingChecklistZh: string[];
+  sourceNotesZh: string[];
+}
+
 export type DiscountSourceCategory =
   | "package-sale"
   | "hotel-club"
