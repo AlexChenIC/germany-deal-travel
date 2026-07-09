@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import type {
+  AlpineBorderPlanData,
   CanaryAllInclusiveData,
   DiscountWatchData,
   HeatEscapeLiveData,
@@ -324,6 +325,92 @@ test("rv family guide keeps beginner decisions actionable", async () => {
     assert.ok(scenario.nights > 0, `${scenario.id} needs nights`);
     assert.ok(scenario.totalZh.includes("EUR"), `${scenario.id} needs EUR total`);
     assert.ok(scenario.verdictZh.trim(), `${scenario.id} needs verdict`);
+  }
+});
+
+test("alpine border family plan keeps route and hotel decisions actionable", async () => {
+  const data = await readJson<AlpineBorderPlanData>(
+    "src/data/alpine-border-family-plan.json",
+  );
+  assert.ok(data.updatedAt, "alpine plan needs an update timestamp");
+  assert.ok(data.verdictZh.length > 60, "alpine plan needs a clear verdict");
+  assert.ok(data.quickTakeawaysZh.length >= 5, "alpine plan needs practical takeaways");
+  assert.ok(data.hotelOptions.length >= 2, "alpine plan needs hotel comparisons");
+  assert.ok(data.drivePlan.length >= 6, "alpine plan needs outbound and return driving days");
+  assert.ok(data.dayPlans.length >= 6, "alpine plan needs a local itinerary");
+  assert.ok(data.bookingChecklistZh.length >= 5, "alpine plan needs booking checks");
+  assert.ok(data.areaAlternatives.length >= 3, "alpine plan needs regional alternatives");
+  assertUniqueIds(
+    "alpine hotels",
+    data.hotelOptions.map((hotel) => hotel.id),
+  );
+  assertUniqueIds(
+    "alpine drive legs",
+    data.drivePlan.map((leg) => leg.id),
+  );
+  assertUniqueIds(
+    "alpine day plans",
+    data.dayPlans.map((day) => day.id),
+  );
+
+  assert.ok(
+    data.hotelOptions.some((hotel) => hotel.fitLevel === "best"),
+    "alpine plan needs a best hotel recommendation",
+  );
+  assert.ok(
+    data.drivePlan.filter((leg) => leg.direction === "outbound").length >= 3,
+    "alpine plan needs at least three outbound legs",
+  );
+  assert.ok(
+    data.drivePlan.filter((leg) => leg.direction === "return").length >= 3,
+    "alpine plan needs at least three return legs",
+  );
+
+  for (const hotel of data.hotelOptions) {
+    assert.ok(hotel.nameZh.trim(), `${hotel.id} needs Chinese name`);
+    assert.ok(hotel.fitScore >= 0 && hotel.fitScore <= 100, `${hotel.id} fit score`);
+    assert.match(hotel.imageUrl, /^https?:\/\//, `${hotel.id} image URL`);
+    assert.match(hotel.bookingUrl, /^https?:\/\//, `${hotel.id} booking URL`);
+    assert.match(hotel.officialUrl, /^https?:\/\//, `${hotel.id} official URL`);
+    assert.ok(hotel.discountSignalZh.trim(), `${hotel.id} needs discount signal`);
+    assert.ok(hotel.roomFitZh.trim(), `${hotel.id} needs room fit`);
+    assert.ok(hotel.babyFitZh.trim(), `${hotel.id} needs baby fit`);
+    assert.ok(hotel.prosZh.length >= 3, `${hotel.id} needs pros`);
+    assert.ok(hotel.risksZh.length >= 3, `${hotel.id} needs risks`);
+    assert.ok(hotel.bookingChecksZh.length >= 3, `${hotel.id} needs checks`);
+    assert.ok(hotel.evidence.length >= 2, `${hotel.id} needs evidence`);
+    hotel.evidence.forEach((source) => assertSourceLink(`${hotel.id} evidence`, source));
+    hotel.bookingLinks.forEach((source) =>
+      assertSourceLink(`${hotel.id} booking`, source),
+    );
+  }
+
+  for (const alternative of data.areaAlternatives) {
+    assert.ok(alternative.nameZh.trim(), `${alternative.id} needs name`);
+    assert.ok(alternative.priceSignalZh.trim(), `${alternative.id} needs price signal`);
+    assert.ok(alternative.fitZh.trim(), `${alternative.id} needs fit note`);
+    assert.ok(alternative.cautionZh.trim(), `${alternative.id} needs caution`);
+    alternative.sourceLinks.forEach((source) =>
+      assertSourceLink(`${alternative.id} source`, source),
+    );
+  }
+
+  for (const leg of data.drivePlan) {
+    assert.ok(leg.dayZh.trim(), `${leg.id} needs day label`);
+    assert.ok(leg.driveTimeZh.trim(), `${leg.id} needs drive time`);
+    assert.ok(leg.distanceKm > 0, `${leg.id} needs distance`);
+    assert.ok(leg.stopIdeasZh.length >= 2, `${leg.id} needs stops`);
+    assert.ok(leg.babyNotesZh.trim(), `${leg.id} needs baby notes`);
+    assert.ok(leg.overnightZh.trim(), `${leg.id} needs overnight plan`);
+    leg.sourceLinks.forEach((source) => assertSourceLink(`${leg.id} source`, source));
+  }
+
+  for (const day of data.dayPlans) {
+    assert.ok(day.titleZh.trim(), `${day.id} needs title`);
+    assert.ok(day.planZh.length >= 3, `${day.id} needs concrete steps`);
+    assert.ok(day.babyNotesZh.trim(), `${day.id} needs baby note`);
+    assert.ok(day.badWeatherZh.trim(), `${day.id} needs bad-weather option`);
+    day.sourceLinks.forEach((source) => assertSourceLink(`${day.id} source`, source));
   }
 });
 

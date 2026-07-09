@@ -1,0 +1,549 @@
+{
+  "updatedAt": "2026-07-09T14:30:00+02:00",
+  "timezone": "Europe/Berlin",
+  "partyZh": "3 个成年人 + 1 个约 1 岁宝宝，从柏林自驾出发，目标是 2026 年 7 月下旬在德国、奥地利、瑞士接壤的山区避暑度假约一周。",
+  "travelWindowZh": "2026 年 7 月下旬，建议山区住 6-7 晚，往返各拆成 2-3 个短驾驶日。",
+  "driveRuleZh": "单日纯驾驶尽量控制在 4 小时以内；宝宝每 90-120 分钟安排一次 20-40 分钟下车、换尿布、喂奶或散步。",
+  "verdictZh": "默认推荐订 Aparthotel Alpenrose 的 43 平方米公寓作为 Plan A：空间、厨房、早餐、免费区域卡和步行可到的日常补给更适合 3 个成人 + 1 岁宝宝。Alpenhotel Mittagspitze 是更舒适的酒店型 Plan B，只有在确认主楼可住 3 成人 + 婴儿的大套房，或你们愿意接受副楼 800 米动线时，才比 Alpenrose 更合适。",
+  "assumptionsZh": [
+    "页面上的 Urlaubspiraten 价格是基础出发价，实际总价需要选择具体 7 月下旬日期、3 个成人、1 个婴儿和房型后确认。",
+    "这不是一次赶路型旅行：为了照顾宝宝睡眠和长辈体力，抵达和返程都按三段式拆开。",
+    "山区天气变化很快，日程按晴天、热天、雨天三种状态留了替代项。",
+    "奥地利高速通常需要 vignette；如果当天走瑞士高速或临时绕行瑞士，还要单独核实瑞士高速票。"
+  ],
+  "quickTakeawaysZh": [
+    "最稳酒店：Alpenrose，选公寓而不是普通双人房。",
+    "最舒适酒店：Mittagspitze，半膳 + 室内泳池 + 400 平方米 Wellness，但副楼动线要小心。",
+    "路线建议：柏林 -> Bayreuth -> Ulm/Memmingen -> Vorarlberg，返程同样拆开。",
+    "住满 3 晚后的 Bregenzerwald & Grosses Walsertal Guest-Card 是核心价值：缆车、泳池和公共交通都能降低每日游玩成本。",
+    "带 1 岁宝宝不要追求每天一个大景点；一天只安排一个主活动，下午留给午睡、泳池或酒店恢复。"
+  ],
+  "hotelOptions": [
+    {
+      "id": "aparthotel-alpenrose",
+      "rank": 1,
+      "name": "Aparthotel Alpenrose",
+      "nameZh": "Aparthotel Alpenrose（Au im Bregenzerwald）",
+      "locationZh": "Lugen 91, 6883 Au, Vorarlberg, Austria",
+      "regionZh": "Bregenzerwald / Au-Schoppernau，离 Diedamskopf 缆车约 1-4 km，离 Au Freibad 很近",
+      "imageUrl": "https://autoreisen.urlaubspiraten.de/product-images/Aparthotel-Alpenrose-AATVBG6MK2-248634-6a3baab5d85f8.jpg",
+      "fitLevel": "best",
+      "fitScore": 88,
+      "bookingUrl": "https://autoreisen.urlaubspiraten.de/product/aparthotel-alpenrose-upiaatvbg6mk2s26b2caatvbg6mk2",
+      "officialUrl": "https://www.alpenrose-au.at/hotel-apartments-alpenrose-in-au-bregenzerwald-en.html",
+      "discountSignalZh": "Urlaubspiraten 区域列表显示 3 晚早餐起价约 222 EUR/人，折扣信号最高约 60%；儿童到 12 岁有免费政策，但你们 1 岁宝宝仍需在订单里确认婴儿床和可能的费用。",
+      "roomFitZh": "优先订“Doppel mit 2 möglichen Zustellbetten Appartement”：约 43 平方米，一个卧室 + Wohnschlafraum 双人沙发床 + 小厨房，比分散订房或 32 平方米普通房更适合 3 个成人同住一套。",
+      "mealPlanZh": "早餐制，含较晚早餐；不包晚餐，但公寓有厨房，附近有餐厅/超市，对宝宝作息更灵活。",
+      "wellnessZh": "小型 Wellness：蒸汽浴、桑拿、红外、Kneipp、休息室等。没有酒店级室内泳池，但 Guest-Card 可覆盖多个露天泳池。",
+      "guestCardZh": "Urlaubspiraten 和区域官网都显示住满 3 晚可用 Bregenzerwald & Grosses Walsertal Guest-Card，包含部分缆车、户外泳池、Vorarlberg 公交/火车。",
+      "babyFitZh": "最适合宝宝作息：有厨房、空间大、可以午睡时让大人留在客厅；儿童高椅按供应情况，婴儿床页面显示需请求且约 20 EUR/晚。",
+      "transportFitZh": "自驾抵达后可把车停在酒店，很多轻活动在 Au/Schoppernau/Damüls/Mellau 半小时范围内。",
+      "decisionZh": "作为这次家庭山区一周游的 Plan A。若 7 月下旬可订到 43 平方米公寓，并且总价合理，就优先锁定。",
+      "prosZh": [
+        "空间和厨房对 3 成人 + 1 岁宝宝最有价值。",
+        "早餐 + 自主晚餐，宝宝吃饭、午睡和长辈休息更好安排。",
+        "折扣信号比 Mittagspitze 更强，Urlaubspiraten 显示最高约 60%。",
+        "Guest-Card 与区域泳池、缆车组合很好，适合低强度每天一点点玩。"
+      ],
+      "risksZh": [
+        "没有大型室内泳池，连续雨天时酒店内消遣不如 Mittagspitze。",
+        "早餐制意味着晚餐要自己安排，对不想做饭的家庭稍麻烦。",
+        "婴儿床和 3 成人同住一套的最终价格必须进订单核实。",
+        "折扣页显示的是基础价格，不代表 7 晚、3 成人 + 婴儿的最终价。"
+      ],
+      "bookingChecksZh": [
+        "选择 7 月下旬具体日期后，把人数改成 3 Erwachsene + 1 Kleinkind/Baby。",
+        "房型必须核对为 43 平方米 Appartement，不要误订 32 平方米 Zimmer。",
+        "向酒店确认婴儿床、儿童高椅、厨房设备、停车和退房时间。",
+        "确认 Guest-Card 是否每位成人都能获得，以及 1 岁宝宝是否无需单独卡。"
+      ],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten Angebot",
+          "url": "https://autoreisen.urlaubspiraten.de/product/aparthotel-alpenrose-upiaatvbg6mk2s26b2caatvbg6mk2",
+          "noteZh": "折扣、早餐、儿童免费、房型和公寓描述"
+        },
+        {
+          "label": "Hotel official",
+          "url": "https://www.alpenrose-au.at/hotel-apartments-alpenrose-in-au-bregenzerwald-en.html",
+          "noteZh": "官方说明公寓、早餐、厨房和 Wellness"
+        },
+        {
+          "label": "Guest-Card",
+          "url": "https://www.bregenzerwald.at/en/activity/guest-card/",
+          "noteZh": "住满 3 晚可获得区域卡，含缆车、泳池和公交"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Urlaubspiraten",
+          "url": "https://autoreisen.urlaubspiraten.de/product/aparthotel-alpenrose-upiaatvbg6mk2s26b2caatvbg6mk2",
+          "noteZh": "先查促销价"
+        },
+        {
+          "label": "酒店官网询价",
+          "url": "https://www.alpenrose-au.at/hotel-apartments-alpenrose-in-au-bregenzerwald-en.html",
+          "noteZh": "核实 3 成人 + 婴儿房型"
+        }
+      ]
+    },
+    {
+      "id": "alpenhotel-mittagspitze",
+      "rank": 2,
+      "name": "Alpenhotel Mittagspitze S",
+      "nameZh": "Alpenhotel Die Mittagspitze（Damüls）",
+      "locationZh": "Kirchdorf 131, 6884 Damüls, Vorarlberg, Austria",
+      "regionZh": "Damüls / Großes Walsertal，海拔约 1,430 m，Uga-Express 附近",
+      "imageUrl": "https://autoreisen.urlaubspiraten.de/product-images/Alpenhotel-Mittagspitze-AATVBGH0BA-118378-69fb14ecc2876.jpg",
+      "fitLevel": "strong",
+      "fitScore": 82,
+      "bookingUrl": "https://autoreisen.urlaubspiraten.de/product/alpenhotel-mittagspitze-upiaatvbgh0bas26b2caatvbgh0ba",
+      "officialUrl": "https://www.mittagspitze.at/en/",
+      "discountSignalZh": "Urlaubspiraten 区域列表显示 2 晚 Halbpension Plus 起价约 199 EUR/人，折扣信号约 44-45%。",
+      "roomFitZh": "促销页可见普通主楼双人房只有约 18-22 平方米，不适合你们；可行房型是副楼 2-Raum Appartement，或官网直接确认主楼 2-4/2-6 人套房。",
+      "mealPlanZh": "半膳 Plus，早餐 + 晚餐，适合大人省心；宝宝餐食仍要确认是否可提供清淡辅食或热水。",
+      "wellnessZh": "核心优势：室内泳池、约 400 平方米 Wellness、多个桑拿、蒸汽浴、Kneipp 和健身房。雨天或热天留在酒店更舒服。",
+      "guestCardZh": "住满 3 晚同样可用 Bregenzerwald & Grosses Walsertal Guest-Card，覆盖 Uga-Express、Diedamskopf、Mellau 等缆车和区域泳池。",
+      "babyFitZh": "酒店有 playroom、儿童餐和儿童照看信息，但 1 岁宝宝实际可用程度要问清；促销页显示儿童照看约 50 EUR/天且具体以现场为准。",
+      "transportFitZh": "Damüls 海拔高，夏季更凉爽；但如果住副楼，去主楼餐厅/泳池/Wellness 需要处理约 800 m 动线。",
+      "decisionZh": "作为 Plan B。若你们更看重室内泳池、半膳和酒店服务，并能确认主楼大房型，则它会比 Alpenrose 更度假；否则副楼动线会削弱优势。",
+      "prosZh": [
+        "半膳 Plus 省心，长辈和带娃家庭不用每天找晚餐。",
+        "室内泳池和 400 平方米 Wellness 是天气不好时的强保障。",
+        "高海拔 Damüls 夏季更凉，山景和 Uga-Express 轻松可玩。",
+        "官方页面明确强调 family hotel、playroom、hotel kindergarten 等亲子设施。"
+      ],
+      "risksZh": [
+        "普通双人房太小；促销房型如果落在副楼，去主楼设施约 800 米。",
+        "婴儿照看/儿童设施未必适合 1 岁宝宝，需邮件确认年龄下限和费用。",
+        "Wellness 开放时段可能有限，宝宝午睡时间可能和大人使用时间冲突。",
+        "折扣弱于 Alpenrose，且 7 晚总价可能明显上浮。"
+      ],
+      "bookingChecksZh": [
+        "先查 Urlaubspiraten，再查官网 booking/inquiry，比较同日期 3 成人 + 1 婴儿总价。",
+        "只接受主楼 Suite Zaferhorn、Romantic Suite、One Room Suite Deluxe 等明确可住 3 成人 + 婴儿的房型，或确认副楼动线可以接受。",
+        "确认副楼住客是否可无障碍使用主楼泳池、餐厅、Wellness，以及是否需要开车过去。",
+        "确认晚餐时间、儿童椅、婴儿床、热水和辅食加热。"
+      ],
+      "evidence": [
+        {
+          "label": "Urlaubspiraten Angebot",
+          "url": "https://autoreisen.urlaubspiraten.de/product/alpenhotel-mittagspitze-upiaatvbgh0bas26b2caatvbgh0ba",
+          "noteZh": "促销价、半膳 Plus、房型、副楼和 Wellness 描述"
+        },
+        {
+          "label": "Family hotel official",
+          "url": "https://www.mittagspitze.at/en/summer/family-vacation-in-summer",
+          "noteZh": "亲子设施、playroom、hotel kindergarten 和周边活动"
+        },
+        {
+          "label": "Wellness official",
+          "url": "https://www.mittagspitze.at/en/wellness",
+          "noteZh": "室内泳池、桑拿、蒸汽浴、400 平方米 Wellness"
+        },
+        {
+          "label": "Rooms official",
+          "url": "https://www.mittagspitze.at/en/rooms-prices/rooms-suites",
+          "noteZh": "主楼套房人数容量和价格区间"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Urlaubspiraten",
+          "url": "https://autoreisen.urlaubspiraten.de/product/alpenhotel-mittagspitze-upiaatvbgh0bas26b2caatvbgh0ba",
+          "noteZh": "先查促销价"
+        },
+        {
+          "label": "官网预订/询价",
+          "url": "https://booking.mittagspitze.at/",
+          "noteZh": "核实主楼套房可订性"
+        }
+      ]
+    }
+  ],
+  "areaAlternatives": [
+    {
+      "id": "tui-blue-montafon",
+      "nameZh": "TUI BLUE Montafon",
+      "locationZh": "Schruns / Montafon",
+      "priceSignalZh": "Urlaubspiraten 区域列表显示半膳起价约 159 EUR/人，最高约 59% 折扣。",
+      "fitZh": "成人 Wellness 性价比强。",
+      "cautionZh": "页面提示仅单人房和双人房可订，不适合你们 3 成人 + 婴儿一间房的目标。",
+      "sourceLinks": [
+        {
+          "label": "Vorarlberg search",
+          "url": "https://autoreisen.urlaubspiraten.de/search/-/vorarlberg",
+          "noteZh": "区域列表中的备选酒店"
+        }
+      ]
+    },
+    {
+      "id": "camping-dornbirn-apartments",
+      "nameZh": "Camping Dornbirn & Apartments",
+      "locationZh": "Dornbirn",
+      "priceSignalZh": "区域列表显示 2 晚住宿起价约 79 EUR/人，约 44% 折扣。",
+      "fitZh": "预算非常友好，适合把 Bodensee/Dornbirn 作为中转或短住。",
+      "cautionZh": "不是典型山地 Wellness 酒店，泳池/半膳/SPA 不是核心卖点。",
+      "sourceLinks": [
+        {
+          "label": "Vorarlberg search",
+          "url": "https://autoreisen.urlaubspiraten.de/search/-/vorarlberg",
+          "noteZh": "区域列表中的低价公寓备选"
+        }
+      ]
+    },
+    {
+      "id": "alpenhotel-garfrescha",
+      "nameZh": "Alpenhotel Garfrescha",
+      "locationZh": "St. Gallenkirch / Montafon",
+      "priceSignalZh": "区域列表显示 3 晚 Halbpension Plus 起价约 194 EUR/人。",
+      "fitZh": "家庭周和自然活动强，适合孩子更大之后再考虑。",
+      "cautionZh": "儿童活动主要偏 6-13 岁；对 1 岁宝宝的直接价值有限。",
+      "sourceLinks": [
+        {
+          "label": "Vorarlberg search",
+          "url": "https://autoreisen.urlaubspiraten.de/search/-/vorarlberg",
+          "noteZh": "区域列表中的家庭周备选"
+        }
+      ]
+    }
+  ],
+  "drivePlan": [
+    {
+      "id": "outbound-1",
+      "direction": "outbound",
+      "dayZh": "去程第 1 天",
+      "fromZh": "Berlin",
+      "toZh": "Bayreuth 或 Hof/Bayreuth 北部",
+      "driveTimeZh": "约 3.5-4 小时纯驾驶，视路况可能更长",
+      "distanceKm": 360,
+      "routeZh": "A115/A9 南下，目标是过 Leipzig 后继续推进到 Bayreuth 一带。",
+      "stopIdeasZh": [
+        "Dessau 或 Leipzig 周边服务区换尿布和午餐",
+        "Bayreuth Hofgarten / Eremitage 做傍晚散步",
+        "住高速边安静酒店，第二天不用穿城太久"
+      ],
+      "babyNotesZh": "不要安排大景点，只把第一天当作移动日；午睡尽量卡在最长一段高速上。",
+      "overnightZh": "Bayreuth 更适合第二天接 A6/A7；如果出发晚，可退到 Leipzig/Naumburg 并把后两天更短拆开。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Bregenz",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-bregenz",
+          "noteZh": "总路线经过 A9/A6/A7/A96，约 729 km"
+        }
+      ]
+    },
+    {
+      "id": "outbound-2",
+      "direction": "outbound",
+      "dayZh": "去程第 2 天",
+      "fromZh": "Bayreuth",
+      "toZh": "Ulm / Memmingen / Kempten",
+      "driveTimeZh": "约 3-4 小时纯驾驶",
+      "distanceKm": 300,
+      "routeZh": "Bayreuth -> Nürnberg/Fürth -> A6/A7 -> Ulm 或 Memmingen。",
+      "stopIdeasZh": [
+        "Nürnberg/Fürth 附近安排长休息；如果孩子状态好，可选 Playmobil FunPark 周边吃饭散步",
+        "Ulm 老城/多瑙河边散步，适合推车",
+        "Memmingen 或 Kempten 更接近第三天进入 Vorarlberg"
+      ],
+      "babyNotesZh": "第二天是最容易疲劳的一段，宁可住 Memmingen/Kempten，也不要硬开到奥地利。",
+      "overnightZh": "若第三天想轻松抵达，优先 Memmingen/Kempten；若想城市服务方便，选 Ulm。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Ulm",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-ulm",
+          "noteZh": "柏林到 Ulm 约 619 km，拆分后第二天可控"
+        }
+      ]
+    },
+    {
+      "id": "outbound-3",
+      "direction": "outbound",
+      "dayZh": "去程第 3 天",
+      "fromZh": "Ulm / Memmingen / Kempten",
+      "toZh": "Au im Bregenzerwald 或 Damüls",
+      "driveTimeZh": "约 2-3 小时纯驾驶",
+      "distanceKm": 180,
+      "routeZh": "A7/A96 到 Lindau/Bregenz，再进入 Bregenzerwald。进奥地利高速前核对 vignette。",
+      "stopIdeasZh": [
+        "Lindau 岛或 Bodensee 湖边短暂停靠",
+        "Bregenz / Dornbirn 补给尿布、婴儿食品和简餐",
+        "抵达酒店后只安排入住、超市和轻散步"
+      ],
+      "babyNotesZh": "第三天不要安排缆车，把宝宝从长途车程里恢复出来。",
+      "overnightZh": "直接入住目标酒店，争取 15:00-17:00 到达。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Lindau",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-lindau",
+          "noteZh": "主线经 A9/A6/A7/A96 到 Bodensee/Lindau"
+        },
+        {
+          "label": "ASFINAG vignette",
+          "url": "https://shop.asfinag.at/en/toll-products/digital-vignette/10-day-vignette-car/",
+          "noteZh": "2026 年奥地利 10 天汽车数字 vignette 官方价格 12.80 EUR"
+        }
+      ]
+    },
+    {
+      "id": "return-1",
+      "direction": "return",
+      "dayZh": "返程第 1 天",
+      "fromZh": "Vorarlberg",
+      "toZh": "Memmingen / Ulm",
+      "driveTimeZh": "约 2-3 小时纯驾驶",
+      "distanceKm": 180,
+      "routeZh": "上午退房后低强度离开山区，下午在 Allgäu 或 Ulm 停靠。",
+      "stopIdeasZh": [
+        "如果天气好，Lindau/Bodensee 做最后一次湖边散步",
+        "如果天气热，直接去酒店午睡，不做景点",
+        "晚上选有空调或安静家庭房的中转酒店"
+      ],
+      "babyNotesZh": "返程第一天避免一路开到 Nürnberg；宝宝连续山路 + 高速容易烦躁。",
+      "overnightZh": "Memmingen/Kempten/Ulm 都可，取决于第二天是否想逛 Ulm。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Lindau",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-lindau",
+          "noteZh": "返程大致沿 Lindau -> A96/A7/A9 北上"
+        }
+      ]
+    },
+    {
+      "id": "return-2",
+      "direction": "return",
+      "dayZh": "返程第 2 天",
+      "fromZh": "Ulm / Memmingen",
+      "toZh": "Bayreuth / Hof",
+      "driveTimeZh": "约 3-4 小时纯驾驶",
+      "distanceKm": 300,
+      "routeZh": "A7/A6/A9 北上，重新把最后一天压到 4 小时以内。",
+      "stopIdeasZh": [
+        "Nürnberg/Fürth 午餐和长休息",
+        "Bayreuth 老城或 Hof 周边短散步",
+        "避免晚上再赶路"
+      ],
+      "babyNotesZh": "第二天是返程最累的一天，安排 2 次长休息更稳。",
+      "overnightZh": "Bayreuth 比 Nürnberg 更适合第三天轻松回 Berlin。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Ulm",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-ulm",
+          "noteZh": "Ulm 到 Berlin 总段较长，建议分段"
+        }
+      ]
+    },
+    {
+      "id": "return-3",
+      "direction": "return",
+      "dayZh": "返程第 3 天",
+      "fromZh": "Bayreuth / Hof",
+      "toZh": "Berlin",
+      "driveTimeZh": "约 3.5-4 小时纯驾驶",
+      "distanceKm": 360,
+      "routeZh": "A9 北上回 Berlin。",
+      "stopIdeasZh": [
+        "Leipzig/Halle 周边午餐",
+        "如果堵车明显，在 Leipzig 多停一小时再进 Berlin",
+        "到家当天不安排购物和整理行李之外的事情"
+      ],
+      "babyNotesZh": "最后一天更需要留出堵车冗余；宝宝睡醒后先下车放风再继续。",
+      "overnightZh": "回家。",
+      "sourceLinks": [
+        {
+          "label": "ADAC Berlin-Bregenz",
+          "url": "https://maps.adac.de/routenplaner/route-von-berlin-nach-bregenz",
+          "noteZh": "总路线参考，实际按交通拆分"
+        }
+      ]
+    }
+  ],
+  "dayPlans": [
+    {
+      "id": "local-1-arrival",
+      "dayZh": "山区第 1 天",
+      "baseZh": "目标酒店",
+      "titleZh": "入住恢复日",
+      "paceZh": "低强度",
+      "planZh": [
+        "入住、整理宝宝睡眠区和厨房/奶瓶区。",
+        "只去酒店周边散步、超市补给、熟悉餐厅和停车。",
+        "如果住 Alpenrose，可看 Au Freibad 或村内轻步道；如果住 Mittagspitze，先试泳池/餐厅动线。"
+      ],
+      "babyNotesZh": "第一晚保证宝宝按平时节奏睡；不要把抵达日变成正式游玩日。",
+      "badWeatherZh": "直接酒店内恢复，最多做短车程采购。",
+      "sourceLinks": [
+        {
+          "label": "Alpenrose location",
+          "url": "https://autoreisen.urlaubspiraten.de/product/aparthotel-alpenrose-upiaatvbg6mk2s26b2caatvbg6mk2",
+          "noteZh": "周边位置、Au Freibad 和 Diedamskopf 信息"
+        },
+        {
+          "label": "Mittagspitze location",
+          "url": "https://autoreisen.urlaubspiraten.de/product/alpenhotel-mittagspitze-upiaatvbgh0bas26b2caatvbgh0ba",
+          "noteZh": "Damüls、Uga-Express、Seewaldsee 和酒店设施"
+        }
+      ]
+    },
+    {
+      "id": "local-2-diedamskopf",
+      "dayZh": "山区第 2 天",
+      "baseZh": "Au / Schoppernau",
+      "titleZh": "Diedamskopf 轻缆车 + 泳池",
+      "paceZh": "上午主活动，下午恢复",
+      "planZh": [
+        "上午用 Guest-Card 坐 Diedamskopf 缆车，天气好就只走短环线和观景点。",
+        "午餐回酒店或山下餐厅，保证宝宝午睡。",
+        "下午去 Schoppernau Waldbad 或 Au Freibad 轻松玩水。"
+      ],
+      "babyNotesZh": "带婴儿背带比推车更灵活；山上风大，准备薄外套和遮阳帽。",
+      "badWeatherZh": "改成 Inatura Dornbirn 或酒店 Wellness/室内泳池。",
+      "sourceLinks": [
+        {
+          "label": "Guest-Card included services",
+          "url": "https://www.bregenzerwald.at/en/activity/guest-card/",
+          "noteZh": "Diedamskopf 和区域泳池在 Guest-Card 范围内"
+        }
+      ]
+    },
+    {
+      "id": "local-3-damuels-seewaldsee",
+      "dayZh": "山区第 3 天",
+      "baseZh": "Damüls / Faschina",
+      "titleZh": "Damüls Uga-Express + Seewaldsee",
+      "paceZh": "山景日",
+      "planZh": [
+        "上午坐 Uga-Express 或在 Damüls 做花草步道/短步道。",
+        "天气热时转去 Seewaldsee 或附近阴凉湖边，停留以宝宝状态为准。",
+        "晚餐尽量回酒店，不赶夜路。"
+      ],
+      "babyNotesZh": "高海拔紫外线强，宝宝遮阳和补水优先于打卡。",
+      "badWeatherZh": "Mittagspitze 住客可把这天变成泳池 + playroom；Alpenrose 住客可去 Dornbirn 室内活动。",
+      "sourceLinks": [
+        {
+          "label": "Damüls Guest-Card",
+          "url": "https://www.damuels.at/en/sommer/guest-card-bregenzerwald-grosses-walsertal.html",
+          "noteZh": "Damüls/Faschina 可用的区域卡服务"
+        },
+        {
+          "label": "Mittagspitze family ideas",
+          "url": "https://www.mittagspitze.at/en/summer/family-vacation-in-summer",
+          "noteZh": "Damüls 家庭活动、Seewaldsee 和雨天备选"
+        }
+      ]
+    },
+    {
+      "id": "local-4-bodensee",
+      "dayZh": "山区第 4 天",
+      "baseZh": "Bregenz / Lindau",
+      "titleZh": "Bodensee 低海拔换景日",
+      "paceZh": "城市 + 湖边",
+      "planZh": [
+        "上午出发去 Bregenz 或 Lindau，湖边散步、咖啡、简单午餐。",
+        "如果孩子状态好，可坐 Pfänderbahn 看 Bodensee 和阿尔卑斯景。",
+        "下午 15:00 前回程，避免宝宝在晚高峰车内崩溃。"
+      ],
+      "babyNotesZh": "湖边比山上热，优先上午玩；推车友好度比山区更好。",
+      "badWeatherZh": "改成 Inatura Dornbirn 或 Dornbirn 室内商场/咖啡休息。",
+      "sourceLinks": [
+        {
+          "label": "Mittagspitze excursion list",
+          "url": "https://www.mittagspitze.at/en/summer/family-vacation-in-summer",
+          "noteZh": "Pfänder、Bodensee、Inatura Dornbirn 等家庭备选"
+        }
+      ]
+    },
+    {
+      "id": "local-5-mellau-bezau",
+      "dayZh": "山区第 5 天",
+      "baseZh": "Mellau / Bezau / Andelsbuch",
+      "titleZh": "Mellau 或 Bezau 缆车 + 奶酪/村落",
+      "paceZh": "轻文化 + 轻山景",
+      "planZh": [
+        "上午选择 Mellaubahn 或 Bezau cable car，天气好上山看景，天气一般就只在村里走走。",
+        "中午去 Andelsbuch Cheese House 或简单餐厅。",
+        "下午回酒店午睡，傍晚泳池/桑拿或露台。"
+      ],
+      "babyNotesZh": "这天适合长辈一起慢慢玩，不需要走长线 hiking。",
+      "badWeatherZh": "直接转 Andelsbuch / Dornbirn 室内点，山上不硬上。",
+      "sourceLinks": [
+        {
+          "label": "Guest-Card cable cars",
+          "url": "https://www.bregenzerwald.at/en/activity/guest-card/",
+          "noteZh": "Mellaubahn、Bezau cable car 和公交"
+        }
+      ]
+    },
+    {
+      "id": "local-6-warth-schroecken",
+      "dayZh": "山区第 6 天",
+      "baseZh": "Warth-Schröcken 或 Arlberg 边缘",
+      "titleZh": "高山换景日",
+      "paceZh": "看天气决定",
+      "planZh": [
+        "如果天气稳定，开车去 Warth-Schröcken / Steffisalp-Express 一带做轻松高山景观。",
+        "只走 30-60 分钟短线，重点是风景和空气，不追求 hiking 成就。",
+        "下午回酒店，留出洗衣、整理、宝宝早睡。"
+      ],
+      "babyNotesZh": "这天山路多，若宝宝不喜欢车，就改成酒店泳池/区域泳池。",
+      "badWeatherZh": "取消高山日，保留为休息、Spa、Dornbirn 室内活动或补给日。",
+      "sourceLinks": [
+        {
+          "label": "Guest-Card Warth",
+          "url": "https://www.vorarlberg-alpenregion.at/walsertal/en/design-your-vacation/guest-card/guest-card-bregenzerwald-walsertal",
+          "noteZh": "Steffisalp-Express Warth-Schröcken 在区域卡服务列表中"
+        }
+      ]
+    },
+    {
+      "id": "local-7-buffer",
+      "dayZh": "山区第 7 天",
+      "baseZh": "酒店周边",
+      "titleZh": "缓冲日 + 最喜欢的点再去一次",
+      "paceZh": "自由低强度",
+      "planZh": [
+        "上午按过去几天最喜欢的活动再去一次：泳池、村落、短缆车或湖边。",
+        "午后整理行李、确认返程中转酒店。",
+        "晚餐尽量选酒店或步行范围，第二天轻松退房。"
+      ],
+      "babyNotesZh": "缓冲日是带宝宝旅行的保险，不要提前塞满。",
+      "badWeatherZh": "正好变成酒店恢复日。",
+      "sourceLinks": [
+        {
+          "label": "Guest-Card overview",
+          "url": "https://www.bregenzerwald.at/en/activity/guest-card/",
+          "noteZh": "根据天气自由选择缆车、泳池或公交"
+        }
+      ]
+    }
+  ],
+  "bookingChecklistZh": [
+    "先比较同一日期的 Urlaubspiraten 和酒店官网最终价：3 成人 + 1 婴儿，住 6-7 晚，含税费和当地税。",
+    "Alpenrose 只优先 43 平方米 Appartement；Mittagspitze 只优先主楼可住 3 成人 + 婴儿的大套房，或确认副楼 800 米动线可接受。",
+    "邮件确认婴儿床、儿童高椅、热水、辅食加热、停车、是否有电梯、是否可晚到。",
+    "确认取消政策，7 月下旬山区天气和宝宝健康都有不确定性。",
+    "确认 Guest-Card 发放方式、入住几晚开始生效、是否电子卡、哪些缆车/泳池当周开放。",
+    "出发前买奥地利 10 天 vignette 或确认路线上不走奥地利高速；如果绕瑞士高速，要另查瑞士 vignette。"
+  ],
+  "packingNotesZh": [
+    "婴儿背带 + 轻便推车都带：村镇和湖边用推车，山上/缆车后用背带。",
+    "遮阳帽、防晒、薄外套、雨衣、泳衣、浮力辅助、常用药和体温计。",
+    "奶瓶清洗、辅食碗勺、便携电热水壶或确认酒店可提供热水。",
+    "车上准备每 2 小时一包的换尿布包、湿巾、垃圾袋和备用衣服。",
+    "长途车程给大人也准备颈枕、轻食和瓶装水，减少服务区临时找东西。"
+  ],
+  "costNotesZh": [
+    "住宿：促销页显示 Alpenrose 3 晚早餐起价约 222 EUR/人、Mittagspitze 2 晚半膳 Plus 起价约 199 EUR/人；真实 7 晚 3 成人 + 婴儿价格必须进订单计算。",
+    "交通：柏林到 Vorarlberg 往返约 1,500-1,700 km，油费、停车和奥地利 vignette 需要单列。",
+    "中转住宿：往返各 2 晚中转比较稳，总共约 4 晚；若想省钱可以选择高速边家庭房。",
+    "当地游玩：住满 3 晚后 Guest-Card 可覆盖很多缆车、泳池和公交，能明显降低每日活动成本。",
+    "餐饮：Alpenrose 需要更多自理晚餐预算；Mittagspitze 半膳省心但总房价更可能偏高。"
+  ],
+  "sourceNotesZh": [
+    "Urlaubspiraten/Travel Partner 页面为促销聚合页，价格与折扣会随日期、人数和库存变化。",
+    "酒店官方页用于核实设施、房型和家庭服务；最终以预订确认单和酒店邮件回复为准。",
+    "路线时间基于 ADAC/常规路线参考，7 月周末、施工和事故会显著改变实际驾驶时长。",
+    "Guest-Card 服务有季节和天气限制，具体缆车/泳池开放时间出发前一周再查。"
+  ]
+}

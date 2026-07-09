@@ -630,6 +630,99 @@ export interface RvFamilyGuideData {
   sourceNotesZh: string[];
 }
 
+export type AlpineHotelFitLevel = "best" | "strong" | "backup";
+
+export type AlpineDriveDirection = "outbound" | "return" | "local";
+
+export interface AlpineSourceLink {
+  label: string;
+  url: string;
+  noteZh: string;
+}
+
+export interface AlpineHotelOption {
+  id: string;
+  rank: number;
+  name: string;
+  nameZh: string;
+  locationZh: string;
+  regionZh: string;
+  imageUrl: string;
+  fitLevel: AlpineHotelFitLevel;
+  fitScore: number;
+  bookingUrl: string;
+  officialUrl: string;
+  discountSignalZh: string;
+  roomFitZh: string;
+  mealPlanZh: string;
+  wellnessZh: string;
+  guestCardZh: string;
+  babyFitZh: string;
+  transportFitZh: string;
+  decisionZh: string;
+  prosZh: string[];
+  risksZh: string[];
+  bookingChecksZh: string[];
+  evidence: AlpineSourceLink[];
+  bookingLinks: AlpineSourceLink[];
+}
+
+export interface AlpineDriveLeg {
+  id: string;
+  direction: AlpineDriveDirection;
+  dayZh: string;
+  fromZh: string;
+  toZh: string;
+  driveTimeZh: string;
+  distanceKm: number;
+  routeZh: string;
+  stopIdeasZh: string[];
+  babyNotesZh: string;
+  overnightZh: string;
+  sourceLinks: AlpineSourceLink[];
+}
+
+export interface AlpineDayPlan {
+  id: string;
+  dayZh: string;
+  baseZh: string;
+  titleZh: string;
+  paceZh: string;
+  planZh: string[];
+  babyNotesZh: string;
+  badWeatherZh: string;
+  sourceLinks: AlpineSourceLink[];
+}
+
+export interface AlpineAreaAlternative {
+  id: string;
+  nameZh: string;
+  locationZh: string;
+  priceSignalZh: string;
+  fitZh: string;
+  cautionZh: string;
+  sourceLinks: AlpineSourceLink[];
+}
+
+export interface AlpineBorderPlanData {
+  updatedAt: string;
+  timezone: string;
+  partyZh: string;
+  travelWindowZh: string;
+  driveRuleZh: string;
+  verdictZh: string;
+  assumptionsZh: string[];
+  quickTakeawaysZh: string[];
+  hotelOptions: AlpineHotelOption[];
+  areaAlternatives: AlpineAreaAlternative[];
+  drivePlan: AlpineDriveLeg[];
+  dayPlans: AlpineDayPlan[];
+  bookingChecklistZh: string[];
+  packingNotesZh: string[];
+  costNotesZh: string[];
+  sourceNotesZh: string[];
+}
+
 export type DiscountSourceCategory =
   | "package-sale"
   | "hotel-club"

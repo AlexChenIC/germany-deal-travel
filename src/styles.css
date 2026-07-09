@@ -123,6 +123,18 @@ h1 {
 .summer-portal-card,
 .summer-manual-list,
 .summer-action-panel,
+.alpine-verdict,
+.alpine-takeaway-grid span,
+.alpine-hotel-card,
+.alpine-alt-card,
+.alpine-drive-card,
+.alpine-day-card,
+.alpine-fact,
+.alpine-signal-box,
+.alpine-list-block,
+.alpine-stop-list span,
+.alpine-note-box,
+.alpine-action-panel,
 .rv-verdict,
 .rv-takeaway-grid span,
 .rv-guide-card,
@@ -901,7 +913,8 @@ h1 {
 .picks-page,
 .heat-page,
 .canary-page,
-.summer-page {
+.summer-page,
+.alpine-page {
   display: grid;
   gap: 18px;
 }
@@ -913,6 +926,7 @@ h1 {
 .heat-hero,
 .canary-hero,
 .summer-hero,
+.alpine-hero,
 .kids-workbench {
   border: 1px solid #d7d2c5;
   border-radius: 8px;
@@ -926,7 +940,8 @@ h1 {
 .picks-hero,
 .heat-hero,
 .canary-hero,
-.summer-hero {
+.summer-hero,
+.alpine-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
   gap: 20px;
@@ -939,7 +954,8 @@ h1 {
 .picks-hero h2,
 .heat-hero h2,
 .canary-hero h2,
-.summer-hero h2 {
+.summer-hero h2,
+.alpine-hero h2 {
   margin-bottom: 10px;
   font-size: clamp(1.5rem, 2.4vw, 2.35rem);
   letter-spacing: 0;
@@ -951,7 +967,8 @@ h1 {
 .picks-hero p,
 .heat-hero p,
 .canary-hero p,
-.summer-hero p {
+.summer-hero p,
+.alpine-hero p {
   max-width: 760px;
   margin-bottom: 0;
   color: #4f5a56;
@@ -3641,6 +3658,449 @@ h1 {
   min-width: 0;
 }
 
+.alpine-page {
+  display: grid;
+  gap: 18px;
+}
+
+.alpine-hero {
+  align-items: stretch;
+  border-color: #cad9dd;
+  background: #f4f8f8;
+}
+
+.alpine-hero h2 {
+  color: #20333a;
+}
+
+.alpine-hero p {
+  color: #4c5a5b;
+}
+
+.alpine-verdict {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-color: #93bdc8;
+  border-radius: 8px;
+  background: #eef8fa;
+}
+
+.alpine-verdict svg {
+  color: #1f6f8b;
+}
+
+.alpine-verdict strong {
+  color: #185974;
+}
+
+.alpine-verdict p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.alpine-verdict span {
+  color: #8a5b13;
+  font-size: 0.84rem;
+  font-weight: 900;
+  line-height: 1.45;
+}
+
+.alpine-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.alpine-section {
+  display: grid;
+  gap: 12px;
+}
+
+.alpine-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #185974;
+}
+
+.alpine-section-heading h3 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.alpine-takeaway-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.alpine-takeaway-grid span {
+  min-height: 116px;
+  padding: 11px;
+  border-radius: 8px;
+  color: #40504b;
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.alpine-takeaway-grid span:nth-child(2n) {
+  border-color: #c6d4a3;
+  background: #f4f8e9;
+}
+
+.alpine-takeaway-grid span:nth-child(3n) {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.alpine-hotel-grid,
+.alpine-drive-grid,
+.alpine-day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.alpine-hotel-card,
+.alpine-alt-card,
+.alpine-drive-card,
+.alpine-day-card {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.alpine-hotel-card {
+  display: grid;
+  grid-template-rows: 230px 1fr;
+}
+
+.alpine-hotel-card.is-best {
+  border-color: #86c7ba;
+}
+
+.alpine-hotel-card.is-strong {
+  border-color: #93bdc8;
+}
+
+.alpine-hotel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #dbe6df;
+}
+
+.alpine-card-body,
+.alpine-alt-card,
+.alpine-drive-card,
+.alpine-day-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+}
+
+.alpine-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.alpine-card-top strong {
+  color: #185974;
+  font-size: 0.86rem;
+}
+
+.alpine-fit-chip {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid #d8c4a0;
+  border-radius: 999px;
+  background: #fff7e5;
+  color: #755317;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.alpine-fit-chip.is-best,
+.alpine-fit-chip.is-outbound {
+  border-color: #86c7ba;
+  background: #e3f3ef;
+  color: #0d5f59;
+}
+
+.alpine-fit-chip.is-strong,
+.alpine-fit-chip.is-return {
+  border-color: #93bdc8;
+  background: #eef8fa;
+  color: #185974;
+}
+
+.alpine-card-body h3,
+.alpine-alt-card h3,
+.alpine-drive-card h3,
+.alpine-day-card h3 {
+  margin: 0;
+  color: #253235;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.alpine-card-body p,
+.alpine-alt-card p,
+.alpine-alt-card strong,
+.alpine-alt-card em,
+.alpine-drive-card p,
+.alpine-day-card p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.alpine-location {
+  color: #6f766d;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.alpine-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.alpine-fact {
+  min-height: 132px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #fffdfa;
+}
+
+.alpine-fact span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  color: #185974;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.alpine-fact svg {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  color: #1f6f8b;
+}
+
+.alpine-fact p {
+  font-size: 0.81rem;
+}
+
+.alpine-signal-box {
+  padding: 10px;
+  border-color: #d8c4a0;
+  border-radius: 8px;
+  background: #fff7e5;
+}
+
+.alpine-signal-box.is-soft {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.alpine-signal-box strong,
+.alpine-list-block strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #185974;
+  font-size: 0.84rem;
+}
+
+.alpine-list-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.alpine-list-block {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.alpine-list-block.is-positive {
+  border-color: #bad6cf;
+  background: #edf9f6;
+}
+
+.alpine-list-block ul,
+.alpine-action-panel ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+  color: #4f5a56;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.alpine-alt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.alpine-alt-card > span {
+  color: #8a5b13;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alpine-alt-card strong {
+  color: #0d5f59;
+}
+
+.alpine-alt-card em {
+  color: #755317;
+  font-style: normal;
+}
+
+.alpine-drive-card.is-outbound {
+  border-color: #bad6cf;
+}
+
+.alpine-drive-card.is-return {
+  border-color: #93bdc8;
+}
+
+.alpine-drive-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.alpine-drive-meta span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #cfd8d6;
+  border-radius: 999px;
+  background: #f6f9f8;
+  color: #43504c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.alpine-drive-meta svg {
+  color: #0f766e;
+}
+
+.alpine-stop-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.alpine-stop-list span {
+  min-height: 58px;
+  padding: 8px;
+  border-radius: 8px;
+  color: #40504b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.alpine-note-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  border-color: #bad6cf;
+  border-radius: 8px;
+  background: #edf9f6;
+}
+
+.alpine-note-box.is-overnight {
+  border-color: #d8c4a0;
+  background: #fff7e5;
+}
+
+.alpine-note-box.is-weather {
+  border-color: #e4b89d;
+  background: #fff1ea;
+}
+
+.alpine-note-box svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #1f6f8b;
+}
+
+.alpine-day-card ol {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 20px;
+  color: #4f5a56;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.alpine-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.alpine-source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #185974;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.alpine-source-link.is-compact {
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid #c6d7dc;
+  border-radius: 999px;
+  background: #eef8fa;
+}
+
+.alpine-action-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(37, 43, 37, 0.06);
+}
+
+.alpine-action-panel.is-muted {
+  background: #fff9ef;
+}
+
+.alpine-action-panel > div {
+  min-width: 0;
+}
+
 .rv-page {
   display: grid;
   gap: 18px;
@@ -4127,6 +4587,12 @@ h1 {
   .summer-signal-grid,
   .summer-roadtrip-grid,
   .summer-portal-grid,
+  .alpine-metrics,
+  .alpine-takeaway-grid,
+  .alpine-hotel-grid,
+  .alpine-drive-grid,
+  .alpine-day-grid,
+  .alpine-stop-list,
   .rv-metrics,
   .rv-takeaway-grid,
   .rv-guide-grid,
@@ -4173,6 +4639,9 @@ h1 {
   .heat-hero,
   .canary-hero,
   .summer-hero,
+  .alpine-hero,
+  .alpine-alt-grid,
+  .alpine-action-panel,
   .summer-action-panel,
   .rv-hero,
   .rv-portal-grid,
@@ -4236,6 +4705,16 @@ h1 {
   .summer-list-grid,
   .summer-portal-grid,
   .summer-action-panel,
+  .alpine-metrics,
+  .alpine-takeaway-grid,
+  .alpine-hotel-grid,
+  .alpine-alt-grid,
+  .alpine-drive-grid,
+  .alpine-day-grid,
+  .alpine-fact-grid,
+  .alpine-list-pair,
+  .alpine-stop-list,
+  .alpine-action-panel,
   .rv-metrics,
   .rv-takeaway-grid,
   .rv-guide-grid,
@@ -4297,6 +4776,7 @@ h1 {
   .heat-hero,
   .canary-hero,
   .summer-hero,
+  .alpine-hero,
   .rv-hero,
   .kids-workbench {
     padding: 12px;
@@ -4305,6 +4785,7 @@ h1 {
   .heat-card-top,
   .canary-card-top,
   .summer-card-top,
+  .alpine-card-top,
   .rv-route-top {
     grid-template-columns: 1fr;
   }
