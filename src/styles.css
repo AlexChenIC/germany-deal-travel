@@ -3658,6 +3658,27 @@ h1 {
   min-width: 0;
 }
 
+.baltic-page .summer-takeaway-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.baltic-page .summer-takeaway-grid span {
+  min-height: 96px;
+}
+
+.baltic-page .summer-signal-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.baltic-page .summer-signal-card {
+  min-height: 230px;
+}
+
+.baltic-page .summer-roadtrip-card,
+.baltic-page .summer-portal-card {
+  min-height: 0;
+}
+
 .alpine-page {
   display: grid;
   gap: 18px;

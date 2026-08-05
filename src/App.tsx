@@ -78,6 +78,7 @@ import {
 } from "./lib/recommendations";
 import { expandQuery, normalizeSearchText } from "./lib/search";
 import { AlpineBorderPlanView } from "./pages/AlpineBorderPlanView";
+import { BalticSeaShortlistView } from "./pages/BalticSeaShortlistView";
 import { CanaryDealsView } from "./pages/CanaryDealsView";
 import { DiscountFocusView } from "./pages/DiscountFocusView";
 import { PlanView } from "./pages/PlanView";
@@ -115,6 +116,7 @@ type Tab =
   | "discounts"
   | "picks"
   | "summer"
+  | "baltic"
   | "alps"
   | "rv"
   | "canary"
@@ -393,6 +395,9 @@ function App() {
         <TabButton active={activeTab === "summer"} onClick={() => selectTab("summer")}>
           暑期全包
         </TabButton>
+        <TabButton active={activeTab === "baltic"} onClick={() => selectTab("baltic")}>
+          北部海边
+        </TabButton>
         <TabButton active={activeTab === "alps"} onClick={() => selectTab("alps")}>
           三国山地
         </TabButton>
@@ -450,6 +455,8 @@ function App() {
         />
       ) : activeTab === "summer" ? (
         <SummerAllInclusiveView />
+      ) : activeTab === "baltic" ? (
+        <BalticSeaShortlistView />
       ) : activeTab === "alps" ? (
         <AlpineBorderPlanView />
       ) : activeTab === "rv" ? (
@@ -2443,6 +2450,7 @@ function hashToTab(hash: string): Tab {
   if (
     normalized === "picks" ||
     normalized === "summer" ||
+    normalized === "baltic" ||
     normalized === "alps" ||
     normalized === "rv" ||
     normalized === "discounts" ||

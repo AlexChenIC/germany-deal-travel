@@ -1,0 +1,395 @@
+{
+  "updatedAt": "2026-08-05T21:15:00+02:00",
+  "timezone": "Europe/Berlin",
+  "partyZh": "3 位成年人 + 1 位约 1 岁宝宝",
+  "travelWindowZh": "优先 2026-08-08 至 2026-08-10 两晚；如果周五晚能出发，可查 2026-08-07 至 2026-08-10 三晚。",
+  "verdictZh": "这次北部海边短住最现实的选择不是吕根岛本身，而是波兰 Kołobrzeg/Grzybowo 一带：那里更容易找到 2-3 晚 All Inclusive 或 All Inclusive light。吕根岛更适合作为亲子水乐园/海边半膳度假，真全包库存较少；如果一定要在吕根岛，优先查 Sunday Resort Rügen 是否能订到 All Inclusive，其次 Vju Hotel Rügen 但它的全包套餐要求至少 4 晚。",
+  "weatherSummaryZh": "8 月 8-10 日海边大多比柏林凉：柏林周日可能接近 32°C，而 Rügen、Świnoujście、Kołobrzeg 约 26-27°C；海边有风，体感更适合避暑。天气仍需出发前一天复核。",
+  "quickTakeawaysZh": [
+    "严格全包 + 2-3 晚：优先 Seaside Park Hotel Kołobrzeg，官方写明真 All Inclusive、至少 2 晚、20 m 到海边。",
+    "预算优先：Solny Resort Kołobrzeg 的 All Inclusive light 价格线索最低，但酒店等级和体验要降低预期。",
+    "吕根岛亲子优先：Sunday Resort Rügen + SPLASH 水世界最适合宝宝和避暑，但要逐单核实 All Inclusive 是否可订。",
+    "Vju Hotel Rügen 景观、泳池和灵活取消不错，但全包套餐至少 4 晚，不完全符合 2-3 天短住。",
+    "Świnoujście / Międzyzdroje 距离柏林最近，但多数好酒店是早餐或半膳，不是真全包。",
+    "下单前一定按 3 Erwachsene + Baby 0/1 Jahr 核实房型；很多低价双人房无法容纳 3 位成年人。"
+  ],
+  "weatherCards": [
+    {
+      "placeZh": "柏林",
+      "forecastZh": "周六约 25°C，周日可能到 32°C，周一约 29°C",
+      "heatFitZh": "对怕热宝宝不理想，是这次出城避暑的主要动机。"
+    },
+    {
+      "placeZh": "吕根岛 / Rügen",
+      "forecastZh": "周六约 22°C，周日约 27°C，周一约 26°C",
+      "heatFitZh": "比柏林舒服，海风降温；适合海边散步和水世界。"
+    },
+    {
+      "placeZh": "Świnoujście / Międzyzdroje",
+      "forecastZh": "周六约 21°C，周日约 27°C，周一约 26°C",
+      "heatFitZh": "距离更近，海边体感好；酒店多为早餐/半膳。"
+    },
+    {
+      "placeZh": "Kołobrzeg / Grzybowo",
+      "forecastZh": "周六约 21°C，周日约 26°C，周一约 25°C",
+      "heatFitZh": "全包选择更强，车程略长但仍在 3-4 小时级别。"
+    }
+  ],
+  "destinationNotes": [
+    {
+      "nameZh": "吕根岛 Rügen",
+      "summaryZh": "从柏林开车约 3.2-4.2 小时，取决于住 Sagard、Binz、Sellin 还是 Göhren。优点是德国境内、医疗和语言环境熟悉、亲子景点多；缺点是真全包酒店少，暑假临近库存紧。",
+      "bestForZh": "想去德国海岛、白色海岸、Jasmund 国家公园和亲子水世界。"
+    },
+    {
+      "nameZh": "波兰北部海边：Świnoujście / Międzyzdroje / Kołobrzeg",
+      "summaryZh": "Świnoujście 和 Międzyzdroje 距离柏林最近，Kołobrzeg/Grzybowo 稍远但全包套餐更多。波兰海边常见酒店带 SPA、泳池和餐饮包，价格通常比德国海岛友好。",
+      "bestForZh": "想要更接近 resort、餐饮省心和短住价格更可控。"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "seaside-park-kolobrzeg-ai-2026",
+      "name": "Seaside Park Hotel",
+      "nameZh": "Seaside Park Hotel 科沃布热格真全包",
+      "destinationZh": "波兰 Kołobrzeg",
+      "countryZh": "波兰",
+      "fitLevel": "top",
+      "fitScore": 94,
+      "mealPlanLevel": "true-ai",
+      "mealPlanZh": "官方 All Inclusive，至少 2 晚；包含早晚餐、午间餐食/foodtruck/pizza、饮品和部分酒水。",
+      "driveTimeZh": "柏林自驾约 3.5-4 小时",
+      "travelWindowFitZh": "非常匹配 2-3 晚；2026-07-13 至 2026-08-23 期间 3 晚起还有阶梯折扣。",
+      "priceZh": "官方页面显示 ab 1,148 PLN / Nacht；3 成人 + 宝宝需按房型实时核价。",
+      "coolingZh": "房间说明含 Klimaanlage；海边 20 m，避暑逻辑强。",
+      "babyFitZh": "儿童动画、儿童娱乐区、小海盗房、儿童休闲池；宝宝很小，主要价值是室内外可切换。",
+      "poolSpaZh": "25 m 室内泳池、儿童休闲池、Jacuzzi、干蒸/湿蒸/红外桑拿。",
+      "currentStatusZh": "官方套餐页当前可见；价格和房型库存需在预订引擎内确认。",
+      "recommendationZh": "如果你们接受比 Rügen 多开一点，这是我当前最推荐的真全包短住。",
+      "reasonsZh": [
+        "真 All Inclusive，且官方写明至少 2 晚，贴合周末短住。",
+        "房间有空调和小厨房，对宝宝热和冲奶/辅食更友好。",
+        "泳池、儿童池、SPA、海边步行距离都强。"
+      ],
+      "risksZh": [
+        "Kołobrzeg 比 Świnoujście 更远，周末路况可能接近 4 小时。",
+        "1,148 PLN/night 是起价，不一定适用于 3 成人 + 婴儿房型。",
+        "暑期主周末库存变化快，最好同时查官方和 TUI/DERTOUR。"
+      ],
+      "tagsZh": ["真全包", "空调", "儿童池", "SPA", "海边 20m"],
+      "sourceLinks": [
+        {
+          "label": "官方 All Inclusive 套餐",
+          "url": "https://seasidepark.pl/de/urlaub-in-kolberg-all-inclusive-je-langer-desto-billiger-page-406617",
+          "noteZh": "官方写明 min. 2 Nächte、All Inclusive、Klimaanlage、儿童娱乐和 wellness。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开官方预订",
+          "url": "https://seasidepark.pl/de/urlaub-in-kolberg-all-inclusive-je-langer-desto-billiger-page-406617",
+          "noteZh": "先查 08.08-10.08 或 08.08-11.08，3 Erwachsene + Baby。"
+        },
+        {
+          "label": "TUI Kolberg 对照",
+          "url": "https://www.tui.at/hotels/polen/kolberg/",
+          "noteZh": "用于比对 Seaside Park / Kolberg 同类酒店价格。"
+        }
+      ]
+    },
+    {
+      "id": "sunday-resort-ruegen-splash-2026",
+      "name": "Sunday Resort Rügen - Hotel & SPLASH Erlebniswelt",
+      "nameZh": "Sunday Resort Rügen + SPLASH 水世界",
+      "destinationZh": "德国 Rügen / Sagard",
+      "countryZh": "德国",
+      "fitLevel": "strong",
+      "fitScore": 88,
+      "mealPlanLevel": "ai-possible",
+      "mealPlanZh": "TUI 酒店页显示 Halbpension 和 All Inclusive 可订；具体日期是否有 AI 需逐单确认。",
+      "driveTimeZh": "柏林自驾约 3.2-3.8 小时",
+      "travelWindowFitZh": "适合 2-3 晚；尤其适合只想在酒店水世界里避暑。",
+      "priceZh": "Google Hotels/OTA 会实时变动；OYO 页面有 3 晚折扣线索，但需谨慎复核。",
+      "coolingZh": "海岛和水世界降温强；房间空调需逐房型核实。",
+      "babyFitZh": "儿童池、游乐场、游戏房、儿童俱乐部/照护线索，对带宝宝很友好。",
+      "poolSpaZh": "室内/室外池、儿童池、滑水道、Whirlpool、Spa、Sauna。",
+      "currentStatusZh": "TUI 酒店信息页当前可读；官方/OTA 显示免费取消线索曾出现，但具体日期要以结算页为准。",
+      "recommendationZh": "如果你们更想去德国 Rügen，这是首选核价对象。",
+      "reasonsZh": [
+        "距离和亲子设施非常匹配，宝宝怕热时水世界比海滩更可控。",
+        "TUI 页面明确写到 All Inclusive、儿童池、indoor/outdoor pools 和 sauna。",
+        "Sagard 在 Rügen 北部，去 Jasmund / Kreidefelsen 也方便。"
+      ],
+      "risksZh": [
+        "All Inclusive 不是每个渠道/日期都一定可订。",
+        "不在一线海滩，更多是 resort + 水世界，而不是住在沙滩边。",
+        "暑期短住价格可能不便宜，3 成人房型要仔细核。"
+      ],
+      "tagsZh": ["吕根岛首选", "AI 需核实", "水世界", "儿童池", "SPA"],
+      "sourceLinks": [
+        {
+          "label": "TUI 酒店信息",
+          "url": "https://www.tui.com/hotels/sunday-resort-rugen-hotel-and-splash-erlebniswelt-448112/hotelinformation/",
+          "noteZh": "TUI 页面列出 All Inclusive、半膳、儿童池、滑水道、Spa 和 sauna。"
+        },
+        {
+          "label": "Booking 页面",
+          "url": "https://www.booking.com/hotel/de/precise-resort-rugen-the-club.html",
+          "noteZh": "用于快速核对房型和当前可订性。"
+        },
+        {
+          "label": "Google Hotels",
+          "url": "https://www.google.com/travel/hotels/entity/ChgIiozbz5-LvuUgGgwvZy8xaGMzZDJ4MXEQAQ",
+          "noteZh": "用于查看多平台价格和取消条款。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI 查询",
+          "url": "https://www.tui.com/hotels/sunday-resort-rugen-hotel-and-splash-erlebniswelt-448112/hotelinformation/",
+          "noteZh": "筛选 All Inclusive、2-3 nights、3 adults + baby。"
+        },
+        {
+          "label": "Hotels.com 对照",
+          "url": "https://www.hotels.com/ho409869/precise-resort-rugen-splash-erlebniswelt-sagard-germany/",
+          "noteZh": "价格和取消政策交叉核查。"
+        }
+      ]
+    },
+    {
+      "id": "solny-resort-kolobrzeg-ai-light-2026",
+      "name": "Solny Resort",
+      "nameZh": "Solny Resort 科沃布热格 AI-light 性价比",
+      "destinationZh": "波兰 Kołobrzeg",
+      "countryZh": "波兰",
+      "fitLevel": "value",
+      "fitScore": 82,
+      "mealPlanLevel": "ai-light",
+      "mealPlanZh": "All Inclusive light：早饭、午间汤/沙拉、咖啡蛋糕、晚餐，餐时软饮/啤酒/house wine。",
+      "driveTimeZh": "柏林自驾约 3.5-4 小时",
+      "travelWindowFitZh": "2-3 晚价格线索明确，短住灵活度好。",
+      "priceZh": "HolidayTrex 页面显示 2 晚 ab 94 EUR/人、3 晚 ab 142 EUR/人，实际按日期/房型变化。",
+      "coolingZh": "房型说明包含 Klimaanlage；离海滩约 800 m。",
+      "babyFitZh": "高脚椅和婴儿床可询问；家庭房约 42 m²，可能适合 3 成人 + 宝宝但需确认最大入住。",
+      "poolSpaZh": "室内池、7-8 月室外池、约 300 m² wellness 区和 sauna。",
+      "currentStatusZh": "HolidayTrex 页面当前可见；显示可免费取消/改订的权益说明。",
+      "recommendationZh": "预算敏感时可查，但它是 3 星级 AI-light，不是舒服大 resort。",
+      "reasonsZh": [
+        "2-3 晚价格线索直接贴合本次周末需求。",
+        "有空调、室内/室外泳池和 sauna，避暑基本盘够用。",
+        "家庭房比普通双人房更可能容纳 3 成人 + 婴儿。"
+      ],
+      "risksZh": [
+        "离海边约 800 m，不是海滩门口。",
+        "AI-light 内容比真全包弱，饮料主要随餐。",
+        "酒店等级和亲子设施不如 Seaside Park 或 Sunday Resort。"
+      ],
+      "tagsZh": ["AI-light", "低价", "空调", "室内外泳池", "家庭房"],
+      "sourceLinks": [
+        {
+          "label": "HolidayTrex Solny Resort",
+          "url": "https://www.holidaytrex.com/accommodation/holidays/pl/solny-resort/4028815c9236826b019276977ec82e1d.p13000.de.html",
+          "noteZh": "页面列出 AI-light、价格表、空调房型、泳池和儿童设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 HolidayTrex",
+          "url": "https://www.holidaytrex.com/accommodation/holidays/pl/solny-resort/4028815c9236826b019276977ec82e1d.p13000.de.html",
+          "noteZh": "查 2-3 晚和 Familienzimmer。"
+        },
+        {
+          "label": "Reisen-Supermarkt 波兰海边",
+          "url": "https://www.reisen-supermarkt.de/polnische-ostsee/",
+          "noteZh": "同类 AI-light 折扣源，用于找 Kolberg / Rewal / Misdroy 备选。"
+        }
+      ]
+    },
+    {
+      "id": "vju-hotel-ruegen-ai-min4-2026",
+      "name": "Vju Hotel Rügen",
+      "nameZh": "Vju Hotel Rügen 海景全包但至少 4 晚",
+      "destinationZh": "德国 Rügen / Göhren",
+      "countryZh": "德国",
+      "fitLevel": "watch",
+      "fitScore": 78,
+      "mealPlanLevel": "ai-min4",
+      "mealPlanZh": "All-inclusive Angebot 至少 4 晚：早餐、Lunchpaket、晚餐、12:30-21:00 AI 饮品卡。",
+      "driveTimeZh": "柏林自驾约 3.8-4.3 小时",
+      "travelWindowFitZh": "不完全匹配 2-3 晚；若能改成 4 晚才值得优先考虑。",
+      "priceZh": "官方套餐显示 ab 384 EUR/人；停车、Kurabgabe、婴儿床另计。",
+      "coolingZh": "海边山坡位置和室内泳池有利避暑；房间空调需逐房型核实。",
+      "babyFitZh": "3 岁以下儿童可睡父母床免费，Baby-/Juniorbett 15 EUR/次；3 成人房型需单独核。",
+      "poolSpaZh": "室内泳池、Saunalandschaft、Fitness/Yoga，部分 sauna 有海景。",
+      "currentStatusZh": "官方全包套餐页当前可见，写明 Bezahlung vor Ort 和 flexibel stornierbar。",
+      "recommendationZh": "如果你们能多住，Vju 是 Rügen 上较高质量的全包线索；本周末 2 晚不优先。",
+      "reasonsZh": [
+        "Rügen 上少见的官方 All-inclusive-Angebot。",
+        "景观、室内泳池、sauna 和餐饮品质比低价短住更稳。",
+        "付款和取消条款看起来更灵活。"
+      ],
+      "risksZh": [
+        "至少 4 晚，和本次 2-3 天目标冲突。",
+        "All inclusive 饮品范围有限，烈酒和时段外饮品另付。",
+        "3 成人 + 宝宝可能需要更高房型或两间房。"
+      ],
+      "tagsZh": ["Rügen", "4 晚起", "海景", "室内泳池", "灵活取消"],
+      "sourceLinks": [
+        {
+          "label": "Vju 官方全包套餐",
+          "url": "https://www.arcona.de/de/unterkuenfte/vju-hotel-ruegen/angebote/all-inclusive-urlaub",
+          "noteZh": "官方页面列出 4 晚起、384 EUR/人起、灵活取消和套餐内容。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Vju 全包",
+          "url": "https://www.arcona.de/de/unterkuenfte/vju-hotel-ruegen/angebote/all-inclusive-urlaub",
+          "noteZh": "如果能住 4 晚，直接从 RatePlan 链接核价。"
+        }
+      ]
+    },
+    {
+      "id": "hotel-siesta-grzybowo-watch-2026",
+      "name": "Hotel Siesta",
+      "nameZh": "Hotel Siesta Grzybowo 低价全包监控",
+      "destinationZh": "波兰 Grzybowo / Kołobrzeg 西侧",
+      "countryZh": "波兰",
+      "fitLevel": "watch",
+      "fitScore": 70,
+      "mealPlanLevel": "true-ai",
+      "mealPlanZh": "Travelcircus/Urlaubspiraten 描述为 2 晚起 All Inclusive，含三餐、咖啡蛋糕和 13:00-20:00 饮品。",
+      "driveTimeZh": "柏林自驾约 3.5-4 小时",
+      "travelWindowFitZh": "理论上很匹配 2 晚，但当前 Travelcircus 页面显示 im Moment ausverkauft。",
+      "priceZh": "历史 Deal 低至 59 EUR/人/2 晚；当前页面未显示可订价。",
+      "coolingZh": "海边 3 分钟，避暑可行；空调信息不如 Seaside Park 明确。",
+      "babyFitZh": "儿童到 3 岁可睡父母床免费，但双人房最大常见为 2 成人 + 1 儿童，不适合你们 3 成人一间房。",
+      "poolSpaZh": "Finnische Sauna、Außenwhirlpool、Wellness/Fitness 区；不是大型泳池 resort。",
+      "currentStatusZh": "当前 Travelcircus 页面显示售罄；只作为监控源。",
+      "recommendationZh": "价格诱人但不建议作为本周末第一选择，除非库存突然恢复且房型能容纳 3 成人。",
+      "reasonsZh": [
+        "历史折扣非常强，是真正值得加入折扣监控的海边全包。",
+        "离海滩近，Grzybowo 比 Kolberg 中心更安静。",
+        "短住 2 晚逻辑很清晰。"
+      ],
+      "risksZh": [
+        "当前页面显示售罄。",
+        "3 成人 + 宝宝房型适配差，可能需要两间房。",
+        "评价信号混合，HolidayCheck 推荐度不高，需要复核。"
+      ],
+      "tagsZh": ["售罄监控", "历史低价", "真全包", "海边 3 分钟"],
+      "sourceLinks": [
+        {
+          "label": "Travelcircus Hotel Siesta",
+          "url": "https://www.travelcircus.de/hotel-siesta",
+          "noteZh": "当前显示 ausverkauft，但保留套餐内容和评价信息。"
+        },
+        {
+          "label": "Urlaubspiraten 历史 Deal",
+          "url": "https://www.urlaubspiraten.de/hotels/hotel-siesta-grzybowo-kolobrzeg",
+          "noteZh": "历史 2 晚 All Inclusive 低价线索，用作监控来源。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Travelcircus",
+          "url": "https://www.travelcircus.de/hotel-siesta",
+          "noteZh": "查看是否恢复库存。"
+        }
+      ]
+    },
+    {
+      "id": "radisson-swinoujscie-regular-backup-2026",
+      "name": "Radisson Blu Resort Świnoujście",
+      "nameZh": "Radisson Blu Świnoujście 近距离豪华备选",
+      "destinationZh": "波兰 Świnoujście / Usedom",
+      "countryZh": "波兰",
+      "fitLevel": "backup",
+      "fitScore": 66,
+      "mealPlanLevel": "not-ai",
+      "mealPlanZh": "Urlaubspiraten 历史线索为早餐，不是真全包；可查是否有半膳/酒店内用餐套餐。",
+      "driveTimeZh": "柏林自驾约 3 小时",
+      "travelWindowFitZh": "2 晚非常匹配，路程最轻松。",
+      "priceZh": "历史 Deal 约 137 EUR/人起含早餐；当前实时价需 Google Hotels / Booking 查。",
+      "coolingZh": "海边 50 m，现代酒店，避暑舒适度强。",
+      "babyFitZh": "酒店级别高、设施成熟，但不是专门全包亲子酒店。",
+      "poolSpaZh": "14 层 spa、Infinity Pool、Whirlpool、多种 sauna，酒店旁也有海边设施。",
+      "currentStatusZh": "作为普通预订备选，不满足严格全包要求。",
+      "recommendationZh": "如果你们临近周末找不到 AI，好于硬凑低质全包。",
+      "reasonsZh": [
+        "离柏林近，带宝宝开车压力明显小。",
+        "Świnoujście 海边设施成熟，天气热时酒店和海边切换方便。",
+        "高星级 spa 更适合长辈休息。"
+      ],
+      "risksZh": [
+        "不是全包，需要额外安排午晚餐。",
+        "热门周末价格可能很高。",
+        "海边城市旺季停车和人流压力更大。"
+      ],
+      "tagsZh": ["非全包备选", "最近", "5 星", "海边 50m", "SPA"],
+      "sourceLinks": [
+        {
+          "label": "Urlaubspiraten Radisson 线索",
+          "url": "https://www.urlaubspiraten.de/hotels/radisson-blu-resort-swinoujscie-polnische-ostsee",
+          "noteZh": "描述 5 星、海边 50 m、spa/infinity pool，历史价含早餐。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "Radisson 官方",
+          "url": "https://www.radissonhotels.com/en-us/hotels/radisson-blu-resort-swinoujscie",
+          "noteZh": "查看官方实时价、房型和取消政策。"
+        },
+        {
+          "label": "DERTOUR Świnoujście",
+          "url": "https://www.dertour.de/hotels/polen/ostseekueste/swinoujscie",
+          "noteZh": "普通预订和同城比较。"
+        }
+      ]
+    }
+  ],
+  "regularBookingLinks": [
+    {
+      "site": "TUI",
+      "label": "Rügen 酒店总入口",
+      "intentZh": "查 Rügen 上 Sunday Resort、TUI KIDS CLUB Binz、A-ROSA、Dorint 等普通酒店。",
+      "url": "https://www.tui.com/hotels/deutschland/ruegen/",
+      "cautionZh": "Rügen 多数是早餐/半膳，All Inclusive 需要逐单筛。"
+    },
+    {
+      "site": "DERTOUR",
+      "label": "Kolberg 酒店入口",
+      "intentZh": "查 Seaside Park、Radisson Resort Kolberg、Royal Tulip Sand 等波兰海边酒店。",
+      "url": "https://www.dertour.de/hotels/polen/ostseekueste/kolberg",
+      "cautionZh": "很多起价是 nur Hotel / Frühstück，不代表全包。"
+    },
+    {
+      "site": "Alltours",
+      "label": "Polnische Ostsee 酒店入口",
+      "intentZh": "快速比较 Świnoujście、Kołobrzeg、Międzyzdroje 的海边酒店。",
+      "url": "https://www.alltours.de/hotel/polen/polnische-ostsee/",
+      "cautionZh": "适合比价，不适合直接判断亲子细节。"
+    },
+    {
+      "site": "Reisen-Supermarkt",
+      "label": "波兰海边短住折扣",
+      "intentZh": "经常出现 2-7 晚 AI-light、半膳、温泉/SPA 短住套餐。",
+      "url": "https://www.reisen-supermarkt.de/polnische-ostsee/",
+      "cautionZh": "页面常混合 kur/medical spa 和普通酒店，要确认宝宝是否适合。"
+    },
+    {
+      "site": "Booking.com",
+      "label": "最后库存兜底",
+      "intentZh": "当全包库存不合适时，用于找可取消、空调、泳池的普通酒店。",
+      "url": "https://www.booking.com/searchresults.de.html?ss=R%C3%BCgen%2C+Deutschland",
+      "cautionZh": "Booking 上全包筛选弱，需要手动看餐饮和房型。"
+    }
+  ],
+  "actionPlanZh": [
+    "先查 Seaside Park：08.08-10.08 两晚和 08.08-11.08 三晚，3 Erwachsene + Baby，确认家庭房/公寓房和取消政策。",
+    "同时查 Sunday Resort Rügen：只在能选 All Inclusive 且房型能容纳 3 成人 + 婴儿时保留。",
+    "如果预算明显超，查 Solny Resort AI-light 的 Familienzimmer；接受体验降低但保留空调、泳池和餐饮省心。",
+    "如果以上都不合适，把要求放宽为早餐/半膳 + 高质量 SPA：查 Radisson Blu Świnoujście 或 Wave Międzyzdroje。",
+    "付款前最后确认：房间空调、婴儿床/高脚椅、停车费、取消期限、是否一间房可住 3 成人 + 宝宝。"
+  ]
+}

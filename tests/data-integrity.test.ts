@@ -210,6 +210,110 @@ test("summer all-inclusive recommendations stay actionable", async () => {
   }
 });
 
+test("baltic sea short-stay shortlist keeps urgent weekend choices actionable", async () => {
+  const data = await readJson<{
+    updatedAt: string;
+    verdictZh: string;
+    quickTakeawaysZh: string[];
+    weatherCards: Array<{ placeZh: string; forecastZh: string; heatFitZh: string }>;
+    destinationNotes: Array<{ nameZh: string; summaryZh: string; bestForZh: string }>;
+    candidates: Array<{
+      id: string;
+      nameZh: string;
+      destinationZh: string;
+      fitScore: number;
+      mealPlanLevel: string;
+      driveTimeZh: string;
+      travelWindowFitZh: string;
+      priceZh: string;
+      coolingZh: string;
+      babyFitZh: string;
+      poolSpaZh: string;
+      recommendationZh: string;
+      reasonsZh: string[];
+      risksZh: string[];
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+      bookingLinks: Array<{ label: string; url: string; noteZh: string }>;
+    }>;
+    regularBookingLinks: Array<{
+      site: string;
+      label: string;
+      intentZh: string;
+      url: string;
+      cautionZh: string;
+    }>;
+    actionPlanZh: string[];
+  }>("src/data/baltic-sea-shortlist.json");
+
+  assert.ok(data.updatedAt, "baltic shortlist needs an update timestamp");
+  assert.ok(data.verdictZh.length > 60, "baltic shortlist needs a clear verdict");
+  assert.ok(data.quickTakeawaysZh.length >= 5, "baltic shortlist needs quick takeaways");
+  assert.ok(data.weatherCards.length >= 4, "baltic shortlist needs weather context");
+  assert.ok(data.destinationNotes.length >= 2, "baltic shortlist needs destination notes");
+  assert.ok(data.candidates.length >= 5, "baltic shortlist needs several candidates");
+  assert.ok(data.regularBookingLinks.length >= 4, "baltic shortlist needs booking fallbacks");
+  assert.ok(data.actionPlanZh.length >= 4, "baltic shortlist needs a booking action plan");
+  assertUniqueIds(
+    "baltic candidates",
+    data.candidates.map((candidate) => candidate.id),
+  );
+  assert.ok(
+    data.candidates.some((candidate) => candidate.mealPlanLevel === "true-ai"),
+    "baltic shortlist needs at least one true all-inclusive signal",
+  );
+  assert.ok(
+    data.candidates.some((candidate) => candidate.id.includes("ruegen")),
+    "baltic shortlist should cover Ruegen options",
+  );
+  assert.ok(
+    data.candidates.some((candidate) => candidate.id.includes("kolobrzeg")),
+    "baltic shortlist should cover Polish coast options",
+  );
+
+  for (const weather of data.weatherCards) {
+    assert.ok(weather.placeZh.trim(), "weather card needs place");
+    assert.ok(weather.forecastZh.trim(), `${weather.placeZh} needs forecast`);
+    assert.ok(weather.heatFitZh.trim(), `${weather.placeZh} needs heat fit`);
+  }
+
+  for (const destination of data.destinationNotes) {
+    assert.ok(destination.nameZh.trim(), "destination note needs name");
+    assert.ok(destination.summaryZh.length > 40, `${destination.nameZh} needs summary`);
+    assert.ok(destination.bestForZh.trim(), `${destination.nameZh} needs best-for note`);
+  }
+
+  for (const candidate of data.candidates) {
+    assert.ok(candidate.nameZh.trim(), `${candidate.id} needs a Chinese name`);
+    assert.ok(candidate.destinationZh.trim(), `${candidate.id} needs destination`);
+    assert.ok(candidate.fitScore >= 0 && candidate.fitScore <= 100, `${candidate.id} fit score`);
+    assert.ok(candidate.driveTimeZh.trim(), `${candidate.id} needs drive time`);
+    assert.ok(candidate.travelWindowFitZh.trim(), `${candidate.id} needs travel window fit`);
+    assert.ok(candidate.priceZh.trim(), `${candidate.id} needs price notes`);
+    assert.ok(candidate.coolingZh.trim(), `${candidate.id} needs cooling notes`);
+    assert.ok(candidate.babyFitZh.trim(), `${candidate.id} needs baby fit`);
+    assert.ok(candidate.poolSpaZh.trim(), `${candidate.id} needs pool/spa notes`);
+    assert.ok(candidate.recommendationZh.trim(), `${candidate.id} needs recommendation`);
+    assert.ok(candidate.reasonsZh.length >= 2, `${candidate.id} needs reasons`);
+    assert.ok(candidate.risksZh.length >= 2, `${candidate.id} needs risks`);
+    assert.ok(candidate.sourceLinks.length > 0, `${candidate.id} needs source links`);
+    assert.ok(candidate.bookingLinks.length > 0, `${candidate.id} needs booking links`);
+    candidate.sourceLinks.forEach((source) =>
+      assertSourceLink(`${candidate.id} source`, source),
+    );
+    candidate.bookingLinks.forEach((source) =>
+      assertSourceLink(`${candidate.id} booking`, source),
+    );
+  }
+
+  for (const link of data.regularBookingLinks) {
+    assert.ok(link.site.trim(), `${link.label} needs site`);
+    assert.ok(link.label.trim(), `${link.site} needs label`);
+    assert.match(link.url, /^https?:\/\//, `${link.label} booking fallback URL`);
+    assert.ok(link.intentZh.trim(), `${link.label} needs intent`);
+    assert.ok(link.cautionZh.trim(), `${link.label} needs caution`);
+  }
+});
+
 test("discount watch sources stay focused and actionable", async () => {
   const data = await readJson<DiscountWatchData>("src/data/discount-source-watch.json");
   assert.ok(data.updatedAt, "discount watch data needs an update timestamp");
