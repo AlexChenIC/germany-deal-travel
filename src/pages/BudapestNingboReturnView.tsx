@@ -169,7 +169,7 @@ export function BudapestNingboReturnView() {
       </div>
 
       <section className="summer-metrics" aria-label="budapest return plan summary">
-        <Metric label="首选回国日" value="09/17" icon={<CalendarDays />} />
+        <Metric label="主计划日期" value="09/17" icon={<CalendarDays />} />
         <Metric label="直飞频率" value="周一/四" icon={<Plane />} />
         <Metric label="宁波均温" value="27-28°C" icon={<CircleAlert />} />
         <Metric label="酒店候选" value={budapestReturnData.hotelOptions.length} icon={<Hotel />} />
@@ -191,9 +191,9 @@ export function BudapestNingboReturnView() {
       <section className="summer-section">
         <div className="results-header">
           <div>
-            <h2>回国日期优化</h2>
+            <h2>9 月回国日期选择</h2>
             <p className="summer-section-note">
-              这里把疫苗后健康缓冲、学校注册、宁波 9 月常年气候放在同一个表里比较。
+              按健康缓冲、学校注册和宁波 9 月气候，把几个周一/周四直飞日放在一起比较。
             </p>
           </div>
           <span>{topDate.dateZh} {topDate.weekdayZh}</span>

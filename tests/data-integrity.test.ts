@@ -421,7 +421,7 @@ test("budapest return plan keeps flight, hotel, and transfer decisions actionabl
     data.dateOptimization.dateCandidates.some(
       (candidate) => candidate.dateZh === "2026-09-10" && candidate.score < 80,
     ),
-    "2026-09-10 should no longer be the default high-score date",
+    "2026-09-10 should remain a lower-score early-return option",
   );
 
   assert.ok(data.recommendedItineraries.length >= 2, "needs itinerary options");
