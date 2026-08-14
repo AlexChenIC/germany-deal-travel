@@ -3679,6 +3679,26 @@ h1 {
   min-height: 0;
 }
 
+.budapest-return-page .summer-takeaway-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.budapest-return-page .summer-takeaway-grid span {
+  min-height: 108px;
+}
+
+.budapest-return-page .summer-roadtrip-card,
+.budapest-return-page .summer-portal-card {
+  min-height: 0;
+}
+
+.budapest-return-page .summer-keywords p {
+  margin: 0;
+  color: #4f5a56;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
 .alpine-page {
   display: grid;
   gap: 18px;

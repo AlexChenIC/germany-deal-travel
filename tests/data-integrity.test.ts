@@ -314,6 +314,155 @@ test("baltic sea short-stay shortlist keeps urgent weekend choices actionable", 
   }
 });
 
+test("budapest return plan keeps flight, hotel, and transfer decisions actionable", async () => {
+  const data = await readJson<{
+    updatedAt: string;
+    verdictZh: string;
+    quickTakeawaysZh: string[];
+    flightPlan: {
+      routeZh: string;
+      operatorZh: string;
+      scheduleZh: string;
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+    };
+    recommendedItineraries: Array<{
+      id: string;
+      nameZh: string;
+      fitScore: number;
+      dayPlanZh: string[];
+      risksZh: string[];
+    }>;
+    transportOptions: Array<{
+      id: string;
+      modeZh: string;
+      rank: number;
+      headlineZh: string;
+      babyFitZh: string;
+      prosZh: string[];
+      consZh: string[];
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+    }>;
+    hotelOptions: Array<{
+      id: string;
+      nameZh: string;
+      fitScore: number;
+      boardLevel: string;
+      boardZh: string;
+      babyFitZh: string;
+      poolSpaZh: string;
+      prosZh: string[];
+      risksZh: string[];
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+      bookingLinks: Array<{ label: string; url: string; noteZh: string }>;
+    }>;
+    airportConnection: {
+      recommendedZh: string;
+      publicTransportZh: string;
+      taxiZh: string;
+      airportTimingZh: string;
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+    };
+    cityPacingZh: string[];
+    bookingChecklistZh: string[];
+    bookingLinks: Array<{ site: string; label: string; url: string; intentZh: string }>;
+  }>("src/data/budapest-ningbo-return-plan.json");
+
+  assert.ok(data.updatedAt, "budapest return plan needs an update timestamp");
+  assert.ok(data.verdictZh.length > 80, "budapest return plan needs a clear verdict");
+  assert.ok(data.quickTakeawaysZh.length >= 5, "budapest return plan needs takeaways");
+  assert.ok(data.flightPlan.routeZh.includes("Budapest"), "flight plan needs Budapest route");
+  assert.ok(data.flightPlan.routeZh.includes("Ningbo"), "flight plan needs Ningbo route");
+  assert.ok(data.flightPlan.operatorZh.includes("FM898"), "flight plan needs FM898");
+  assert.ok(data.flightPlan.scheduleZh.includes("周一"), "flight plan needs Monday schedule");
+  assert.ok(data.flightPlan.scheduleZh.includes("周四"), "flight plan needs Thursday schedule");
+  assert.ok(data.flightPlan.sourceLinks.length >= 2, "flight plan needs evidence");
+  data.flightPlan.sourceLinks.forEach((source) =>
+    assertSourceLink("budapest return flight source", source),
+  );
+
+  assert.ok(data.recommendedItineraries.length >= 2, "needs itinerary options");
+  assert.ok(data.transportOptions.length >= 4, "needs flight, train, bus, and car comparison");
+  assert.ok(data.hotelOptions.length >= 3, "needs hotel options");
+  assert.ok(data.cityPacingZh.length >= 4, "needs city pacing notes");
+  assert.ok(data.bookingChecklistZh.length >= 5, "needs booking checklist");
+  assert.ok(data.bookingLinks.length >= 4, "needs booking links");
+  assertUniqueIds(
+    "budapest return itineraries",
+    data.recommendedItineraries.map((item) => item.id),
+  );
+  assertUniqueIds(
+    "budapest return transport options",
+    data.transportOptions.map((item) => item.id),
+  );
+  assertUniqueIds(
+    "budapest return hotels",
+    data.hotelOptions.map((item) => item.id),
+  );
+
+  assert.ok(
+    data.transportOptions.some((option) => option.id === "ber-bud-flight" && option.rank === 1),
+    "flight should be the top Berlin-Budapest recommendation",
+  );
+  assert.ok(
+    data.transportOptions.some((option) => option.id === "ber-bud-coach"),
+    "bus option should be explicitly assessed",
+  );
+  assert.ok(
+    data.hotelOptions.some((hotel) => hotel.id === "aquaworld-resort-budapest"),
+    "Aquaworld should be present",
+  );
+  assert.ok(
+    data.hotelOptions.some((hotel) => /half|full|board/i.test(hotel.boardLevel)),
+    "needs at least one board-included hotel",
+  );
+
+  for (const itinerary of data.recommendedItineraries) {
+    assert.ok(itinerary.nameZh.trim(), `${itinerary.id} needs name`);
+    assert.ok(itinerary.fitScore >= 0 && itinerary.fitScore <= 100, `${itinerary.id} fit score`);
+    assert.ok(itinerary.dayPlanZh.length >= 3, `${itinerary.id} needs day plan`);
+    assert.ok(itinerary.risksZh.length >= 2, `${itinerary.id} needs risks`);
+  }
+
+  for (const option of data.transportOptions) {
+    assert.ok(option.modeZh.trim(), `${option.id} needs mode`);
+    assert.ok(option.rank > 0, `${option.id} needs rank`);
+    assert.ok(option.headlineZh.trim(), `${option.id} needs headline`);
+    assert.ok(option.babyFitZh.trim(), `${option.id} needs baby fit`);
+    assert.ok(option.prosZh.length >= 2, `${option.id} needs pros`);
+    assert.ok(option.consZh.length >= 2, `${option.id} needs cons`);
+    option.sourceLinks.forEach((source) => assertSourceLink(`${option.id} source`, source));
+  }
+
+  for (const hotel of data.hotelOptions) {
+    assert.ok(hotel.nameZh.trim(), `${hotel.id} needs Chinese name`);
+    assert.ok(hotel.fitScore >= 0 && hotel.fitScore <= 100, `${hotel.id} fit score`);
+    assert.ok(hotel.boardZh.trim(), `${hotel.id} needs board notes`);
+    assert.ok(hotel.babyFitZh.trim(), `${hotel.id} needs baby fit`);
+    assert.ok(hotel.poolSpaZh.trim(), `${hotel.id} needs pool/spa notes`);
+    assert.ok(hotel.prosZh.length >= 2, `${hotel.id} needs pros`);
+    assert.ok(hotel.risksZh.length >= 2, `${hotel.id} needs risks`);
+    assert.ok(hotel.sourceLinks.length > 0, `${hotel.id} needs sources`);
+    assert.ok(hotel.bookingLinks.length > 0, `${hotel.id} needs booking links`);
+    hotel.sourceLinks.forEach((source) => assertSourceLink(`${hotel.id} source`, source));
+    hotel.bookingLinks.forEach((source) => assertSourceLink(`${hotel.id} booking`, source));
+  }
+
+  assert.ok(data.airportConnection.recommendedZh.trim(), "airport recommendation needed");
+  assert.ok(data.airportConnection.publicTransportZh.trim(), "airport public transport needed");
+  assert.ok(data.airportConnection.taxiZh.trim(), "airport taxi needed");
+  assert.ok(data.airportConnection.airportTimingZh.trim(), "airport timing needed");
+  data.airportConnection.sourceLinks.forEach((source) =>
+    assertSourceLink("airport connection source", source),
+  );
+
+  for (const link of data.bookingLinks) {
+    assert.ok(link.site.trim(), `${link.label} needs site`);
+    assert.ok(link.label.trim(), `${link.site} needs label`);
+    assert.match(link.url, /^https?:\/\//, `${link.label} booking URL`);
+    assert.ok(link.intentZh.trim(), `${link.label} needs intent`);
+  }
+});
+
 test("discount watch sources stay focused and actionable", async () => {
   const data = await readJson<DiscountWatchData>("src/data/discount-source-watch.json");
   assert.ok(data.updatedAt, "discount watch data needs an update timestamp");

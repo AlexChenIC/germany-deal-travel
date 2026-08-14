@@ -79,6 +79,7 @@ import {
 import { expandQuery, normalizeSearchText } from "./lib/search";
 import { AlpineBorderPlanView } from "./pages/AlpineBorderPlanView";
 import { BalticSeaShortlistView } from "./pages/BalticSeaShortlistView";
+import { BudapestNingboReturnView } from "./pages/BudapestNingboReturnView";
 import { CanaryDealsView } from "./pages/CanaryDealsView";
 import { DiscountFocusView } from "./pages/DiscountFocusView";
 import { PlanView } from "./pages/PlanView";
@@ -117,6 +118,7 @@ type Tab =
   | "picks"
   | "summer"
   | "baltic"
+  | "budapest-return"
   | "alps"
   | "rv"
   | "canary"
@@ -398,6 +400,12 @@ function App() {
         <TabButton active={activeTab === "baltic"} onClick={() => selectTab("baltic")}>
           北部海边
         </TabButton>
+        <TabButton
+          active={activeTab === "budapest-return"}
+          onClick={() => selectTab("budapest-return")}
+        >
+          布达佩斯回国
+        </TabButton>
         <TabButton active={activeTab === "alps"} onClick={() => selectTab("alps")}>
           三国山地
         </TabButton>
@@ -457,6 +465,8 @@ function App() {
         <SummerAllInclusiveView />
       ) : activeTab === "baltic" ? (
         <BalticSeaShortlistView />
+      ) : activeTab === "budapest-return" ? (
+        <BudapestNingboReturnView />
       ) : activeTab === "alps" ? (
         <AlpineBorderPlanView />
       ) : activeTab === "rv" ? (
@@ -2451,6 +2461,7 @@ function hashToTab(hash: string): Tab {
     normalized === "picks" ||
     normalized === "summer" ||
     normalized === "baltic" ||
+    normalized === "budapest-return" ||
     normalized === "alps" ||
     normalized === "rv" ||
     normalized === "discounts" ||

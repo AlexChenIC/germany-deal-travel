@@ -1,0 +1,438 @@
+{
+  "updatedAt": "2026-08-14T09:49:13+02:00",
+  "timezone": "Europe/Berlin",
+  "partyZh": "2 位成年人 + 1 位约 1 岁宝宝",
+  "targetWindowZh": "2026-09-10 附近或以后，从柏林先到布达佩斯休整 2-3 晚，再搭乘 Budapest BUD 至 Ningbo NGB 直飞回国。",
+  "verdictZh": "最稳方案是不要做同日衔接。建议 2026-09-07 或 2026-09-08 从柏林飞到布达佩斯，住 2-3 晚，2026-09-10 周四晚上搭 FM898/MU8624 直飞宁波。若想多留几天或给宝宝更多恢复时间，第二选择是住到 2026-09-14 周一晚航班。柏林到布达佩斯三种交通里，带 1 岁宝宝且后续还有长途回国时，飞机综合最合适；火车可作为低折腾但耗时长的备选；长途巴士不推荐。",
+  "quickTakeawaysZh": [
+    "2026-09-10 是周四，正好匹配 Budapest -> Ningbo 每周四直飞；航班约 20:55 从 BUD T2A 起飞，次日约 14:00 到宁波。",
+    "柏林到布达佩斯首选直飞：BER -> BUD 约 1.5 小时，Ryanair / Wizz Air 班次多；带宝宝时要提前买托运行李、座位和婴儿相关服务。",
+    "不要周四从柏林出发再当晚飞宁波；任何 BER 延误、行李问题或宝宝状态波动都会放大风险。",
+    "布达佩斯市内真 All Inclusive 很少；可执行目标应改成 Full Board 或 Half Board，至少早餐 + 晚餐。",
+    "酒店首选 Aquaworld Resort Budapest：最亲子，有室内水世界、宝宝设备和半膳/全膳套餐线索；缺点是不在市中心。",
+    "如果更想城市轻旅游而不是水世界，选 Ensana Thermal Margaret Island：半膳、温泉、泳池、安静，去市区和机场都更均衡。"
+  ],
+  "flightPlan": {
+    "routeZh": "Budapest Ferenc Liszt International Airport (BUD) -> Ningbo Lishe International Airport (NGB)",
+    "operatorZh": "Shanghai Airlines FM898，China Eastern MU8624 代码共享",
+    "aircraftZh": "Boeing 787-9，约 10 小时 45 分至 11 小时 05 分",
+    "scheduleZh": "2026 年夏秋季检索到周一、周四直飞；9 月 10 日属于周四，9 月 14 日属于周一。",
+    "terminalZh": "BUD 出发航站楼通常为 Terminal 2A；宁波到达为 NGB。",
+    "riskZh": "航班时刻可能在航季切换或航司调整时变化；出票前必须在东方航空/上海航空或 OTA 结算页复核日期、婴儿票、托运行李和取消改签规则。",
+    "sourceLinks": [
+      {
+        "label": "Flight.info FM898",
+        "url": "https://www.flight.info/FM898",
+        "noteZh": "显示 FM898 周一/周四、20:55 BUD T2A 出发、次日到宁波，Boeing 787-9。"
+      },
+      {
+        "label": "FlightsFrom BUD-NGB",
+        "url": "https://www.flightsfrom.com/BUD-NGB",
+        "noteZh": "显示 Budapest 至 Ningbo 由 Shanghai Airlines 运营，每周 2 班，约 11 小时。"
+      },
+      {
+        "label": "Directflights BUD-NGB",
+        "url": "https://www.directflights.com/BUD-NGB",
+        "noteZh": "显示 2 weekly departures、FM898、BUD Terminal 2A。"
+      }
+    ]
+  },
+  "recommendedItineraries": [
+    {
+      "id": "sept-10-direct-return",
+      "nameZh": "首选：9 月 10 日周四直飞回宁波",
+      "fitScore": 94,
+      "datesZh": "2026-09-07/08 抵达布达佩斯，2026-09-10 20:55 左右从 BUD 飞宁波，2026-09-11 下午到 NGB。",
+      "whoShouldPickZh": "适合希望尽快回国、只在布达佩斯休整 2-3 晚、不想把欧洲段拖太长的情况。",
+      "dayPlanZh": [
+        "D1：柏林飞布达佩斯，酒店入住，晚餐在酒店解决；不安排重景点。",
+        "D2：酒店休整为主；Aquaworld 住客直接水世界，Ensana 住客 Margaret Island 散步 + 温泉/泳池。",
+        "D3：上午轻量城市游，下午 16:30-17:00 出发去机场，预留晚高峰和带娃安检时间。"
+      ],
+      "hotelPairingZh": "Aquaworld 适合把这两三天当度假；Ensana Thermal Margaret Island 适合兼顾城市和休息。",
+      "risksZh": [
+        "如果 9 月 8 才到，布达佩斯实际游玩时间不多。",
+        "9 月 10 是回国长途日，白天不能安排太满。",
+        "FM898 晚间起飞，宝宝午睡和晚饭节奏要提前设计。"
+      ]
+    },
+    {
+      "id": "sept-14-buffer-return",
+      "nameZh": "更从容：9 月 14 日周一直飞回宁波",
+      "fitScore": 88,
+      "datesZh": "2026-09-10 之后继续住到周一，2026-09-14 晚上从 BUD 飞宁波，2026-09-15 下午到 NGB。",
+      "whoShouldPickZh": "适合想把布达佩斯真正玩 3-4 天，或者想让宝宝在长途回国前有更充足恢复时间。",
+      "dayPlanZh": [
+        "D1-D2：酒店休整、水世界/温泉、附近散步。",
+        "D3：Buda Castle / Fisherman's Bastion / Danube 河岸轻量游。",
+        "D4：中央市场或城市公园，下午回酒店午睡。",
+        "D5：收拾行李，傍晚去机场。"
+      ],
+      "hotelPairingZh": "如果住 4 晚以上，Ensana 的半膳温泉节奏更平衡；Aquaworld 会更像亲子度假，不适合每天进城。",
+      "risksZh": [
+        "住宿成本更高。",
+        "孩子如果已经接近回国节奏，欧洲段拖太长可能增加行李和作息负担。",
+        "需要确认 9 月 14 日 FM898 实际开售和票价。"
+      ]
+    }
+  ],
+  "transportOptions": [
+    {
+      "id": "ber-bud-flight",
+      "modeZh": "飞机",
+      "rank": 1,
+      "headlineZh": "推荐首选：BER 直飞 BUD",
+      "durationZh": "空中约 1 小时 20-30 分；加上机场和行李，总门到门约 4.5-6 小时。",
+      "priceZh": "低成本航司价格波动大；家庭出行要把托运行李、座位、婴儿票和机场交通算进去。",
+      "babyFitZh": "对 1 岁宝宝最可控：总时长短，但机场安检、登机和行李需要提前组织。",
+      "prosZh": [
+        "直飞班次多，Ryanair / Wizz Air 覆盖 BER-BUD。",
+        "到达后可直接入住酒店，减少跨境长时间坐车。",
+        "后面还有 11 小时回国航班，欧洲段越短越稳。"
+      ],
+      "consZh": [
+        "低成本航司对行李、座位、婴儿车、随身件限制严格。",
+        "如果当天衔接宁波航班，延误风险不可接受。",
+        "机场流程对宝宝午睡不友好，需要安排缓冲。"
+      ],
+      "recommendationZh": "建议 9 月 7 或 9 月 8 飞到布达佩斯；不要 9 月 10 当天从柏林飞 BUD 再接 FM898。",
+      "sourceLinks": [
+        {
+          "label": "Directflights BER-BUD",
+          "url": "https://www.directflights.com/BER-BUD",
+          "noteZh": "显示 BER-BUD 由 Ryanair 和 Wizz Air 直飞，约 1 小时 20-30 分。"
+        },
+        {
+          "label": "FlightConnections BER-BUD",
+          "url": "https://www.flightconnections.com/flights-from-ber-to-bud",
+          "noteZh": "显示 BER-BUD 每周多班，Ryanair / Wizz Air 运营。"
+        }
+      ]
+    },
+    {
+      "id": "ber-bud-train",
+      "modeZh": "火车",
+      "rank": 2,
+      "headlineZh": "可选：白天火车或夜车",
+      "durationZh": "白天最快约 11 小时；夜车约过夜抵达，具体铺位需提前查。",
+      "priceZh": "DB 页面示例有约 69.98 EUR 起；卧铺/私人包厢价格通常更高。",
+      "babyFitZh": "能走动、换尿布空间相对好，但 11 小时对白天带娃很长；夜车必须订私人卧铺/包厢才有意义。",
+      "prosZh": [
+        "行李限制比低成本航司宽松。",
+        "可避免机场安检和登机压力。",
+        "夜车私人包厢理论上能让宝宝睡一段。"
+      ],
+      "consZh": [
+        "白天车程很长，宝宝和大人都容易疲劳。",
+        "转车或夜车延误会影响酒店入住。",
+        "携带大件行李和婴儿车上下车仍然麻烦。"
+      ],
+      "recommendationZh": "只有在明确不想坐低成本航司、且能订到合适卧铺或一等座时才考虑。",
+      "sourceLinks": [
+        {
+          "label": "DB Berlin-Budapest",
+          "url": "https://www.bahn.de/reisen/view/verbindung/berlin/budapest.shtml",
+          "noteZh": "显示 Berlin Hbf 到 Budapest 最快约 11 小时，并有直达/换乘信息。"
+        },
+        {
+          "label": "DB Nightjet Berlin-Budapest",
+          "url": "https://www.bahn.de/angebot/international/nachtzug-berlin-budapest",
+          "noteZh": "DB 介绍 Berlin-Budapest 夜车、私人包厢和 Schlafwagen 早餐。"
+        }
+      ]
+    },
+    {
+      "id": "ber-bud-coach",
+      "modeZh": "长途巴士",
+      "rank": 3,
+      "headlineZh": "不推荐：FlixBus 长途直达",
+      "durationZh": "最快约 11 小时 10 分，实际常见 11-13 小时以上。",
+      "priceZh": "FlixBus 页面显示约 52.98 EUR 起。",
+      "babyFitZh": "对 1 岁宝宝不友好：长时间固定座位、夜间休息差、换尿布和临时停车不可控。",
+      "prosZh": [
+        "票价通常最低。",
+        "可带一件托运行李，部分班次直达。",
+        "如果成年人单独旅行会很实用。"
+      ],
+      "consZh": [
+        "车程太长，宝宝活动空间和休息质量差。",
+        "堵车、边境/休息站、夜间到达都不可控。",
+        "回国前把家庭体力耗空，不符合这次目标。"
+      ],
+      "recommendationZh": "除非预算极端敏感且能接受明显不适，否则不要选。",
+      "sourceLinks": [
+        {
+          "label": "FlixBus Berlin-Budapest",
+          "url": "https://www.flixbus.es/rutas/berlin-budapest",
+          "noteZh": "显示 Berlin-Budapest 最短约 11h10m、约 877 km、低价票线索。"
+        }
+      ]
+    },
+    {
+      "id": "ber-bud-car",
+      "modeZh": "自驾",
+      "rank": 4,
+      "headlineZh": "通常不划算：除非要把车开回/另有沿途计划",
+      "durationZh": "约 870 km，8.5-9.5 小时纯驾驶；带宝宝实际需要拆成两天。",
+      "priceZh": "燃油 + 捷克/奥地利/斯洛伐克/匈牙利 vignette 或通行费用，单程通常不低。",
+      "babyFitZh": "可随时停靠，但驾驶负担很大；到布达佩斯后停车和还车也增加复杂度。",
+      "prosZh": [
+        "行李和婴儿用品最自由。",
+        "可分两天，经 Dresden / Prague / Brno 休息。",
+        "如果之后想去远郊亲子酒店，车会有价值。"
+      ],
+      "consZh": [
+        "总距离长，不适合作为回国前的休整手段。",
+        "跨国 vignette、停车、还车和保险增加管理成本。",
+        "一位司机会非常疲劳。"
+      ],
+      "recommendationZh": "本方案不建议自驾。若坚持自驾，应 Berlin -> Prague/Brno 过夜 -> Budapest，而不是一天开完。",
+      "sourceLinks": [
+        {
+          "label": "Berlin-Budapest driving",
+          "url": "https://nakordoni.eu/sq/driving/berlin-to-budapest",
+          "noteZh": "显示约 870 km、约 8h44m，并提示燃油和通行费用。"
+        }
+      ]
+    }
+  ],
+  "hotelOptions": [
+    {
+      "id": "aquaworld-resort-budapest",
+      "name": "Aquaworld Resort Budapest",
+      "nameZh": "Aquaworld Resort Budapest 亲子水世界度假",
+      "rank": 1,
+      "fitScore": 94,
+      "boardLevel": "full-board-or-half-board",
+      "boardZh": "官方页面有 2 晚 Full Board 夏季套餐线索，也有 1 晚 Half Board 短住线索；至少能满足早餐 + 晚餐目标，具体 9 月日期需进预订页核价。",
+      "locationFitZh": "不在布达佩斯市中心，更适合把 2-3 天当作酒店度假；去机场建议打车/预订接送。",
+      "babyFitZh": "官方列出婴儿床、换尿布台、热水器、围栏、奶瓶加热器、婴儿浴盆、儿童菜单；1 岁宝宝适配度最高。",
+      "poolSpaZh": "直通 Aquaworld 室内水上乐园，儿童池、干区游乐、Bongo Kids Club、Oriental Spa。",
+      "cityTourFitZh": "适合只进城半天或一天；如果每天都想游布达佩斯市区，会觉得位置不方便。",
+      "recommendationZh": "本次家庭结构下的酒店首选。它不是传统城市酒店，而是让宝宝和大人都能休整的 resort。",
+      "prosZh": [
+        "亲子设施证据最强，宝宝设备明确。",
+        "半膳/全膳套餐线索贴合“不折腾吃饭”的需求。",
+        "水世界和儿童池能让 2-3 天不依赖城市景点。"
+      ],
+      "risksZh": [
+        "不在市中心，打车成本和时间要算进去。",
+        "全膳/半膳价格和 9 月库存必须在官方预订页确认。",
+        "水世界对 1 岁宝宝主要是浅水/陪伴，不是滑梯体验。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Aquaworld 家庭页",
+          "url": "https://www.aquaworldresort.hu/en/for_families",
+          "noteZh": "官方列出婴儿设备、儿童池、Kids Club、儿童菜单和住宿优惠线索。"
+        },
+        {
+          "label": "Aquaworld 官方首页",
+          "url": "https://www.aquaworldresort.hu/en",
+          "noteZh": "官方列出 water theme park、Oriental Spa、房型和 Full Board/Half Board 套餐线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Aquaworld 官方",
+          "url": "https://www.aquaworldresort.hu/en",
+          "noteZh": "优先查 2026-09-07/08 至 09-10，2 adults + 1 baby。"
+        }
+      ]
+    },
+    {
+      "id": "ensana-thermal-margaret-island",
+      "name": "Ensana Thermal Margaret Island",
+      "nameZh": "Ensana Thermal Margaret Island 半膳温泉",
+      "rank": 2,
+      "fitScore": 90,
+      "boardLevel": "half-board",
+      "boardZh": "官方 Stay with Spa, Dinner and Breakfast：Min. 1 night、Half Board、早餐 + 晚餐、提前 1 天免费取消线索。",
+      "locationFitZh": "Margaret Island 安静、绿地多，兼顾城市游和酒店休息；比 Aquaworld 更适合作为布达佩斯中转基地。",
+      "babyFitZh": "不是专门儿童酒店，但环境安静、空调、泳池和餐厅更适合低强度休息。",
+      "poolSpaZh": "Spa Centre、Pool、thermal water、sauna area、fitness；酒店住客可用 spa/sauna。",
+      "cityTourFitZh": "适合安排 Margaret Island、Danube 河岸、Buda Castle 等轻量游。",
+      "recommendationZh": "如果你们想真正看一点布达佩斯，同时每天早餐晚餐在酒店解决，这是最均衡选择。",
+      "prosZh": [
+        "半膳官方套餐清楚，最贴合“早餐 + 晚餐”。",
+        "位置比 Aquaworld 更适合城市游。",
+        "温泉和安静岛上环境适合回国前休整。"
+      ],
+      "risksZh": [
+        "不是强亲子酒店，宝宝娱乐设施不如 Aquaworld。",
+        "温泉/热池对 1 岁宝宝不一定合适，要按酒店规则确认。",
+        "房型是否能放婴儿床需预订时确认。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Ensana 半膳套餐",
+          "url": "https://ensanahotels.com/en/packages/thermal-margaret-island/deals/accommodation-with-half-board",
+          "noteZh": "官方显示 Stay with Spa, Dinner and Breakfast，Min. 1 night，Half Board，free cancellation 1 day prior。"
+        },
+        {
+          "label": "Ensana 餐饮页",
+          "url": "https://ensanahotels.com/en/hotels/thermal-margaret-island/cuisine",
+          "noteZh": "官方说明半膳早餐 7:00-10:00，晚餐 18:00-22:00。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Ensana 半膳",
+          "url": "https://ensanahotels.com/en/packages/thermal-margaret-island/deals/accommodation-with-half-board",
+          "noteZh": "查 2-3 晚，确认宝宝床、机场接送和半膳晚餐。"
+        }
+      ]
+    },
+    {
+      "id": "danubius-hotel-helia",
+      "name": "Danubius Hotel Helia",
+      "nameZh": "Danubius Hotel Helia 城市温泉备选",
+      "rank": 3,
+      "fitScore": 78,
+      "boardLevel": "half-board-possible",
+      "boardZh": "官方餐饮页说明可在预订时选择 breakfast 或 half board；Episode Restaurant 提供 buffet breakfast 和 buffet dinner。",
+      "locationFitZh": "Pest 北部、靠近 Danube；去市区和机场都较可控。",
+      "babyFitZh": "不是专门亲子 resort，但酒店功能完整；如果只需要安静、泳池和半膳，是实用备选。",
+      "poolSpaZh": "Indoor swimming pool、heated pools、jacuzzi、steam bath、sauna、fitness；页面提示 2026-08-03 起游泳池机械翻新，预计 2026-08-31 完成。",
+      "cityTourFitZh": "适合轻城市游和机场衔接；比 Aquaworld 更像传统酒店。",
+      "recommendationZh": "当 Ensana/Aquaworld 价格高或没合适房型时查它；9 月入住前必须确认泳池已恢复开放。",
+      "prosZh": [
+        "半膳和 buffet dinner 证据明确。",
+        "有温泉/泳池/sauna，城市交通比 resort 简单。",
+        "可能比 Ensana 更容易出现普通房价。"
+      ],
+      "risksZh": [
+        "2026 年 8 月泳池维护，9 月虽然预计恢复但必须确认。",
+        "亲子设施不突出。",
+        "房型面积和婴儿床要核实。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Danubius Helia 餐饮",
+          "url": "https://www.danubiushotels.com/en/our-hotels-budapest/danubius-hotel-helia/dining",
+          "noteZh": "官方说明可选 half board，buffet breakfast 和 buffet dinner。"
+        },
+        {
+          "label": "Danubius Helia Wellness",
+          "url": "https://www.danubiushotels.com/en/our-hotels-budapest/danubius-hotel-helia/wellness",
+          "noteZh": "官方列出泳池、热水池、jacuzzi、sauna，并提示 2026-08-31 预计完成泳池维护。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Danubius Helia",
+          "url": "https://www.danubiushotels.com/en/our-hotels-budapest/danubius-hotel-helia",
+          "noteZh": "核实 half board、泳池状态和家庭房/婴儿床。"
+        }
+      ]
+    },
+    {
+      "id": "zichy-family-experience-estate",
+      "name": "Zichy Family Experience Estate",
+      "nameZh": "Zichy Family Experience Estate 远郊亲子全包备选",
+      "rank": 4,
+      "fitScore": 72,
+      "boardLevel": "children-all-inclusive",
+      "boardZh": "官方 Farm Days 包含 half board；7 岁以下儿童 all inclusive，儿童有三餐、snacks 和饮品。",
+      "locationFitZh": "不在布达佩斯市内，适合租车/包车、并且愿意放弃城市游的人。",
+      "babyFitZh": "50+ baby-friendly services、baby food、children buffet、儿童活动，亲子适配很强。",
+      "poolSpaZh": "Wellness pools、children's pool、sauna world、salt room、室内外活动。",
+      "cityTourFitZh": "不适合布达佩斯 city break；适合作为纯亲子度假。",
+      "recommendationZh": "只作为“真亲子、省心吃饭”的远郊方案。若目标是布达佩斯几天后回宁波，不作为主推。",
+      "prosZh": [
+        "儿童餐饮和 baby-friendly 证据非常强。",
+        "可两天短住，取消/修改规则较友好。",
+        "比城市酒店更像真正亲子度假。"
+      ],
+      "risksZh": [
+        "远离布达佩斯和机场，接送成本高。",
+        "会削弱布达佩斯旅游体验。",
+        "需要额外核实从酒店到 BUD 机场的可靠接送。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Zichy Farm Days half board",
+          "url": "https://zichyelmenybirtok.hu/en/packet-update/estate-days-with-upgrading-schedule/",
+          "noteZh": "官方说明 half board、7 岁以下儿童 all inclusive、baby food、wellness 和儿童池。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "打开 Zichy 官方",
+          "url": "https://zichyelmenybirtok.hu/en/",
+          "noteZh": "只在愿意包车/租车且不主打市区游时考虑。"
+        }
+      ]
+    }
+  ],
+  "airportConnection": {
+    "recommendedZh": "去 BUD 机场建议优先用出租车/酒店接送，而不是带大件行李和宝宝挤公共交通。FM898 晚上 20:55 左右起飞，建议 17:00 左右到机场，最晚不要晚于 17:30。",
+    "publicTransportZh": "100E Airport Express 连接市中心 Deák Ferenc tér / Kálvin tér 与机场，官方显示约 40 分钟、24/7 运营、2,500 HUF 单程机场巴士票。适合轻行李，不适合大件行李 + 婴儿车 + 晚间长途回国。",
+    "taxiZh": "Budapest 官方出租车按统一费率计价；机场官网示例到市中心约 10,800 HUF / 约 28 EUR，交通状况会影响费用。带宝宝建议用酒店叫车或官方 Főtaxi/Bolt/Uber Taxi。",
+    "airportTimingZh": "Budapest Airport 近期旅行建议国际航班至少提前 2.5 小时到机场；带宝宝、托运行李和中国长途航班，建议按 3 小时预留。",
+    "sourceLinks": [
+      {
+        "label": "BKK 100E Airport Express",
+        "url": "https://bkk.hu/en/travel-information/airport-express/%E2%80%8B",
+        "noteZh": "官方说明 100E 约 40 分钟到市中心、24/7 运营、2,500 HUF。"
+      },
+      {
+        "label": "Budapest Airport Főtaxi",
+        "url": "https://www.bud.hu/parkolas-es-kozlekedes/kozlekedesi-lehetosegek/taxi-uber/taxi/taxi.html",
+        "noteZh": "机场官网说明官方出租车和到市中心约 10,800 HUF 示例。"
+      },
+      {
+        "label": "Budapest Airport summer tips",
+        "url": "https://www.bud.hu/en/mediacenter/airport-news/summer-travel-tips-from-budapest-airport.html",
+        "noteZh": "机场建议旅客至少提前 2.5 小时到达机场。"
+      }
+    ]
+  },
+  "cityPacingZh": [
+    "带 1 岁宝宝不要把布达佩斯安排成重旅游。每天只安排一个主活动，午睡在酒店完成。",
+    "住 Aquaworld：D2 基本不进城，D3 上午去 Danube 河岸或城堡区拍照，下午回酒店拿行李去机场。",
+    "住 Ensana：D2 Margaret Island + 温泉休息，D3 Buda Castle / Fisherman's Bastion 半天，下午机场。",
+    "住 Danubius Helia：D2 Danube 河边和轻城市游，D3 酒店 spa + 机场。",
+    "避免在回国当天安排 Széchenyi/Gellért 这类公共大温泉；宝宝规则、卫生、动线和行李都不如酒店内设施可控。"
+  ],
+  "bookingChecklistZh": [
+    "先锁 FM898/MU8624：确认 2026-09-10 或 2026-09-14 是否有票，婴儿票、行李、改签和退票规则是否可接受。",
+    "再订 Berlin -> Budapest：优先 9 月 7 或 9 月 8 直飞，避开与宁波航班同日。",
+    "酒店筛选：先 Aquaworld，再 Ensana Thermal Margaret Island，再 Danubius Helia。",
+    "房型必须确认：1 岁宝宝是否可免费入住、婴儿床是否可提供、房间是否有空调、是否有电梯。",
+    "餐饮必须确认：half board 是否是早餐 + 晚餐，饮料是否另付，晚餐时段是否适合宝宝。",
+    "机场接送：回国当天预订酒店叫车或官方出租车，目标 17:00 到 BUD T2A。"
+  ],
+  "bookingLinks": [
+    {
+      "site": "China Eastern / Shanghai Airlines",
+      "label": "FM898 / MU8624 官方核票",
+      "url": "https://global.ceair.com/",
+      "intentZh": "出票前核实 Budapest -> Ningbo 直飞日期、婴儿票、托运行李、退改规则。"
+    },
+    {
+      "site": "Google Flights",
+      "label": "BER -> BUD 直飞比价",
+      "url": "https://www.google.com/travel/flights",
+      "intentZh": "查 Ryanair / Wizz Air 的具体日期、行李后总价和到达时间。"
+    },
+    {
+      "site": "DB",
+      "label": "Berlin -> Budapest 火车备选",
+      "url": "https://www.bahn.de/reisen/view/verbindung/berlin/budapest.shtml",
+      "intentZh": "只在不想飞或想查夜车私人包厢时使用。"
+    },
+    {
+      "site": "Aquaworld",
+      "label": "亲子水世界酒店",
+      "url": "https://www.aquaworldresort.hu/en",
+      "intentZh": "首查 2-3 晚、half board/full board、2 adults + baby。"
+    },
+    {
+      "site": "Ensana",
+      "label": "Margaret Island 半膳温泉",
+      "url": "https://ensanahotels.com/en/packages/thermal-margaret-island/deals/accommodation-with-half-board",
+      "intentZh": "查 Stay with Spa, Dinner and Breakfast，适合城市 + 休整。"
+    }
+  ]
+}
