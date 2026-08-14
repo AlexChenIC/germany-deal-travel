@@ -79,6 +79,20 @@ interface BookingLink {
   intentZh: string;
 }
 
+interface DateCandidate {
+  id: string;
+  dateZh: string;
+  weekdayZh: string;
+  arrivalZh: string;
+  score: number;
+  verdictZh: string;
+  vaccineBufferZh: string;
+  schoolFitZh: string;
+  ningboClimateZh: string;
+  recommendationZh: string;
+  risksZh: string[];
+}
+
 interface BudapestReturnData {
   updatedAt: string;
   timezone: string;
@@ -86,6 +100,14 @@ interface BudapestReturnData {
   targetWindowZh: string;
   verdictZh: string;
   quickTakeawaysZh: string[];
+  dateOptimization: {
+    recommendationZh: string;
+    healthAssumptionZh: string;
+    schoolConstraintZh: string;
+    climateSummaryZh: string;
+    dateCandidates: DateCandidate[];
+    sourceLinks: SourceLinkData[];
+  };
   flightPlan: {
     routeZh: string;
     operatorZh: string;
@@ -125,6 +147,7 @@ export function BudapestNingboReturnView() {
   ).length;
   const topItinerary = budapestReturnData.recommendedItineraries[0];
   const recommendedTransport = budapestReturnData.transportOptions[0];
+  const topDate = budapestReturnData.dateOptimization.dateCandidates[2];
 
   return (
     <section className="summer-page budapest-return-page">
@@ -146,8 +169,9 @@ export function BudapestNingboReturnView() {
       </div>
 
       <section className="summer-metrics" aria-label="budapest return plan summary">
-        <Metric label="首选回国日" value="09/10" icon={<CalendarDays />} />
+        <Metric label="首选回国日" value="09/17" icon={<CalendarDays />} />
         <Metric label="直飞频率" value="周一/四" icon={<Plane />} />
+        <Metric label="宁波均温" value="27-28°C" icon={<CircleAlert />} />
         <Metric label="酒店候选" value={budapestReturnData.hotelOptions.length} icon={<Hotel />} />
         <Metric label="含早晚餐" value={halfBoardHotels} icon={<Utensils />} />
       </section>
@@ -160,6 +184,49 @@ export function BudapestNingboReturnView() {
         <div className="summer-takeaway-grid">
           {budapestReturnData.quickTakeawaysZh.map((takeaway) => (
             <span key={takeaway}>{takeaway}</span>
+          ))}
+        </div>
+      </section>
+
+      <section className="summer-section">
+        <div className="results-header">
+          <div>
+            <h2>回国日期优化</h2>
+            <p className="summer-section-note">
+              这里把疫苗后健康缓冲、学校注册、宁波 9 月常年气候放在同一个表里比较。
+            </p>
+          </div>
+          <span>{topDate.dateZh} {topDate.weekdayZh}</span>
+        </div>
+        <article className="summer-action-panel">
+          <div>
+            <div className="summer-section-heading">
+              <Sparkles size={18} aria-hidden="true" />
+              <h3>{budapestReturnData.dateOptimization.recommendationZh}</h3>
+            </div>
+            <div className="summer-list-block is-positive">
+              <ul>
+                <li>{budapestReturnData.dateOptimization.healthAssumptionZh}</li>
+                <li>{budapestReturnData.dateOptimization.schoolConstraintZh}</li>
+                <li>{budapestReturnData.dateOptimization.climateSummaryZh}</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div className="summer-section-heading">
+              <ShieldCheck size={18} aria-hidden="true" />
+              <h3>气候来源</h3>
+            </div>
+            <div className="summer-booking-links">
+              {budapestReturnData.dateOptimization.sourceLinks.map((source) => (
+                <SourceLink key={source.url} source={source} />
+              ))}
+            </div>
+          </div>
+        </article>
+        <div className="summer-signal-grid">
+          {budapestReturnData.dateOptimization.dateCandidates.map((candidate) => (
+            <DateCandidateCard candidate={candidate} key={candidate.id} />
           ))}
         </div>
       </section>
@@ -207,7 +274,7 @@ export function BudapestNingboReturnView() {
           <div>
             <h2>推荐日程</h2>
             <p className="summer-section-note">
-              首选 9 月 10 日周四飞回；9 月 14 日周一作为更从容的第二方案。
+              首选 9 月 17 日周四飞回；9 月 14 日是保守备选，9 月 21 日是气候优先备选。
             </p>
           </div>
           <span>{topItinerary.nameZh}</span>
@@ -372,6 +439,45 @@ function ItineraryCard({ itinerary }: { itinerary: RecommendedItinerary }) {
       <div className="summer-keywords">
         <strong>酒店搭配</strong>
         <p>{itinerary.hotelPairingZh}</p>
+      </div>
+    </article>
+  );
+}
+
+function DateCandidateCard({ candidate }: { candidate: DateCandidate }) {
+  const cardClass = candidate.score >= 90
+    ? "summer-signal-card is-date-top"
+    : candidate.score >= 80
+      ? "summer-signal-card is-date-strong"
+      : "summer-signal-card is-date-backup";
+
+  return (
+    <article className={cardClass}>
+      <div>
+        <span>{candidate.weekdayZh}</span>
+        <h3>{candidate.dateZh}</h3>
+        <p>{candidate.arrivalZh}</p>
+      </div>
+      <div className={candidate.score >= 90 ? "summer-score" : "summer-score is-stretch"}>
+        <strong>{candidate.score}</strong>
+        <span>{candidate.verdictZh}</span>
+      </div>
+      <div className="summer-list-block is-positive">
+        <strong>核心判断</strong>
+        <ul>
+          <li>{candidate.vaccineBufferZh}</li>
+          <li>{candidate.schoolFitZh}</li>
+          <li>{candidate.ningboClimateZh}</li>
+        </ul>
+      </div>
+      <p>{candidate.recommendationZh}</p>
+      <div className="summer-list-block">
+        <strong>风险</strong>
+        <ul>
+          {candidate.risksZh.map((risk) => (
+            <li key={risk}>{risk}</li>
+          ))}
+        </ul>
       </div>
     </article>
   );

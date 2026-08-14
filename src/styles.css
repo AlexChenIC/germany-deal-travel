@@ -3687,6 +3687,19 @@ h1 {
   min-height: 108px;
 }
 
+.budapest-return-page .summer-signal-card {
+  min-height: 0;
+}
+
+.budapest-return-page .summer-signal-card.is-date-top {
+  border-color: #86c7ba;
+}
+
+.budapest-return-page .summer-signal-card.is-date-strong,
+.budapest-return-page .summer-signal-card.is-date-backup {
+  border-color: #d8c4a0;
+}
+
 .budapest-return-page .summer-roadtrip-card,
 .budapest-return-page .summer-portal-card {
   min-height: 0;

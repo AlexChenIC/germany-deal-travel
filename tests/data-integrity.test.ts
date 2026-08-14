@@ -325,6 +325,21 @@ test("budapest return plan keeps flight, hotel, and transfer decisions actionabl
       scheduleZh: string;
       sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
     };
+    dateOptimization: {
+      recommendationZh: string;
+      climateSummaryZh: string;
+      dateCandidates: Array<{
+        id: string;
+        dateZh: string;
+        score: number;
+        verdictZh: string;
+        vaccineBufferZh: string;
+        schoolFitZh: string;
+        ningboClimateZh: string;
+        risksZh: string[];
+      }>;
+      sourceLinks: Array<{ label: string; url: string; noteZh: string }>;
+    };
     recommendedItineraries: Array<{
       id: string;
       nameZh: string;
@@ -379,6 +394,35 @@ test("budapest return plan keeps flight, hotel, and transfer decisions actionabl
   data.flightPlan.sourceLinks.forEach((source) =>
     assertSourceLink("budapest return flight source", source),
   );
+  assert.ok(
+    data.dateOptimization.recommendationZh.includes("2026-09-17"),
+    "date optimization should prefer 2026-09-17",
+  );
+  assert.ok(
+    data.dateOptimization.climateSummaryZh.includes("宁波"),
+    "date optimization needs Ningbo climate summary",
+  );
+  assert.ok(data.dateOptimization.dateCandidates.length >= 5, "needs date candidates");
+  assert.ok(data.dateOptimization.sourceLinks.length >= 2, "date optimization needs sources");
+  assertUniqueIds(
+    "budapest return date candidates",
+    data.dateOptimization.dateCandidates.map((item) => item.id),
+  );
+  data.dateOptimization.sourceLinks.forEach((source) =>
+    assertSourceLink("date optimization source", source),
+  );
+  assert.ok(
+    data.dateOptimization.dateCandidates.some(
+      (candidate) => candidate.dateZh === "2026-09-17" && candidate.score >= 90,
+    ),
+    "2026-09-17 should be the high-scoring date",
+  );
+  assert.ok(
+    data.dateOptimization.dateCandidates.some(
+      (candidate) => candidate.dateZh === "2026-09-10" && candidate.score < 80,
+    ),
+    "2026-09-10 should no longer be the default high-score date",
+  );
 
   assert.ok(data.recommendedItineraries.length >= 2, "needs itinerary options");
   assert.ok(data.transportOptions.length >= 4, "needs flight, train, bus, and car comparison");
@@ -421,6 +465,16 @@ test("budapest return plan keeps flight, hotel, and transfer decisions actionabl
     assert.ok(itinerary.fitScore >= 0 && itinerary.fitScore <= 100, `${itinerary.id} fit score`);
     assert.ok(itinerary.dayPlanZh.length >= 3, `${itinerary.id} needs day plan`);
     assert.ok(itinerary.risksZh.length >= 2, `${itinerary.id} needs risks`);
+  }
+
+  for (const candidate of data.dateOptimization.dateCandidates) {
+    assert.ok(candidate.dateZh.trim(), `${candidate.id} needs date`);
+    assert.ok(candidate.score >= 0 && candidate.score <= 100, `${candidate.id} score`);
+    assert.ok(candidate.verdictZh.trim(), `${candidate.id} needs verdict`);
+    assert.ok(candidate.vaccineBufferZh.trim(), `${candidate.id} needs vaccine buffer`);
+    assert.ok(candidate.schoolFitZh.trim(), `${candidate.id} needs school fit`);
+    assert.ok(candidate.ningboClimateZh.trim(), `${candidate.id} needs Ningbo climate`);
+    assert.ok(candidate.risksZh.length >= 2, `${candidate.id} needs risks`);
   }
 
   for (const option of data.transportOptions) {
