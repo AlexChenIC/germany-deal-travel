@@ -1,0 +1,616 @@
+{
+  "updatedAt": "2026-08-28",
+  "timezone": "Europe/Berlin",
+  "partyZh": "2位成人 + Alice（约1岁半），可能增加1位成人",
+  "travelWindowZh": "2026-12-15 至 2027年初之间，优先6-8晚",
+  "stayLengthZh": "约一周，节奏以轻松度假为主",
+  "verdictZh": "优先看红海 Hurghada / Makadi Bay 和加纳利群岛；马略卡作为备选，不适合作为圣诞期间的泳池海边主方案。",
+  "assumptionsZh": [
+    "搜索目标以柏林 BER 出发或柏林可方便抵达为前提。",
+    "价格线索来自公开网页搜索结果和酒店/平台页面，实际家庭人数、婴儿年龄、航班时间、托运行李和接送政策需要下单前二次确认。",
+    "全包含义在不同平台不同酒店会有差异，本页把餐饮、饮料、泳池/儿童设施、机场交通和取消政策拆开看。",
+    "岳母是否同行会直接影响房型：如果4人同行，应优先锁定明确标注可住4人或5人的家庭房/套房。"
+  ],
+  "quickTakeawaysZh": [
+    "如果核心是冬天也能真正下水、孩子玩水、成人放松，红海胜率最高。",
+    "如果核心是欧盟内、飞行相对简单、天气温和、酒店亲子设施稳定，加纳利更稳。",
+    "马略卡12月便宜且近，但偏淡季和偏凉，很多全包/儿童设施季节性开放，不建议作为主目标。",
+    "带1岁半孩子时，比绝对低价更重要的是短机场接送、好航班时刻、加热泳池和房间安静度。"
+  ],
+  "destinationRanking": [
+    {
+      "id": "red-sea",
+      "nameZh": "红海：Hurghada / Makadi Bay",
+      "fitLevel": "top",
+      "fitScore": 92,
+      "climateZh": "12月白天通常约22°C上下，海水约24°C，真正适合冬季玩水。",
+      "flightZh": "BER 到 Hurghada 有直飞线索，飞行约4.5-5小时。",
+      "allInclusiveZh": "全包成熟度最高，常见为三餐、自助餐、饮料、零食、儿童泳池、水上乐园或沙滩设施。",
+      "familyFitZh": "适合一周躺平式度假；重点筛选短接送、加热儿童池、浅水池和家庭房。",
+      "risksZh": [
+        "圣诞高峰价格可能快速上涨。",
+        "需要确认埃及入境/签证、航班时刻和婴儿票规则。",
+        "酒店质量差异较大，建议锁定评价稳定的5星家庭度假村。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "BER-HRG direct flight signal",
+          "url": "https://zbordirect.com/en/low-cost/from-germany/berlin/to-egypt/hurghada",
+          "noteZh": "用于确认柏林到赫尔格达存在12月直飞线索。"
+        },
+        {
+          "label": "Hurghada climate signal",
+          "url": "https://weather-and-climate.com/average-monthly-Rainfall-Temperature-Sunshine,Hurghada,Egypt",
+          "noteZh": "用于评估红海12月气温和海温。"
+        },
+        {
+          "label": "CHECK24 Hurghada All Inclusive",
+          "url": "https://urlaub.check24.de/allinclusive/hurghada-safaga",
+          "noteZh": "用于后续过滤直飞、接送、全包和家庭酒店。"
+        }
+      ]
+    },
+    {
+      "id": "canary",
+      "nameZh": "加纳利群岛：Lanzarote / Gran Canaria / Fuerteventura / Tenerife",
+      "fitLevel": "strong",
+      "fitScore": 86,
+      "climateZh": "12月沿海白天多在20-23°C，温和但不一定像夏天；要优先确认加热泳池。",
+      "flightZh": "BER 到 Lanzarote / Gran Canaria 等岛有直飞或包机线索，约4.5-5小时。",
+      "allInclusiveZh": "全包选择很多，尤其适合家庭酒店；但圣诞周库存和价格要逐家确认。",
+      "familyFitZh": "欧盟内旅行简单，医疗和支付环境熟悉；对一岁半孩子相对稳。",
+      "risksZh": [
+        "冬季海水和未加热室外泳池可能偏凉。",
+        "圣诞周家庭房库存紧张。",
+        "不同岛风感差异大，Fuerteventura 可能更受风影响。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "TUI Kanaren All Inclusive",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/kanaren/",
+          "noteZh": "用于确认加纳利全年全包市场和家庭酒店方向。"
+        },
+        {
+          "label": "Tenerife winter climate",
+          "url": "https://www.tenerifeweather.es/climate",
+          "noteZh": "用于参考加纳利12月南部沿海气候。"
+        },
+        {
+          "label": "Skyscanner BER-ACE flight signal",
+          "url": "https://www.skyscanner.net/routes/ber/ace/berlin-brandenburg-to-lanzarote.html",
+          "noteZh": "用于确认柏林到兰萨罗特直飞频次线索。"
+        }
+      ]
+    },
+    {
+      "id": "mallorca",
+      "nameZh": "马略卡",
+      "fitLevel": "backup",
+      "fitScore": 62,
+      "climateZh": "12月偏凉，白天约15-16°C，海水约16°C，更像散步/换环境，不像海边避寒。",
+      "flightZh": "从柏林飞行时间短，是最大优点。",
+      "allInclusiveZh": "全包酒店多，但市场旺季主要在5-10月；圣诞期间需确认是否开业和设施开放。",
+      "familyFitZh": "适合预算合适、只想短飞和轻松住酒店；不适合作为孩子玩水主方案。",
+      "risksZh": [
+        "室外泳池、儿童俱乐部、餐厅可能季节性关闭。",
+        "天气体验与红海/加纳利差距明显。",
+        "若目标是圣诞暖和度假，性价比未必高。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Mallorca winter climate",
+          "url": "https://www.mallorca.com/en/mallorca/weather-december/",
+          "noteZh": "用于参考马略卡12月温度和海温。"
+        },
+        {
+          "label": "HolidayPlatz Spanien All Inclusive",
+          "url": "https://www.holidayplatz.de/urlaub/spanien/all-inclusive",
+          "noteZh": "用于确认西班牙全包定义和马略卡/加纳利季节差异。"
+        }
+      ]
+    }
+  ],
+  "candidateHotels": [
+    {
+      "id": "pickalbatros-white-beach",
+      "destinationId": "red-sea",
+      "destinationZh": "Hurghada, Egypt",
+      "name": "Pickalbatros White Beach Resort Hurghada",
+      "nameZh": "Pickalbatros White Beach Resort Hurghada",
+      "fitLevel": "top",
+      "fitScore": 94,
+      "bestForZh": "冬季亲子玩水、短机场接送、房间面积和儿童泳池。",
+      "roomStrategyZh": "优先 Deluxe Room 或更高房型；官方显示 Deluxe 40平方米、最多4人，适合2成人+幼儿，岳母同行则需确认家庭房/套房或连通房。",
+      "childFitZh": "儿童泳池多，11月到5月部分泳池加热；Kids Club 年龄4-12岁，Alice 主要使用浅水池和公共区域。",
+      "mealPlanZh": "官方强调只有 All Inclusive 房价包含餐饮、饮料和公共设施。",
+      "poolSpaZh": "6个泳池，其中4个儿童泳池；5个泳池冬季加热。另有儿童水上乐园。",
+      "flightTransferZh": "柏林到 Hurghada 有直飞线索；酒店在 Hurghada，通常比 Makadi Bay 接送短。",
+      "priceSignalZh": "暂未拿到12月15日后从BER出发的精确家庭套餐价；建议在 TUI / CHECK24 / HolidayCheck / Expedia 同时查。",
+      "evidenceStatus": "facility-confirmed",
+      "prosZh": [
+        "冬季水温和加热儿童池对小孩更友好。",
+        "房间面积和可住人数明确。",
+        "全包度假村逻辑成熟，适合少折腾的一周。"
+      ],
+      "risksZh": [
+        "旺季价格可能高。",
+        "需要确认具体套餐是否含机场接送、托运行李和儿童费用。",
+        "Kids Club 年龄对1岁半孩子不完全适用。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Official FAQ",
+          "url": "https://pickalbatros-whitebeach.com/faq",
+          "noteZh": "房间容量、冬季加热泳池、儿童设施和全包说明。"
+        },
+        {
+          "label": "Official Rooms",
+          "url": "https://pickalbatros-whitebeach.com/rooms",
+          "noteZh": "房型面积和空调等房间设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "CHECK24 Hurghada AI",
+          "url": "https://urlaub.check24.de/allinclusive/hurghada-safaga",
+          "noteZh": "适合按直飞、接送、家庭酒店过滤。"
+        },
+        {
+          "label": "HolidayCheck Hurghada",
+          "url": "https://www.holidaycheck.de/dh/hotels-hurghada/94773a8c-b71d-3be6-b57e-db9d8740bb98",
+          "noteZh": "适合看德语家庭近期评价。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "sunrise-garden-beach",
+      "destinationId": "red-sea",
+      "destinationZh": "Hurghada, Egypt",
+      "name": "SUNRISE Garden Beach Resort",
+      "nameZh": "SUNRISE Garden Beach Resort",
+      "fitLevel": "top",
+      "fitScore": 92,
+      "bestForZh": "经典红海全包家庭度假：私家沙滩、儿童池、水上乐园、短接送。",
+      "roomStrategyZh": "2成人+幼儿可看标准/家庭房；岳母同行应直接筛选家庭房或两间房，避免现场加人风险。",
+      "childFitZh": "官方列出 Aqua Park、Kids Play Zone、儿童俱乐部、3个泳池、私家沙滩。",
+      "mealPlanZh": "All Inclusive 24小时，含正餐、零食、饮料和迷你吧饮用水/软饮补充。",
+      "poolSpaZh": "3个泳池、水上乐园、儿童玩水区、Spa 和健身房。",
+      "flightTransferZh": "酒店距离 Hurghada 机场约15公里，官方标注约16分钟。",
+      "priceSignalZh": "需要在德国套餐平台确认2026年12月15日后7晚BER出发价格。",
+      "evidenceStatus": "facility-confirmed",
+      "prosZh": [
+        "接送短，带幼儿更友好。",
+        "餐饮和水上设施覆盖全面。",
+        "适合不想频繁外出的一周。"
+      ],
+      "risksZh": [
+        "圣诞档期价格和航班时刻需实时确认。",
+        "水上乐园对1岁半孩子可用范围有限，但浅水区仍有价值。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Official Hotel Page",
+          "url": "https://www.sunrise-resorts.com/sunrise-garden-beach-resort",
+          "noteZh": "官方设施、全包内容、机场距离和亲子设施。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Hurghada package search",
+          "url": "https://www.tui.com/pauschalreisen/aegypten/hurghada/",
+          "noteZh": "适合确认德国出发包价。"
+        },
+        {
+          "label": "CHECK24 Hurghada AI",
+          "url": "https://urlaub.check24.de/allinclusive/hurghada-safaga",
+          "noteZh": "适合比较多家德国旅行社报价。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "jaz-makadi-saraya",
+      "destinationId": "red-sea",
+      "destinationZh": "Makadi Bay, Egypt",
+      "name": "Jaz Makadi Saraya Resort",
+      "nameZh": "Jaz Makadi Saraya Resort",
+      "fitLevel": "strong",
+      "fitScore": 88,
+      "bestForZh": "Makadi Bay 度假区、水世界、套房空间和家庭设施。",
+      "roomStrategyZh": "重点查 Family Room / Suite；官方有最高约100平方米套房，岳母同行时可优先考虑。",
+      "childFitZh": "有儿童泳池、儿童俱乐部、游乐场；Makadi Water World 通常适合大一些孩子，但家庭度假氛围强。",
+      "mealPlanZh": "以 All Inclusive 套餐为主要筛选条件。",
+      "poolSpaZh": "3个泳池，其中冬季有加热泳池；每次住宿包含一次 Makadi Water World 使用线索。",
+      "flightTransferZh": "从 Hurghada 机场到 Makadi Bay 通常比市区酒店更远，但仍属于度假区常规接送距离。",
+      "priceSignalZh": "波兰平台出现12月15-23日全包报价线索，但柏林出发需逐平台确认。",
+      "evidenceStatus": "facility-and-price-signal",
+      "prosZh": [
+        "家庭套房空间潜力大。",
+        "度假区设施完整，不需要频繁出门。",
+        "官方明确冬季加热泳池线索。"
+      ],
+      "risksZh": [
+        "机场接送更长。",
+        "部分大型水上项目对幼儿意义有限。",
+        "德国出发精确套餐价还要二查。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Official Jaz Makadi Saraya",
+          "url": "https://www.jazhotels.com/hoteldetail/11-egypt-madinat-makadi-jaz-makadi-saraya-resort",
+          "noteZh": "官方泳池、儿童设施、Water World 和套房信息。"
+        },
+        {
+          "label": "Makadi package price signal",
+          "url": "https://www.tustolica.pl/egipt/makadi-bay/2026-12-15/all-inclusive",
+          "noteZh": "用于观察12月中旬红海全包包价趋势。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "CHECK24 Hurghada/Safaga AI",
+          "url": "https://urlaub.check24.de/allinclusive/hurghada-safaga",
+          "noteZh": "用于确认BER出发、直飞、接送和家庭房。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "h10-suites-lanzarote-gardens",
+      "destinationId": "canary",
+      "destinationZh": "Costa Teguise, Lanzarote",
+      "name": "H10 Suites Lanzarote Gardens",
+      "nameZh": "H10 Suites Lanzarote Gardens",
+      "fitLevel": "top",
+      "fitScore": 90,
+      "bestForZh": "婴幼儿友好度最高的加纳利候选之一。",
+      "roomStrategyZh": "优先 Family Suite / Bungalow；Alice 1岁半可直接受益于婴幼儿设备和Babyclub。",
+      "childFitZh": "官方有6个月到2岁Babyclub、儿童泳池、儿童餐、婴儿床/浴盆/餐具等设备支持。",
+      "mealPlanZh": "官方 All Inclusive 含餐饮、饮料、零食、儿童自助和婴儿泥等线索。",
+      "poolSpaZh": "3个泳池，包括加热泳池、带海盗船和滑梯的水上游乐池、加热儿童池。",
+      "flightTransferZh": "BER 到 Lanzarote 有直飞线索；岛上接送距离通常可控。",
+      "priceSignalZh": "ITAKA 显示12月12-15日从柏林出发全包报价3149 PLN/人；目标窗口内7晚需用H10/TUI/CHECK24继续查。",
+      "evidenceStatus": "facility-confirmed-with-date-nearby-price",
+      "prosZh": [
+        "对1岁半孩子非常贴合。",
+        "加热儿童池比普通室外泳池可靠。",
+        "欧盟内旅行简单，医疗和支付环境熟悉。"
+      ],
+      "risksZh": [
+        "12月中旬之后一周的库存尚未确认。",
+        "天气温和但不保证夏天式海滩体验。",
+        "全包价格在圣诞周可能明显上浮。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Official H10 hotel page",
+          "url": "https://www.h10hotels.com/en/lanzarote-hotels/h10-suites-lanzarote-gardens",
+          "noteZh": "婴幼儿设施、泳池、餐饮和酒店服务。"
+        },
+        {
+          "label": "ITAKA Berlin-Lanzarote AI",
+          "url": "https://www.itaka.pl/all-inclusive/hiszpania/lanzarote/z-berlina/",
+          "noteZh": "柏林出发全包报价和日期线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "H10 direct booking",
+          "url": "https://www.h10hotels.com/en/lanzarote-hotels/h10-suites-lanzarote-gardens",
+          "noteZh": "用于确认目标周直接价格和儿童政策。"
+        },
+        {
+          "label": "TUI Kanaren AI",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/kanaren/",
+          "noteZh": "用于查德国出发包价。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "sol-lanzarote",
+      "destinationId": "canary",
+      "destinationZh": "Matagorda, Lanzarote",
+      "name": "Sol Lanzarote",
+      "nameZh": "Sol Lanzarote",
+      "fitLevel": "strong",
+      "fitScore": 84,
+      "bestForZh": "海边位置、全包、飞行与接送相对简单。",
+      "roomStrategyZh": "优先套房或公寓式房型；岳母同行要确认最多入住人数和床型。",
+      "childFitZh": "页面线索显示家庭设施、儿童活动、儿童俱乐部和多泳池；幼儿实际可用设施需查官方年龄限制。",
+      "mealPlanZh": "ITAKA 显示 All Inclusive；第三方页面说明含早餐、午餐、晚餐和零食。",
+      "poolSpaZh": "3个室外泳池；是否冬季加热需要二查。",
+      "flightTransferZh": "ITAKA 显示2026-12-15至12-19，Berlin 07:15 出发。",
+      "priceSignalZh": "ITAKA 价格线索为3219 PLN/人，5天全包；一周方案需延长搜索。",
+      "evidenceStatus": "date-price-signal",
+      "prosZh": [
+        "有12月15日从柏林出发的明确线索。",
+        "靠海，适合轻松住酒店。",
+        "Lanzarote 旅行复杂度较低。"
+      ],
+      "risksZh": [
+        "当前线索是5天，不是一周。",
+        "需要确认泳池加热和幼儿设施。",
+        "圣诞周价格可能不同。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "ITAKA Sol Lanzarote signal",
+          "url": "https://www.itaka.pl/all-inclusive/hiszpania/lanzarote/z-berlina/",
+          "noteZh": "12月15日柏林出发全包报价线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Kanaren AI",
+          "url": "https://www.tui.com/pauschalreisen/all-inclusive/kanaren/",
+          "noteZh": "用于查7晚套餐。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "livvo-lago-taurito",
+      "destinationId": "canary",
+      "destinationZh": "Taurito, Gran Canaria",
+      "name": "Hotel LIVVO Lago Taurito",
+      "nameZh": "Hotel LIVVO Lago Taurito",
+      "fitLevel": "strong",
+      "fitScore": 82,
+      "bestForZh": "Gran Canaria 南部水上乐园型家庭度假。",
+      "roomStrategyZh": "家庭房最多可住5人，岳母同行更灵活；优先确认海景家庭房和床型。",
+      "childFitZh": "官方显示家庭房、儿童娱乐、水上乐园、miniclub 和 minidisco。",
+      "mealPlanZh": "平台线索显示 All Inclusive；水上乐园使用通常是核心卖点。",
+      "poolSpaZh": "Lago Oasis 水上乐园包含在住宿中；酒店有可加热成人池线索。",
+      "flightTransferZh": "Wakacje 页面出现14/15日左右从 Berlin 出发的7晚全包报价线索。",
+      "priceSignalZh": "Wakacje 显示约6462-6824 PLN总价线索；需确认是否按2成人还是家庭人数计价。",
+      "evidenceStatus": "facility-and-price-signal",
+      "prosZh": [
+        "7晚窗口和柏林出发线索更接近需求。",
+        "家庭房容量适合不确定是否带岳母。",
+        "水上乐园对孩子吸引力强。"
+      ],
+      "risksZh": [
+        "公开评分中等，需要重点看近期卫生、餐饮和噪音评价。",
+        "1岁半孩子可用的大型水滑梯有限。",
+        "水上乐园使用条款和开放时间要确认。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "Official LIVVO Lago Taurito",
+          "url": "https://www.livvohotels.com/en/hotel-livvo-lago-taurito-gran-canaria/",
+          "noteZh": "官方家庭房、水上乐园、儿童娱乐和位置说明。"
+        },
+        {
+          "label": "Wakacje Gran Canaria signal",
+          "url": "https://www.wakacje.pl/wczasy/hiszpania/gran-canaria/taurito/suite-princess-26974.html",
+          "noteZh": "12月中旬Berlin出发全包报价线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Gran Canaria package search",
+          "url": "https://www.tui.com/pauschalreisen/spanien/gran-canaria/",
+          "noteZh": "用于复核德国出发报价和航班。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "sbh-monica-beach",
+      "destinationId": "canary",
+      "destinationZh": "Costa Calma, Fuerteventura",
+      "name": "SBH Monica Beach Resort",
+      "nameZh": "SBH Monica Beach Resort",
+      "fitLevel": "check",
+      "fitScore": 76,
+      "bestForZh": "海滩和儿童泳池，有明确12月中旬柏林出发价格线索。",
+      "roomStrategyZh": "优先家庭房或公寓式房型；岳母同行需确认4人配置。",
+      "childFitZh": "ITAKA 线索显示3个泳池、儿童池和滑梯，适合家庭。",
+      "mealPlanZh": "ITAKA 显示 All Inclusive。",
+      "poolSpaZh": "3个泳池和儿童设施；加热情况需确认。",
+      "flightTransferZh": "ITAKA 显示2026-12-15至12-19，Berlin 11:40 出发。",
+      "priceSignalZh": "3329 PLN/人，5天全包线索。",
+      "evidenceStatus": "date-price-signal",
+      "prosZh": [
+        "日期贴近12月15日。",
+        "Fuerteventura 海滩资源强。",
+        "全包方向明确。"
+      ],
+      "risksZh": [
+        "5天偏短。",
+        "Fuerteventura 冬季风感可能强。",
+        "需确认泳池加热、近期评价和儿童设施开放。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "ITAKA Canary from Berlin",
+          "url": "https://www.itaka.pl/all-inclusive/wyspy-kanaryjskie/z-berlina/",
+          "noteZh": "12月15日柏林出发全包报价线索。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "HolidayCheck Canary filters",
+          "url": "https://www.holidaycheck.de/urlaub/spanien-kanaren",
+          "noteZh": "用于查德语近期评价和家庭筛选。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    },
+    {
+      "id": "mallorca-family-ai",
+      "destinationId": "mallorca",
+      "destinationZh": "Mallorca, Spain",
+      "name": "Mallorca family all-inclusive hotels",
+      "nameZh": "马略卡家庭全包酒店组合",
+      "fitLevel": "backup",
+      "fitScore": 62,
+      "bestForZh": "短飞、换环境、预算合适时作为备选。",
+      "roomStrategyZh": "只看明确冬季开业、含室内泳池或Spa、适合幼儿的酒店。",
+      "childFitZh": "家庭酒店多，但圣诞期间儿童项目和餐厅开放度不稳定。",
+      "mealPlanZh": "西班牙全包通常含三餐、零食、饮料，部分酒店含运动和娱乐。",
+      "poolSpaZh": "必须重点查室内泳池或加热泳池；普通室外池12月价值有限。",
+      "flightTransferZh": "从柏林飞行时间短，是它的最大优势。",
+      "priceSignalZh": "未找到足够强的12月圣诞全包主推线索，暂不作为第一轮下单目标。",
+      "evidenceStatus": "market-signal-only",
+      "prosZh": [
+        "路程短。",
+        "欧洲内旅行简单。",
+        "若只是酒店休息，仍可能有好价格。"
+      ],
+      "risksZh": [
+        "天气不适合海边避寒。",
+        "淡季设施开放不确定。",
+        "全包价值可能不如红海/加纳利。"
+      ],
+      "sourceLinks": [
+        {
+          "label": "HolidayPlatz Spain AI",
+          "url": "https://www.holidayplatz.de/urlaub/spanien/all-inclusive",
+          "noteZh": "用于确认西班牙全包内容和马略卡候选酒店方向。"
+        },
+        {
+          "label": "Mallorca December climate",
+          "url": "https://www.mallorca.com/en/mallorca/weather-december/",
+          "noteZh": "用于评估12月温度和海水温度。"
+        }
+      ],
+      "bookingLinks": [
+        {
+          "label": "TUI Mallorca package search",
+          "url": "https://www.tui.com/pauschalreisen/spanien/mallorca/",
+          "noteZh": "只在需要短飞备选时再查。"
+        }
+      ],
+      "checkedAt": "2026-08-28"
+    }
+  ],
+  "dealSignals": [
+    {
+      "id": "itaka-sol-lanzarote-2026-12-15",
+      "destinationId": "canary",
+      "titleZh": "Sol Lanzarote：2026-12-15 至 12-19，Berlin 出发，All Inclusive",
+      "provider": "ITAKA",
+      "dateWindowZh": "2026-12-15 至 2026-12-19，5天",
+      "boardZh": "All Inclusive",
+      "departureZh": "Berlin 07:15",
+      "priceHintZh": "3219 PLN/人 + 26 PLN 线索",
+      "evidenceZh": "海边 Matagorda，全包，家庭设施线索；但不是一周，需要继续查7晚。",
+      "fitLevel": "strong",
+      "source": {
+        "label": "ITAKA Lanzarote from Berlin",
+        "url": "https://www.itaka.pl/all-inclusive/hiszpania/lanzarote/z-berlina/",
+        "noteZh": "公开报价线索。"
+      }
+    },
+    {
+      "id": "itaka-h10-lanzarote-2026-12-12",
+      "destinationId": "canary",
+      "titleZh": "H10 Suites Lanzarote Gardens：2026-12-12 至 12-15，Berlin 出发，All Inclusive",
+      "provider": "ITAKA",
+      "dateWindowZh": "2026-12-12 至 2026-12-15，4天",
+      "boardZh": "All Inclusive",
+      "departureZh": "Berlin 09:55",
+      "priceHintZh": "3149 PLN/人线索",
+      "evidenceZh": "酒店非常适合幼儿，但日期偏短且在目标窗口边缘之前，主要作为酒店候选而非直接方案。",
+      "fitLevel": "check",
+      "source": {
+        "label": "ITAKA Lanzarote from Berlin",
+        "url": "https://www.itaka.pl/all-inclusive/hiszpania/lanzarote/z-berlina/",
+        "noteZh": "公开报价线索。"
+      }
+    },
+    {
+      "id": "wakacje-livvo-lago-taurito-2026-12",
+      "destinationId": "canary",
+      "titleZh": "Hotel LIVVO Lago Taurito：12月中旬7晚，Berlin 出发线索，All Inclusive",
+      "provider": "Wakacje / Best Reisen / Click&Go",
+      "dateWindowZh": "2026-12-14 至 12-21 或 2026-12-15 至 12-22",
+      "boardZh": "All Inclusive",
+      "departureZh": "Berlin / Krakow / Wroclaw 等出发地线索",
+      "priceHintZh": "约6462-6824 PLN 总价线索",
+      "evidenceZh": "日期和一周长度更匹配；需确认家庭人数、航班、行李和房型。",
+      "fitLevel": "strong",
+      "source": {
+        "label": "Wakacje Gran Canaria signal",
+        "url": "https://www.wakacje.pl/wczasy/hiszpania/gran-canaria/taurito/suite-princess-26974.html",
+        "noteZh": "公开报价线索。"
+      }
+    },
+    {
+      "id": "itaka-sbh-monica-2026-12-15",
+      "destinationId": "canary",
+      "titleZh": "SBH Monica Beach Resort：2026-12-15 至 12-19，Berlin 出发，All Inclusive",
+      "provider": "ITAKA",
+      "dateWindowZh": "2026-12-15 至 2026-12-19，5天",
+      "boardZh": "All Inclusive",
+      "departureZh": "Berlin 11:40",
+      "priceHintZh": "3329 PLN/人线索",
+      "evidenceZh": "Fuerteventura 海滩型全包候选；5天偏短且需确认风、泳池加热和评价。",
+      "fitLevel": "check",
+      "source": {
+        "label": "ITAKA Canary from Berlin",
+        "url": "https://www.itaka.pl/all-inclusive/wyspy-kanaryjskie/z-berlina/",
+        "noteZh": "公开报价线索。"
+      }
+    },
+    {
+      "id": "makadi-red-sea-berlin-signals",
+      "destinationId": "red-sea",
+      "titleZh": "Makadi Bay 红海全包：12月从Berlin出发存在多条价格线索",
+      "provider": "Wakacje / TuStolica / German package portals",
+      "dateWindowZh": "12月上中旬，部分线索接近但未完全覆盖12月15日后一周",
+      "boardZh": "All Inclusive",
+      "departureZh": "Berlin / Wroclaw / Warsaw 等",
+      "priceHintZh": "约2419 PLN/人起，酒店和日期差异大",
+      "evidenceZh": "红海方向供应充足，但需要用德语平台锁定BER直飞和家庭价格。",
+      "fitLevel": "strong",
+      "source": {
+        "label": "Makadi Bay all-inclusive signal",
+        "url": "https://www.tustolica.pl/egipt/makadi-bay/2026-12-15/all-inclusive",
+        "noteZh": "公开报价线索。"
+      }
+    }
+  ],
+  "searchPortals": [
+    {
+      "name": "TUI Kanaren All Inclusive",
+      "url": "https://www.tui.com/pauschalreisen/all-inclusive/kanaren/",
+      "bestUseZh": "查德国出发的加纳利全包包价，适合筛选家庭酒店、直飞和转机风险。",
+      "defaultFiltersZh": "BER 出发；2026-12-15 到 2027-01-05 之间；6-8晚；2成人+1幼儿；All Inclusive；家庭酒店；机场接送。"
+    },
+    {
+      "name": "CHECK24 Hurghada/Safaga All Inclusive",
+      "url": "https://urlaub.check24.de/allinclusive/hurghada-safaga",
+      "bestUseZh": "比较德国旅行社红海报价，重点看直飞、接送、近期评分和儿童泳池。",
+      "defaultFiltersZh": "BER；7晚；All Inclusive；直飞；Transfer inklusive；5星；家庭友好；评分8+。"
+    },
+    {
+      "name": "HolidayCheck",
+      "url": "https://www.holidaycheck.de/",
+      "bestUseZh": "看德语家庭近期评价，尤其是餐饮、卫生、儿童池、空调和噪音。",
+      "defaultFiltersZh": "Pauschalreise；BER；All Inclusive；Direktflug；Transfer；Familienhotel；Weiterempfehlung 85%+。"
+    },
+    {
+      "name": "ITAKA Berlin All Inclusive",
+      "url": "https://www.itaka.pl/all-inclusive/wyspy-kanaryjskie/z-berlina/",
+      "bestUseZh": "用于观察波兰市场从柏林出发的加纳利包价线索。",
+      "defaultFiltersZh": "Berlin；December 2026；All Inclusive；Family。"
+    },
+    {
+      "name": "Hotel direct booking",
+      "url": "https://www.h10hotels.com/en/lanzarote-hotels/h10-suites-lanzarote-gardens",
+      "bestUseZh": "用酒店官网确认儿童政策、婴儿床、泳池加热、房型容量和取消政策。",
+      "defaultFiltersZh": "先查2成人+1幼儿，再查3成人+1幼儿，比较房型变化。"
+    }
+  ],
+  "decisionChecklistZh": [
+    "第一轮先查红海 Hurghada：Pickalbatros White Beach、SUNRISE Garden Beach、Jaz Makadi 系列。",
+    "第二轮查加纳利：H10 Suites Lanzarote Gardens、Sol Lanzarote、LIVVO Lago Taurito、SBH Monica Beach。",
+    "每个方案都分别查2成人+1幼儿和3成人+1幼儿，避免岳母临时加入后房型失效。",
+    "必须确认：All Inclusive 是否包含婴幼儿餐饮、机场接送、托运行李、泳池加热、婴儿床、取消/改期规则。",
+    "不要只按每人价格排序；带小孩优先短接送、好航班时刻、加热泳池和房间安静度。"
+  ]
+}
