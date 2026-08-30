@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T11:39:17.378Z",
+  "generatedAt": "2026-08-30T10:28:08.580Z",
   "timezone": "Europe/Berlin",
   "stayWindow": {
     "checkIn": "2026-09-05",
@@ -15,125 +15,125 @@
     "status": "ok",
     "days": [
       {
-        "date": "2026-08-29",
-        "maxTempC": 26.5,
-        "minTempC": 18.4,
-        "apparentMaxTempC": 23.7,
-        "precipitationProbabilityMax": 35
-      },
-      {
         "date": "2026-08-30",
-        "maxTempC": 25.7,
-        "minTempC": 18.9,
-        "apparentMaxTempC": 24,
-        "precipitationProbabilityMax": 25
-      },
-      {
-        "date": "2026-08-31",
-        "maxTempC": 24.6,
-        "minTempC": 17.7,
-        "apparentMaxTempC": 23.4,
+        "maxTempC": 26.9,
+        "minTempC": 19.3,
+        "apparentMaxTempC": 24.8,
         "precipitationProbabilityMax": 70
       },
       {
+        "date": "2026-08-31",
+        "maxTempC": 26.1,
+        "minTempC": 17.6,
+        "apparentMaxTempC": 24.2,
+        "precipitationProbabilityMax": 60
+      },
+      {
         "date": "2026-09-01",
-        "maxTempC": 21.8,
+        "maxTempC": 23.9,
         "minTempC": 16.1,
-        "apparentMaxTempC": 19.4,
-        "precipitationProbabilityMax": 14
-      },
-      {
-        "date": "2026-09-02",
-        "maxTempC": 23.7,
-        "minTempC": 13.7,
-        "apparentMaxTempC": 21.4,
-        "precipitationProbabilityMax": 17
-      },
-      {
-        "date": "2026-09-03",
-        "maxTempC": 23.3,
-        "minTempC": 16.3,
-        "apparentMaxTempC": 20.4,
-        "precipitationProbabilityMax": 69
-      },
-      {
-        "date": "2026-09-04",
-        "maxTempC": 21.6,
-        "minTempC": 16,
-        "apparentMaxTempC": 20,
-        "precipitationProbabilityMax": 51
-      },
-      {
-        "date": "2026-09-05",
-        "maxTempC": 22.2,
-        "minTempC": 15.2,
-        "apparentMaxTempC": 23.3,
-        "precipitationProbabilityMax": 37
-      },
-      {
-        "date": "2026-09-06",
-        "maxTempC": 20.2,
-        "minTempC": 15.2,
-        "apparentMaxTempC": 19.6,
-        "precipitationProbabilityMax": 21
-      },
-      {
-        "date": "2026-09-07",
-        "maxTempC": 19.7,
-        "minTempC": 12.8,
-        "apparentMaxTempC": 19.1,
+        "apparentMaxTempC": 21.7,
         "precipitationProbabilityMax": 20
       },
       {
-        "date": "2026-09-08",
-        "maxTempC": 25.5,
+        "date": "2026-09-02",
+        "maxTempC": 23.8,
+        "minTempC": 13.8,
+        "apparentMaxTempC": 22,
+        "precipitationProbabilityMax": 8
+      },
+      {
+        "date": "2026-09-03",
+        "maxTempC": 22.6,
+        "minTempC": 16.6,
+        "apparentMaxTempC": 21.8,
+        "precipitationProbabilityMax": 41
+      },
+      {
+        "date": "2026-09-04",
+        "maxTempC": 20.3,
         "minTempC": 15.8,
-        "apparentMaxTempC": 22.6,
-        "precipitationProbabilityMax": 24
+        "apparentMaxTempC": 21.8,
+        "precipitationProbabilityMax": 43
+      },
+      {
+        "date": "2026-09-05",
+        "maxTempC": 21.7,
+        "minTempC": 16.9,
+        "apparentMaxTempC": 21.7,
+        "precipitationProbabilityMax": 43
+      },
+      {
+        "date": "2026-09-06",
+        "maxTempC": 19.9,
+        "minTempC": 12.4,
+        "apparentMaxTempC": 18.6,
+        "precipitationProbabilityMax": 19
+      },
+      {
+        "date": "2026-09-07",
+        "maxTempC": 23.4,
+        "minTempC": 13.8,
+        "apparentMaxTempC": 24.8,
+        "precipitationProbabilityMax": 16
+      },
+      {
+        "date": "2026-09-08",
+        "maxTempC": 21.1,
+        "minTempC": 16.1,
+        "apparentMaxTempC": 21.1,
+        "precipitationProbabilityMax": 20
       },
       {
         "date": "2026-09-09",
-        "maxTempC": 18.7,
-        "minTempC": 12.7,
-        "apparentMaxTempC": 17,
-        "precipitationProbabilityMax": 11
+        "maxTempC": 18.2,
+        "minTempC": 12.9,
+        "apparentMaxTempC": 15.4,
+        "precipitationProbabilityMax": 24
       },
       {
         "date": "2026-09-10",
-        "maxTempC": 26.8,
-        "minTempC": 12.5,
-        "apparentMaxTempC": 25.9,
+        "maxTempC": 22.7,
+        "minTempC": 13.8,
+        "apparentMaxTempC": 22.2,
         "precipitationProbabilityMax": 25
       },
       {
         "date": "2026-09-11",
-        "maxTempC": 21.4,
-        "minTempC": 15.5,
-        "apparentMaxTempC": 22,
-        "precipitationProbabilityMax": 18
+        "maxTempC": 22.4,
+        "minTempC": 16.1,
+        "apparentMaxTempC": 23.9,
+        "precipitationProbabilityMax": 22
       },
       {
         "date": "2026-09-12",
-        "maxTempC": 22.7,
-        "minTempC": 13,
-        "apparentMaxTempC": 20.1,
-        "precipitationProbabilityMax": 16
+        "maxTempC": 20.9,
+        "minTempC": 14.4,
+        "apparentMaxTempC": 19.1,
+        "precipitationProbabilityMax": 20
       },
       {
         "date": "2026-09-13",
-        "maxTempC": 26.7,
-        "minTempC": 14.6,
-        "apparentMaxTempC": 24.3,
+        "maxTempC": 19.3,
+        "minTempC": 13.2,
+        "apparentMaxTempC": 17.4,
+        "precipitationProbabilityMax": null
+      },
+      {
+        "date": "2026-09-14",
+        "maxTempC": 30.2,
+        "minTempC": 14.5,
+        "apparentMaxTempC": 28.4,
         "precipitationProbabilityMax": null
       }
     ],
     "trigger": {
       "active": false,
-      "level": "none",
-      "peakDate": "2026-09-10",
-      "peakMaxTempC": 26.8,
+      "level": "watch",
+      "peakDate": "2026-09-14",
+      "peakMaxTempC": 30.2,
       "hotDayCount": 0,
-      "messageZh": "暂无高温触发：未来 16 天柏林最高约 26.8°C（2026-09-10）。"
+      "messageZh": "接近高温，建议观察：未来 16 天柏林最高约 30.2°C（2026-09-14）。"
     }
   },
   "sourceStatus": {
@@ -151,14 +151,14 @@
   "items": [
     {
       "id": "tropical-islands-resort",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Tropical+Islands+Resort+Krausnick%2C+Brandenburg&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:20.786Z",
+        "fetchedAt": "2026-08-30T10:28:12.504Z",
         "bookingLink": "https://www.tropical-islands.de/?utm_id=GMBtraffic&utm_medium=OrganicGMB&utm_source=google",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -166,31 +166,44 @@
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Tropical%20Islands%20Resort%20Krausnick",
-        "fetchedAt": "2026-08-29T11:39:17.853Z",
+        "fetchedAt": "2026-08-30T10:28:09.191Z",
         "rating": 3.5,
-        "reviewCount": 4982,
+        "reviewCount": 5007,
         "newestReviewCount": 5,
-        "riskLevel": "medium",
+        "riskLevel": "high",
         "signals": [
           {
             "labelZh": "空调/房间闷热",
+            "count": 2
+          },
+          {
+            "labelZh": "亲子不便",
+            "count": 1
+          },
+          {
+            "labelZh": "噪音/午睡风险",
             "count": 1
           },
           {
             "labelZh": "服务/清洁波动",
-            "count": 1
+            "count": 3
           }
         ],
         "snippets": [
           {
-            "rating": 5,
+            "rating": 3,
             "relativeTime": "in the last week",
-            "text": "Very nice, I recommend the lagoon, there are pools and slides, very good food"
+            "text": "There were four of us (two adults, two children). We booked tickets online in advance. Unfortunately, the online ticket terminal wasn't working, so we had to join the regular queue and wait for over 30 minutes. It was th"
           },
           {
-            "rating": 1,
+            "rating": 2,
             "relativeTime": "in the last week",
-            "text": "I was there 14 days ago. My wardrobe was opened and everything was gone: my phone, wallet, money, all my clothes and my son's, as well as the car keys. The staff offered no help; on the contrary, they told me to please m"
+            "text": "VERY CONTRASTING! The facilities are second to none, the place is eveything I expected plus some. I have stayed now three times. The food is great, whether you're a family, a single, or a couple, you will be pleased, how"
+          },
+          {
+            "rating": 5,
+            "relativeTime": "in the last week",
+            "text": "We visited this water park from Wednesday to Thursday. Although it was quite busy, it was still possible to use the slides without too long a wait. There was a good variety of attractions, and the children had a lot of f"
           }
         ],
         "messageZh": "已抓取 Google Places 最新排序评论样本；Google 最多返回少量评论，仍需打开地图复核。"
@@ -198,21 +211,21 @@
     },
     {
       "id": "van-der-valk-berlin-brandenburg",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Van+der+Valk+Hotel+Berlin+Brandenburg+Blankenfelde-Mahlow&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:22.094Z",
+        "fetchedAt": "2026-08-30T10:28:14.203Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Van%20der%20Valk%20Hotel%20Berlin%20Brandenburg",
-        "fetchedAt": "2026-08-29T11:39:20.786Z",
+        "fetchedAt": "2026-08-30T10:28:12.505Z",
         "rating": 4.4,
         "reviewCount": 3275,
         "newestReviewCount": 5,
@@ -244,54 +257,58 @@
     },
     {
       "id": "sunday-resort-schwielowsee",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "available",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Sunday+Resort+Schwielowsee+Werder+%28Havel%29&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:24.272Z",
-        "priceLabel": "€155",
-        "nightlyPriceValue": 155,
-        "totalPriceLabel": "€310",
-        "bookingLink": "https://www.ferienhausmiete.de/286801.htm",
+        "fetchedAt": "2026-08-30T10:28:16.367Z",
+        "priceLabel": "€347",
+        "nightlyPriceValue": 347,
+        "totalPriceLabel": "€694",
+        "bookingLink": "https://www.vrbo.com/pdp/lo/127838915?MDPCID=VRBO-META.HPA.WEB-ORGANIC.VR",
         "messageZh": "已查询到 Google Hotels 价格线索，仍需回源确认房型空调和取消政策。"
       },
       "reviews": {
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Sunday%20Resort%20Schwielowsee%20Werder",
-        "fetchedAt": "2026-08-29T11:39:22.094Z",
+        "fetchedAt": "2026-08-30T10:28:14.204Z",
         "rating": 3.9,
-        "reviewCount": 1679,
+        "reviewCount": 1681,
         "newestReviewCount": 5,
-        "riskLevel": "medium",
+        "riskLevel": "high",
         "signals": [
           {
             "labelZh": "空调/房间闷热",
             "count": 1
           },
           {
+            "labelZh": "噪音/午睡风险",
+            "count": 2
+          },
+          {
             "labelZh": "服务/清洁波动",
-            "count": 3
+            "count": 2
           }
         ],
         "snippets": [
           {
+            "rating": 2,
+            "relativeTime": "in the last week",
+            "text": "Unfortunately, very disappointed... completely unstructured. Staff overwhelmed, but friendly. The reserved breakfast table for the wedding party was prepared, but occupied by other guests. Long wait for a new table. Not "
+          },
+          {
+            "rating": 1,
+            "relativeTime": "in the last week",
+            "text": "Good: Directly on the lake, Potsdam easily accessible by public transport. Not so good: Room rates are very overpriced (street very noisy), parking is very expensive (€12 per day), breakfast buffet has limited selection "
+          },
+          {
             "rating": 4,
             "relativeTime": "in the last week",
-            "text": "Schönes, gepflegtes Hotel mit einem tollen Außenpool und schönen Außenanlagen, bei gutem Wetter ideal zum Entspannen. Beim Frühstück gibt es allerdings Verbesserungspotenzial. Gerade zu Stoßzeiten sollte das Serviceperso"
-          },
-          {
-            "rating": 5,
-            "relativeTime": "in the last week",
-            "text": "Entgegen den schlechten Bewertungen zu diesem Hotel möchten wir auch mal unser Bewertung abgeben. Wir hatten eine wunderbare Woche im Sunday Resort Schwielowsee. Der Service war toll und die Verpflegung absolut top! Scho"
-          },
-          {
-            "rating": 3,
-            "relativeTime": "in the last week",
-            "text": "At first glance, it looks luxurious, but on closer inspection, it's simply untapped potential and in dire need of renovation. We stayed in one of the apartment buildings, not the main building. The staff seemed more stre"
+            "text": "A lovely, well-maintained hotel with a great outdoor pool and beautiful grounds, ideal for relaxing in good weather. However, there is room for improvement at breakfast. Especially during peak times, the service staff sh"
           }
         ],
         "messageZh": "已抓取 Google Places 最新排序评论样本；Google 最多返回少量评论，仍需打开地图复核。"
@@ -299,21 +316,21 @@
     },
     {
       "id": "seminaris-seehotel-potsdam",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Seminaris+SeeHotel+Potsdam+Potsdam%2C+Templiner+See&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:26.556Z",
+        "fetchedAt": "2026-08-30T10:28:17.717Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Seminaris%20SeeHotel%20Potsdam",
-        "fetchedAt": "2026-08-29T11:39:24.272Z",
+        "fetchedAt": "2026-08-30T10:28:16.367Z",
         "rating": 3.9,
         "reviewCount": 3255,
         "newestReviewCount": 5,
@@ -321,7 +338,7 @@
         "signals": [
           {
             "labelZh": "空调/房间闷热",
-            "count": 1
+            "count": 2
           },
           {
             "labelZh": "噪音/午睡风险",
@@ -341,7 +358,7 @@
           {
             "rating": 1,
             "relativeTime": "in the last week",
-            "text": "Schabenbefall mit mangelndem Erstattungsverhalten Wir wollten das Hotel zur Übernachtung für eine Nacht nach einem Konzert im Olympiastadion nutzen. Die Anreise war vollkommen in Ordnund. Zwar war lediglich ein bett bezo"
+            "text": "Cockroach Infestation with Poor Reimbursement Policy We wanted to stay at the hotel for one night after a concert at the Olympic Stadium. Our arrival was perfectly fine. Although only one bed was made, this was rectified"
           },
           {
             "rating": 1,
@@ -354,23 +371,23 @@
     },
     {
       "id": "resort-mark-brandenburg",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Resort+Mark+Brandenburg+%26+Fontane+Therme+Neuruppin&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:27.762Z",
+        "fetchedAt": "2026-08-30T10:28:19.664Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Resort%20Mark%20Brandenburg%20Fontane%20Therme",
-        "fetchedAt": "2026-08-29T11:39:26.557Z",
+        "fetchedAt": "2026-08-30T10:28:17.717Z",
         "rating": 4.5,
-        "reviewCount": 2524,
+        "reviewCount": 2526,
         "newestReviewCount": 5,
         "riskLevel": "medium",
         "signals": [
@@ -381,14 +398,14 @@
         ],
         "snippets": [
           {
-            "rating": 4,
+            "rating": 5,
             "relativeTime": "in the last week",
-            "text": "Schönes Haus, vor allem mit einem großen Schwimmbad, vielen Saunen, davon eine mitten im See mit Zugang zum Wasser, Solebecken und seit neuestem auch hervorragender Küche."
+            "text": "Neuruppin's hotel by the lake. It doesn't get much better than this."
           },
           {
             "rating": 4,
             "relativeTime": "in the last week",
-            "text": "I love it here. Thanks to the wonderful little spa and the amazing breakfast! But the old-fashioned, musty rooms are a complete no-go in my opinion. They just don't fit with such a great hotel 🤷‍♀️ Why they aren't being"
+            "text": "Beautiful house, especially with a large swimming pool, many saunas, including one in the middle of the lake with access to the water, a brine pool and, most recently, excellent cuisine."
           }
         ],
         "messageZh": "已抓取 Google Places 最新排序评论样本；Google 最多返回少量评论，仍需打开地图复核。"
@@ -396,14 +413,14 @@
     },
     {
       "id": "hotel-doellnsee-schorfheide",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+D%C3%B6llnsee-Schorfheide+Templin+%2F+Schorfheide&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:29.235Z",
+        "fetchedAt": "2026-08-30T10:28:21.798Z",
         "bookingLink": "http://www.doellnsee.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -411,9 +428,9 @@
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Hotel%20D%C3%B6llnsee-Schorfheide",
-        "fetchedAt": "2026-08-29T11:39:27.763Z",
+        "fetchedAt": "2026-08-30T10:28:19.665Z",
         "rating": 4.3,
-        "reviewCount": 1490,
+        "reviewCount": 1491,
         "newestReviewCount": 5,
         "riskLevel": "medium",
         "signals": [
@@ -448,21 +465,21 @@
     },
     {
       "id": "aspria-berlin-kudamm",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Aspria+Berlin+Ku%27damm+Berlin-Halensee+%2F+Ku%27damm&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:31.558Z",
+        "fetchedAt": "2026-08-30T10:28:23.179Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Aspria%20Berlin%20Ku'damm",
-        "fetchedAt": "2026-08-29T11:39:29.236Z",
+        "fetchedAt": "2026-08-30T10:28:21.798Z",
         "rating": 4.7,
         "reviewCount": 1208,
         "newestReviewCount": 5,
@@ -471,10 +488,6 @@
           {
             "labelZh": "空调/房间闷热",
             "count": 3
-          },
-          {
-            "labelZh": "泳池/SPA 受限",
-            "count": 1
           },
           {
             "labelZh": "噪音/午睡风险",
@@ -489,7 +502,7 @@
           {
             "rating": 1,
             "relativeTime": "in the last week",
-            "text": "Leider muss man einen Stern vergeben. 3 Tage hier und an zwei Tagen kaltes Wasser beim Duschen. Klar kommt dann, dass es am Energieversorger liegt. Ja bestimmt. Aber seit Wochen ist die Klimaanlage kaputt, was jetzt beim"
+            "text": "Unfortunately, I have to give one star. I've been here for three days, and on two of those days, the showers had cold water. Of course, they'll blame it on the energy supplier. Yeah, right. But the air conditioning has b"
           },
           {
             "rating": 1,
@@ -507,14 +520,14 @@
     },
     {
       "id": "hotel-palace-berlin",
-      "updatedAt": "2026-08-29T11:39:17.378Z",
+      "updatedAt": "2026-08-30T10:28:08.580Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+Palace+Berlin+Berlin-Charlottenburg&checkin=2026-09-05&checkout=2026-09-07&adults=3&children=1&currency=EUR",
-        "fetchedAt": "2026-08-29T11:39:33.683Z",
+        "fetchedAt": "2026-08-30T10:28:24.972Z",
         "bookingLink": "https://www.palace.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -522,7 +535,7 @@
         "status": "ok",
         "provider": "Google Places API",
         "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Hotel%20Palace%20Berlin",
-        "fetchedAt": "2026-08-29T11:39:31.559Z",
+        "fetchedAt": "2026-08-30T10:28:23.179Z",
         "rating": 4.7,
         "reviewCount": 2704,
         "newestReviewCount": 5,
@@ -537,7 +550,7 @@
           {
             "rating": 1,
             "relativeTime": "in the last week",
-            "text": "Meine mutter hatte sich im spar schwer verletzt so das ein krankenwagen kommen musste sie ist dort auf den treppen ausgerutscht wo kein schild war auf eigenegefahr sie hat sich mehrere bänder gerissen und wir mussten uns"
+            "text": "My mother was seriously injured at the spa, so much so that an ambulance had to be called. She slipped on the stairs where there was no sign indicating it was at her own risk. She tore several ligaments, and we missed ou"
           },
           {
             "rating": 4,
