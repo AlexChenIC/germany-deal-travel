@@ -28,8 +28,16 @@ export function ChristmasAllInclusiveView() {
 
   const requestText = (hotel: Hotel) => `Hello, please quote ${hotel.name}, ${hotel.location}, for ${adults} adults and one child aged 1 year (approximately 18 months), ${dates.checkIn} to ${dates.checkOut} (${nights} nights), All Inclusive. Departure airport: Berlin Brandenburg (BER), preferably daytime nonstop return flights with checked luggage and airport transfers with an appropriate child seat. Please confirm the total price for everyone, legal room occupancy including the infant, cot availability, separate sleeping areas, heated toddler pool and winter temperature, Christmas/New Year supplements and cancellation terms.${adults === 3 ? " Please compare a two-bedroom suite with two rooms (2 adults + infant, and 1 adult)." : " Please quote a family suite with a separate sleeping area."}`;
   async function copyRequest(hotel: Hotel) {
-    try { await navigator.clipboard.writeText(requestText(hotel)); setCopied(hotel.id); }
-    catch { setCopied("failed"); }
+    setCopied(`pending:${hotel.id}`);
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      await Promise.race([
+        navigator.clipboard.writeText(requestText(hotel)),
+        new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("Clipboard permission timeout")), 3000); }),
+      ]);
+      setCopied(hotel.id);
+    } catch { setCopied(`failed:${hotel.id}`); }
+    finally { clearTimeout(timer); }
   }
 
   return <div className="christmas-page">
@@ -83,10 +91,11 @@ export function ChristmasAllInclusiveView() {
           <OutLink href={hotel.official}>酒店官网核价</OutLink>
           <OutLink href={bookingSearchUrl(hotel.name, hotel.location, dates, { adults, childAge: 1 })}>Booking搜索 · {adults}成人＋1岁</OutLink>
           <OutLink href={hotelMapUrl(hotel.name, hotel.location)}>核对位置</OutLink>
-          <button type="button" onClick={() => copyRequest(hotel)} title="复制英文询价条件">{copied === hotel.id ? <Check size={15} /> : <Copy size={15} />}{copied === hotel.id ? "已复制" : "复制询价"}</button>
+          <button type="button" disabled={copied === `pending:${hotel.id}`} onClick={() => copyRequest(hotel)} title="复制英文询价条件">{copied === hotel.id ? <Check size={15} /> : <Copy size={15} />}{copied === hotel.id ? "已复制" : copied === `pending:${hotel.id}` ? "正在复制…" : "复制询价"}</button>
         </div>
         <p className="link-note">Booking链接附带日期、人数与酒店全名，但源站可能重置条件；打开后重新核对日期、人数、地址与全包餐标。官网需重新选择条件，两间房需分别配置入住人。</p>
-        <details className="trip-details"><summary>注意事项、证据与精确比价</summary>
+        {copied === `failed:${hotel.id}` && <p role="status">未取得剪贴板权限；下方已展开询价文本，可直接选择。</p>}
+        <details className="trip-details" open={copied === `failed:${hotel.id}` ? true : undefined}><summary>注意事项、证据与精确比价</summary>
           <ul>{hotel.cautions.map((item) => <li key={item}>{item}</li>)}</ul>
           <div className="hotel-links">{hotel.references.map((source) => <OutLink key={source.url} href={source.url}>{source.label}</OutLink>)}
             <OutLink href={exactHotelSearchUrl(hotel.name, hotel.location, "tui.com")}>TUI酒店名检索</OutLink>
@@ -96,7 +105,6 @@ export function ChristmasAllInclusiveView() {
           <label className="trip-field">当前方案询价文本<textarea readOnly value={requestText(hotel)} rows={4} /></label>
         </details>
       </article>)}</div>
-      {copied === "failed" && <p role="status">剪贴板不可用；询价文本在酒店详情内可查看。</p>}
     </section>
 
     <section className="trip-section" aria-labelledby="promotion-title"><h3 id="promotion-title">当前促销与预订参考</h3>
