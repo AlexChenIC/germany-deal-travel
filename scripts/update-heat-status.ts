@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { matchHotelByName } from "../src/lib/travelSearch";
 import type {
   HeatAvailabilityStatus,
   HeatEscapeLiveData,
@@ -333,13 +334,13 @@ async function fetchPriceStatus(
   stay: HeatEscapeStay,
   window: HeatStayWindow,
 ): Promise<HeatStayPriceStatus> {
-  const sourceUrl = buildGoogleHotelsUrl(stay, window);
+  const sourceUrl = buildGoogleHotelsUrl(stay);
   if (!serpApiKey) {
     return {
       status: "unconfigured",
       provider: "SerpApi Google Hotels",
       sourceUrl,
-      messageZh: "未配置 SERPAPI_API_KEY；当前提供 Google Hotels 检查入口，不抓取实时价格。",
+      messageZh: "实时价格源未配置；Google Hotels仅为酒店检索入口，日期、人数和房型需在源站设置。",
     };
   }
 
@@ -387,7 +388,7 @@ async function fetchPriceStatus(
       priceLabel: rate.priceLabel,
       nightlyPriceValue: rate.nightlyPriceValue,
       totalPriceLabel: rate.totalPriceLabel,
-      bookingLink: property.link ?? property.serpapi_property_details_link ?? sourceUrl,
+      bookingLink: property.link ?? sourceUrl,
       messageZh:
         status === "available"
           ? "已查询到 Google Hotels 价格线索，仍需回源确认房型空调和取消政策。"
@@ -404,14 +405,9 @@ async function fetchPriceStatus(
   }
 }
 
-function buildGoogleHotelsUrl(stay: HeatEscapeStay, window: HeatStayWindow) {
+function buildGoogleHotelsUrl(stay: HeatEscapeStay) {
   const params = new URLSearchParams({
     q: `${stay.name} ${stay.location}`,
-    checkin: window.checkIn,
-    checkout: window.checkOut,
-    adults: String(window.adults),
-    children: String(window.children),
-    currency: window.currency,
   });
   return `https://www.google.com/travel/hotels?${params.toString()}`;
 }
@@ -420,13 +416,7 @@ function pickBestProperty(
   stay: HeatEscapeStay,
   properties: SerpApiProperty[],
 ): SerpApiProperty | undefined {
-  const normalizedStayName = normalizeName(stay.name);
-  return (
-    properties.find((property) => {
-      const candidate = normalizeName(property.name ?? property.title ?? "");
-      return candidate.includes(normalizedStayName) || normalizedStayName.includes(candidate);
-    }) ?? properties[0]
-  );
+  return matchHotelByName(stay.name, properties);
 }
 
 function extractSerpRate(property: SerpApiProperty) {
@@ -524,7 +514,7 @@ async function findGooglePlace(stay: HeatEscapeStay): Promise<GooglePlaceCandida
     candidates?: GooglePlaceCandidate[];
   };
   if (json.status && json.status !== "OK") throw new Error(json.error_message ?? json.status);
-  return json.candidates?.[0];
+  return matchHotelByName(stay.name, json.candidates ?? []);
 }
 
 function buildManualReviewRisk(

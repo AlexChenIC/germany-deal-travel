@@ -164,7 +164,7 @@ export function CardFacts({ item }: { item: TravelItem }) {
       {item.durationDays && <span>{item.durationDays} 天/晚</span>}
       {item.departureHint && <span>{item.departureHint}</span>}
       {item.locationHint && <span>{item.locationHint}</span>}
-      <span>家庭分 {item.familyScore}</span>
+      <span title="关键词估算，不是住客评价或婴幼儿入住保证">家庭线索 {item.familyScore}</span>
     </div>
   );
 }

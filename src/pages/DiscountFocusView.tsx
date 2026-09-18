@@ -67,7 +67,7 @@ export function DiscountFocusView({
   onToggleFavorite: (id: string) => void;
   onExclude: (id: string) => void;
 }) {
-  const [mode, setMode] = useState<DiscountFocusMode>("all");
+  const [mode, setMode] = useState<DiscountFocusMode>("family");
   const discountItems = useMemo(
     () => buildDiscountFocusItems(items, { excludedIds, mode, limit: 8 }),
     [excludedIds, items, mode],
@@ -285,7 +285,7 @@ function DiscountDealCard({
         {deal.discountPercent && <span>{deal.discountPercent}% 折扣信号</span>}
         <span>{categoryLabels[item.category]}</span>
         <span>{scopeLabels[item.scope]}</span>
-        <span>评分 {deal.score}</span>
+        <span title="站内关键词排序，不是住客评分">线索排序 {deal.score}</span>
       </div>
       <div className="reason-list">
         {deal.reasonsZh.map((reason) => (

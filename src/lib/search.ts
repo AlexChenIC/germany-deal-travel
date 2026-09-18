@@ -16,12 +16,19 @@ export function expandQuery(value: string) {
     cruise: ["cruise", "kreuzfahrt", "msc", "aida", "mein schiff"],
     baby: ["baby", "babybett", "gitterbett", "kinder"],
     family: ["family", "familie", "kinder", "kids"],
-    "all inclusive": ["all inclusive", "all-inclusive", "vollpension"],
+    "all inclusive": ["all inclusive", "all-inclusive", "全包"],
+    "全包": ["all inclusive", "all-inclusive", "全包"],
+    "全食宿": ["vollpension", "full board", "全食宿"],
+    "加纳利": ["kanaren", "canary", "canarias", "加纳利"],
+    "加那利": ["kanaren", "canary", "canarias", "加那利"],
+    "兰萨罗特": ["lanzarote", "兰萨罗特"],
+    "大加纳利": ["gran canaria", "大加纳利"],
+    "特内里费": ["teneriffa", "tenerife", "特内里费"],
   };
 
   const terms = new Set([normalized]);
   for (const [key, values] of Object.entries(aliases)) {
-    if (normalized.includes(key)) {
+    if (normalized === key || values.some((alias) => normalizeSearchText(alias) === normalized)) {
       values.forEach((alias) => terms.add(normalizeSearchText(alias)));
     }
   }

@@ -28,6 +28,9 @@ test("discount focus extracts percentage and free-night discount signals", () =>
   assert.equal(extractDiscountPercent("Mega-Deal: Bis zu 50% sparen"), 50);
   assert.equal(extractDiscountPercent("4 Nächte reisen und nur 3 Nächte zahlen"), 25);
   assert.equal(extractDiscountPercent("Hotel in Lyon, -47%"), 47);
+  assert.equal(extractDiscountPercent("99% Weiterempfehlung"), undefined);
+  assert.equal(extractDiscountPercent("100% positive reviews"), undefined);
+  assert.equal(extractDiscountPercent("97% Weiterempfehlung, 30% Rabatt"), 30);
 });
 
 test("discount focus keeps strong family travel deals and filters indirect noise", () => {

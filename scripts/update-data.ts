@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import * as cheerio from "cheerio";
 import { XMLParser } from "fast-xml-parser";
+import { hasAllInclusive } from "../src/lib/travelSearch";
 import type {
   DealCategory,
   RadarData,
@@ -52,7 +53,6 @@ const berlinDepartureTerms = [
   "flüge ab berlin",
   "flug ab berlin",
   "berlin brandenburg",
-  "berlin",
 ];
 
 const nearbyTerms = [
@@ -439,7 +439,7 @@ function classifyCategory(text: string): DealCategory {
   if (matchesAny(lower, ["kreuzfahrt", "cruise", "aida", "msc", "mein schiff"])) {
     return "cruise";
   }
-  if (matchesAny(lower, ["all inclusive", "all-inclusive", "vollpension"])) {
+  if (hasAllInclusive(lower)) {
     return "all-inclusive";
   }
   if (matchesAny(lower, ["pauschalreise", "inkl. flug", "flug &", "transfer"])) {

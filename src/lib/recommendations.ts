@@ -1,4 +1,5 @@
 import type { KidActivity, KidActivityCategory, TravelItem } from "../types";
+import { hasAllInclusive, isAdultsOnly } from "./travelSearch";
 
 export type RecommendationBucketId =
   | "berlin-soon"
@@ -66,9 +67,9 @@ type FreshnessKind = "today" | "week";
 
 const familyProfile: FamilyProfile = {
   homeBase: "Berlin",
-  group: "3 位成年人 + 1 位约 11 个月宝宝，可兼顾长辈同行",
+  group: "2 位成人 + 爱丽丝；可选加 1 位长辈。圣诞出行时孩子约 1 岁半。",
   priorities: [
-    "避暑和低折腾优先",
+    "舒适和低折腾优先",
     "宝宝友好、推车友好、室内/水边/泳池加分",
     "柏林市内和柏林出发优先",
     "长途旅行优先全包、直飞、接送和餐食省心",
@@ -171,13 +172,13 @@ const bucketConfigs: BucketConfig[] = [
         "hurghada",
       ]),
     extraScore: (item, text) =>
-      (item.category === "all-inclusive" ? 22 : 0) +
+      (hasAllInclusive(text) ? 22 : 0) +
       (containsAny(text, ["transfer", "hoteltransfer", "direktflug", "nonstop"]) ? 12 : 0) +
-      (containsAny(text, ["all inclusive", "all-inclusive", "vollpension"]) ? 14 : 0) +
+      (hasAllInclusive(text) ? 14 : 0) +
       (item.fromBerlin ? 10 : 0) +
       (item.durationDays && item.durationDays >= 5 && item.durationDays <= 9 ? 7 : 0),
     baseReasons: (item, text) => [
-      item.category === "all-inclusive" ? "全包产品，带宝宝时餐食和现场决策更省心" : undefined,
+      hasAllInclusive(text) ? "原文有全包线索，仍需核对所选房价的餐标" : undefined,
       containsAny(text, ["transfer", "hoteltransfer"]) ? "有接送线索，落地后折腾更少" : undefined,
       containsAny(text, ["direktflug", "nonstop", "direct flight"]) ? "有直飞线索，适合带宝宝优先核对" : undefined,
       item.fromBerlin ? "与柏林出发相关" : undefined,
@@ -214,7 +215,10 @@ const bucketConfigs: BucketConfig[] = [
 export function buildFamilyRecommendations(
   input: RecommendationInput,
 ): FamilyRecommendations {
-  const availableItems = input.items.filter((item) => !input.excludedIds.has(item.id));
+  const availableItems = input.items.filter((item) =>
+    !input.excludedIds.has(item.id) && !isAdultsOnly(itemText(item)) &&
+    !(item.category === "event" && item.publishedAt &&
+      Date.parse(input.generatedAt) - Date.parse(item.publishedAt) > 30 * 86400000));
 
   return {
     profile: familyProfile,
@@ -330,7 +334,7 @@ function scoreKidRecommendation(activity: KidActivity): KidRecommendation {
     calendar: 22,
   };
   const reasons = [
-    containsAny(text, ["婴幼儿", "低龄", "baby", "3 个月"]) ? "年龄段对 11 个月宝宝更友好" : undefined,
+    containsAny(text, ["婴幼儿", "低龄", "baby", "3 个月"]) ? "有低龄儿童适配线索，需核对具体场次年龄" : undefined,
     containsAny(text, ["室内", "indoor"]) ? "室内活动，热天/雨天更稳" : undefined,
     containsAny(text, ["免费", "低价", "公益"]) ? "免费或低价，适合先试" : undefined,
     activity.category === "swim" ? "游泳课名额紧张，值得长期关注" : undefined,

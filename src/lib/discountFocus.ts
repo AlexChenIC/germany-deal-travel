@@ -1,4 +1,5 @@
 import type { TravelItem } from "../types";
+import { hasAllInclusive, isAdultsOnly } from "./travelSearch";
 
 export type DiscountFocusMode = "all" | "family" | "package" | "nearby";
 
@@ -49,8 +50,6 @@ const relevantDiscountTerms = [
   "black week",
   "secret saver",
   "kostenlos stornierbar",
-  "nur",
-  "ab",
 ];
 
 const familyTerms = [
@@ -155,7 +154,15 @@ export function buildDiscountFocusItems(
 
 export function extractDiscountPercent(text: string): number | undefined {
   const normalized = text.replace(",", ".").toLowerCase();
-  const matches = Array.from(normalized.matchAll(/(?:-|bis zu\s*)?(\d{1,2})\s?%/g))
+  const matches = Array.from(normalized.matchAll(/(?<![\d.])(\d{1,2})\s?%/g))
+    .filter((match) => {
+      const start = match.index ?? 0;
+      const before = normalized.slice(Math.max(0, start - 24), start);
+      const after = normalized.slice(start + match[0].length, start + match[0].length + 30);
+      if (/^\s*(?:weiterempfehl|empfehl|positive|bewertung|zufrieden|好评)/.test(after)) return false;
+      return /(?:-\s*|bis zu\s*|rabatt\s*|save\s*)$/.test(before) ||
+        /^\s*(?:rabatt|sparen|ersparnis|off|discount|折扣|优惠)/.test(after);
+    })
     .map((match) => Number(match[1]))
     .filter((value) => Number.isFinite(value));
 
@@ -221,7 +228,7 @@ function scoreDiscountItem(item: TravelItem): DiscountFocusItem | null {
   if ((discountPercent ?? 0) >= 40) score += 36;
   if ((discountPercent ?? 0) >= 50) score += 18;
   if (item.fromBerlin) score += 10;
-  if (item.category === "all-inclusive") score += 18;
+  if (hasAllInclusive(text)) score += 18;
   if (item.category === "package") score += 12;
   if (item.category === "hotel-resort") score += 10;
   if (containsAny(text, familyTerms)) score += 12;
@@ -271,7 +278,7 @@ function buildReasons(
         ? `出现 ${discountPercent}% 折扣/省钱信号`
         : undefined,
     primarySourceIds.has(item.sourceId) ? "来自重点折扣信息源" : undefined,
-    item.category === "all-inclusive" ? "全包，带宝宝时餐食和现场决策更省心" : undefined,
+    hasAllInclusive(text) ? "原文有全包线索，需核对所选餐标" : undefined,
     item.category === "package" ? "机酒/套餐类，适合集中核对总价" : undefined,
     containsAny(text, ["transfer", "direktflug", "direct flight", "flug"])
       ? "包含航班/接送线索，适合柏林出发旅行核验"
@@ -300,14 +307,14 @@ function primarySignal(
   if (containsAny(text, ["spa", "wellness", "therme", "pool", "wasserpark"])) {
     return "避暑/SPA/泳池线索";
   }
-  if (item.priceLabel) return "价格异常或低价线索";
+  if (item.priceLabel) return "广告起价，需核对计价单位";
   return "折扣源高信号";
 }
 
 function matchesMode(item: TravelItem, mode: DiscountFocusMode) {
   if (mode === "all") return true;
   const text = itemText(item);
-  if (mode === "family") return item.familyScore >= 65 || containsAny(text, familyTerms);
+  if (mode === "family") return !isAdultsOnly(text) && (item.familyScore >= 65 || containsAny(text, familyTerms));
   if (mode === "package") {
     return (
       ["all-inclusive", "package", "flight", "cruise"].includes(item.category) ||

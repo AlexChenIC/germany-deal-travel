@@ -86,3 +86,13 @@ function assertBucketIncludes(
     `${bucketId} should include ${itemId}`,
   );
 }
+
+test("family recommendations exclude adult-only stays and old event discovery", () => {
+  const result = buildFamilyRecommendations({
+    items: [
+      { ...baseItem, id: "adult", title: "Adults only all-inclusive resort", category: "all-inclusive", priorityScore: 999 },
+      { ...baseItem, id: "old", title: "Family museum", category: "event", scope: "berlin-city", publishedAt: "2026-06-01" },
+    ], kidActivities: [], excludedIds: new Set(), generatedAt: "2026-09-18", timezone: "Europe/Berlin",
+  });
+  assert.equal(result.buckets.flatMap((bucket) => bucket.items).length, 0);
+});

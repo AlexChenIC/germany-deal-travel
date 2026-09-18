@@ -35,8 +35,9 @@ import {
   Upload,
   Waves,
 } from "lucide-react";
-import { type ChangeEvent, useEffect, useMemo, useState } from "react";
-import { Metric, SelectField, TabButton } from "./components/Controls";
+import { type ChangeEvent, lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { Metric, SelectField } from "./components/Controls";
+import { SiteNavigation } from "./components/SiteNavigation";
 import { KidsOsmMap, type MappedKidActivity } from "./components/KidsOsmMap";
 import {
   CardFacts,
@@ -77,16 +78,7 @@ import {
   type TravelRecommendation,
 } from "./lib/recommendations";
 import { expandQuery, normalizeSearchText } from "./lib/search";
-import { AlpineBorderPlanView } from "./pages/AlpineBorderPlanView";
-import { BalticSeaShortlistView } from "./pages/BalticSeaShortlistView";
-import { BudapestNingboReturnView } from "./pages/BudapestNingboReturnView";
-import { CanaryDealsView } from "./pages/CanaryDealsView";
-import { ChristmasAllInclusiveView } from "./pages/ChristmasAllInclusiveView";
-import { DiscountFocusView } from "./pages/DiscountFocusView";
-import { PlanView } from "./pages/PlanView";
-import { RvFamilyGuideView } from "./pages/RvFamilyGuideView";
-import { SourcesView } from "./pages/SourcesView";
-import { SummerAllInclusiveView } from "./pages/SummerAllInclusiveView";
+import "./travel-planning.css";
 import type {
   AirConditioningStatus,
   DealCategory,
@@ -107,6 +99,17 @@ import type {
   TravelItem,
   TravelScope,
 } from "./types";
+
+const AlpineBorderPlanView = lazy(() => import("./pages/AlpineBorderPlanView").then((m) => ({ default: m.AlpineBorderPlanView })));
+const BalticSeaShortlistView = lazy(() => import("./pages/BalticSeaShortlistView").then((m) => ({ default: m.BalticSeaShortlistView })));
+const BudapestNingboReturnView = lazy(() => import("./pages/BudapestNingboReturnView").then((m) => ({ default: m.BudapestNingboReturnView })));
+const CanaryDealsView = lazy(() => import("./pages/CanaryDealsView").then((m) => ({ default: m.CanaryDealsView })));
+const ChristmasAllInclusiveView = lazy(() => import("./pages/ChristmasAllInclusiveView").then((m) => ({ default: m.ChristmasAllInclusiveView })));
+const DiscountFocusView = lazy(() => import("./pages/DiscountFocusView").then((m) => ({ default: m.DiscountFocusView })));
+const PlanView = lazy(() => import("./pages/PlanView").then((m) => ({ default: m.PlanView })));
+const RvFamilyGuideView = lazy(() => import("./pages/RvFamilyGuideView").then((m) => ({ default: m.RvFamilyGuideView })));
+const SourcesView = lazy(() => import("./pages/SourcesView").then((m) => ({ default: m.SourcesView })));
+const SummerAllInclusiveView = lazy(() => import("./pages/SummerAllInclusiveView").then((m) => ({ default: m.SummerAllInclusiveView })));
 
 const radar = radarJson as RadarData;
 const sourceCatalog = sourceCatalogJson as SourceDefinition[];
@@ -363,13 +366,15 @@ function App() {
         </div>
         <div className="update-pill">
           <RefreshCcw size={16} aria-hidden="true" />
-          <span>{formatDateTime(radar.generatedAt)}</span>
+          <span>雷达采集：{formatDateTime(radar.generatedAt)}</span>
         </div>
       </header>
 
+      <SiteNavigation active={activeTab} onSelect={selectTab} />
+
       {activeTab === "discounts" ? (
         <CompactHomeStatus summary={automationSummary} />
-      ) : (
+      ) : ["radar", "events", "sources"].includes(activeTab) ? (
         <>
           <section className="metric-strip" aria-label="summary">
             <Metric label="总条目" value={radar.stats.total} icon={<Compass />} />
@@ -384,74 +389,9 @@ function App() {
 
           <AutomationStatusPanel summary={automationSummary} />
         </>
-      )}
+      ) : null}
 
-      <nav className="tabs" aria-label="views">
-        <TabButton
-          active={activeTab === "discounts"}
-          onClick={() => selectTab("discounts")}
-        >
-          重点折扣
-        </TabButton>
-        <TabButton active={activeTab === "picks"} onClick={() => selectTab("picks")}>
-          为我推荐
-        </TabButton>
-        <TabButton active={activeTab === "summer"} onClick={() => selectTab("summer")}>
-          暑期全包
-        </TabButton>
-        <TabButton
-          active={activeTab === "christmas"}
-          onClick={() => selectTab("christmas")}
-        >
-          圣诞全包
-        </TabButton>
-        <TabButton active={activeTab === "baltic"} onClick={() => selectTab("baltic")}>
-          北部海边
-        </TabButton>
-        <TabButton
-          active={activeTab === "budapest-return"}
-          onClick={() => selectTab("budapest-return")}
-        >
-          布达佩斯回国
-        </TabButton>
-        <TabButton active={activeTab === "alps"} onClick={() => selectTab("alps")}>
-          三国山地
-        </TabButton>
-        <TabButton active={activeTab === "rv"} onClick={() => selectTab("rv")}>
-          房车出行
-        </TabButton>
-        <TabButton active={activeTab === "heat"} onClick={() => selectTab("heat")}>
-          避暑短住
-        </TabButton>
-        <TabButton active={activeTab === "canary"} onClick={() => selectTab("canary")}>
-          加纳利全包
-        </TabButton>
-        <TabButton active={activeTab === "radar"} onClick={() => selectTab("radar")}>
-          推荐雷达
-        </TabButton>
-        <TabButton active={activeTab === "events"} onClick={() => selectTab("events")}>
-          柏林活动
-        </TabButton>
-        <TabButton
-          active={activeTab === "favorites"}
-          onClick={() => selectTab("favorites")}
-        >
-          我的收藏
-        </TabButton>
-        <TabButton active={activeTab === "kids"} onClick={() => selectTab("kids")}>
-          儿童活动
-        </TabButton>
-        <TabButton
-          active={activeTab === "sources"}
-          onClick={() => selectTab("sources")}
-        >
-          信息源
-        </TabButton>
-        <TabButton active={activeTab === "plan"} onClick={() => selectTab("plan")}>
-          路线规划
-        </TabButton>
-      </nav>
-
+      <Suspense fallback={<p role="status">正在加载专题…</p>}>
       {activeTab === "discounts" ? (
         <DiscountFocusView
           excludedIds={excluded.ids}
@@ -550,7 +490,7 @@ function App() {
               options={[
                 ["priority", "按推荐"],
                 ["newest", "按最新"],
-                ["price", "按价格"],
+                ["price", "按广告金额（计价单位不同）"],
               ]}
             />
 
@@ -615,6 +555,7 @@ function App() {
           )}
         </>
       )}
+      </Suspense>
     </main>
   );
 }
