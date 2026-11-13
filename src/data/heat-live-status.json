@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-12T13:43:37.220Z",
+  "generatedAt": "2026-11-13T13:03:22.869Z",
   "timezone": "Europe/Berlin",
   "stayWindow": {
     "checkIn": "2026-11-14",
@@ -15,125 +15,125 @@
     "status": "ok",
     "days": [
       {
-        "date": "2026-11-12",
-        "maxTempC": 6.2,
-        "minTempC": 3.3,
-        "apparentMaxTempC": 2.7,
-        "precipitationProbabilityMax": 10
-      },
-      {
         "date": "2026-11-13",
-        "maxTempC": 7.9,
-        "minTempC": 2.9,
-        "apparentMaxTempC": 3,
-        "precipitationProbabilityMax": 8
+        "maxTempC": 8.5,
+        "minTempC": 3.1,
+        "apparentMaxTempC": 3.3,
+        "precipitationProbabilityMax": 3
       },
       {
         "date": "2026-11-14",
-        "maxTempC": 8,
-        "minTempC": 2.8,
-        "apparentMaxTempC": 5.2,
+        "maxTempC": 8.8,
+        "minTempC": 3,
+        "apparentMaxTempC": 6,
         "precipitationProbabilityMax": 0
       },
       {
         "date": "2026-11-15",
-        "maxTempC": 8.1,
-        "minTempC": 0.8,
-        "apparentMaxTempC": 4.6,
-        "precipitationProbabilityMax": 8
+        "maxTempC": 8,
+        "minTempC": 1,
+        "apparentMaxTempC": 4.2,
+        "precipitationProbabilityMax": 20
       },
       {
         "date": "2026-11-16",
-        "maxTempC": 7.9,
-        "minTempC": 5.2,
-        "apparentMaxTempC": 5.3,
-        "precipitationProbabilityMax": 35
+        "maxTempC": 12,
+        "minTempC": 4.1,
+        "apparentMaxTempC": 8.8,
+        "precipitationProbabilityMax": 53
       },
       {
         "date": "2026-11-17",
-        "maxTempC": 9.1,
-        "minTempC": 4.3,
-        "apparentMaxTempC": 6.9,
-        "precipitationProbabilityMax": 43
+        "maxTempC": 13.6,
+        "minTempC": 2.4,
+        "apparentMaxTempC": 10.5,
+        "precipitationProbabilityMax": 72
       },
       {
         "date": "2026-11-18",
-        "maxTempC": 10.7,
-        "minTempC": 5.8,
-        "apparentMaxTempC": 8.4,
-        "precipitationProbabilityMax": 43
+        "maxTempC": 9.4,
+        "minTempC": 1.2,
+        "apparentMaxTempC": 7.1,
+        "precipitationProbabilityMax": 50
       },
       {
         "date": "2026-11-19",
-        "maxTempC": 9.2,
-        "minTempC": 3.1,
-        "apparentMaxTempC": 6.4,
-        "precipitationProbabilityMax": 35
+        "maxTempC": 5.6,
+        "minTempC": 2.8,
+        "apparentMaxTempC": 3.1,
+        "precipitationProbabilityMax": 43
       },
       {
         "date": "2026-11-20",
-        "maxTempC": 7.2,
-        "minTempC": 2,
-        "apparentMaxTempC": 2.4,
-        "precipitationProbabilityMax": 24
+        "maxTempC": 2.9,
+        "minTempC": -0.7,
+        "apparentMaxTempC": 0,
+        "precipitationProbabilityMax": 36
       },
       {
         "date": "2026-11-21",
-        "maxTempC": 7,
+        "maxTempC": 3.2,
         "minTempC": -0.4,
-        "apparentMaxTempC": 4.5,
-        "precipitationProbabilityMax": 22
+        "apparentMaxTempC": 0,
+        "precipitationProbabilityMax": 12
       },
       {
         "date": "2026-11-22",
-        "maxTempC": 9.5,
-        "minTempC": 5.3,
-        "apparentMaxTempC": 6.4,
-        "precipitationProbabilityMax": 18
+        "maxTempC": 3.2,
+        "minTempC": -0.6,
+        "apparentMaxTempC": -0.9,
+        "precipitationProbabilityMax": 12
       },
       {
         "date": "2026-11-23",
-        "maxTempC": 10.3,
-        "minTempC": 7.3,
-        "apparentMaxTempC": 7.5,
-        "precipitationProbabilityMax": 18
+        "maxTempC": 7.1,
+        "minTempC": 1,
+        "apparentMaxTempC": 4,
+        "precipitationProbabilityMax": 16
       },
       {
         "date": "2026-11-24",
-        "maxTempC": 8.5,
-        "minTempC": 3.6,
-        "apparentMaxTempC": 4.4,
-        "precipitationProbabilityMax": 19
+        "maxTempC": 6.5,
+        "minTempC": 3.4,
+        "apparentMaxTempC": 4.5,
+        "precipitationProbabilityMax": 16
       },
       {
         "date": "2026-11-25",
-        "maxTempC": 6.5,
-        "minTempC": 3.6,
-        "apparentMaxTempC": 3.1,
+        "maxTempC": 4.6,
+        "minTempC": 2.3,
+        "apparentMaxTempC": 1.3,
         "precipitationProbabilityMax": 16
       },
       {
         "date": "2026-11-26",
-        "maxTempC": 6.9,
-        "minTempC": 3,
-        "apparentMaxTempC": 3.4,
-        "precipitationProbabilityMax": 21
+        "maxTempC": 5.7,
+        "minTempC": 1.8,
+        "apparentMaxTempC": 3,
+        "precipitationProbabilityMax": 19
       },
       {
         "date": "2026-11-27",
-        "maxTempC": 14.4,
-        "minTempC": 7.8,
-        "apparentMaxTempC": 9.6,
+        "maxTempC": 5.2,
+        "minTempC": 0,
+        "apparentMaxTempC": 2.6,
+        "precipitationProbabilityMax": 24
+      },
+      {
+        "date": "2026-11-28",
+        "maxTempC": 1.4,
+        "minTempC": -0.3,
+        "apparentMaxTempC": -2.6,
         "precipitationProbabilityMax": null
       }
     ],
     "trigger": {
       "active": false,
       "level": "none",
-      "peakDate": "2026-11-27",
-      "peakMaxTempC": 14.4,
+      "peakDate": "2026-11-17",
+      "peakMaxTempC": 13.6,
       "hotDayCount": 0,
-      "messageZh": "暂无高温触发：未来 16 天柏林最高约 14.4°C（2026-11-27）。"
+      "messageZh": "暂无高温触发：未来 16 天柏林最高约 13.6°C（2026-11-17）。"
     }
   },
   "sourceStatus": {
@@ -151,14 +151,14 @@
   "items": [
     {
       "id": "tropical-islands-resort",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Tropical+Islands+Resort+Krausnick%2C+Brandenburg",
-        "fetchedAt": "2026-11-12T13:43:39.343Z",
+        "fetchedAt": "2026-11-13T13:03:26.507Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -169,19 +169,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:37.786Z"
+        "fetchedAt": "2026-11-13T13:03:23.308Z"
       }
     },
     {
       "id": "van-der-valk-berlin-brandenburg",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Van+der+Valk+Hotel+Berlin+Brandenburg+Blankenfelde-Mahlow",
-        "fetchedAt": "2026-11-12T13:43:40.773Z",
+        "fetchedAt": "2026-11-13T13:03:27.752Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -192,19 +192,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:39.343Z"
+        "fetchedAt": "2026-11-13T13:03:26.508Z"
       }
     },
     {
       "id": "sunday-resort-schwielowsee",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Sunday+Resort+Schwielowsee+Werder+%28Havel%29",
-        "fetchedAt": "2026-11-12T13:43:42.231Z",
+        "fetchedAt": "2026-11-13T13:03:29.362Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -215,19 +215,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:40.773Z"
+        "fetchedAt": "2026-11-13T13:03:27.752Z"
       }
     },
     {
       "id": "seminaris-seehotel-potsdam",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Seminaris+SeeHotel+Potsdam+Potsdam%2C+Templiner+See",
-        "fetchedAt": "2026-11-12T13:43:43.997Z",
+        "fetchedAt": "2026-11-13T13:03:30.509Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -238,19 +238,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:42.231Z"
+        "fetchedAt": "2026-11-13T13:03:29.362Z"
       }
     },
     {
       "id": "resort-mark-brandenburg",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Resort+Mark+Brandenburg+%26+Fontane+Therme+Neuruppin",
-        "fetchedAt": "2026-11-12T13:43:47.488Z",
+        "fetchedAt": "2026-11-13T13:03:32.413Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -261,19 +261,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:43.997Z"
+        "fetchedAt": "2026-11-13T13:03:30.509Z"
       }
     },
     {
       "id": "hotel-doellnsee-schorfheide",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+D%C3%B6llnsee-Schorfheide+Templin+%2F+Schorfheide",
-        "fetchedAt": "2026-11-12T13:43:49.059Z",
+        "fetchedAt": "2026-11-13T13:03:34.377Z",
         "bookingLink": "http://www.doellnsee.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -285,19 +285,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:47.488Z"
+        "fetchedAt": "2026-11-13T13:03:32.413Z"
       }
     },
     {
       "id": "aspria-berlin-kudamm",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Aspria+Berlin+Ku%27damm+Berlin-Halensee+%2F+Ku%27damm",
-        "fetchedAt": "2026-11-12T13:43:50.873Z",
+        "fetchedAt": "2026-11-13T13:03:36.796Z",
         "bookingLink": "https://www.davidlloyd.de/de-de/clubs/berlin-charlottenburg/?utm_source=google&utm_medium=places&utm_campaign=de__lpm_kudamm&y_source=1_MjA5Mjc1NTA2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ==",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -309,19 +309,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:49.059Z"
+        "fetchedAt": "2026-11-13T13:03:34.377Z"
       }
     },
     {
       "id": "hotel-palace-berlin",
-      "updatedAt": "2026-11-12T13:43:37.220Z",
+      "updatedAt": "2026-11-13T13:03:22.869Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+Palace+Berlin+Berlin-Charlottenburg",
-        "fetchedAt": "2026-11-12T13:43:52.694Z",
+        "fetchedAt": "2026-11-13T13:03:38.792Z",
         "bookingLink": "https://www.palace.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -333,7 +333,7 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-12T13:43:50.874Z"
+        "fetchedAt": "2026-11-13T13:03:36.797Z"
       }
     }
   ]
