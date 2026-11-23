@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-22T13:17:52.829Z",
+  "generatedAt": "2026-11-23T15:55:30.998Z",
   "timezone": "Europe/Berlin",
   "stayWindow": {
     "checkIn": "2026-11-28",
@@ -12,7 +12,7 @@
   "weather": {
     "sourceName": "Open-Meteo",
     "sourceUrl": "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.405&daily=temperature_2m_max%2Ctemperature_2m_min%2Capparent_temperature_max%2Cprecipitation_probability_max&forecast_days=16&timezone=Europe%2FBerlin",
-    "status": "ok",
+    "status": "fallback",
     "days": [
       {
         "date": "2026-11-22",
@@ -134,7 +134,8 @@
       "peakMaxTempC": 5.6,
       "hotDayCount": 0,
       "messageZh": "暂无高温触发：未来 16 天柏林最高约 5.6°C（2026-11-22）。"
-    }
+    },
+    "message": "天气抓取失败，已使用上次缓存：fetch failed"
   },
   "sourceStatus": {
     "price": {
@@ -151,14 +152,14 @@
   "items": [
     {
       "id": "tropical-islands-resort",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Tropical+Islands+Resort+Krausnick%2C+Brandenburg",
-        "fetchedAt": "2026-11-22T13:17:54.513Z",
+        "fetchedAt": "2026-11-23T15:55:42.929Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -169,19 +170,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:17:52.924Z"
+        "fetchedAt": "2026-11-23T15:55:41.529Z"
       }
     },
     {
       "id": "van-der-valk-berlin-brandenburg",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Van+der+Valk+Hotel+Berlin+Brandenburg+Blankenfelde-Mahlow",
-        "fetchedAt": "2026-11-22T13:17:55.971Z",
+        "fetchedAt": "2026-11-23T15:55:44.554Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -192,19 +193,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:17:54.514Z"
+        "fetchedAt": "2026-11-23T15:55:42.930Z"
       }
     },
     {
       "id": "sunday-resort-schwielowsee",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Sunday+Resort+Schwielowsee+Werder+%28Havel%29",
-        "fetchedAt": "2026-11-22T13:17:57.371Z",
+        "fetchedAt": "2026-11-23T15:55:46.358Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -215,19 +216,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:17:55.972Z"
+        "fetchedAt": "2026-11-23T15:55:44.554Z"
       }
     },
     {
       "id": "seminaris-seehotel-potsdam",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Seminaris+SeeHotel+Potsdam+Potsdam%2C+Templiner+See",
-        "fetchedAt": "2026-11-22T13:17:58.626Z",
+        "fetchedAt": "2026-11-23T15:55:47.794Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -238,19 +239,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:17:57.371Z"
+        "fetchedAt": "2026-11-23T15:55:46.358Z"
       }
     },
     {
       "id": "resort-mark-brandenburg",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Resort+Mark+Brandenburg+%26+Fontane+Therme+Neuruppin",
-        "fetchedAt": "2026-11-22T13:18:03.070Z",
+        "fetchedAt": "2026-11-23T15:55:49.157Z",
         "messageZh": "已查询 Google Hotels，但没有稳定匹配到该酒店；请打开检查入口复核。"
       },
       "reviews": {
@@ -261,19 +262,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:17:58.627Z"
+        "fetchedAt": "2026-11-23T15:55:47.794Z"
       }
     },
     {
       "id": "hotel-doellnsee-schorfheide",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+D%C3%B6llnsee-Schorfheide+Templin+%2F+Schorfheide",
-        "fetchedAt": "2026-11-22T13:18:04.860Z",
+        "fetchedAt": "2026-11-23T15:55:52.554Z",
         "bookingLink": "http://www.doellnsee.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -285,19 +286,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:18:03.070Z"
+        "fetchedAt": "2026-11-23T15:55:49.157Z"
       }
     },
     {
       "id": "aspria-berlin-kudamm",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Aspria+Berlin+Ku%27damm+Berlin-Halensee+%2F+Ku%27damm",
-        "fetchedAt": "2026-11-22T13:18:09.209Z",
+        "fetchedAt": "2026-11-23T15:55:54.730Z",
         "bookingLink": "https://www.davidlloyd.de/de-de/clubs/berlin-charlottenburg/?utm_source=google&utm_medium=places&utm_campaign=de__lpm_kudamm&y_source=1_MjA5Mjc1NTA2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D&y_source=1_MjA5Mjc1NTA2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D%3D&y_source=1_MjA5Mjc1NTA2Ny03MTUtbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -309,19 +310,19 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:18:04.861Z"
+        "fetchedAt": "2026-11-23T15:55:52.554Z"
       }
     },
     {
       "id": "hotel-palace-berlin",
-      "updatedAt": "2026-11-22T13:17:52.829Z",
+      "updatedAt": "2026-11-23T15:55:30.998Z",
       "weatherBoost": false,
       "recommendationLabelZh": "天气未触发高温加权，按常规短住候选观察。",
       "price": {
         "status": "unknown",
         "provider": "SerpApi Google Hotels",
         "sourceUrl": "https://www.google.com/travel/hotels?q=Hotel+Palace+Berlin+Berlin-Charlottenburg",
-        "fetchedAt": "2026-11-22T13:18:11.585Z",
+        "fetchedAt": "2026-11-23T15:55:57.113Z",
         "bookingLink": "https://www.palace.de/",
         "messageZh": "已查询但未返回明确价格；可能无房、价格隐藏或匹配不完整。"
       },
@@ -333,7 +334,7 @@
         "signals": [],
         "snippets": [],
         "messageZh": "近期评论查询失败，暂用人工风险点：You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started",
-        "fetchedAt": "2026-11-22T13:18:09.209Z"
+        "fetchedAt": "2026-11-23T15:55:54.731Z"
       }
     }
   ]
